@@ -39,26 +39,26 @@ const StartingPage = () => {
             src="/images/doctor1.svg"
             alt="doctor1"
             className="w-560px h-419px"
-            width={560}
+            width={470}
             height={419}
           />
           <Image
             src="/images/doctor4.svg"
-            alt="doctor1"
+            alt="doctor4"
             className="w-560px h-419px"
-            width={560}
+            width={470}
             height={419}
           />
         </div>
         <Image
           src="/images/doctor2.svg"
-          alt="doctor1"
-          className="w-462px h-462px flex relative z-10 -mt-60"
-          width={462}
-          height={462}
+          alt="doctor2"
+          className="w-560px h-419px z-10 -mt-60 ml-10"
+          width={560}
+          height={419}
         />
         <Image
-          src="/images/dot.png"
+          src="/images/dot.svg"
           alt="dot"
           className="w-262px h-262px absolute top-80 right-72 mr-60 mt-40 z-0"
           width={262}
@@ -67,16 +67,16 @@ const StartingPage = () => {
         <Image
           src="/images/doctor3.svg"
           alt="doctor1"
-          className="w-462px h-462px flex relative z-10 -mt-60"
-          width={462}
-          height={462}
+          className="w-560px h-419px flex z-10 mt-40 ml-5"
+          width={560}
+          height={419}
         />
       </div>
-      <div className="flex flex-col justify-center items-center space-y-7 py-20 px-60 border-t border-b border-custom2">
-        <p className="text-9xl font-montserrat font-medium text-custom2">
+      <div className="flex flex-col justify-center items-center space-y-10 py-20 px-60 my-20 border-t-2 border-b-2 border-custom2">
+        <p className="text-xl font-montserrat font-medium text-custom2">
           WHAT WE DO
         </p>
-        <p className="text-8xl text-center font-montserrat">
+        <p className="text-4xl text-center font-montserrat">
           We connect everyday people with professional healthcare personnels
           ranging from doctors to pharmacists to lab scientists. Whether it's
           regular medical checkups, diagnosis or one time treatments, we got you

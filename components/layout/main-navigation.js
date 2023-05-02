@@ -7,7 +7,7 @@ const MainNavigation = (props) => {
     <nav className="mx-5 mt-5 lg:mx-24">
       <div className="flex items-center justify-between">
         <div className="flex">
-          <div className="mr-64 md:mr-32"><Image
+          <div className="mr-64 md:mr-60"><Image
             src="/images/logo/logo.svg"
             alt="call a doctor logo"
             className="h-75.51 w-148"

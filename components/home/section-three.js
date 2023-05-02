@@ -18,29 +18,25 @@ const contents = [
 const SectionThree = (props) => {
   return contents.map((content) => {
     return (
-      <div className="flex justify-between items-start pl-40 border-b border-custom1 bg-57B7FF pt-40">
+      <div className="flex justify-between items-start pl-40 border-b border-custom2 bg-57B7FF pt-40">
         <div className="space-y-10 ">
           <div className="flex items-end">
-            <p className="text-9xl font-montserrat font-medium text-custom1 ">
+            <p className="text-xl font-montserrat font-medium text-custom1 ">
               FOR PATIENTS
             </p>
-            <Image
-              src="/images/icon/line1.svg"
-              alt="doctor1"
-              className="w-165px h-4px mx-4 mb-5"
-              width={165}
-              height={5}
+            <div
+              className="w-80 h-0.5 mx-4 mb-3 bg-custom1"
             />
-            <p className="text-9xl font-montserrat font-medium text-custom1">
+            <p className="text-xl font-montserrat font-medium text-custom1">
               001
             </p>
           </div>
-          <p className="text-11xl text-custom1 font-montserrat leading-none">
+          <p className="text-5xl text-custom1 font-montserrat leading-none">
             {content.content1}
           </p>
-          <p className="text-custom1">{content.content2}</p>
+          <p className="text-custom1 text-md">{content.content2}</p>
           <button className="flex justify-center items-center">
-            <p className="text-custom1 mr-2">Get Started</p>
+            <p className="text-md text-custom1 mr-2">Get Started</p>
             <Image
               src="/images/icon/arrow-right-white.svg"
               alt="doctor1"

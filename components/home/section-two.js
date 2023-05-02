@@ -18,7 +18,7 @@ const contents = [
 const SectionTwo = (props) => {
   return contents.map((content) => {
     return (
-      <div className="flex pr-40 mt-20 border-b border-custom3">
+      <div className="flex pr-40 border-b border-custom3">
         <Image
           src={content.image}
           alt="doctor1"
@@ -26,26 +26,24 @@ const SectionTwo = (props) => {
           width={1000}
           height={900}
         />
-        <div className="space-y-10 ">
+        
+    
+        <div className="space-y-10 -mt-20 ">
           <div className="flex items-end">
-            <p className="text-9xl font-montserrat font-medium text-custom2 mt-60 ">
+            <p className="text-xl font-montserrat font-medium text-custom2">
               FOR PATIENTS
             </p>
-            <Image
-              src="/images/icon/line.svg"
-              alt="doctor1"
-              className="w-165px h-4px mx-4 mb-5"
-              width={165}
-              height={5}
+            <div
+              className="w-80 h-0.5 mx-4 mb-3 bg-custom2"
             />
-            <p className="text-9xl font-montserrat font-medium text-custom2 mt-60">001</p>
+            <p className="text-xl font-montserrat font-medium text-custom2 mt-60">001</p>
           </div>
-          <p className="text-11xl font-montserrat leading-none">
+          <p className="text-5xl font-montserrat leading-none">
             {content.content1}
           </p>
-          <p>{content.content2}</p>
+          <p className="text-md">{content.content2}</p>
           <button className="flex justify-center items-center">
-            <p className="text-49207E mr-2">Get Started</p>
+            <p className="text-md text-49207E mr-2">Get Started</p>
             <Image
               src="/images/icon/arrow-right.svg"
               alt="doctor1"
