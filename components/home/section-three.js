@@ -21,8 +21,7 @@ const SectionThree = (props) => {
     <>
       {contents.map((content) => {
         return (
-          <>
-            <div className="flex items-start h-boxh2 border-b border-custom2 bg-57B7FF">
+            <div key={content.content1} className="flex items-start h-boxh2 border-b border-custom2 bg-57B7FF">
               {/* <div className="flex pr-40 border-b border-custom3"> */}
 
               <div className="mt-40 space-y-10 pl-36">
@@ -53,12 +52,11 @@ const SectionThree = (props) => {
               <Image
                 src={content.image}
                 alt="doctor1"
-                className="w-1000px h-1034px py-20"
-                width={1000}
-                height={900}
+                className="w-piw4 h-pih4 py-20"
+                width={1159} 
+                height={1034}
               />
             </div>
-          </>
         );
       })}
       <div className="flex flex-col justify-center items-center space-y-10 py-20 px-60">

@@ -18,14 +18,14 @@ const contents = [
 const SectionTwo = (props) => {
   return contents.map((content) => {
     return (
-      <div className="flex items-start h-boxh2">
+      <div key={content.content1} className="flex items-start h-boxh2">
         {/* <div className="flex pr-40 border-b border-custom3"> */}
         <Image
           src={content.image}
           alt="doctor1"
-          className="w-1000px h-1034px py-20"
-          width={1000}
-          height={900}
+          className="w-piw4 h-pih4 py-20"
+          width={1159} 
+          height={1034}
         />
         
     

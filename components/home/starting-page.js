@@ -3,19 +3,19 @@ import Image from "next/image";
 const StartingPage = () => {
   return (
     <>
-      <div className="h-boxh1 flex justify-end">
-        <div className="flex flex-col justify-center space-y-5 h-100">
+      <div className="flex flex-wrap">
+        <div className="px-10 lg:flex flex-col justify-center space-y-5 h-100">
           <Image
             src="/images/get-medical-attention.svg"
             alt="get medical attention image"
-            className="h-190px w-609px"
-            width={609}
+            className="h-pih2 w-piw2"
+            width={605}
             height={190}
           />
           <Image
               src="/images/globally-at-your-fingertips.svg"
               alt="get medical attention image"
-              className="h-30.51px w-257px ml-52"
+              className="h-8 w-64 ml-52"
               width={257}
               height={30}
             />
@@ -23,25 +23,25 @@ const StartingPage = () => {
         <Image
             src="/images/hero-image.png"
             alt="get medical attention image"
-            className="h-190px w-609px"
+            className="h-pih1 w-piw1"
             width={609}
             height={190}
           />
       </div>
-      <div className="-mt-48 h-boxh2 flex items-start space-x-5">
-      <div className="flex flex-col space-y-40">
+      <div className="relative -mt-48 h-boxh2 flex items-start space-x-5">
+      <div className="hidden md:flex flex-col">
           <Image
             src="/images/doctor1.svg"
             alt="doctor1"
-            className="w-560px h-419px"
-            width={470}
-            height={419}
+            className="w-piw3 h-pih3 z-10"
+          width={560}
+          height={419}
           />
           <Image
             src="/images/doctor4.svg"
             alt="doctor4"
-            className="w-560px h-419px"
-            width={470}
+            className="w-piw3 h-pih3 mt-40 z-10"
+            width={560}
             height={419}
           />
         </div>
@@ -49,7 +49,7 @@ const StartingPage = () => {
         <Image
           src="/images/doctor2.svg"
           alt="doctor2"
-          className="w-560px h-419px mt-40 z-10"
+          className="w-piw3 h-pih3 mt-40 z-10"
           width={560}
           height={419}
         />
@@ -63,7 +63,7 @@ const StartingPage = () => {
         <Image
           src="/images/doctor3.svg"
           alt="doctor1"
-          className="w-560px h-419px mt-96 pt-10 z-10"
+          className="w-piw3 h-pih3 mt-40 mt-96 pt-10 z-10 z-10"
           width={560}
           height={419}
         />
