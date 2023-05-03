@@ -4,25 +4,27 @@ import Link from "next/link";
 
 const MainNavigation = (props) => {
   return (
-    <nav className="mx-5 mt-5 lg:mx-24">
-      <div className="flex items-center justify-between">
+    <nav className="relative container mx-20">
+      <div className="flex justify-between mt-5">
         <div className="flex">
-          <div className="mr-64 md:mr-60"><Image
+          <Image
             src="/images/logo/logo.svg"
             alt="call a doctor logo"
             className="h-75.51 w-148"
             width={148}
             height={75.51}
-          /></div>
-          <div className="hidden lg:block space-x-8 mt-3">
+          />
+          <div className="flex space-x-8 mt-3 ml-80">
             <Link href="#" className="font-montserrat font-medium text-base">About us</Link>
             <Link href="#" className="font-montserrat font-medium text-base">Services</Link>
             <Link href="#" className="font-montserrat font-medium text-base">Pricing</Link>
           </div>
-        </div>
-        <div className="md: flex space-x-3 ">
-            <button className="hidden lg:block w-80 h-48 border border-custom rounded-full font-montserrat font-normal text-base">Login</button>
-            <button className="hidden lg:block w-162 h-48 text-custom1 bg-custom rounded-full font-montserrat font-normal text-base">Get Started</button>
+          </div>
+          
+
+          <div className="flex space-x-3 mt-3 mr-3">
+            <button className="w-80 h-48  border border-custom rounded-full font-montserrat font-normal text-base">Login</button>
+            <button className="w-162 h-48 text-custom1 bg-custom rounded-full font-montserrat font-normal text-base">Get Started</button>
         </div>
       </div>
     </nav>

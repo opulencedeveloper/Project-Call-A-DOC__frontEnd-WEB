@@ -18,7 +18,8 @@ const contents = [
 const SectionTwo = (props) => {
   return contents.map((content) => {
     return (
-      <div className="flex pr-40 border-b border-custom3">
+      <div className="flex items-start h-boxh2">
+        {/* <div className="flex pr-40 border-b border-custom3"> */}
         <Image
           src={content.image}
           alt="doctor1"
@@ -28,7 +29,7 @@ const SectionTwo = (props) => {
         />
         
     
-        <div className="space-y-10 -mt-20 ">
+        <div className="-ml-10 mt-40 space-y-10 pr-56">
           <div className="flex items-end">
             <p className="text-xl font-montserrat font-medium text-custom2">
               FOR PATIENTS
@@ -36,7 +37,7 @@ const SectionTwo = (props) => {
             <div
               className="w-80 h-0.5 mx-4 mb-3 bg-custom2"
             />
-            <p className="text-xl font-montserrat font-medium text-custom2 mt-60">001</p>
+            <p className="text-xl font-montserrat font-medium text-custom2">001</p>
           </div>
           <p className="text-5xl font-montserrat leading-none">
             {content.content1}
@@ -54,6 +55,7 @@ const SectionTwo = (props) => {
           </button>
         </div>
       </div>
+      
     );
   });
 };

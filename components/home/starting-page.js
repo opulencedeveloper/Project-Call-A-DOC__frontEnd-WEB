@@ -3,8 +3,8 @@ import Image from "next/image";
 const StartingPage = () => {
   return (
     <>
-      <div className="flex flex-col lg:flex-row justify-end">
-        <div className="flex flex-col space-y-6 mt-10 lg:mt-40">
+      <div className="h-boxh1 flex justify-end">
+        <div className="flex flex-col justify-center space-y-5 h-100">
           <Image
             src="/images/get-medical-attention.svg"
             alt="get medical attention image"
@@ -12,29 +12,24 @@ const StartingPage = () => {
             width={609}
             height={190}
           />
-          <div className="flex justify-end mr-32">
-            <Image
+          <Image
               src="/images/globally-at-your-fingertips.svg"
               alt="get medical attention image"
-              className="h-30.51px w-257px md:h-30.51px w-257px"
+              className="h-30.51px w-257px ml-52"
               width={257}
               height={30}
             />
-          </div>
         </div>
-        <div className="flex justify-end items-end">
-          <Image
+        <Image
             src="/images/hero-image.png"
             alt="get medical attention image"
             className="h-190px w-609px"
             width={609}
             height={190}
           />
-        </div>
       </div>
-      {/* DOCTORS */}
-      <div className="flex -mt-60 relative">
-        <div className="flex flex-col space-y-40">
+      <div className="-mt-48 h-boxh2 flex items-start space-x-5">
+      <div className="flex flex-col space-y-40">
           <Image
             src="/images/doctor1.svg"
             alt="doctor1"
@@ -50,29 +45,31 @@ const StartingPage = () => {
             height={419}
           />
         </div>
+
         <Image
           src="/images/doctor2.svg"
           alt="doctor2"
-          className="w-560px h-419px z-10 -mt-60 ml-10"
+          className="w-560px h-419px mt-40 z-10"
           width={560}
           height={419}
         />
         <Image
-          src="/images/dot.svg"
+          src="/images/dot.png"
           alt="dot"
-          className="w-262px h-262px absolute top-80 right-72 mr-60 mt-40 z-0"
+          className="w-262px h-262px absolute top-96 right-96 z-0"
           width={262}
           height={262}
         />
         <Image
           src="/images/doctor3.svg"
           alt="doctor1"
-          className="w-560px h-419px flex z-10 mt-40 ml-5"
+          className="w-560px h-419px mt-96 pt-10 z-10"
           width={560}
           height={419}
         />
       </div>
-      <div className="flex flex-col justify-center items-center space-y-10 py-20 px-60 my-20 border-t-2 border-b-2 border-custom2">
+      
+      <div className="flex flex-col justify-center items-center h-boxh3 space-y-10 py-20 px-60 border-t-2 border-b-2 border-custom2">
         <p className="text-xl font-montserrat font-medium text-custom2">
           WHAT WE DO
         </p>
@@ -90,16 +87,11 @@ const StartingPage = () => {
           For Doctors
           </button>
         </div>
+        
       </div>
     </>
   );
 };
 
 export default StartingPage;
-{
-  /* <div className="md:container border border-custom ">
-        <h2 className="font-montserrat font-medium text-7xl">
-          Get Medical attention
-        </h2>
-      </div> */
-}
+

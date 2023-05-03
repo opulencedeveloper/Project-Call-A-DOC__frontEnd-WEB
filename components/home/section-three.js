@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 
 const contents = [
   {
@@ -16,46 +17,71 @@ const contents = [
 ];
 
 const SectionThree = (props) => {
-  return contents.map((content) => {
-    return (
-      <div className="flex justify-between items-start pl-40 border-b border-custom2 bg-57B7FF pt-40">
-        <div className="space-y-10 ">
-          <div className="flex items-end">
-            <p className="text-xl font-montserrat font-medium text-custom1 ">
-              FOR PATIENTS
-            </p>
-            <div
-              className="w-80 h-0.5 mx-4 mb-3 bg-custom1"
-            />
-            <p className="text-xl font-montserrat font-medium text-custom1">
-              001
-            </p>
-          </div>
-          <p className="text-5xl text-custom1 font-montserrat leading-none">
-            {content.content1}
-          </p>
-          <p className="text-custom1 text-md">{content.content2}</p>
-          <button className="flex justify-center items-center">
-            <p className="text-md text-custom1 mr-2">Get Started</p>
-            <Image
-              src="/images/icon/arrow-right-white.svg"
-              alt="doctor1"
-              className="w-16px h-13px"
-              width={16}
-              height={13}
-            />
-          </button>
-        </div>
-        <Image
-          src={content.image}
-          alt="doctor1"
-          className="w-1000px h-1034px"
-          width={1000}
-          height={900}
-        />
+  return (
+    <>
+      {contents.map((content) => {
+        return (
+          <>
+            <div className="flex items-start h-boxh2 border-b border-custom2 bg-57B7FF">
+              {/* <div className="flex pr-40 border-b border-custom3"> */}
+
+              <div className="mt-40 space-y-10 pl-36">
+                <div className="flex items-end">
+                  <p className="text-xl font-montserrat font-medium text-custom1">
+                    FOR PATIENTS
+                  </p>
+                  <div className="w-80 h-0.5 mx-4 mb-3 bg-custom1" />
+                  <p className="text-xl font-montserrat font-medium text-custom1">
+                    001
+                  </p>
+                </div>
+                <p className="text-5xl font-montserrat text-custom1">
+                  {content.content1}
+                </p>
+                <p className="text-md text-custom1">{content.content2}</p>
+                <button className="flex justify-center items-center">
+                  <p className="text-md text-custom1 mr-2">Get Started</p>
+                  <Image
+                    src="/images/icon/arrow-right-white.svg"
+                    alt="doctor1"
+                    className="w-16px h-13px"
+                    width={16}
+                    height={13}
+                  />
+                </button>
+              </div>
+              <Image
+                src={content.image}
+                alt="doctor1"
+                className="w-1000px h-1034px py-20"
+                width={1000}
+                height={900}
+              />
+            </div>
+          </>
+        );
+      })}
+      <div className="flex flex-col justify-center items-center space-y-10 py-20 px-60">
+        <p className="text-2xl font-montserrat font-medium text-custom2">
+          WHY CHOOSE US
+        </p>
+        <p className="text-4xl text-center font-montserrat px-10">
+          We are on a mission to bring affordable, quality medical access to
+          everyone at their own convenience
+        </p>
+        <Link href={"#"} className="flex justify-center items-center">
+          <p className="text-49207E text-lg mr-2">More about us</p>
+          <Image
+            src="/images/icon/arrow-right-purple.svg"
+            alt="doctor1"
+            className="w-16px h-13px mt-0.5"
+            width={16}
+            height={13}
+          />
+        </Link>
       </div>
-    );
-  });
+    </>
+  );
 };
 
 export default SectionThree;
