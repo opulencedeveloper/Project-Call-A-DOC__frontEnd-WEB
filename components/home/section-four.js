@@ -21,12 +21,12 @@ const contents = [
 const SectionFour = (props) => {
   return (
     <>
-      <div className="flex flex-col justify-end items-center h-boxh2 pb-10">
+      <div className="flex flex-col justify-end items-center pb-10">
         <p className="text-2xl font-montserrat font-medium">FAQ</p>
         <p className="text-xl font-montserrat mb-5">Commonly asked questions</p>
-        <div className="flex flex-wrap justify-between items-center mx-80">
+        <div className="border border-custom2 h-boxh1 flex justify-between 2xl:justify-start items-start">
           {contents.map((content) => (
-            <div key={content.content1} className="flex flex-col w-boxw1 my-7">
+            <div key={content.content1} className="flex flex-col my-7">
               <div className="flex justify-between bg-custom3 p-5 rounded-tl-md rounded-tr-md">
                 <p className="text-custom1">{content.content1}</p>
                 <Image
@@ -46,7 +46,7 @@ const SectionFour = (props) => {
         </div>
       </div>
 
-      <div className="relative flex flex-col justify-center items-center h-boxh2 bg-custom6">
+      <div className="relative flex flex-col justify-center items-center bg-custom6 py-52 px-0">
         <Image
           src="/images/icon/temp.svg"
           alt="temp"
@@ -57,7 +57,7 @@ const SectionFour = (props) => {
         <p className="text-2xl font-montserrat font-medium text-custom1">
           Pricing
         </p>
-        <p className="font-montserrat text-custom1 mx-96 text-center">
+        <p className="font-montserrat text-custom1 text-center 2xl:mx-96">
           Get the best prices for the best quality services charged based on
           frequency of consulations or pay-as-you-go depending on what works
           better for you
@@ -72,7 +72,7 @@ const SectionFour = (props) => {
           </button>
         </div>
 
-        <div className="flex items-center justify-center space-x-8 z-10">
+        <div className="border border-custom3 p-y-10 flex flex-col items-center justify-center space-x-0 z-10 2xl:flex-row space-x-8">
           {/* DIV-1 */}
           <div className="flex flex-col justify-center align-center bg-custom5 rounded-xl px-14 py-10">
             <p className="text-center text-custom1 font-montserrat">Free</p>
@@ -302,7 +302,7 @@ const SectionFour = (props) => {
           Reach out to us
         </p>
        <div className="flex mx-auto">
-        <input placeholder="Input your email" className="bg-custom8 pl-5 text-lg font-montserrat rounded-tl-full rounded-bl-full h-12 w-boxw2"/>
+        <input placeholder="Input your email" className="bg-custom8 pl-5 text-lg font-montserrat rounded-tl-full rounded-bl-full h-12 2xl:w-boxw2"/>
         <button className="w-32 h-12 text-custom1 bg-custom rounded-tr-full rounded-br-full font-montserrat font-normal text-sm">
           Submit
           </button>

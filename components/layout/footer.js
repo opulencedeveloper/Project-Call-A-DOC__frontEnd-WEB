@@ -3,7 +3,7 @@ import Image from "next/image";
 
 const Footer = () => {
   return (
-    <div className="bg-custom9 flex justify-between h-96 px-40 py-10 font-montserrat text-custom1">
+    <div className="bg-custom9 flex justify-between py-10 font-montserrat text-custom1 md:px-40">
       <div className="flex flex-col">
         <Image
           src="/images/logo/logo-white.svg"
@@ -35,7 +35,7 @@ const Footer = () => {
             <p className="text-sm">Core values</p>
             </div>
         </div>
-        <div className="flex space-x-7 items-center -ml-10">
+        {/* <div className="flex space-x-7 items-center -ml-10">
             <p className="text-lg">Reach us</p>
         <Image
           src="/images/icon/twitter.svg"
@@ -58,7 +58,7 @@ const Footer = () => {
           width={42}
           height={42}
         />
-        </div>
+        </div> */}
       </div>
     </div>
   );

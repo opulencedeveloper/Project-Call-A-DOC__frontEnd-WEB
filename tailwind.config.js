@@ -1,3 +1,5 @@
+const { fontFamily } = require('tailwindcss/defaultTheme')
+
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: [
@@ -11,7 +13,8 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        'montserrat': 'Montserrat'
+        // 'montserrat': 'Montserrat',
+        montserrat: ['var(--font-montserrat)', ...fontFamily.sans],
       },
       height: {
         '48': '38px',
@@ -28,7 +31,7 @@ module.exports = {
         "boxh5": "50rem",
       },
       width: {
-        "piw1": "55rem",
+        "piw1": "50rem",
         "piw2": "35rem",
         "piw3": "35rem",
         "piw4": "72rem",
@@ -36,7 +39,7 @@ module.exports = {
         '162': '145px',
         '80': '100px',
         'pw1': '900px',
-        "boxw1": '30rem',
+        "boxw1": '33rem',
         "boxw2": '40rem'
       }
     },

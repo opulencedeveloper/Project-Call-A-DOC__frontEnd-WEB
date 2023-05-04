@@ -21,10 +21,10 @@ const SectionThree = (props) => {
     <>
       {contents.map((content) => {
         return (
-            <div key={content.content1} className="flex items-start h-boxh2 border-b border-custom2 bg-57B7FF">
+            <div key={content.content1} className="flex flex-wrap items-start border-b border-custom2 bg-57B7FF 2xl:flex-nowrap">
               {/* <div className="flex pr-40 border-b border-custom3"> */}
 
-              <div className="mt-40 space-y-10 pl-36">
+              <div className="mt-40 space-y-10 pl-10 2xl:pl-36 ">
                 <div className="flex items-end">
                   <p className="text-xl font-montserrat font-medium text-custom1">
                     FOR PATIENTS
@@ -59,8 +59,8 @@ const SectionThree = (props) => {
             </div>
         );
       })}
-      <div className="flex flex-col justify-center items-center space-y-10 py-20 px-60">
-        <p className="text-2xl font-montserrat font-medium text-custom2">
+      <div className="px-8 flex flex-col justify-center items-center space-y-10 py-20 px-60 2xl:px-60">
+        <p className="text-2xl text-center font-montserrat font-medium text-custom2">
           WHY CHOOSE US
         </p>
         <p className="text-4xl text-center font-montserrat px-10">

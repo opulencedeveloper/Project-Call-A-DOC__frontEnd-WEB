@@ -1,10 +1,30 @@
 import Image from "next/image";
 import Link from "next/link";
+import { useState } from "react";
+import Navigation from "../UI/Navigation";
 //import imageAsset from '/public/images/your-image-asset.webp'
+let value = '';
 
 const MainNavigation = (props) => {
+  const [toggleNav, setToggleNav] = useState(true);
+
+  const toggleNavHandler = () => {
+    console.log('value')
+    if(toggleNav) {
+      value = 'open';
+      setToggleNav((prevExpenses) => {
+        return !prevExpenses;
+      });
+    } else {
+      value = '';
+      setToggleNav((prevExpenses) => {
+        return !prevExpenses;
+      });
+    }
+  };
+
   return (
-    <nav className="relative px-4 mx-auto mt-5">
+    <nav className="container px-4 mx-auto mt-5">
       <div className="flex justify-between items-center md:items-start ">
         <div className="flex">
           <Image
@@ -15,7 +35,7 @@ const MainNavigation = (props) => {
             height={320}
           />
           <div className="hidden lg:flex space-x-8 mt-3 lg:ml-72">
-            <Link href="#" className="font-montserrat font-medium text-base">
+            <Link href="#" className="font-medium text-base">
               About us
             </Link>
             <Link href="#" className="font-montserrat font-medium text-base">
@@ -35,12 +55,23 @@ const MainNavigation = (props) => {
             Get Started
           </button>
         </div>
-        <div className="lg:hidden flex flex-col mt-3">
+        <button
+          className={`${value} block hamburger lg:hidden focus:outline-none`}
+          type="button"
+          onClick={toggleNavHandler}
+        >
+          <span className="hamburger-top"></span>
+          <span className="hamburger-middle"></span>
+          <span className="hamburger-bottom"></span>
+        </button>
+        {/* <div className="lg:hidden flex flex-col mt-3">
           <div className="w-8 h-0.5 mx-4 mb-2 bg-custom2" />
           <div className="w-8 h-0.5 mx-4 mb-2 bg-custom2" />
           <div className="w-8 h-0.5 mx-4 mb-2 bg-custom2" />
-        </div>
+        </div> */}
       </div>
+      {/* <!-- Mobile Menu --> */}
+      {value && <Navigation />}
     </nav>
   );
 };
