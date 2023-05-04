@@ -142,7 +142,7 @@ const SectionFour = (props) => {
                 Two appointments per month
               </p>
             </div>
-            <button className="w-162 h-12 border border-custom1 rounded-full font-montserrat font-normal text-custom2 text-base mx-auto">
+            <button className="w-162 h-12 border border-custom1 rounded-full font-montserrat font-normal text-ash text-base mx-auto">
               Get Started
             </button>
           </div>
@@ -216,7 +216,7 @@ const SectionFour = (props) => {
                 Two appointments per month
               </p>
             </div>
-            <button className="w-52 h-14 bg-custom7 rounded-full font-montserrat font-normal text-custom2 text-base mx-auto">
+            <button className="w-52 h-14 bg-custom7 rounded-full font-montserrat font-normal text-ash text-base mx-auto">
               Get Started
             </button>
           </div>
@@ -290,7 +290,7 @@ const SectionFour = (props) => {
                 Two appointments per month
               </p>
             </div>
-            <button className="w-162 h-12 border border-custom1 rounded-full font-montserrat font-normal text-custom2 text-base mx-auto">
+            <button className="w-162 h-12 border border-custom1 rounded-full font-montserrat font-normal text-ash text-base mx-auto">
               Get Started
             </button>
           </div>

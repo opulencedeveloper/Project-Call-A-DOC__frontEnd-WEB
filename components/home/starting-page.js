@@ -69,8 +69,8 @@ const StartingPage = () => {
         />
       </div>
       
-      <div className="flex flex-col justify-center items-center space-y-10 py-20 px-8 border-t-2 border-b-2 border-custom2 2xl:px-60">
-        <p className="text-center text-xl font-montserrat font-medium text-custom2">
+      <div className="flex flex-col justify-center items-center space-y-10 py-20 px-8 border-t-2 border-b-2 border-ash 2xl:px-60">
+        <p className="text-center text-xl font-montserrat font-medium text-ash">
           WHAT WE DO
         </p>
         <p className="md:w-auto text-4xl text-center font-montserrat">

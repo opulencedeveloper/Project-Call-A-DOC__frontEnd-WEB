@@ -31,13 +31,13 @@ const SectionTwo = (props) => {
     
         <div className="ml-10 -mt-20 2xl:mt-20 -ml-10 space-y-10 2xlpr-56">
           <div className="flex items-end">
-            <p className="text-xl font-montserrat font-medium text-custom2">
+            <p className="text-xl font-montserrat font-medium text-ash">
               FOR PATIENTS
             </p>
             <div
-              className="w-80 h-0.5 mx-4 mb-3 bg-custom2"
+              className="w-80 h-0.5 mx-4 mb-3 bg-ash"
             />
-            <p className="text-xl font-montserrat font-medium text-custom2">001</p>
+            <p className="text-xl font-montserrat font-medium text-ash">001</p>
           </div>
           <p className="text-5xl font-montserrat pr-10">
             {content.content1}

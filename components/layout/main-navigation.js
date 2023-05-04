@@ -34,8 +34,11 @@ const MainNavigation = (props) => {
             width={576}
             height={320}
           />
-          <div className="hidden lg:flex space-x-8 mt-3 lg:ml-72">
-            <Link href="#" className="font-medium text-base">
+          <div className="hidden lg:flex space-x-8 mt-3 md:ml-56">
+          <Link href="/" className="font-medium text-base">
+              Home
+            </Link>
+            <Link href="/about-us" className="font-medium text-base">
               About us
             </Link>
             <Link href="#" className="font-montserrat font-medium text-base">
@@ -65,9 +68,9 @@ const MainNavigation = (props) => {
           <span className="hamburger-bottom"></span>
         </button>
         {/* <div className="lg:hidden flex flex-col mt-3">
-          <div className="w-8 h-0.5 mx-4 mb-2 bg-custom2" />
-          <div className="w-8 h-0.5 mx-4 mb-2 bg-custom2" />
-          <div className="w-8 h-0.5 mx-4 mb-2 bg-custom2" />
+          <div className="w-8 h-0.5 mx-4 mb-2 bg-ash" />
+          <div className="w-8 h-0.5 mx-4 mb-2 bg-ash" />
+          <div className="w-8 h-0.5 mx-4 mb-2 bg-ash" />
         </div> */}
       </div>
       {/* <!-- Mobile Menu --> */}
