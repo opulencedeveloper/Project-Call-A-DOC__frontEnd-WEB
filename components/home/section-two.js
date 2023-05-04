@@ -39,10 +39,10 @@ const SectionTwo = (props) => {
             />
             <p className="text-xl font-montserrat font-medium text-custom2">001</p>
           </div>
-          <p className="text-5xl font-montserrat leading-none">
+          <p className="text-5xl font-montserrat pr-10">
             {content.content1}
           </p>
-          <p className="text-md">{content.content2}</p>
+          <p className="text-md pr-40">{content.content2}</p>
           <button className="flex justify-center items-center">
             <p className="text-md text-49207E mr-2">Get Started</p>
             <Image

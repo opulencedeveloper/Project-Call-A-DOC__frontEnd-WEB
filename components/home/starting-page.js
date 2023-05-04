@@ -15,7 +15,7 @@ const StartingPage = () => {
           <Image
               src="/images/globally-at-your-fingertips.svg"
               alt="get medical attention image"
-              className="h-8 w-64 ml-44"
+              className="h-8 w-64 lg:ml-44"
               width={257}
               height={30}
             />

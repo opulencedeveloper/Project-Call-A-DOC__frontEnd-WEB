@@ -39,7 +39,7 @@ module.exports = {
         '162': '145px',
         '80': '100px',
         'pw1': '900px',
-        "boxw1": '33rem',
+        "boxw1": '32rem',
         "boxw2": '40rem'
       }
     },

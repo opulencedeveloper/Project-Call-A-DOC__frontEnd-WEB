@@ -21,12 +21,12 @@ const contents = [
 const SectionFour = (props) => {
   return (
     <>
-      <div className="flex flex-col justify-end items-center pb-10">
+      <div className="flex flex-col justify-center items-center pb-10">
         <p className="text-2xl font-montserrat font-medium">FAQ</p>
         <p className="text-xl font-montserrat mb-5">Commonly asked questions</p>
-        <div className="border border-custom2 h-boxh1 flex justify-between 2xl:justify-start items-start">
+        <div className="flex flex-wrap justify-center items-center lg:mx-72 justify-between">
           {contents.map((content) => (
-            <div key={content.content1} className="flex flex-col my-7">
+            <div key={content.content1} className="flex flex-col my-7 2xl:w-boxw1">
               <div className="flex justify-between bg-custom3 p-5 rounded-tl-md rounded-tr-md">
                 <p className="text-custom1">{content.content1}</p>
                 <Image
@@ -46,7 +46,7 @@ const SectionFour = (props) => {
         </div>
       </div>
 
-      <div className="relative flex flex-col justify-center items-center bg-custom6 py-52 px-0">
+      <div className="relative flex flex-col items-center bg-custom6 py-40 px-0">
         <Image
           src="/images/icon/temp.svg"
           alt="temp"
@@ -72,7 +72,7 @@ const SectionFour = (props) => {
           </button>
         </div>
 
-        <div className="border border-custom3 p-y-10 flex flex-col items-center justify-center space-x-0 z-10 2xl:flex-row space-x-8">
+        <div className="flex flex-wrap justify-center space-x-auto items-center z-10 2xl:flex-nowrap space-x-7">
           {/* DIV-1 */}
           <div className="flex flex-col justify-center align-center bg-custom5 rounded-xl px-14 py-10">
             <p className="text-center text-custom1 font-montserrat">Free</p>
@@ -148,7 +148,7 @@ const SectionFour = (props) => {
           </div>
 
           {/* DIV-2 */}
-          <div className="relative flex flex-col justify-center align-center bg-custom5 rounded-xl px-16 py-20">
+          <div className="h-boxh1 flex flex-col justify-center align-center bg-custom5 rounded-xl px-16 py-20">
             <p className="text-center text-custom1 font-montserrat">Free</p>
             <p className="text-custom1 font-montserrat text-sm mb-2">
               <span className="text-7xl">$0.0</span>/ per appointment
@@ -221,8 +221,8 @@ const SectionFour = (props) => {
             </button>
           </div>
 
-          {/* DIV-3 */}
-          <div className="flex flex-col justify-center align-center bg-custom5 rounded-xl px-14 py-10">
+         {/* DIV-3 */}
+         <div className="flex flex-col justify-center align-center bg-custom5 rounded-xl px-14 py-10">
             <p className="text-center text-custom1 font-montserrat">Free</p>
             <p className="text-custom1 font-montserrat text-sm mb-2">
               <span className="text-6xl">$0.0</span>/ per appointment
@@ -294,6 +294,7 @@ const SectionFour = (props) => {
               Get Started
             </button>
           </div>
+
         </div>
       </div>
 

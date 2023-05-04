@@ -3,7 +3,7 @@ import ReactDOM from "react-dom";
 const Navigation = () => {
     return ReactDOM.createPortal(
             <div
-      className="absolute p-6 rounded-lg bg-darkViolet left-6 right-6 top-20 z-100"
+      className="absolute p-6 rounded-lg bg-custom3 left-6 right-6 top-20 z-100"
     >
       <div className="flex flex-col items-center justify-center w-full space-y-6 font-bold text-white rounded-sm">
         <a href="#" className="w-full text-center">

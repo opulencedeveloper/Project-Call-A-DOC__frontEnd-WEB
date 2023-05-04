@@ -35,30 +35,30 @@ const Footer = () => {
             <p className="text-sm">Core values</p>
             </div>
         </div>
-        {/* <div className="flex space-x-7 items-center -ml-10">
-            <p className="text-lg">Reach us</p>
+        <div className="flex space-x-7 items-center -ml-10">
+            <p className="text-sm 2xl:text-lg">Reach us</p>
         <Image
           src="/images/icon/twitter.svg"
           alt="twitter-icon"
-          className="h-11 w-11"
+          className="h-5 w-5 2xl:h-11 w-11"
           width={42}
           height={42}
         />
         <Image
           src="/images/icon/facebook.svg"
           alt="facebook-icon"
-          className="h-11 w-11"
+          className="h-5 w-5 2xl:h-11 w-11"
           width={42}
           height={42}
         />
         <Image
           src="/images/icon/instagram.svg"
           alt="instagram-icon"
-          className="h-11 w-11"
+          className="h-5 w-5 2xl:h-11 w-11"
           width={42}
           height={42}
         />
-        </div> */}
+        </div>
       </div>
     </div>
   );
