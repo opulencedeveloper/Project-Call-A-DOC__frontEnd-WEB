@@ -24,7 +24,7 @@ const MainNavigation = (props) => {
   };
 
   return (
-    <nav className="border border-custom4 mt-5 mx-5 md:mx-20 ">
+    <nav className="mt-5 mx-5 md:mx-20 ">
       <div className="flex justify-between md:items-start ">
         <div className="flex">
           <Image
