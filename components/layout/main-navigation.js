@@ -24,7 +24,7 @@ const MainNavigation = (props) => {
   };
 
   return (
-    <nav className="mt-5 mx-5 md:mx-20 ">
+    <nav className="border border-custom4 mt-5 mx-5 md:mx-20 ">
       <div className="flex justify-between md:items-start ">
         <div className="flex">
           <Image
@@ -59,7 +59,7 @@ const MainNavigation = (props) => {
           </button>
         </div>
         <button
-          className={`${value} block hamburger lg:hidden focus:outline-none`}
+          className={`${value} block hamburger mt-7 lg:hidden focus:outline-none`}
           type="button"
           onClick={toggleNavHandler}
         >

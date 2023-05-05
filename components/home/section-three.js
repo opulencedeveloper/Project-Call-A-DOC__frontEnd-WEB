@@ -18,16 +18,16 @@ const contents = [
 
 const SectionThree = (props) => {
   return (
-    <>
+    <section className="-mx-5 md:-mx-20">
       {contents.map((content) => {
         return (
-            <div key={content.content1} className="border border-custom4 px-20 flex flex-wrap items-start border-b border-ash bg-57B7FF -mx-20 2xl:flex-nowrap -px-20 -mx-10">
+            <div key={content.content1} className="border border-custom4 px-5 flex flex-wrap items-start border-b border-ash bg-57B7FF md:px-20 xl:flex-nowrap ">
               {/* <div className="flex pr-40 border-b border-custom3"> */}
 
               <div className="border border-custom4 mt-40 space-y-10">
                 <div className="flex items-end">
                   <p className="text-xl font-montserrat font-medium text-custom1">
-                    FOR PATIENTS
+                    FOR PATIENTSS
                   </p>
                   <div className="w-80 h-0.5 mx-4 mb-3 bg-custom1" />
                   <p className="text-xl font-montserrat font-medium text-custom1">
@@ -59,7 +59,7 @@ const SectionThree = (props) => {
             </div>
         );
       })}
-      <div className="px-8 flex flex-col justify-center items-center space-y-10 py-20 px-60 2xl:px-60">
+      <div className="border border-custom4 flex flex-col justify-center items-center space-y-10 py-20 px-auto md:px-44">
         <p className="text-2xl text-center font-montserrat font-medium text-ash">
           WHY CHOOSE US
         </p>
@@ -78,7 +78,7 @@ const SectionThree = (props) => {
           />
         </Link>
       </div>
-    </>
+    </section>
   );
 };
 

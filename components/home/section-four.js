@@ -21,11 +21,11 @@ const contents = [
 
 const SectionFour = (props) => {
   return (
-    <>
-      <div className="flex flex-col justify-center items-center pb-10 -mx-20">
-        <p className="text-2xl font-montserrat font-medium">FAQ</p>
-        <p className="text-xl font-montserrat mb-5">Commonly asked questions</p>
-        <div className="flex flex-wrap justify-center items-center lg:mx-72 justify-between">
+    <section className="-mx-5 md:-mx-20">
+      <div className="border border-custom4 flex flex-col justify-center items-center pb-10">
+        <p className="text-2xl font-medium">FAQ</p>
+        <p className="text-xl mb-5">Commonly asked questions</p>
+        <div className="border border-custom4 flex flex-wrap justify-center items-center px-3 md:px-20 lg:px-72 justify-between">
           {contents.map((content) => (
             <div key={content.content1} className="flex flex-col my-7 2xl:w-boxw1">
               <div className="flex justify-between bg-custom3 p-5 rounded-tl-md rounded-tr-md">
@@ -38,7 +38,7 @@ const SectionFour = (props) => {
                   height={23}
                 />
               </div>
-              <div className="flex flex-col bg-custom4 p-5 rounded-bl-md rounded-br-md">
+              <div className="border border-custom4 flex flex-col bg-custom4 p-5 rounded-bl-md rounded-br-md">
                 <p className="text-custom1">Answer</p>
                 <p className="text-custom1">{content.content2}</p>
               </div>
@@ -47,7 +47,7 @@ const SectionFour = (props) => {
         </div>
       </div>
 
-      <div className="relative flex flex-col items-center bg-custom6 py-40 px-0 -mx-20">
+      <div className="border border-custom4 relative flex flex-col items-center bg-custom6 py-40 px-5 md:20">
         <Image
           src="/images/icon/temp.svg"
           alt="temp"
@@ -55,7 +55,7 @@ const SectionFour = (props) => {
           width={880}
           height={1157}
         />
-        <p className="text-2xl font-montserrat font-medium text-custom1">
+        <p className="text-2xl font-medium text-custom1">
           Pricing
         </p>
         <p className="font-montserrat text-custom1 text-center 2xl:mx-96">
@@ -64,23 +64,23 @@ const SectionFour = (props) => {
           better for you
         </p>
 
-        <div className="flex mt-20 mb-10">
-          <button className="w-80 h-8 rounded-full font-montserrat font-normal text-base text-custom1 bg-custom3 z-10">
+        <div className="flex mt-20 mb-16">
+          <button className="w-80 h-8 rounded-full font-normal text-base text-custom1 bg-custom3 z-10">
             Monthly
           </button>
-          <button className="w-80 h-8 flex justify-end items-center pr-5 text-custom1 rounded-full -ml-10 font-montserrat font-normal text-base bg-custom1 text-custom3 z-0">
+          <button className="w-80 h-8 flex justify-end items-center pr-5 text-custom1 rounded-full -ml-10 font-normal text-base bg-custom1 text-custom3 z-0">
             Year
           </button>
         </div>
 
-        <div className="flex flex-wrap justify-center space-x-auto items-center z-10 2xl:flex-nowrap space-x-7">
+        <div className="flex flex-col justify-center items-center z-10 space-x-auto xl:flex-row space-x-7">
           {/* DIV-1 */}
-          <div className="flex flex-col justify-center align-center bg-custom5 rounded-xl px-14 py-10">
-            <p className="text-center text-custom1 font-montserrat">Free</p>
-            <p className="text-custom1 font-montserrat text-sm mb-2">
+          <div className="flex flex-col justify-center align-center mb-5 bg-custom5 rounded-xl px-14 py-10">
+            <p className="text-center text-custom1">Free</p>
+            <p className="text-custom1 text-sm mb-2">
               <span className="text-6xl">$0.0</span>/ per appointment
             </p>
-            <p className="text-center text-custom1 font-montserrat text-sm mb-5">
+            <p className="text-center text-custom1 text-sm mb-5">
               only pay for drugs
             </p>
             <div className="flex mb-4 mt-12">
@@ -91,7 +91,7 @@ const SectionFour = (props) => {
                 width={13}
                 height={25}
               />
-              <p className="text-custom1 font-montserrat text-sm">
+              <p className="text-custom1 text-sm">
                 Two appointments per month
               </p>
             </div>
@@ -103,7 +103,7 @@ const SectionFour = (props) => {
                 width={13}
                 height={25}
               />
-              <p className="text-custom1 font-montserrat text-sm">
+              <p className="text-custom1 text-sm">
                 Two appointments per month
               </p>
             </div>
@@ -115,7 +115,7 @@ const SectionFour = (props) => {
                 width={13}
                 height={25}
               />
-              <p className="text-custom1 font-montserrat text-sm">
+              <p className="text-custom1 text-sm">
                 Two appointments per month
               </p>
             </div>
@@ -127,7 +127,7 @@ const SectionFour = (props) => {
                 width={13}
                 height={25}
               />
-              <p className="text-custom1 font-montserrat text-sm">
+              <p className="text-custom1 text-sm">
                 Two appointments per month
               </p>
             </div>
@@ -139,22 +139,22 @@ const SectionFour = (props) => {
                 width={13}
                 height={25}
               />
-              <p className="text-custom1 font-montserrat text-sm">
+              <p className="text-custom1 text-sm">
                 Two appointments per month
               </p>
             </div>
-            <button className="w-162 h-12 border border-custom1 rounded-full font-montserrat font-normal text-ash text-base mx-auto">
+            <button className="w-162 h-12 border border-custom1 rounded-full font-normal text-ash text-base mx-auto">
               Get Started
             </button>
           </div>
 
           {/* DIV-2 */}
-          <div className="h-boxh1 flex flex-col justify-center align-center bg-custom5 rounded-xl px-16 py-20">
-            <p className="text-center text-custom1 font-montserrat">Free</p>
-            <p className="text-custom1 font-montserrat text-sm mb-2">
+          <div className="h-boxh1 flex flex-col justify-center align-center  mb-5 bg-custom5 rounded-xl px-16 py-20">
+            <p className="text-center text-custom1">Free</p>
+            <p className="text-custom1 text-sm mb-2">
               <span className="text-7xl">$0.0</span>/ per appointment
             </p>
-            <p className="text-center text-custom1 font-montserrat text-sm mb-5">
+            <p className="text-center text-custom1 text-sm mb-5">
               only pay for drugs
             </p>
             <div className="flex mb-4 mt-12">
@@ -165,7 +165,7 @@ const SectionFour = (props) => {
                 width={13}
                 height={25}
               />
-              <p className="text-custom1 font-montserrat text-sm">
+              <p className="text-custom1 text-sm">
                 Two appointments per month
               </p>
             </div>
@@ -177,7 +177,7 @@ const SectionFour = (props) => {
                 width={13}
                 height={25}
               />
-              <p className="text-custom1 font-montserrat text-sm">
+              <p className="text-custom1 text-sm">
                 Two appointments per month
               </p>
             </div>
@@ -189,7 +189,7 @@ const SectionFour = (props) => {
                 width={13}
                 height={25}
               />
-              <p className="text-custom1 font-montserrat text-sm">
+              <p className="text-custom1 text-sm">
                 Two appointments per month
               </p>
             </div>
@@ -201,7 +201,7 @@ const SectionFour = (props) => {
                 width={13}
                 height={25}
               />
-              <p className="text-custom1 font-montserrat text-sm">
+              <p className="text-custom1 text-sm">
                 Two appointments per month
               </p>
             </div>
@@ -213,22 +213,22 @@ const SectionFour = (props) => {
                 width={13}
                 height={25}
               />
-              <p className="text-custom1 font-montserrat text-sm">
+              <p className="text-custom1 text-sm">
                 Two appointments per month
               </p>
             </div>
-            <button className="w-52 h-14 bg-custom7 rounded-full font-montserrat font-normal text-ash text-base mx-auto">
+            <button className="w-52 py-4 bg-custom7 rounded-full font-normal text-ash text-base mx-auto">
               Get Started
             </button>
           </div>
 
          {/* DIV-3 */}
-         <div className="flex flex-col justify-center align-center bg-custom5 rounded-xl px-14 py-10">
-            <p className="text-center text-custom1 font-montserrat">Free</p>
-            <p className="text-custom1 font-montserrat text-sm mb-2">
+         <div className="flex flex-col mb-5 justify-center align-center bg-custom5 rounded-xl px-14 py-10">
+            <p className="text-center text-custom1">Free</p>
+            <p className="text-custom1 text-sm mb-2">
               <span className="text-6xl">$0.0</span>/ per appointment
             </p>
-            <p className="text-center text-custom1 font-montserrat text-sm mb-5">
+            <p className="text-center text-custom1 text-sm mb-5">
               only pay for drugs
             </p>
             <div className="flex mb-4 mt-12">
@@ -239,7 +239,7 @@ const SectionFour = (props) => {
                 width={13}
                 height={25}
               />
-              <p className="text-custom1 font-montserrat text-sm">
+              <p className="text-custom1 text-sm">
                 Two appointments per month
               </p>
             </div>
@@ -251,7 +251,7 @@ const SectionFour = (props) => {
                 width={13}
                 height={25}
               />
-              <p className="text-custom1 font-montserrat text-sm">
+              <p className="text-custom1 text-sm">
                 Two appointments per month
               </p>
             </div>
@@ -263,7 +263,7 @@ const SectionFour = (props) => {
                 width={13}
                 height={25}
               />
-              <p className="text-custom1 font-montserrat text-sm">
+              <p className="text-custom1 text-sm">
                 Two appointments per month
               </p>
             </div>
@@ -275,7 +275,7 @@ const SectionFour = (props) => {
                 width={13}
                 height={25}
               />
-              <p className="text-custom1 font-montserrat text-sm">
+              <p className="text-custom1 text-sm">
                 Two appointments per month
               </p>
             </div>
@@ -287,11 +287,11 @@ const SectionFour = (props) => {
                 width={13}
                 height={25}
               />
-              <p className="text-custom1 font-montserrat text-sm">
+              <p className="text-custom1 text-sm">
                 Two appointments per month
               </p>
             </div>
-            <button className="w-162 h-12 border border-custom1 rounded-full font-montserrat font-normal text-ash text-base mx-auto">
+            <button className="w-162 h-12 border border-custom1 rounded-full font-normal text-ash text-base mx-auto">
               Get Started
             </button>
           </div>
@@ -300,7 +300,7 @@ const SectionFour = (props) => {
       </div>
 
       <Input />
-    </>
+    </section>
   );
 };
 

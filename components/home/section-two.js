@@ -29,7 +29,7 @@ const SectionTwo = (props) => {
         />
         
     
-        <div className="ml-10 -mt-20 2xl:mt-20 -ml-10 space-y-10 2xlpr-56">
+        <div className="-mt-20 2xl:mt-20 2xl:-ml-10 space-y-10">
           <div className="flex items-end">
             <p className="text-xl font-montserrat font-medium text-ash">
               FOR PATIENTS

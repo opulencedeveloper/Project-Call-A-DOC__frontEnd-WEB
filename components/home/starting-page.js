@@ -2,7 +2,7 @@ import Image from "next/image";
 
 const StartingPage = () => {
   return (
-    <section className="relative">
+    <section className="border border-custom4 relative">
       <div className="flex mt-10 md:justify-end">
         <div className="flex flex-col pt-0 z-10 md:pt-20 xl:pt-44">
           <Image
@@ -71,12 +71,12 @@ const StartingPage = () => {
           height={419}
         /></div></div>
       </div>
-      
-      <div className="border border-custom4 flex flex-col justify-center items-center space-y-10 py-20 mt-20 border-t-2 border-b-2 border-ash -mx-10 md:-mx-20">
+
+      <div className="flex flex-col justify-center items-center space-y-10 py-20 mt-20 border-t-2 border-b-2 border-ash">
         <p className="text-center text-xl font-medium text-ash">
           WHAT WE DO
         </p>
-        <p className="border border-custom4 text-4xl text-center">
+        <p className="text-xl md:text-3xl text-center border border-custom4 xl:text-4xl">
         We connect everyday people with professional healthcare personnels
           ranging from doctors to pharmacists to lab scientists. Whether it's
           regular medical checkups, diagnosis or one time treatments, we got you
