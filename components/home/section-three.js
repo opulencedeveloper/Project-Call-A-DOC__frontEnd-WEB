@@ -21,10 +21,10 @@ const SectionThree = (props) => {
     <>
       {contents.map((content) => {
         return (
-            <div key={content.content1} className="flex flex-wrap items-start border-b border-ash bg-57B7FF 2xl:flex-nowrap">
+            <div key={content.content1} className="border border-custom4 px-20 flex flex-wrap items-start border-b border-ash bg-57B7FF -mx-20 2xl:flex-nowrap -px-20 -mx-10">
               {/* <div className="flex pr-40 border-b border-custom3"> */}
 
-              <div className="mt-40 space-y-10 pl-10 2xl:pl-36 ">
+              <div className="border border-custom4 mt-40 space-y-10">
                 <div className="flex items-end">
                   <p className="text-xl font-montserrat font-medium text-custom1">
                     FOR PATIENTS

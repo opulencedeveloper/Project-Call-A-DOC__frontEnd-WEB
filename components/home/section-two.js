@@ -18,7 +18,7 @@ const contents = [
 const SectionTwo = (props) => {
   return contents.map((content) => {
     return (
-      <div key={content.content1} className="flex flex-wrap items-start 2xl:flex-nowrap mb-0">
+      <div key={content.content1} className="border border-custom4 flex flex-wrap items-start 2xl:flex-nowrap mb-0">
         {/* <div className="flex pr-40 border-b border-custom3"> */}
         <Image
           src={content.image}

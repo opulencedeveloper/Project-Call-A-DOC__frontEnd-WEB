@@ -24,8 +24,8 @@ const MainNavigation = (props) => {
   };
 
   return (
-    <nav className="container px-4 mx-auto mt-5">
-      <div className="flex justify-between items-center md:items-start ">
+    <nav className="mt-5 mx-5 md:mx-20 ">
+      <div className="flex justify-between md:items-start ">
         <div className="flex">
           <Image
             src="/images/logo/logo.svg"
@@ -34,7 +34,7 @@ const MainNavigation = (props) => {
             width={576}
             height={320}
           />
-          <div className="hidden lg:flex space-x-8 mt-3 md:ml-56">
+          <div className="pt-3 hidden lg:flex space-x-8 md:ml-10 mr-10 xl:ml-56">
           <Link href="/" className="font-medium text-base">
               Home
             </Link>
@@ -50,8 +50,8 @@ const MainNavigation = (props) => {
           </div>
         </div>
 
-        <div className="hidden lg:flex space-x-3">
-          <button className="hidden lg:block w-80 h-48  border border-custom rounded-full font-montserrat font-normal text-base">
+        <div className="pt-3 hidden lg:flex space-x-3">
+          <button className="hidden lg:block w-80 h-48  rounded-full font-montserrat font-normal text-base">
             Login
           </button>
           <button className="hidden lg:block w-162 h-48 text-custom1 bg-custom rounded-full font-montserrat font-normal text-base">

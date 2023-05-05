@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Input from "../UI/Input";
 
 const contents = [
   {
@@ -21,7 +22,7 @@ const contents = [
 const SectionFour = (props) => {
   return (
     <>
-      <div className="flex flex-col justify-center items-center pb-10">
+      <div className="flex flex-col justify-center items-center pb-10 -mx-20">
         <p className="text-2xl font-montserrat font-medium">FAQ</p>
         <p className="text-xl font-montserrat mb-5">Commonly asked questions</p>
         <div className="flex flex-wrap justify-center items-center lg:mx-72 justify-between">
@@ -46,7 +47,7 @@ const SectionFour = (props) => {
         </div>
       </div>
 
-      <div className="relative flex flex-col items-center bg-custom6 py-40 px-0">
+      <div className="relative flex flex-col items-center bg-custom6 py-40 px-0 -mx-20">
         <Image
           src="/images/icon/temp.svg"
           alt="temp"
@@ -298,18 +299,7 @@ const SectionFour = (props) => {
         </div>
       </div>
 
-      <div className="border border-custom flex flex-col justify-center items-center h-boxh3 space-y-5">
-        <p className="text-2xl font-montserrat font-medium">
-          Reach out to us
-        </p>
-       <div className="flex mx-auto">
-        <input placeholder="Input your email" className="bg-custom8 pl-5 text-lg font-montserrat rounded-tl-full rounded-bl-full h-12 2xl:w-boxw2"/>
-        <button className="w-32 h-12 text-custom1 bg-custom rounded-tr-full rounded-br-full font-montserrat font-normal text-sm">
-          Submit
-          </button>
-        </div> 
-        
-      </div>
+      <Input />
     </>
   );
 };
