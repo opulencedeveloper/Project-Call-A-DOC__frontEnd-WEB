@@ -4,11 +4,11 @@ import SectionTwo from "@/components/about-us/section-two";
 
 const AboutUs = () => {
   return (
-    <>
+    <section  className="mx-5 md:mx-20">
     <SectionOne />
     <SectionTwo />
     <SectionThree />
-    </>
+    </section>
   );
 };
 

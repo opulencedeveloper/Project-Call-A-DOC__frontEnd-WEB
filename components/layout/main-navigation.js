@@ -2,11 +2,16 @@ import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 import Navigation from "../UI/Navigation";
+import { useRouter } from "next/router";
 //import imageAsset from '/public/images/your-image-asset.webp'
 let value = '';
 
 const MainNavigation = (props) => {
   const [toggleNav, setToggleNav] = useState(true);
+  const router = useRouter();
+  console.log(router.pathname)
+
+  const activeLink = router.pathname;
 
   const toggleNavHandler = () => {
     console.log('value')
@@ -34,27 +39,28 @@ const MainNavigation = (props) => {
             width={576}
             height={320}
           />
-          <div className="pt-3 hidden lg:flex space-x-8 md:ml-10 mr-10 xl:ml-56">
-          <Link href="/" className="font-medium text-base">
+          <div className="pt-3 hidden lg:flex space-x-8 font-medium text-base md:ml-10 mr-10 xl:ml-56">
+          
+          <Link href="/" className={activeLink === '/' ? "text-custom" : ""}>
               Home
             </Link>
-            <Link href="/about-us" className="font-medium text-base">
+            <Link href="/about-us" className={activeLink === '/about-us' ? "text-custom" : ""}>
               About us
             </Link>
-            <Link href="#" className="font-montserrat font-medium text-base">
+            <Link href="#">
               Services
             </Link>
-            <Link href="#" className="font-montserrat font-medium text-base">
+            <Link href="#">
               Pricing
             </Link>
           </div>
         </div>
 
-        <div className="pt-3 hidden lg:flex space-x-3">
-          <button className="hidden lg:block w-80 h-48  rounded-full font-montserrat font-normal text-base">
+        <div className="hidden lg:flex space-x-3 pt-3 font-medium  text-base ">
+          <button className="w-80 h-48 border border-custom rounded-full">
             Login
           </button>
-          <button className="hidden lg:block w-162 h-48 text-custom1 bg-custom rounded-full font-montserrat font-normal text-base">
+          <button className="w-162 h-48 text-custom1 bg-custom rounded-full">
             Get Started
           </button>
         </div>

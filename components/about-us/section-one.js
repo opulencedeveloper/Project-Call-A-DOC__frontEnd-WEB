@@ -17,6 +17,7 @@ semper congue velit. Dolor, lacinia nunc consectetur facilisis nullam nulla.
       </div>
       <Image
         className="w-piw6 h-pih6 -mr-16 hidden 2xl:block"
+        alt="doctor-5"
         src={"/images/doctor5.svg"}
         height={1007}
         width={1076}

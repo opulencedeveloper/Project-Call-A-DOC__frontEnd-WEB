@@ -18,28 +18,28 @@ const contents = [
 
 const SectionThree = (props) => {
   return (
-    <section className="-mx-5 md:-mx-20">
+    <section>
       {contents.map((content) => {
         return (
-            <div key={content.content1} className="border border-custom4 px-5 flex flex-wrap items-start border-b border-ash bg-57B7FF md:px-20 xl:flex-nowrap ">
+            <div key={content.content1} className="border border-custom1 px-5 flex flex-wrap items-start border-b border-ash bg-57B7FF md:px-20 xl:flex-nowrap ">
               {/* <div className="flex pr-40 border-b border-custom3"> */}
 
-              <div className="border border-custom4 mt-40 space-y-10">
-                <div className="flex items-end">
-                  <p className="text-xl font-montserrat font-medium text-custom1">
-                    FOR PATIENTSS
+              <div className="mt-40 space-y-10 text-custom1">
+                <div className="flex items-end font-medium">
+                  <p className="text-xl ">
+                    FOR PATIENTS
                   </p>
                   <div className="w-80 h-0.5 mx-4 mb-3 bg-custom1" />
-                  <p className="text-xl font-montserrat font-medium text-custom1">
+                  <p className="text-xl">
                     001
                   </p>
                 </div>
-                <p className="text-5xl font-montserrat text-custom1">
+                <p className="text-5xl">
                   {content.content1}
                 </p>
-                <p className="text-md text-custom1">{content.content2}</p>
+                <p className="text-md">{content.content2}</p>
                 <button className="flex justify-center items-center">
-                  <p className="text-md text-custom1 mr-2">Get Started</p>
+                  <p className="text-md mr-2">Get Started</p>
                   <Image
                     src="/images/icon/arrow-right-white.svg"
                     alt="doctor1"
@@ -59,7 +59,7 @@ const SectionThree = (props) => {
             </div>
         );
       })}
-      <div className="border border-custom4 flex flex-col justify-center items-center space-y-10 py-20 px-auto md:px-44">
+      <div className="flex flex-col justify-center items-center space-y-10 py-20 px-auto md:px-44">
         <p className="text-2xl text-center font-montserrat font-medium text-ash">
           WHY CHOOSE US
         </p>

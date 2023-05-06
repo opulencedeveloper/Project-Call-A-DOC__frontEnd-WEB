@@ -21,11 +21,11 @@ const contents = [
 
 const SectionFour = (props) => {
   return (
-    <section className="-mx-5 md:-mx-20">
-      <div className="border border-custom4 flex flex-col justify-center items-center pb-10">
+    <section>
+      <div className="flex flex-col justify-center items-center pb-10">
         <p className="text-2xl font-medium">FAQ</p>
         <p className="text-xl mb-5">Commonly asked questions</p>
-        <div className="border border-custom4 flex flex-wrap justify-center items-center px-3 md:px-20 lg:px-72 justify-between">
+        <div className="flex flex-wrap justify-center items-center px-3 md:px-20 lg:px-72 justify-between">
           {contents.map((content) => (
             <div key={content.content1} className="flex flex-col my-7 2xl:w-boxw1">
               <div className="flex justify-between bg-custom3 p-5 rounded-tl-md rounded-tr-md">
@@ -47,7 +47,7 @@ const SectionFour = (props) => {
         </div>
       </div>
 
-      <div className="border border-custom4 relative flex flex-col items-center bg-custom6 py-40 px-5 md:20">
+      <div className="relative flex flex-col items-center bg-custom6 py-40 px-5 md:20">
         <Image
           src="/images/icon/temp.svg"
           alt="temp"
