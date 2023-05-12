@@ -12,9 +12,9 @@ const SignInAuth = () => {
   };
 
   return (
-    <section className="relative flex items-center justify-center">
+    <section className="flex justify-center m-auto w-screen h-screen">
         {/* <OtpInput /> */}
-      <div className="w-full h-screen p-10 space-y-36 md:w-1/2">
+      <div className="w-full md:w-1/2 p-10 space-y-36 overflow-auto">
         <div>
           <Image
             src="/images/logo/logo2.svg"
@@ -73,9 +73,17 @@ const SignInAuth = () => {
             </Link>
           </div>
         </div>
+
+
+
+
+
+
       </div>
 
-      <div className="w-1/2 h-screen bg-custom hidden md:block">
+      <div className="w-1/2 bg-custom hidden md:block">
+       pp
+      
         {/* <Image
             src="./images/drugs.svg"
             alt="drugs"

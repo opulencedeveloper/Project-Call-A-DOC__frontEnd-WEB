@@ -55,8 +55,8 @@ module.exports = {
       }
     },
     colors: {
-      "custom": '#007FDD',
-      "custom1": '#FFFFFF',
+      custom: '#007FDD',
+      custom1: '#FFFFFF',
       "ash": '#CBD2D9',
       "ash2": "#52606D",
       "ash3": "#F5F7FA",

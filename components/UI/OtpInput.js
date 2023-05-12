@@ -109,15 +109,15 @@ const OtpInput = () => {
       <div className="bg-custom11 rounded-md text-custom1 font-semibold text-sm py-3 px-10">
         <p>The code you entered is wrong, try again</p>
         </div>
-      <div className="flex space-x-4 text-sm md:text-base">
-        <p>If you did't receive a code</p>
-        <button className="text-custom">Receive code</button>
-        <Image
-          src="/images/icon/refresh-icon.svg"
+      <div className="flex space-x-2 text-sm md:text-base">
+        <p>If you did't receive a code </p>
+        <button className="flex items-center space-x-2 text-custom"><p>Receive code</p> <Image
+          src="/images/icon/refresh.svg"
           className="w-3 h-3"
           width={12}
           height={12}
-        />
+        /></button>
+        
       </div>
       <button className="py-2 px-8 text-custom1 bg-custom10 rounded-full md:py-4 md:px-12">
         Submit
