@@ -26,7 +26,7 @@ const SignUpAuth = () => {
             height={61}
           />
         </div>
-      {/* <SignUpJourney /> */}
+      <SignUpJourney />
         
 
         <div className="flex flex-col md:px-0 lg:px-20 justify-center 2xl:px-40">

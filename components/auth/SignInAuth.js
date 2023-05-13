@@ -1,6 +1,8 @@
+import { useState } from "react";
+
 import Image from "next/image";
 import Link from "next/link";
-import { useState } from "react";
+
 import OtpInput from "../UI/OtpInput";
 
 const SignInAuth = () => {
