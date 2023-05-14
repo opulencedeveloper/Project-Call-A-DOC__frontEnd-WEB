@@ -5,6 +5,12 @@ import PhoneInput from "react-phone-number-input";
 import "react-phone-number-input/style.css";
 
 import ReactFlagsSelect from "react-flags-select";
+import DropdownIcon from "../UI/DropIcon";
+
+const customIcons = {
+  dropdown: <div className="custom-dropdown-icon"><DropdownIcon /></div>
+  
+};
 
 
 const PersonaDetails = () => {
@@ -12,16 +18,15 @@ const PersonaDetails = () => {
     const [selected, setSelected] = useState("");
     const defaultCountry = 'US';
 
-    const inputStyle = {
-        border: 'none',
-        outline: 'none',
-      };
   return (
     <form className="mr-auto 2xl:-mr-40">
-       <div>
+       <div className="relative">
        <ReactFlagsSelect
+       showSelectedLabel={false} showOptionLabel={false}
+       customIcons={customIcons}
         selected={defaultCountry}
        defaultCountry="US"
+       //selectedSize={100}
        customLabels={{ US: 'USA', }} // set the custom label here
        //customIcons={{ dropdown: <img src="/images/icon/drop-down.svg" alt="Dropdown icon" /> }}
        //defaultCountry={selectedCountry}
@@ -30,6 +35,13 @@ const PersonaDetails = () => {
     //selected={selected}
     onSelect={(code) => setSelected(code)}
   />;
+  <Image
+                  src="/images/icon/drop-down.svg"
+                  alt="email-icon"
+                  className="w-3.5 h-3.5 absolute right-2 top-2"
+                  width={12}
+                  height={12}
+                />
     </div>
       <p className="text-lg">Personal Details</p>
       <section>
@@ -60,7 +72,7 @@ const PersonaDetails = () => {
           </div>
           {/* LAST-NAME */}
           <div className="w-full 2xl:w-1/2">
-            <label for="last-name" className="text-base font-medium">
+            <label htmlFor="last-name" className="text-base font-medium">
               Last Name
             </label>
             <div className="border flex border-ash rounded-lg mb-3 mt-1">
