@@ -4,8 +4,13 @@ import { useState } from "react";
 import PhoneInput from "react-phone-number-input";
 import "react-phone-number-input/style.css";
 
+import ReactFlagsSelect from "react-flags-select";
+
+
 const PersonaDetails = () => {
     const [phoneNovalue, setPhoneNoValue] = useState();
+    const [selected, setSelected] = useState("");
+    const defaultCountry = 'US';
 
     const inputStyle = {
         border: 'none',
@@ -13,6 +18,19 @@ const PersonaDetails = () => {
       };
   return (
     <form className="mr-auto 2xl:-mr-40">
+       <div>
+       <ReactFlagsSelect
+        selected={defaultCountry}
+       defaultCountry="US"
+       customLabels={{ US: 'USA', }} // set the custom label here
+       //customIcons={{ dropdown: <img src="/images/icon/drop-down.svg" alt="Dropdown icon" /> }}
+       //defaultCountry={selectedCountry}
+       searchable
+       //searchPlaceholder="Search countries"
+    //selected={selected}
+    onSelect={(code) => setSelected(code)}
+  />;
+    </div>
       <p className="text-lg">Personal Details</p>
       <section>
         {/* SECTION-1 */}

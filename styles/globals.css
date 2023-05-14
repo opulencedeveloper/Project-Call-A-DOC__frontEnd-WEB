@@ -79,6 +79,20 @@ input[type="date"]::-webkit-calendar-picker-indicator {
   margin-left: 0.5rem;
 }
 
+.rfs--active .rfs--opened:after,
+.rfs__arrow:after {
+  content: "";
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  margin-left: 5px;
+  background-image: url('/images/icon/drop-down.svg');
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+
+
 
 
 
