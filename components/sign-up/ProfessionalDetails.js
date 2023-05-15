@@ -1,7 +1,11 @@
 import Image from "next/image";
 import DetailsButton from "../UI/DetailsButton";
 
-const ProfessionalDetails = () => {
+const ProfessionalDetails = (props) => {
+  const profButtonHandler = () => {
+    props.profNextStep("5");
+  }
+  
     return <section className="mr-auto  2xl:-mr-48">
         <p className="text-xl mb-12 font-medium text-ash2">ProfessionalDetails details (if any)</p>
         <div className="flex flex-col space-x-auto mb-5 2xl:flex-row 2xl:space-x-3">
@@ -52,7 +56,7 @@ const ProfessionalDetails = () => {
             </div>{" "}
           </div>
         </div>{" "}
-        <DetailsButton />
+        <DetailsButton onClickHandler={profButtonHandler}/>
     </section>
 };
 

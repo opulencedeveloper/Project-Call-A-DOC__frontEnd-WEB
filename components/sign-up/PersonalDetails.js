@@ -23,10 +23,14 @@ const buttonStyles = {
   height: "90px", // Adjust the height value to your desired height
 };
 
-const PersonalDetails = () => {
+const PersonalDetails = (props) => {
   const [phoneNovalue, setPhoneNoValue] = useState();
   const [selected, setSelected] = useState("US");
 
+  const personalButtonHandler = () => {
+    console.log('click')
+    props.personalNextStep("3");
+  }
   return (
     <form className="mr-auto 2xl:-mr-40">
       <p className="text-lg">Personal Details</p>
@@ -175,7 +179,7 @@ const PersonalDetails = () => {
             </div>{" "}
           </div>
         </div>{" "}
-        <DetailsButton />
+        <DetailsButton onClickHandler={personalButtonHandler} />
       </section>
     </form>
   );

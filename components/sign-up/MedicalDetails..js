@@ -16,7 +16,12 @@ const pageContent = [
 ]
 
 
-const MedicalDetails = () => {
+const MedicalDetails = (props) => {
+
+  const medicalButtonHandler = () => {
+    console.log('click')
+    props.medicalNextStep("4");
+  }
   return (
     <form className="mr-auto 2xl:-mr-48">
       <p className="text-xl mb-12 font-medium text-ash2">Medical details (if any)</p>
@@ -42,7 +47,7 @@ const MedicalDetails = () => {
         </div>
         <p className="text-xl mb-5 font-medium text-ash2">Allergies (if any)</p>
 <input type='text' className='border border-ash rounded-md w-full h-32 mb-14'/>
-<DetailsButton />
+<DetailsButton onClickHandler={medicalButtonHandler} />
     </form>
   );
 };
