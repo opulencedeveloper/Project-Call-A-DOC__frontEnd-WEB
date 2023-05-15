@@ -55,11 +55,11 @@ module.exports = {
       }
     },
     colors: {
-      custom: '#007FDD',
-      custom1: '#FFFFFF',
+      "custom": '#007FDD',
+      "custom1": '#FFFFFF',
       "ash": '#CBD2D9',
       "ash2": "#52606D",
-      "ash3": "#F5F7FA", 
+      "ash3": "#F5F7FA",
       '49207E': '#49207E',
       '57B7FF': '#57B7FF',
       '49207E': '#49207E',

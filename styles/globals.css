@@ -79,17 +79,26 @@ input[type="date"]::-webkit-calendar-picker-indicator {
   margin-left: 0.5rem;
 }
 
-
-.react-flags-select__dropdown-button {
-  display: none;
+input[type=checkbox] {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
 }
 
+  .dropdown-button {
+    /* background-image: url('/images/icon/drop-down.svg'); 
+    
+    background-repeat: no-repeat;
+    background-position: center; */
+    height: 4.2rem;
+    border-radius: 50px;
+  }
+  
+  .custom-select {
+    background: transparent;
+    cursor: pointer;
+  }
 
-
-
-
-
-
-
-
-
+ 
+  
+  

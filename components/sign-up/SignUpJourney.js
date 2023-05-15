@@ -1,7 +1,10 @@
 import { useState } from "react";
 
 import Image from "next/image";
-import PersonaDetails from "./PersonaDetails";
+import PersonalDetails from "./PersonalDetails";
+import MedicalDetails from "./MedicalDetails.";
+import SecuritySetup from "./SecuritySetup";
+import ProfessionalDetails from "./ProfessionalDetails";
 
 let style1 = 'bg-custom text-custom1';
 let style2 = 'shadow-md text-black';
@@ -37,7 +40,10 @@ const SignUpJourney = () => {
           height={61}
         />
       </div>
-      <PersonaDetails />
+      {/* <PersonalDetails /> */}
+      {/* <MedicalDetails /> */}
+      {/* <SecuritySetup /> */}
+      {/* <ProfessionalDetails /> */}
       <p className="text-lg font-medium">Let's get to know you</p>
 
       <div onClick={patientHandler} className={`${style1} flex items-center space-x-5 p-8 rounded-lg mb-4 mt-6`}>
