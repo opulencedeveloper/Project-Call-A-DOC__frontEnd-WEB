@@ -6,7 +6,8 @@ import PersonalDetails from "./PersonalDetails";
 import MedicalDetails from "./MedicalDetails.";
 import SecuritySetup from "./SecuritySetup";
 import ProfessionalDetails from "./ProfessionalDetails";
-import SignUpType from "./SIgnUpType";
+import SignUpType from "./SignUpType";
+
 const SignUpJourney = () => {
   const [step, setStep] = useState("1");
 
