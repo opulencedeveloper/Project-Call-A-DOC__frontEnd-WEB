@@ -1,13 +1,22 @@
 import Image from "next/image";
 
 const DetailsButton = (props) => {
-  const onClickHandler = () => {
-    props.onClickHandler()
+ const {text, onClickNextHandler, onClickPrevHandler, color, buttonActive, thisButtonType} = props;
+   const buttonText = text || 'Next';
+   const buttonColor = color || "custom";
+   const disabled = buttonActive || false;
+   const buttonType = thisButtonType || "button";
+  const onClickNextButtonHandler = () => {
+    onClickNextHandler();
   }
 
-  const value = props.text || 'Next';
+  const onClickPrevButtonHandler = () => {
+    onClickPrevHandler()
+  } 
+
     return <div className="flex justify-end text-sm space-x-4">
-    <button 
+    <button
+    onClick={onClickPrevButtonHandler} 
     type="button"
     className="flex items-center text-custom space-x-2 border border-custom rounded-md px-6 py-2">
       <Image
@@ -20,10 +29,11 @@ const DetailsButton = (props) => {
       <p>Go back</p>
     </button>
     <button
-    onClick={onClickHandler}
-    type="button"
-     className="flex items-center text-custom1 bg-custom space-x-2 rounded-md px-6 py-2">
-    <p>{value}</p>
+    onClick={buttonType === "submit" ? null : onClickNextButtonHandler}
+    type={buttonType}
+    disabled={disabled}
+     className={`flex items-center text-custom1 bg-${buttonColor} space-x-2 rounded-md px-6 py-2`}>
+    <p>{buttonText}</p>
       <Image
         src="/images/icon/angle-right.svg"
         alt="email-icon"

@@ -1,8 +1,12 @@
 import React from "react";
 
-function CountrySelect() {
+const CountrySelect = (props) => {
+  const { countryValue, countryChangeHandler, countryBlurHandler } = props;
   return (
     <select
+      value={countryValue}
+      onChange={countryChangeHandler}
+      onBlur={countryBlurHandler}
       id="countrySelect"
       className="custom-select absolute z-0 appearance-none bg-transparent cursor-pointer font-light w-9/12 w-56 h-full focus:outline-none"
     >
@@ -287,6 +291,6 @@ function CountrySelect() {
       <option value="Zimbabwe">Zimbabwe</option>
     </select>
   );
-}
+};
 
 export default CountrySelect;

@@ -9,12 +9,10 @@ const SignUpAuth = () => {
 
   const signUpHandler = () => {
     setIsSubmit(true);
-    console.log("clicked");
   };
 
   const startSignUpHandler = () => {
     setStartSignUp(true);
-    console.log("reached");
   };
 
   return (
@@ -25,7 +23,7 @@ const SignUpAuth = () => {
           <Image
             src="/images/logo/logo2.svg"
             alt="call-a-doc-logo-two"
-            className="w-16 h-14"
+            className="w-auto h-auto"
             width={64}
             height={61}
           />
