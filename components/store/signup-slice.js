@@ -7,17 +7,18 @@ const signupInitialState = {
 };
 
 const signupSlice = createSlice({
-  name: "signupSlice",
+  name: "signup",
   initialState: signupInitialState,
   reducers: {
     addDetails(state, action) {
       const newItem = action.payload;
+      console.log("Called Slice");
       state.items.push({
-        id: newItem.id,
-        price: newItem.price,
-        quantity: 1,
-        totalPrice: newItem.price,
-        name: newItem.title,
+        firstName: newItem.firstName,
+        // price: newItem.price,
+        // quantity: 1,
+        // totalPrice: newItem.price,
+        // name: newItem.title,
       });
       //state.totalQuantity++;
       //state.changed = true;

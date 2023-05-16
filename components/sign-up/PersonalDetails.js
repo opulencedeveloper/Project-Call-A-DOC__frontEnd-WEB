@@ -1,5 +1,7 @@
 import Image from "next/image";
-import { useReducer, useRef, useState } from "react";
+import { useEffect, useReducer, useRef, useState } from "react";
+import {signupActions} from "../store/signup-slice";
+import { useDispatch, useSelector } from "react-redux";
 
 import PhoneInput from "react-phone-number-input";
 import "react-phone-number-input/style.css";
@@ -8,33 +10,26 @@ import CountrySelect from "../UI/CountryDropDown";
 import DetailsButton from "../UI/DetailsButton";
 import userInputValidator from "@/hooks/user-input-validator";
 
+
 const isNotEmpty = (value) => value.trim() !== "";
 
-const reducer = (state, action) => {
-  switch (action.type) {
-    case 'INCREMENT':
-      return { count: state.count + 1 };
-    case 'DECREMENT':
-      return { count: state.count - 1 };
-    default:
-      return state;
-  }
-};
+
 
 let formIsValid = false;
 let phoneNumberHasError = false;
 let color = "ash";
 let buttonActive = false;
 let thisButtonType = "submit";
-
+var firstNameValue = "Kudo"
 
 
 // ///
 const PersonalDetails = (props) => {
   const [phoneNoValue, setPhoneNumber] = useState("");
   const [formValidity, setformValidity] = useState(false);
-  const [state, dispatch] = useReducer(reducer, { count: 0 });
-  console.log("myState value is", state);
+  const dispatchSignUp = useDispatch();
+  const cartItems = useSelector((state) => state.signUp.items);
+  console.log("The value is", cartItems);
 
   console.log("personal-details")
 
@@ -45,22 +40,21 @@ const PersonalDetails = (props) => {
   const countryInputRef = useRef();
 
   const phoneNumberChangeHandler = (value) => {
-    dispatch({ type: 'INCREMENT' });
-    console.log("myState value is ppp", state);
     setPhoneNumber(value);
   };
 
   console.log(phoneNoValue);
 
   const {
-    value: firstNameValue,
+    //value: firstNameValue,
     isValid: firstNameIsValid,
     hasError: firstNameHasError,
     valueChangeHandler: firstNameChangeHandler,
     inputBlurHandler: firstNameBlurHandler,
     //reset: resetFirstName,
   } = userInputValidator(isNotEmpty);
-  const [name, setname] = useState(firstNameValue);
+  //const [name, setname] = useState(firstNameValue);
+  
   const {
     value: lastNameValue,
     isValid: lastNameIsValid,
@@ -121,7 +115,17 @@ console.log(firstNameInputRef.current.value)
 
   const personalNextButtonHandler = (event) => {
     event.preventDefault();
-    dispatch({ type: 'INCREMENT' });
+    console.log("In the Form");
+    // dispatchSignUp(
+    //   signupActions.addDetails({
+    //     firstName: firstNameValue
+    //   })
+    //   // cartActions.replaceCart({
+    //   //   items: cartData.items || [], //if cart is empty it sets it to []
+    //   //   totalQuantity: cartData.totalQuantity,
+    //   // })
+      
+    //   );
     if (!formIsValid ) {
       return;
     }
