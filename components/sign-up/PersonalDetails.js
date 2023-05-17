@@ -14,7 +14,7 @@ const isNotEmpty = (value) => value.trim() !== "";
 
 let formIsValid = false;
 let phoneNumberHasError = false;
-let thisButtonType = "submit";
+const thisButtonType = "submit";
 
 const PersonalDetails = (props) => {
   //const [formValidity, setformValidity] = useState(false);
