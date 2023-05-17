@@ -1,7 +1,7 @@
 import Image from "next/image";
 import { useEffect, useReducer, useRef, useState } from "react";
-import {signupActions} from "../store/signup-slice";
 import { useDispatch, useSelector } from "react-redux";
+import { signupActions } from "../store/signup-slice";
 
 import PhoneInput from "react-phone-number-input";
 import "react-phone-number-input/style.css";
@@ -10,127 +10,147 @@ import CountrySelect from "../UI/CountryDropDown";
 import DetailsButton from "../UI/DetailsButton";
 import userInputValidator from "@/hooks/user-input-validator";
 
-
 const isNotEmpty = (value) => value.trim() !== "";
-
-
 
 let formIsValid = false;
 let phoneNumberHasError = false;
-let color = "ash";
-let buttonActive = false;
 let thisButtonType = "submit";
-var firstNameValue = "Kudo"
 
-
-// ///
 const PersonalDetails = (props) => {
-  const [phoneNoValue, setPhoneNumber] = useState("");
-  const [formValidity, setformValidity] = useState(false);
+  //const [formValidity, setformValidity] = useState(false);
+  const [firstNameSubmit, setFirstNameSubmit] = useState(false);
+  const [lastNameSubmit, setLastNameSubmit] = useState(false);
+  const [phoneNoSubmit, setPhoneNoSubmit] = useState(false);
+  const [dateOfBirthSubmit, setDateOfBirthSubmit] = useState(false);
+  const [citySubmit, setCitySubmit] = useState(false);
+  const [countrySubmit, setCountrySubmit] = useState(false);
+
   const dispatchSignUp = useDispatch();
-  const cartItems = useSelector((state) => state.signUp.items);
-  console.log("The value is", cartItems);
-
-  console.log("personal-details")
-
-  const firstNameInputRef = useRef("");
-  const lastNameInputRef = useRef();
-  const dateoFBirthInputRef = useRef();
-  const cityInputRef = useRef();
-  const countryInputRef = useRef();
+  const phoneNoObj = useSelector((state) => state.signUp);
+  const phoneNoValue = phoneNoObj.phoneNumber;
+  const phoneNoIsValid = isNotEmpty(phoneNoValue);
+  const phoneNoHasError = !phoneNoIsValid && phoneNoObj.phoneNumberIsTouched;
 
   const phoneNumberChangeHandler = (value) => {
-    setPhoneNumber(value);
+    dispatchSignUp(
+      signupActions.addDetails({
+        value: value,
+        id: "phone-no",
+      })
+    );
   };
 
-  console.log(phoneNoValue);
+  const phoneNumberBlurHandler = (event) => {
+    const id = "phone-no";
+    console.log(id);
+    dispatchSignUp(
+      signupActions.addDetails({
+        type: "BLUR",
+        id: id,
+      })
+    );
+  };
 
   const {
-    //value: firstNameValue,
-    isValid: firstNameIsValid,
-    hasError: firstNameHasError,
+    firstNameValue,
+    firstNameIsValid,
+    firstNameHasError,
     valueChangeHandler: firstNameChangeHandler,
     inputBlurHandler: firstNameBlurHandler,
     //reset: resetFirstName,
   } = userInputValidator(isNotEmpty);
-  //const [name, setname] = useState(firstNameValue);
-  
+
   const {
-    value: lastNameValue,
-    isValid: lastNameIsValid,
-    hasError: lastNameHasError,
+    lastNameValue,
+    lastNameIsValid,
+    lastNameHasError,
     valueChangeHandler: lastNameChangeHandler,
     inputBlurHandler: lastNameBlurHandler,
     //reset: resetLastName,
   } = userInputValidator(isNotEmpty);
 
   const {
-    value: dateValue,
-    isValid: dateIsValid,
-    hasError: dateHasError,
+    dateValue,
+    dateIsValid,
+    dateOfBirthHasError,
     valueChangeHandler: dateChangeHandler,
     inputBlurHandler: dateBlurHandler,
     //reset: resetdate,
   } = userInputValidator(isNotEmpty);
 
   const {
-    value: cityValue,
-    isValid: cityIsValid,
-    hasError: cityHasError,
+    cityValue,
+    cityIsValid,
+    cityHasError,
     valueChangeHandler: cityChangeHandler,
     inputBlurHandler: cityBlurHandler,
     //reset: resetcity,
   } = userInputValidator(isNotEmpty);
 
   const {
-    value: countryValue,
-    isValid: countryIsValid,
-    hasError: countryHasError,
+    countryValue,
+    countryIsValid,
+    countryHasError,
     valueChangeHandler: countryChangeHandler,
     inputBlurHandler: countryBlurHandler,
     //reset: resetcountry,
   } = userInputValidator(isNotEmpty);
 
-  if (
-    firstNameIsValid &&
-    lastNameIsValid &&
-    dateIsValid &&
-    cityIsValid &&
-    countryIsValid &&
-    phoneNoValue !== ""
-  ) {
-    formIsValid = true;
-    color = "custom";
-  } else {
-    color = "ash"
+  console.log("firstNameIsValid");
+  console.log(firstNameIsValid);
+
+  formIsValid =
+    (firstNameValue !== "" &&
+    lastNameValue !== "" &&
+    dateValue !== "" &&
+    cityValue !== "" &&
+    countryValue !== "" &&
+    phoneNoValue !== "");
+
+  function getClassName(hasError, value, isSubmitted) {
+    return hasError || (value === "" && isSubmitted) ? "block" : "hidden";
   }
-console.log('running')
-console.log(firstNameInputRef.current.value)
-  let firstNameClasses = firstNameHasError  ? "block" : "hidden";
-  const lastNameClasses = lastNameHasError ? "block" : "hidden";
-  const phoneNumberClasses = phoneNumberHasError ? "block" : "hidden";
-  const dateClasses = dateHasError ? "block" : "hidden";
-  const cityClasses = cityHasError ? "block" : "hidden";
-  const countryClasses = countryHasError ? "block" : "hidden";
+
+  const firstNameClasses = getClassName(
+    firstNameHasError,
+    firstNameValue,
+    firstNameSubmit
+  );
+  const lastNameClasses = getClassName(
+    lastNameHasError,
+    lastNameValue,
+    lastNameSubmit
+  );
+  const phoneNumberClasses = getClassName(
+    phoneNoHasError,
+    phoneNoValue,
+    phoneNoSubmit
+  );
+  const dateClasses = getClassName(
+    dateOfBirthHasError,
+    dateValue,
+    dateOfBirthSubmit
+  );
+  const cityClasses = getClassName(cityHasError, cityValue, citySubmit);
+  const countryClasses = getClassName(
+    countryHasError,
+    countryValue,
+    countrySubmit
+  );
 
   const personalNextButtonHandler = (event) => {
     event.preventDefault();
-    console.log("In the Form");
-    // dispatchSignUp(
-    //   signupActions.addDetails({
-    //     firstName: firstNameValue
-    //   })
-    //   // cartActions.replaceCart({
-    //   //   items: cartData.items || [], //if cart is empty it sets it to []
-    //   //   totalQuantity: cartData.totalQuantity,
-    //   // })
-      
-    //   );
-    if (!formIsValid ) {
+    console.log("FNHE", phoneNoIsValid);
+    if (!formIsValid) {
+      setFirstNameSubmit(!firstNameIsValid);
+      setLastNameSubmit(!lastNameIsValid);
+      setDateOfBirthSubmit(!dateIsValid);
+      setCitySubmit(!cityIsValid);
+      setCountrySubmit(!countryIsValid);
+      setPhoneNoSubmit(!phoneNoIsValid);
       return;
     }
     props.personalNextStep("3");
-    console.log("invalid");
   };
 
   const personalPrevButtonHandler = () => {
@@ -162,12 +182,10 @@ console.log(firstNameInputRef.current.value)
                 type="text"
                 id="first-name"
                 value={firstNameValue}
-                ref={firstNameInputRef}
                 onChange={firstNameChangeHandler}
                 onBlur={firstNameBlurHandler}
                 className="py-4 mr-1 w-full placeholder-ash font-light focus:outline-none"
                 placeholder="First Name"
-                required
               />
             </div>{" "}
             <p className={`${firstNameClasses} text-sm text-custom11`}>
@@ -190,7 +208,6 @@ console.log(firstNameInputRef.current.value)
                 />
               </div>
               <input
-                ref={lastNameInputRef}
                 type="text"
                 id="last-name"
                 value={lastNameValue}
@@ -198,7 +215,6 @@ console.log(firstNameInputRef.current.value)
                 onBlur={lastNameBlurHandler}
                 className="py-4 mr-1 w-full placeholder-ash font-light focus:outline-none"
                 placeholder="Last Name"
-                required
               />{" "}
             </div>{" "}
             <p className={`${lastNameClasses} text-sm text-custom11`}>
@@ -220,8 +236,10 @@ console.log(firstNameInputRef.current.value)
               international
               placeholder="Phone number"
               defaultCountry="US"
+              value={phoneNoValue}
               id="phone-number-input"
               onChange={phoneNumberChangeHandler}
+              onBlur={phoneNumberBlurHandler}
               className={
                 "input-phone-number border border border-ash rounded-lg py-4 pl-4 mt-1"
               }
@@ -253,7 +271,6 @@ console.log(firstNameInputRef.current.value)
                 onChange={dateChangeHandler}
                 onBlur={dateBlurHandler}
                 className="absolute border z-0 pl-14 pr-2 placeholder-ash font-light w-full h-full border-ash rounded-lg focus:outline-none"
-                required
               />
             </div>{" "}
             <p className={`${dateClasses} text-sm text-custom11`}>
@@ -286,7 +303,6 @@ console.log(firstNameInputRef.current.value)
                 onBlur={cityBlurHandler}
                 className="py-4 mr-1 w-full placeholder-ash font-light focus:outline-none"
                 placeholder="Enter email"
-                required
               />{" "}
             </div>{" "}
             <p className={`${cityClasses} text-sm text-custom11`}>
@@ -331,8 +347,6 @@ console.log(firstNameInputRef.current.value)
         <DetailsButton
           //onClickNextHandler={personalNextButtonHandler}
           onClickPrevHandler={personalPrevButtonHandler}
-          color={color}
-          buttonActive={buttonActive}
           thisButtonType={thisButtonType}
         />
       </section>

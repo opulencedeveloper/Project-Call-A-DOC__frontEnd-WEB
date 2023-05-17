@@ -44,9 +44,9 @@ const MedicalDetails = (props) => {
         </div>
       </div>
       <p className="text-lg mb-5 font-medium text-ash2">Allergies (if any)</p>
-      <input
+      <textarea
         type="text"
-        className="border border-ash rounded-md w-full h-32 mb-14"
+        className="border border-ash rounded-md w-full h-32 mb-14 p-5"
       />
       <DetailsButton
         onClickNextHandler={medicalNextButtonHandler}

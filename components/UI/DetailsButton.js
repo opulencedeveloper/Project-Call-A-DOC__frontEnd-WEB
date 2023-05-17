@@ -1,10 +1,8 @@
 import Image from "next/image";
 
 const DetailsButton = (props) => {
- const {text, onClickNextHandler, onClickPrevHandler, color, buttonActive, thisButtonType} = props;
+ const {text, onClickNextHandler, onClickPrevHandler, thisButtonType} = props;
    const buttonText = text || 'Next';
-   const buttonColor = color || "custom";
-   const disabled = buttonActive || false;
    const buttonType = thisButtonType || "button";
   const onClickNextButtonHandler = () => {
     onClickNextHandler();
@@ -31,8 +29,7 @@ const DetailsButton = (props) => {
     <button
     onClick={buttonType === "submit" ? null : onClickNextButtonHandler}
     type={buttonType}
-    disabled={disabled}
-     className={`flex items-center text-custom1 bg-${buttonColor} space-x-2 rounded-md px-6 py-2`}>
+     className={`flex items-center text-custom1 bg-custom space-x-2 rounded-md px-6 py-2`}>
     <p>{buttonText}</p>
       <Image
         src="/images/icon/angle-right.svg"

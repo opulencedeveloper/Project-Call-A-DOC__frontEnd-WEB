@@ -7,7 +7,7 @@ const CountrySelect = (props) => {
       value={countryValue}
       onChange={countryChangeHandler}
       onBlur={countryBlurHandler}
-      id="countrySelect"
+      id="country-select"
       className="custom-select absolute z-0 appearance-none bg-transparent cursor-pointer font-light w-9/12 w-56 h-full focus:outline-none"
     >
       <option value="">Select Country</option>

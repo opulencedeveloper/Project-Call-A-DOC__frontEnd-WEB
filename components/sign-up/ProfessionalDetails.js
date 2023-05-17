@@ -13,12 +13,12 @@ const ProfessionalDetails = (props) => {
   return (
     <section className="mr-auto  2xl:-mr-48">
       <p className="text-lg mb-12 font-medium text-ash2">
-        ProfessionalDetails details (if any)
+        Professional Details(if any)
       </p>
       <div className="flex flex-col space-x-auto mb-5 2xl:flex-row 2xl:space-x-3">
         {/* Area of Specialization */}
         <div className="w-full 2xl:w-1/2">
-          <label htmlFor="AOS" className="text-base font-medium">
+          <label htmlFor="AOS" className="text-base font-lg">
             Area of Specialization
           </label>
           <div className="border flex border-ash rounded-lg mb-3 mt-1">

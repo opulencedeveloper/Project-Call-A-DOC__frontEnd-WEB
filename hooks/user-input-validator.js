@@ -1,55 +1,81 @@
 import { useState, useReducer } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import {signupActions} from "../components/store/signup-slice";
 
-const initialInputState = {
-  value: "",
-  isTouched: false,
-};
-
-const inputStateReducer = (state, action) => {
-  if (action.type === "INPUT") {
-    return { value: action.value, isTouched: state.isTouched };
-  }
-
-  if (action.type === "BLUR") {
-    return { value: state.value, isTouched: true };
-  }
-
-  if (action.type === "RESET") {
-    return { value: "", isTouched: false };
-  }
-  return inputStateReducer;
-};
 
 const userInputValidator = (validateValue) => {
-  const [inputState, dispatch] = useReducer(
-    inputStateReducer,
-    initialInputState
-  );
+  const dispatchSignUp = useDispatch();
+  const initialInputState = useSelector((state) => state.signUp);
+  console.log("userInputValidator");
 
-  const valueIsValid = validateValue(inputState.value);
-  const hasError = !valueIsValid && inputState.isTouched;
+  const {
+    firstName,
+    lastName,
+    dateOfBirth,
+    City,
+    Country,
+    firstNameIsTouched,
+    lastNameIsTouched,
+    dateOfBirthIsTouched,
+    cityIsTouched,
+    countryIsTouched
+  } = initialInputState;
+
+  const firstNameIsValid = validateValue(firstName);
+  const firstNameHasError = !firstNameIsValid && firstNameIsTouched;
+
+  const lastNameIsValid = validateValue(lastName);
+  const lastNameHasError = !lastNameIsValid && lastNameIsTouched;
+
+  const dateOfBirthIsValid = validateValue(dateOfBirth);
+  const dateOfBirthHasError = !dateOfBirthIsValid && dateOfBirthIsTouched;
+
+  const cityIsValid = validateValue(City);
+  const cityHasError = !cityIsValid && cityIsTouched;
+
+  const countryIsValid = validateValue(Country);
+  const countryHasError = !countryIsValid && countryIsTouched;
 
   const valueChangeHandler = (event) => {
-    console.log(event);
-    dispatch({ type: "INPUT", value: event.target.value });
+    const id = event.target.id;
+    dispatchSignUp(signupActions.addDetails({
+      value: event.target.value,
+      type: "INPUT",
+      id: id
+    }));
   };
 
   const inputBlurHandler = (event) => {
-    dispatch({ type: "BLUR" });
+    const id = event.target.id;
+    console.log("in the blur");
+    console.log(id);
+    dispatchSignUp(signupActions.addDetails({
+      type: "BLUR",
+      id: id
+    }));
   };
 
   const reset = () => {
-    dispatch({ type: "RESET" });
+    dispatchSignUp({ type: "RESET" });
   };
 
   return {
-    value: inputState.value,
-    isValid: valueIsValid,
-    hasError,
+    firstNameValue: firstName,
+    lastNameValue: lastName,
+    dateValue: dateOfBirth,
+    isValid: firstNameIsValid,
+    cityValue: City,
+    countryValue: Country,
+    firstNameHasError,
+    lastNameHasError,
+    dateOfBirthHasError,
+    cityHasError,
+    countryHasError,
     valueChangeHandler,
     inputBlurHandler,
     reset,
   };
 };
+
 
 export default userInputValidator;
