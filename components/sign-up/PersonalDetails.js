@@ -13,7 +13,6 @@ import userInputValidator from "@/hooks/user-input-validator";
 const isNotEmpty = (value) => value.trim() !== "";
 
 let formIsValid = false;
-let phoneNumberHasError = false;
 const thisButtonType = "submit";
 
 const PersonalDetails = (props) => {
@@ -55,56 +54,38 @@ const PersonalDetails = (props) => {
     firstNameValue,
     firstNameIsValid,
     firstNameHasError,
-    valueChangeHandler: firstNameChangeHandler,
-    inputBlurHandler: firstNameBlurHandler,
-    //reset: resetFirstName,
-  } = userInputValidator(isNotEmpty);
-
-  const {
     lastNameValue,
     lastNameIsValid,
     lastNameHasError,
-    valueChangeHandler: lastNameChangeHandler,
-    inputBlurHandler: lastNameBlurHandler,
-    //reset: resetLastName,
-  } = userInputValidator(isNotEmpty);
-
-  const {
     dateValue,
-    dateIsValid,
+    dateOfBirthIsValid,
     dateOfBirthHasError,
-    valueChangeHandler: dateChangeHandler,
-    inputBlurHandler: dateBlurHandler,
-    //reset: resetdate,
-  } = userInputValidator(isNotEmpty);
-
-  const {
     cityValue,
     cityIsValid,
     cityHasError,
-    valueChangeHandler: cityChangeHandler,
-    inputBlurHandler: cityBlurHandler,
-    //reset: resetcity,
-  } = userInputValidator(isNotEmpty);
-
-  const {
     countryValue,
     countryIsValid,
     countryHasError,
-    valueChangeHandler: countryChangeHandler,
-    inputBlurHandler: countryBlurHandler,
-    //reset: resetcountry,
+    valueChangeHandler: inputChangeHandler,
+    inputBlurHandler: inputBlurHandler,
+    //reset: resetFirstName,
   } = userInputValidator(isNotEmpty);
+
+  console.log("DOB has error", dateOfBirthHasError);
+  console.log("DOB is valid", dateOfBirthIsValid);
+  console.log("DOB value", dateValue);
 
   console.log("firstNameIsValid");
   console.log(firstNameIsValid);
+  console.log("firstNameHasError");
+  console.log(firstNameHasError);
 
   formIsValid =
-    (firstNameValue !== "" &&
-    lastNameValue !== "" &&
-    dateValue !== "" &&
-    cityValue !== "" &&
-    countryValue !== "" &&
+    (firstNameIsValid &&
+    lastNameIsValid &&
+    dateOfBirthIsValid &&
+    cityIsValid &&
+    countryIsValid &&
     phoneNoValue !== "");
 
   function getClassName(hasError, value, isSubmitted) {
@@ -131,6 +112,8 @@ const PersonalDetails = (props) => {
     dateValue,
     dateOfBirthSubmit
   );
+
+  console.log("date clases", dateClasses);
   const cityClasses = getClassName(cityHasError, cityValue, citySubmit);
   const countryClasses = getClassName(
     countryHasError,
@@ -144,7 +127,7 @@ const PersonalDetails = (props) => {
     if (!formIsValid) {
       setFirstNameSubmit(!firstNameIsValid);
       setLastNameSubmit(!lastNameIsValid);
-      setDateOfBirthSubmit(!dateIsValid);
+      setDateOfBirthSubmit(!dateOfBirthIsValid);
       setCitySubmit(!cityIsValid);
       setCountrySubmit(!countryIsValid);
       setPhoneNoSubmit(!phoneNoIsValid);
@@ -182,8 +165,8 @@ const PersonalDetails = (props) => {
                 type="text"
                 id="first-name"
                 value={firstNameValue}
-                onChange={firstNameChangeHandler}
-                onBlur={firstNameBlurHandler}
+                onChange={inputChangeHandler}
+                onBlur={inputBlurHandler}
                 className="py-4 mr-1 w-full placeholder-ash font-light focus:outline-none"
                 placeholder="First Name"
               />
@@ -211,8 +194,8 @@ const PersonalDetails = (props) => {
                 type="text"
                 id="last-name"
                 value={lastNameValue}
-                onChange={lastNameChangeHandler}
-                onBlur={lastNameBlurHandler}
+                onChange={inputChangeHandler}
+                onBlur={inputBlurHandler}
                 className="py-4 mr-1 w-full placeholder-ash font-light focus:outline-none"
                 placeholder="Last Name"
               />{" "}
@@ -267,9 +250,10 @@ const PersonalDetails = (props) => {
                 type="date"
                 id="my-date"
                 name="my-date"
+                //min="1800-01-01"
                 value={dateValue}
-                onChange={dateChangeHandler}
-                onBlur={dateBlurHandler}
+                onChange={inputChangeHandler}
+                onBlur={inputBlurHandler}
                 className="absolute border z-0 pl-14 pr-2 placeholder-ash font-light w-full h-full border-ash rounded-lg focus:outline-none"
               />
             </div>{" "}
@@ -299,8 +283,8 @@ const PersonalDetails = (props) => {
                 type="city"
                 id="city"
                 value={cityValue}
-                onChange={cityChangeHandler}
-                onBlur={cityBlurHandler}
+                onChange={inputChangeHandler}
+                onBlur={inputBlurHandler}
                 className="py-4 mr-1 w-full placeholder-ash font-light focus:outline-none"
                 placeholder="Enter email"
               />{" "}
@@ -334,8 +318,8 @@ const PersonalDetails = (props) => {
                 />
                 <CountrySelect
                   countryValue={countryValue}
-                  countryChangeHandler={countryChangeHandler}
-                  countryBlurHandler={countryBlurHandler}
+                  countryChangeHandler={inputChangeHandler}
+                  countryBlurHandler={inputBlurHandler}
                 />
               </div>
             </div>{" "}

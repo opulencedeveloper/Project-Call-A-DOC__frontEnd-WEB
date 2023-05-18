@@ -55,8 +55,8 @@ const ProfessionalDetails = (props) => {
               id="AOS"
               value={AOS}
               onChange={changeHandler}
-              className="py-4 mr-1 w-full text-ash placeholder-ash font-light focus:outline-none"
-              placeholder="Area of Specialization"
+              className="py-4 mr-1 w-full placeholder-ash font-light focus:outline-none"
+              placeholder="Enter your area of Specialization"
             />{" "}
           </div>{" "}
         </div>
@@ -76,12 +76,12 @@ const ProfessionalDetails = (props) => {
               />
             </div>
             <input
-              type="email"
+              type="text"
               id="NPI"
               value={NPI}
               onChange={changeHandler}
-              className="py-4 mr-1 w-full text-ash placeholder-ash font-light focus:outline-none"
-              placeholder="Email"
+              className="py-4 mr-1 w-full placeholder-ash font-light focus:outline-none"
+              placeholder="Enter your NPI Number"
             />{" "}
           </div>{" "}
         </div>

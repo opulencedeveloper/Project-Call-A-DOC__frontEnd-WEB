@@ -32,7 +32,9 @@ const signupInitialState = {
   },
   securitySetup: {
     password: "",
+    passwordIsTouched: false,
     confirmPassword: "",
+    confirmPasswordIsTouched: false,
   },
 };
 
@@ -194,6 +196,15 @@ const signupSlice = createSlice({
           };
 
         case "password":
+          if (newItem.type === "BLUR") {
+            return {
+              ...state,
+              securitySetup: {
+                ...state.securitySetup,
+                passwordIsTouched: true,
+              },
+            };
+          }
           return {
             ...state,
             securitySetup: {
@@ -203,6 +214,15 @@ const signupSlice = createSlice({
           };
 
         case "confirm-password":
+          if (newItem.type === "BLUR") {
+            return {
+              ...state,
+              securitySetup: {
+                ...state.securitySetup,
+                confirmPasswordIsTouched: true,
+              },
+            };
+          }
           return {
             ...state,
             securitySetup: {
