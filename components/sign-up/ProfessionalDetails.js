@@ -1,7 +1,26 @@
 import Image from "next/image";
 import DetailsButton from "../UI/DetailsButton";
+import { useDispatch, useSelector } from "react-redux";
+
+import { signupActions } from "../store/signup-slice";
 
 const ProfessionalDetails = (props) => {
+  const dispatchSignUp = useDispatch();
+  const initialState = useSelector((state) => state.signUp.professionalDetails);
+  console.log(initialState)
+  const AOS = initialState.AOS;
+  const NPI = initialState.NPInumber;
+  const changeHandler = (event) => {
+    const id = event.target.id;
+    const value = event.target.value;
+    dispatchSignUp(
+      signupActions.addDetails({
+        value: value,
+        id: id ,
+      })
+    );
+    
+  };
   const profNextButtonHandler = () => {
     props.profNextStep("5");
   };
@@ -34,6 +53,8 @@ const ProfessionalDetails = (props) => {
             <input
               type="text"
               id="AOS"
+              value={AOS}
+              onChange={changeHandler}
               className="py-4 mr-1 w-full text-ash placeholder-ash font-light focus:outline-none"
               placeholder="Area of Specialization"
             />{" "}
@@ -57,6 +78,8 @@ const ProfessionalDetails = (props) => {
             <input
               type="email"
               id="NPI"
+              value={NPI}
+              onChange={changeHandler}
               className="py-4 mr-1 w-full text-ash placeholder-ash font-light focus:outline-none"
               placeholder="Email"
             />{" "}

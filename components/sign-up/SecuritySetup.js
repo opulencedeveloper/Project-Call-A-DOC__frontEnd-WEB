@@ -1,6 +1,24 @@
 import DetailsButton from "../UI/DetailsButton";
 
 const SecuritySetup = (props) => {
+  const initialState = useSelector((state) => state.signUp.securitySetup);
+
+  const password = initialState.password;
+  const confirmPassword = initialState.confirmPassword;
+  const changeHandler = (event) => {
+    const id = event.target.id;
+    const value = event.target.value;
+    dispatchSignUp(
+      signupActions.addDetails({
+        value: value,
+        id: id ,
+      })
+    );
+    
+  };
+
+ const passwordClasses = password !== confirmPassword ?  "block" : "hidden";
+
   const secPrevButtonHandler = () => {
     props.secPrevStep("4");
   };
@@ -12,12 +30,19 @@ const SecuritySetup = (props) => {
         <input
           type="text"
           id="password"
+          value={password}
+          onChange={changeHandler}
           className="border h-14 rounded-md border-ash"
         />
-        <label htmlFor="confirm-password">Create new password</label>
+         <p className={`${passwordClasses} text-sm text-custom11`}>
+              Password does not match
+            </p>
+        <label htmlFor="confirm-password">Confirm password</label>
         <input
           type="text"
+          value={confirmPassword}
           id="confirm-password"
+          onChange={changeHandler}
           className="border h-14 rounded-md border-ash "
         />
       </div>

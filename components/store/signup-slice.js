@@ -26,6 +26,14 @@ const signupInitialState = {
     Arthrithiss: false,
     heartFailure: false,
   },
+  professionalDetails: {
+    AOS: "",
+    NPInumber: "",
+  },
+  securitySetup: {
+    password: "",
+    confirmPassword: "",
+  },
 };
 
 const signupSlice = createSlice({
@@ -164,6 +172,42 @@ const signupSlice = createSlice({
             medicalDetails: {
               ...state.medicalDetails,
               heartFailure: newItem.value,
+            },
+          };
+
+        case "AOS":
+          return {
+            ...state,
+            professionalDetails: {
+              ...state.professionalDetails,
+              AOS: newItem.value,
+            },
+          };
+
+        case "NPI":
+          return {
+            ...state,
+            professionalDetails: {
+              ...state.professionalDetails,
+              NPInumber: newItem.value,
+            },
+          };
+
+        case "password":
+          return {
+            ...state,
+            securitySetup: {
+              ...state.securitySetup,
+              password: newItem.value,
+            },
+          };
+
+        case "confirm-password":
+          return {
+            ...state,
+            securitySetup: {
+              ...state.securitySetup,
+              confirmPassword: newItem.value,
             },
           };
 
