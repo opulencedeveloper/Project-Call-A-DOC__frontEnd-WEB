@@ -4,7 +4,7 @@ const StartingPage = () => {
   return (
     <section className="relative z-0">
       <div className="flex px-5 items-center md:justify-end lg:px-20">
-        <div className="flex flex-col space-y-2 z-10">
+        <div className="space-y-2 z-10">
          <Image
             src="/images/get-medical-attention.svg"
             alt="get medical attention image"
@@ -12,13 +12,13 @@ const StartingPage = () => {
             width={605}
             height={190}
           />
-          <Image
+          <div className="p-auto 2xl:pl-52 2xl:pt-3"><Image
               src="/images/globally-at-your-fingertips.svg"
               alt="globally at your fingertips"
-              className="h-auto w-3/4"
+              className="h-auto w-auto"
               width={257}
               height={30}
-            />
+            /></div>
         </div><div></div>
         <div className=""><Image
             src="/images/hero-image.png"
@@ -30,7 +30,7 @@ const StartingPage = () => {
       </div>
 
 
-      <div className="relative flex -mt-12 xl:-mt-56">
+      <div className="relative z-10 flex space-x-auto -mt-12 md:space-x-8 md:-mt-32 2xl:-mt-56">
       <div>
           <div className="mb-10"><Image
             src="/images/doctor1.svg"
@@ -42,38 +42,38 @@ const StartingPage = () => {
           <div><Image
             src="/images/doctor4.svg"
             alt="doctor4"
-            className="w-auto h-auto z-10"
+            className="w-auto h-auto"
             width={560}
             height={419}
           /></div>
         </div>  
 
-        <div className="flex z-10">
-        <div>
+        <div className="relative flex z-10 ">
+        <div className="z-10">
           <Image
           src="/images/doctor2.svg"
           alt="doctor2"
-          className="w-auto h-auto border pt-20 xl:pt-40"
+          className="w-auto h-auto pt-14 md:pt-20 xl:pt-40"
           width={560}
           height={419}
         /></div>
-        <div className="hidden xl:block absolute top-96 right-96 z-0"><Image
+        <div className="absolute bottom-16 pl-20 lg:bottom-52 lg:left-96 z-0"><Image
           src="/images/dot.png"
           alt="dot"
-          className="w-auto h-auto"
+          className="w-20 h-20 md:w-40 md:h-40 xl:w-auto xl:h-auto"
           width={262}
           height={262}
         /></div> 
         <div className="z-10"><Image
           src="/images/doctor3.svg"
-          alt="doctor1"
-          className="w-auto h-auto pt-40 xl:pt-96"
+          alt="doctor3"
+          className="w-auto h-auto pt-36 md:pt-56 xl:pt-96"
           width={560}
           height={419}
         /></div></div>
       </div>
 
-      <div className="flex flex-col justify-center items-center space-y-10 py-20 mt-20 border-t-2 border-b-2 border-ash">
+      <div className="flex flex-col justify-center items-center space-y-10 mt-12 py-10 border-t-2 border-b-2 border-ash md:py-20">
         <p className="text-center text-xl font-medium text-ash">
           WHAT WE DO
         </p>
@@ -83,7 +83,7 @@ const StartingPage = () => {
           regular medical checkups, diagnosis or one time treatments, we got you
           covered.
         </p>
-        <div className="border flex flex-col justify-center space-y-3 md:flex-row md:space-x-3 md:space-y-0">
+        <div className="flex flex-col justify-center space-y-3 md:flex-row md:space-x-3 md:space-y-0">
           <button className="w-162 h-48 text-custom1 bg-custom rounded-full font-base text-sm">
           For Patients
           </button>
