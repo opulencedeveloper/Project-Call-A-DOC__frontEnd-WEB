@@ -35,7 +35,7 @@ const MainNavigation = (props) => {
           <Image
             src="/images/logo/logo.svg"
             alt="call a doctor logo"
-            className="h-20 w-36"
+            className="h-auto w-auto"
             width={576}
             height={320}
           />

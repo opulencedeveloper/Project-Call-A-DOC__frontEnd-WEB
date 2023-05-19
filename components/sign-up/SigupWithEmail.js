@@ -1,22 +1,108 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 
 import Link from "next/link";
 import Image from "next/image";
 
+import { useSelector } from "react-redux";
+
+import userInputValidator from "@/hooks/user-input-validator";
+import useHttp from "@/hooks/use-http";
+
+const validateEmail = (email) => {
+  var re = /\S+@\S+\.\S+/;
+  return re.test(email);
+};
+
+
 const SignUpWithEmail = (props) => {
   const [isSubmit, setIsSubmit] = useState(false);
+  const [emailSubmit, setEmailSubmit] = useState(false);
+  const [otpError, setOtpError ] = useState();
+  const otpInputRef = useRef()
+  const phoneNoObj = useSelector((state) => state.signUp);
+  let emailVerifybuttonText = "Continue with email";
+  let createAccountbuttonText = "Create your Account";
+  let buttonActive = false;
 
-  const signUpHandler = () => {
-    setIsSubmit(true);
+  const {
+    emailValue,
+    emailIsValid,
+    emailHasError,
+    valueChangeHandler: emailChangeHandler,
+    inputBlurHandler: emailBlurHandler,
+  } = userInputValidator(validateEmail);
+
+  const { isLoading, error, sendRequest: validation } = useHttp();
+
+  if (isLoading) {
+    emailVerifybuttonText = "Please Wait";
+    createAccountbuttonText = "Please Wait";
+    buttonActive = true;
+  }
+
+  const myResponse = (res) => {
+    console.log("email response", res);
+    const { status, message } = res;
+    if (status === "success") {
+      if(message === "Email successfully Verified.") {
+        props.startSignUpHandler();
+        return;
+      }
+      setIsSubmit(true);
+      return;
+    }
+console.log("email message", message);
+    
   };
 
-  const startSignUpHandler = () => {
-    props.startSignUpHandler();
+  const verifyEmailHandler = () => {
+    if (!emailIsValid) {
+      setEmailSubmit(!emailIsValid);
+      return;
+    }
+    validation(
+      {
+        url: "register",
+        method: "POST",
+        body: { email: emailValue },
+      },
+      myResponse
+    );
   };
+
+
+  const createAccountHandler = (event) => {
+    event.preventDefault();
+    console.log("OTP", otpInputRef.current.value)
+    const otpValue = otpInputRef.current.value;
+    if(otpValue === ""){
+      console.log("In hereeeeeeeeeeeeeeeeeeeeeeeeee")
+      setOtpError("Please Input OTP");
+      return;
+    }
+    setOtpError("");
+    validation(
+      {
+        url: "verifyemail",
+        method: "POST",
+        body: { email: emailValue,  otp: otpValue },
+      },
+      myResponse
+    );
+
+  };
+
+  const emailClasses =
+    emailHasError || (emailValue === "" && emailSubmit) ? "block" : "hidden";
 
   return (
     <div className="flex flex-col md:px-0 lg:px-20 justify-center 2xl:px-40">
       <p className="font-medium text-3xl pb-8">Sign up</p>
+      {(error || otpError) && (
+        <div className="bg-custom11 rounded-md text-custom1 font-semibold text-sm py-3 px-10">
+          <p className="text-center">{error || otpError}</p>
+        </div>
+      )}
       <div className="flex flex-col pb-3">
         <label htmlFor="email">Email</label>
         <div className="border flex border-ash rounded-lg my-3">
@@ -31,23 +117,32 @@ const SignUpWithEmail = (props) => {
           </div>
           <input
             type="email"
-            name="email"
+            id="email"
+            value={emailValue}
+            onBlur={emailBlurHandler}
+            onChange={emailChangeHandler}
             className="py-3 mr-1 w-full focus:outline-none"
             placeholder="Email"
           />{" "}
         </div>
+        <p className={`${emailClasses} -mt-2 mb-2 text-sm text-custom11`}>
+          Invalid Email
+        </p>
         {!isSubmit && (
           <button
             type="button"
-            onClick={signUpHandler}
+            onClick={verifyEmailHandler}
+            disabled={buttonActive}
             className="border py-3.5 rounded-lg bg-custom text-custom1 flex justify-center items-center space-x-3"
           >
-            <p className="font-medium">Continue with email</p>
+            <p className="font-medium">{emailVerifybuttonText}</p>
           </button>
         )}
 
         {isSubmit && (
-          <div className="px-2 border-b border-ash pb-9 pt-4 space-y-3 mb-9 text-xs md:text-sm">
+          <form 
+          onSubmit={createAccountHandler}
+          className="px-2 border-b border-ash pb-9 pt-4 space-y-3 mb-9 text-xs md:text-sm">
             <p className="text-center text-ash2 pb-7">
               We just sent you a temporary sign up code. Please check your email
               inbox and paste it below
@@ -58,6 +153,7 @@ const SignUpWithEmail = (props) => {
 
             <input
               type="text"
+              ref={otpInputRef}
               name="otp"
               className="w-full border flex p-4 items-center border-ash rounded-lg my-3 text-center focus:outline-none"
               placeholder="xxx xxx"
@@ -65,12 +161,12 @@ const SignUpWithEmail = (props) => {
 
             <button
               type="submit"
+              disabled={buttonActive}
               className="border border-custom py-4 rounded-lg w-full font-semibold text-custom text-base"
-              onClick={startSignUpHandler}
             >
-              Create your account
+              {createAccountbuttonText}
             </button>
-          </div>
+          </form>
         )}
 
         {!isSubmit && (

@@ -8,12 +8,14 @@ const userInputValidator = (validateValue) => {
   console.log("userInputValidator");
 
   const {
+    email,
     firstName,
     lastName,
     dateOfBirth,
     City,
     Country,
     firstNameIsTouched,
+    emailIsTouched,
     lastNameIsTouched,
     dateOfBirthIsTouched,
     cityIsTouched,
@@ -24,6 +26,9 @@ const userInputValidator = (validateValue) => {
   const passwordIsTouched = securitySetup.passwordIsTouched;
   const confirmPassword = securitySetup.confirmPassword;
   const confirmPasswordIsTouched = securitySetup.confirmPasswordIsTouched;
+
+  const emailIsValid = validateValue(email);
+  const emailHasError = !emailIsValid && emailIsTouched;
 
   const firstNameIsValid = validateValue(firstName);
   const firstNameHasError = !firstNameIsValid && firstNameIsTouched;
@@ -62,8 +67,6 @@ const userInputValidator = (validateValue) => {
 
   const inputBlurHandler = (event) => {
     const id = event.target.id;
-    console.log("in the blur");
-    console.log(id);
     dispatchSignUp(
       signupActions.addDetails({
         type: "BLUR",
@@ -78,6 +81,9 @@ const userInputValidator = (validateValue) => {
 
   return {
     //this is an alias
+    emailValue: email,
+    emailHasError,
+    emailIsValid,
     firstNameValue: firstName,
     firstNameHasError,
     firstNameIsValid,

@@ -23,9 +23,9 @@ const PersonalDetails = (props) => {
   const [dateOfBirthSubmit, setDateOfBirthSubmit] = useState(false);
   const [citySubmit, setCitySubmit] = useState(false);
   const [countrySubmit, setCountrySubmit] = useState(false);
-
   const dispatchSignUp = useDispatch();
   const phoneNoObj = useSelector((state) => state.signUp);
+  
   const phoneNoValue = phoneNoObj.phoneNumber;
   const phoneNoIsValid = isNotEmpty(phoneNoValue);
   const phoneNoHasError = !phoneNoIsValid && phoneNoObj.phoneNumberIsTouched;
@@ -66,6 +66,7 @@ const PersonalDetails = (props) => {
     countryValue,
     countryIsValid,
     countryHasError,
+    //this is an alias
     valueChangeHandler: inputChangeHandler,
     inputBlurHandler: inputBlurHandler,
     //reset: resetFirstName,

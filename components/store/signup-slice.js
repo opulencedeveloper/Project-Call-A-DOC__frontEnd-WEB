@@ -1,6 +1,8 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const signupInitialState = {
+  email: "",
+  emailIsTouched: false,
   firstName: "",
   firstNameIsTouched: false,
   lastName: "",
@@ -46,6 +48,12 @@ const signupSlice = createSlice({
       const newItem = action.payload;
 
       switch (newItem.id) {
+        case "email":
+          if (newItem.type === "BLUR") {
+            return { ...state, emailIsTouched: true };
+          }
+          return { ...state, email: newItem.value };
+
         case "first-name":
           if (newItem.type === "BLUR") {
             return { ...state, firstNameIsTouched: true };

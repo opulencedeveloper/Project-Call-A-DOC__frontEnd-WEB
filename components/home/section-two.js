@@ -18,7 +18,7 @@ const contents = [
 const SectionTwo = (props) => {
   return contents.map((content) => {
     return (
-      <div key={content.content1} className="flex flex-wrap items-start px-5 2xl:flex-nowrap mb-0 px-20">
+      <div key={content.content1} className="border flex flex-wrap items-start px-5 2xl:flex-nowrap mb-0 px-20">
         {/* <div className="flex pr-40 border-b border-custom3"> */}
         <Image
           src={content.image}
@@ -29,7 +29,7 @@ const SectionTwo = (props) => {
         />
         
     
-        <div className="pt-40 space-y-10">
+        <div className="pt-40 space-y-10 border">
                 <div className="flex items-end text-xl font-medium ">
                   <p>
                     FOR PATIENTS

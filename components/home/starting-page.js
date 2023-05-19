@@ -3,70 +3,71 @@ import Image from "next/image";
 const StartingPage = () => {
   return (
     <section className="relative z-0">
-      <div className="flex mt-10 px-5 md:justify-end lg:px-20">
-        <div className="flex flex-col pt-0 z-10 md:pt-20 xl:pt-44">
-          <Image
+      <div className="flex px-5 items-center md:justify-end lg:px-20">
+        <div className="flex flex-col space-y-2 z-10">
+         <Image
             src="/images/get-medical-attention.svg"
             alt="get medical attention image"
-            className="h-pih2 w-piw2"
+            className="h-auto w-auto"
             width={605}
             height={190}
           />
           <Image
               src="/images/globally-at-your-fingertips.svg"
               alt="globally at your fingertips"
-              className="h-8 w-64 xl:ml-44"
+              className="h-auto w-3/4"
               width={257}
               height={30}
             />
         </div><div></div>
-        <div className="hidden md:block z-0"><Image
+        <div className=""><Image
             src="/images/hero-image.png"
             alt="get medical attention image"
-            className=" md:h-pih1i w-piw1 xl:h-pih1"
+            className="h-auto w-auto"
             width={609}
             height={190}
           /></div>
       </div>
 
 
-      <div className="relative lg:-mt-64: xl:-mt-72 hidden lg:flex ">
-      <div className="relative space-y-2 -left-20">
-          <div><Image
+      <div className="relative flex -mt-12 xl:-mt-56">
+      <div>
+          <div className="mb-10"><Image
             src="/images/doctor1.svg"
             alt="doctor1"
-            className="w-piw3 h-pih3"
+            className="w-auto h-auto"
           width={560}
           height={419}
           /></div>
           <div><Image
             src="/images/doctor4.svg"
             alt="doctor4"
-            className="w-piw3 h-pih3 z-10"
+            className="w-auto h-auto z-10"
             width={560}
             height={419}
           /></div>
         </div>  
 
-        <div className=" -ml-20 flex z-10">
-        <div className="mt-40  z-10"><Image
+        <div className="flex z-10">
+        <div>
+          <Image
           src="/images/doctor2.svg"
           alt="doctor2"
-          className="w-piw3 h-pih3 z-10"
+          className="w-auto h-auto border pt-20 xl:pt-40"
           width={560}
           height={419}
         /></div>
         <div className="hidden xl:block absolute top-96 right-96 z-0"><Image
           src="/images/dot.png"
           alt="dot"
-          className="w-262px h-262px"
+          className="w-auto h-auto"
           width={262}
           height={262}
         /></div> 
-        <div className="mt-96 z-10 z-10"><Image
+        <div className="z-10"><Image
           src="/images/doctor3.svg"
           alt="doctor1"
-          className="w-piw3 h-pih3"
+          className="w-auto h-auto pt-40 xl:pt-96"
           width={560}
           height={419}
         /></div></div>
@@ -82,7 +83,7 @@ const StartingPage = () => {
           regular medical checkups, diagnosis or one time treatments, we got you
           covered.
         </p>
-        <div className="flex space-x-3 ">
+        <div className="border flex flex-col justify-center space-y-3 md:flex-row md:space-x-3 md:space-y-0">
           <button className="w-162 h-48 text-custom1 bg-custom rounded-full font-base text-sm">
           For Patients
           </button>
