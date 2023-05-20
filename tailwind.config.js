@@ -60,6 +60,8 @@ module.exports = {
       "ash": '#CBD2D9',
       "ash2": "#52606D",
       "ash3": "#F5F7FA",
+      "ash4": "#E4E7EB",
+      "ash5": "#7B8794",
       '49207E': '#49207E',
       '57B7FF': '#57B7FF',
       '49207E': '#49207E',
@@ -72,8 +74,9 @@ module.exports = {
       "custom9": "#1F2933",
       "custom10": "#3EBD93",
       "custom11": "#EF4E4E",
-      "custom12": "#000000"
-     
+      "custom12": "#000000",
+      "custom13": "#C599FF"
+      
     },
   },
   plugins: [],
