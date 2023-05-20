@@ -7,16 +7,16 @@ const Navigation = () => {
       className="absolute p-6 rounded-lg bg-custom3 left-6 right-6 top-20 z-100 lg:hidden"
     >
       <div className="flex flex-col items-center justify-center w-full space-y-6 font-bold text-custom1 rounded-sm">
-      <Link href="/" className="w-full text-center">
+      <Link href="/" className="w-full text-center block md:hidden">
               Home
             </Link>
-            <Link href="/about-us" className="w-full text-center">
+            <Link href="/about-us" className="w-full text-center block md:hidden">
               About us
             </Link>
-            <Link href="#" className="w-full text-center">
+            <Link href="#" className="w-full text-center block md:hidden">
               Services
             </Link>
-            <Link href="#" className="w-full text-center">
+            <Link href="#" className="w-full text-center block md:hidden ">
               Pricing
             </Link>
             <button className="w-full text-center">Login</button>

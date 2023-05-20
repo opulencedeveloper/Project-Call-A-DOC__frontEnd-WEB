@@ -33,7 +33,7 @@ const SectionFour = (props) => {
                 <Image
                   src="/images/icon/angle-right.svg"
                   alt="doctor1"
-                  className="w-13 h-25 mr-5 z-0"
+                  className="w-auto h-auto z-0 pr-2 md:pr-4"
                   width={11}
                   height={23}
                 />
@@ -73,7 +73,7 @@ const SectionFour = (props) => {
           </button>
         </div>
 
-        <div className="flex flex-col justify-center items-center z-10 space-x-auto xl:flex-row space-x-7">
+        <div className="flex flex-col justify-center space-x-auto items-center z-10 space-x-auto xl:flex-row xl:space-x-7">
           {/* DIV-1 */}
           <div className="flex flex-col justify-center align-center mb-5 bg-custom5 rounded-xl px-14 py-10">
             <p className="text-center text-custom1">Free</p>
@@ -143,7 +143,7 @@ const SectionFour = (props) => {
                 Two appointments per month
               </p>
             </div>
-            <button className="w-162 h-12 border border-custom1 rounded-full font-normal text-ash text-base mx-auto">
+            <button className="py-3 px-9 border border-custom1 rounded-full font-normal text-custom1 text-base mx-auto">
               Get Started
             </button>
           </div>
@@ -205,7 +205,7 @@ const SectionFour = (props) => {
                 Two appointments per month
               </p>
             </div>
-            <div className="flex mb-20">
+            <div className="flex mb-10 md:mb-20">
               <Image
                 src="/images/icon/check.svg"
                 alt="doctor1"
@@ -217,7 +217,7 @@ const SectionFour = (props) => {
                 Two appointments per month
               </p>
             </div>
-            <button className="w-52 py-4 bg-custom7 rounded-full font-normal text-ash text-base mx-auto">
+            <button className="w-52 py-4 bg-custom7 rounded-full font-normal text-custom1 text-base mx-auto">
               Get Started
             </button>
           </div>
@@ -291,7 +291,7 @@ const SectionFour = (props) => {
                 Two appointments per month
               </p>
             </div>
-            <button className="w-162 h-12 border border-custom1 rounded-full font-normal text-ash text-base mx-auto">
+            <button className="py-3 px-9 border border-custom1 rounded-full font-normal text-custom1 text-base mx-auto">
               Get Started
             </button>
           </div>

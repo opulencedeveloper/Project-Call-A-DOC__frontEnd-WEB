@@ -15,63 +15,74 @@ const SectionTwo = () => {
           </p>
       </div>
 
-      <div className="hidden xl:block">
-        <div className="flex space-between">
+      <div className="text-xs md:text-base">
+        <div className="flex">
           <div className="flex flex-col items-center">
-            <Image
+           <div><Image
               src="/images/doctor6.svg"
-              alt="get medical attention image"
-              className="h-pih7 w-piw7 mt-24 "
+              alt="doctor6 image"
+              className="h-auto w-auto mt-24 "
               width={388}
               height={388}
-            />
-            <div className="-mt-16 flex flex-col justify-center items-center space-y-3">
-              <p className="font-medium">Director</p>
-            <p>Esther Howard</p></div>
+            /></div> 
+            <div className="w-full space-y-1 text-center -mt-2 xl:-mt-12">
+              <p className="font-bold">Director</p>
+            <p>Esther Howarda</p></div>
           </div>
-          <div className="flex flex-col items-center -mt-4"><Image
+          <div className="flex flex-col items-center mt-12 xl:-mt-4">
+            
+            <div><Image
             src="/images/doctor8.svg"
             alt="get medical attention image"
-            className="h-pih7 w-piw7"
+            className="h-auto w-auto"
             width={388}
             height={388}
-          /> <div className="-mt-16 flex flex-col justify-center items-center space-y-3">
-              <p className="font-medium">Director</p>
-            <p>Esther Howard</p></div></div>
+          /> </div>
           
-            <div className="flex flex-col items-center -mt-56">
-          <Image
+          <div className="w-full space-y-1 text-center -mt-2 xl:-mt-12">
+              <p className="font-bold">Director</p>
+            <p>Esther Howards</p></div></div>
+          
+            <div className="flex flex-col items-center md:-mt-10 xl:-mt-56">
+          <div><Image
             src="/images/doctor10.svg"
             alt="get medical attention image"
-            className="h-pih7 w-piw7"
+            className="h-auto w-auto"
             width={388}
             height={388}
-          /> 
-          <div className="flex flex-col ml-24 -mt-16 justify-center items-center space-y-3">
-          <p className="font-medium">Director</p>
-        <p>Esther Howardd</p></div>
+          /> </div>
+          <div className="w-full space-y-1 text-center pl-10 -mt-2 md:pl-20 xl:-mt-12">
+          <p className="font-bold">Director</p>
+        <p >Esther Howardd</p>
+        </div>
         </div>
         
         </div>
         <div className="flex justify-end items-start space-x-44">
-        <div className="flex flex-col items-center -mt-36 md:-mr-48 xl-mr-10"><Image
+        <div className="flex flex-col items-center -mr-48 mt-auto xl:-mt-20 xl-mr-10">
+          
+          <div><Image
             src="/images/doctor7.svg"
             alt="get medical attention image"
-            className="h-pih8 w-piw8"
+            className="h-auto w-auto"
             width={314}
             height={314}
-          /><div className="-mt-16 flex flex-col justify-center items-center space-y-3">
-          <p className="font-medium">Director</p>
-        <p>Esther Howard</p></div></div>
-          <div className="flex flex-col items-center -mt-72"><Image
+          /></div>
+          <div className="w-full space-y-1 text-center -mt-2 xl:-mt-14">
+          <p className="font-bold">Director</p>
+        <p>Esther Howardasaa</p></div></div>
+          <div className="flex flex-col items-center -mt-20 mr-5 xl:-mt-72">
+            
+            <Image
             src="/images/doctor9.svg"
             alt="get medical attention image"
-            className="h-pih7 w-piw7"
+            className="h-auto w-auto"
             width={388}
             height={388}
-          /><div className="-mt-16 flex flex-col justify-center items-center space-y-3">
-          <p className="font-medium">Director</p>
-        <p>Esther Howard</p></div></div>
+          />
+          <div className="w-full space-y-1 text-center pl-auto -mt-2 md:pl-12 xl:-mt-12">
+          <p className="font-bold">Director</p>
+        <p>Esther Howardcaa</p></div></div>
         </div>
       </div>
     </section>

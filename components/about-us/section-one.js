@@ -1,8 +1,8 @@
 import Image from "next/image";
 
 const SectionOne = () => {
-    return <section className="flex justify-between">
-      <div className="space-y-9 2xl:-mr-96 pt-44">
+    return <section className="flex flex-row justify-between flex-wrap xl:flex-nowrap">
+      <div className="space-y-9 2xl:-mr-96 pt-40">
         <p className="text-ash2 text-2xl">
           Who are we?
         </p>
@@ -15,13 +15,13 @@ semper congue velit. Dolor, lacinia nunc consectetur facilisis nullam nulla.
  Utvel utnam nisi nulla suspendisse atquamin.
           </p>
       </div>
-      <Image
-        className="w-piw6 h-pih6 -mr-16 hidden 2xl:block"
+     <div> <Image
+        className="w-auto h-auto"
         alt="doctor-5"
         src={"/images/doctor5.svg"}
         height={1007}
         width={1076}
-      />
+      /></div>
   </section>
 } 
 

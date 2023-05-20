@@ -29,7 +29,7 @@ const MainNavigation = (props) => {
   };
 
   return (
-    <nav className="mt-5 mx-5 md:mx-20 ">
+    <nav className="mt-5 mx-5 md:mx-12 ">
       <div className="flex justify-between md:items-start ">
         <div className="flex">
           <Image
@@ -39,7 +39,7 @@ const MainNavigation = (props) => {
             width={576}
             height={320}
           />
-          <div className="pt-3 hidden lg:flex space-x-8 font-medium text-base md:ml-10 mr-10 xl:ml-56">
+          <div className="pt-3 hidden md:flex space-x-8 font-medium text-base md:ml-10 mr-10 xl:ml-56">
           
           <Link href="/" className={activeLink === '/' ? "text-custom" : ""}>
               Home

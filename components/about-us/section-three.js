@@ -21,13 +21,13 @@ const SectionThree = () => {
               aliquam. Ornare massa tortor in vitae tellus maecenas.
             </p>
         </div>
-        <Image
+       <div><Image
           src="/images/image1.svg"
           alt="doctor1"
-          className="w-piw9 h-pih9 "
+          className="w-auto h-auto "
           width={580}
           height={762}
-        />
+        /></div> 
       </div>
       <div className="flex flex-row-reverse justify-between  text-end flex-wrap 2xl:flex-nowrap">
         <div className="space-y-9 max-w-3xl">
@@ -46,15 +46,15 @@ const SectionThree = () => {
               aliquam. Ornare massa tortor in vitae tellus maecenas.
             </p>
         </div>
-        <Image
+       <div><Image
           src="/images/image1.svg"
           alt="doctor1"
-          className="w-piw9 h-pih9 "
+          className="w-auto h-auto"
           width={580}
           height={762}
-        />
+        /></div> 
       </div>
-      <Input />
+     <div className="w-full px-auto md:px-44"><Input /></div> 
     </>
   );
 };
