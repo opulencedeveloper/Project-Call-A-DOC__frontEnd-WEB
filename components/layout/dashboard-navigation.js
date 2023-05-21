@@ -71,7 +71,8 @@ const DashBoardNavigation = () => {
           ))}
         </div>
       </div>
-      <div className="w-full text-custom1 rounded-md flex items-center justify-center space-x-7 bg-custom13 py-5 px-2">
+      <div 
+      className="w-full text-custom1 rounded-md flex items-center justify-center space-x-7 bg-custom13 py-5 px-2">
         <p>
           Make an
           <br />

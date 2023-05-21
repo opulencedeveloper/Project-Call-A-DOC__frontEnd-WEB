@@ -1,4 +1,5 @@
 import Image from "next/image";
+import CircularProgress from "../UI/CircularProgress";
 
 const currentDate = new Date();
 
@@ -40,7 +41,7 @@ const Home = () => {
           </div>
         </div>
 
-        <div className="flex space-x-16">
+        <div className="flex space-x-16 mb-14">
           <div className="w-1/2">
             <div className="flex justify-between pb-7">
               <p className="text-xl">Checkups</p>
@@ -48,8 +49,8 @@ const Home = () => {
                 View all
               </button>
             </div>
-            <p className="font-medium text-base text-ash2 pb-3">Today</p>
-            <div className="flex justify-between rounded-xl shadow-2xl px-10 py-7">
+            <p className="font-medium text-base text-ash2 pb-4">Today</p>
+            <div className="flex justify-between rounded-xl shadow-2xl px-8 py-7">
               <div className="flex items-center space-x-4">
                 <div>
                   <Image
@@ -75,11 +76,11 @@ const Home = () => {
               </div>
             </div>
 
-            <div className="flex justify-between px-10 py-7 pt-14">
+            <div className="flex justify-between px-8 py-7 pt-14">
               <div className="flex items-center space-x-4">
                 <div>
                   <Image
-                    src="/images/doctor11.svg"
+                    src="/images/doctor12.svg"
                     alt="doctor11"
                     className="w-auto h-auto"
                     width={90}
@@ -87,7 +88,7 @@ const Home = () => {
                   />
                 </div>
                 <div className="space-y-1">
-                  <p className="font-medium text-xl">Dr Ubong Akpan</p>
+                  <p className="font-medium text-xl">Dr Ibe Micheal</p>
                   <p className="text-ash2 text-sm">12:23pm</p>
                   <p className="text-xs text-ash2">
                     Specialist clinic, Port Harcourt
@@ -102,10 +103,10 @@ const Home = () => {
             </div>
           </div>
           {/* SECOND DIV */}
-          <div className="w-1/2  bg-custom9 rounded-2xl px-12 py-6">
+          <div className="w-1/2  bg-custom9 rounded-2xl px-11 py-6">
             <div className="flex justify-between pb-7  text-custom1">
               <p className="text-xl">Dosages</p>
-              <button className="text-sm font-medium">View all</button>
+              <button className="text-sm font-base">View all</button>
             </div>
             <p className="font-medium text-base pb-4 text-custom1">Today</p>
             <div className="space-y-4">
@@ -119,7 +120,7 @@ const Home = () => {
                     height={76}
                   />
                   <div className="space-y-1">
-                    <p className="text-custom1 text-2xl">{content}</p>
+                    <p className="text-custom1 text-xl">{content}</p>
                     <div className="flex space-x-3 text-ash5 text-sm font-medium">
                       <p>2 pills daily</p>
                       <p>Oct 6, 2022</p>
@@ -130,8 +131,66 @@ const Home = () => {
             </div>
           </div>
         </div>
+
+        <div className="flex space-x-10">
+          <div>
+            <p className="text-lg font-medium pb-6">Your activties</p>
+            <div className="flex text-ash2 text-sm justify-between pb-5">
+              <p>Appointments</p>
+              <select>
+                <option>Default</option>
+              </select>
+            </div>
+            <Image
+              src="/images/line-chart.svg"
+              alt="appointment-line-chart"
+              className="w-auto h-auto"
+              width={762}
+              height={268}
+            />
+          </div>
+          <div className="bg-custom14 flex-1 rounded-lg px-10">
+  <div className="flex flex-col items-center justify-center space-y-3 h-full">
+    <p className="text-custom1 text-lg">You have</p>
+    <div className="rounded-full bg-custom1 flex items-center justify-center">
+      <CircularProgress value={65} />
+    </div>
+    <div className="text-center text-sm text-custom1 px-10">Appointments
+left for this month</div>
+  </div>
+</div>
+
+        </div>
       </div>
-      <div className="bg-custom w-96 ml-6 border">Hello</div>
+
+      <div className="border flex flex-col items-center"> 
+      <div className="relative border ">
+        <Image
+              src="/images/profile.svg"
+              alt="profile-picture"
+              className="w-auto h-auto"
+              width={222}
+              height={222}
+            />
+           <div className="absolute bottom-6 right-4"><Image
+              src="/images/icon/online.svg"
+              alt="profile-picture"
+              className="w-auto h-auto"
+              width={28}
+              height={29}
+            /></div> 
+            
+            </div>
+            <p className="mt-5">Kelvin Wills</p>
+            <p className="text-custom-g text-sm mb-8">Online</p>
+            <button className="bg-custom px-7 flex items-center rounded-full py-2.5 space-x-2"><Image
+              src="/images/icon/edit.svg"
+              alt="profile-picture"
+              className="w-auto h-auto"
+              width={9.23}
+              height={9.23}
+            /><p className="text-custom1">Edit Profile</p></button>
+            </div>
     </div>
   );
 };

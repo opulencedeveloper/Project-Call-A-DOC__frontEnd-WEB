@@ -2,7 +2,7 @@ import DashBoardNavigation from "./dashboard-navigation";
 
 const DashBoardLayout = (props) => {
   return (
-    <div className="flex h-screen py-12 border">
+    <div className="flex h-screen py-12 mb-12">
       <DashBoardNavigation/>
       <main className="flex-1">{props.children}</main>
     </div>

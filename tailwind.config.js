@@ -75,7 +75,9 @@ module.exports = {
       "custom10": "#3EBD93",
       "custom11": "#EF4E4E",
       "custom12": "#000000",
-      "custom13": "#C599FF"
+      "custom13": "#C599FF",
+      "custom14": "#9E77D1",
+      "custom-g": "#199473"
       
     },
   },
