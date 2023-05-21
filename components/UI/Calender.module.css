@@ -1,0 +1,9 @@
+/* Calendar.module.css */
+
+.react-calendar__month-view__weekdays {
+    /* Add your desired styles */
+    background-color: #f2f2f2;
+    font-weight: bold;
+    color: red;
+  }
+  

@@ -1,5 +1,6 @@
 import Image from "next/image";
 import CircularProgress from "../UI/CircularProgress";
+import MyCalendar from "../UI/Calender";
 
 const currentDate = new Date();
 
@@ -190,6 +191,7 @@ left for this month</div>
               width={9.23}
               height={9.23}
             /><p className="text-custom1">Edit Profile</p></button>
+            <MyCalendar />
             </div>
     </div>
   );
