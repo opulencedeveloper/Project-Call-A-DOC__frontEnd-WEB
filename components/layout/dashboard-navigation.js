@@ -41,7 +41,7 @@ const pageContent = [
 
 const DashBoardNavigation = () => {
   return (
-    <div className="flex flex-col h-full justify-between items-start w-52">
+    <div className="flex flex-col h-full justify-between items-start w-52 hidden 2xl:flex">
       <div className="space-y-14 w-full">
         <div className="flex justify-center">
           <Image

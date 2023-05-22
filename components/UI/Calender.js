@@ -1,199 +1,320 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
+import classNames from "classnames";
+import Image from "next/image";
 
-function Calendar() {
-  const [date, setDate] = useState(new Date());
-  const [showYearPicker, setShowYearPicker] = useState(false);
+const Calendar = () => {
+  const [currentMonth, setCurrentMonth] = useState(new Date());
   const [selectedDate, setSelectedDate] = useState(null);
 
-  const handlePrevMonth = () => {
-    setDate(prevDate => {
-      const prevMonth = prevDate.getMonth() - 1;
-      const newDate = new Date(prevDate.getFullYear(), prevMonth, 1);
-      return newDate;
-    });
-  };
+  const appointmentTime = [
+    "8:00 am",
+    "9:00 am",
+    "10:00 am",
+    "11:00 am",
+    "12:00 pm",
+    "1:00 pm",
+    "2:00 pm",
+  ];
 
-  const handleNextMonth = () => {
-    setDate(prevDate => {
-      const nextMonth = prevDate.getMonth() + 1;
-      const newDate = new Date(prevDate.getFullYear(), nextMonth, 1);
-      return newDate;
-    });
-  };
+  const handleDateClick = (date, index) => {
+    if (date.getMonth() < currentMonth.getMonth()) {
+      setCurrentMonth(new Date(date.getFullYear(), date.getMonth(), 1));
+    } else {
+      setSelectedDate(date);
+    }
 
-  const handlePrevYear = () => {
-    setDate(prevDate => {
-      const prevYear = prevDate.getFullYear() - 1;
-      const newDate = new Date(prevYear, prevDate.getMonth(), 1);
-      return newDate;
-    });
-  };
-
-  const handleNextYear = () => {
-    setDate(prevDate => {
-      const nextYear = prevDate.getFullYear() + 1;
-      const newDate = new Date(nextYear, prevDate.getMonth(), 1);
-      return newDate;
-    });
-  };
-
-  const toggleYearPicker = () => {
-    setShowYearPicker(prevState => !prevState);
-  };
-
-  const handleYearChange = year => {
-    setDate(prevDate => {
-      const newDate = new Date(year, prevDate.getMonth(), 1);
-      return newDate;
-    });
-    setShowYearPicker(false);
-  };
-
-  const handleDateClick = clickedDate => {
-    setSelectedDate(clickedDate);
-  };
-
-  const renderCalendarHeader = () => {
-    const options = { month: 'long', year: 'numeric' };
+    const options = {
+      weekday: "long",
+      year: "numeric",
+      month: "long",
+      day: "numeric",
+    };
     const formattedDate = date.toLocaleDateString(undefined, options);
 
-    return (
-      <div className="calendar-header">
-        <button onClick={handlePrevMonth}>&lt;</button>
-        <h2>
-          <span className="header-month">{formattedDate}</span>
-          <button onClick={toggleYearPicker} className="header-year">
-            {date.getFullYear()}
-          </button>
-        </h2>
-        <button onClick={handleNextMonth}>&gt;</button>
-      </div>
+    console.log(`Selected Date: ${formattedDate}`);
+  };
+
+  const handleMonthChange = (event) => {
+    const selectedMonth = parseInt(event.target.value);
+    setCurrentMonth(
+      new Date(
+        currentMonth.getFullYear(),
+        selectedMonth,
+        currentMonth.getDate()
+      )
     );
   };
 
+  const handleYearChange = (event) => {
+    const selectedYear = parseInt(event.target.value);
+    setCurrentMonth(
+      new Date(selectedYear, currentMonth.getMonth(), currentMonth.getDate())
+    );
+  };
+
+  const renderHeader = () => {
+    const monthOptions = [
+      "January",
+      "February",
+      "March",
+      "April",
+      "May",
+      "June",
+      "July",
+      "August",
+      "September",
+      "October",
+      "November",
+      "December",
+    ];
+
+    const month = monthOptions[currentMonth.getMonth()];
+    const year = currentMonth.getFullYear();
+
+    return (
+      <div className="flex justify-between items-center mb-4">
+        <div className="text-2xl font-normal">
+          {month} {year}
+        </div>
+        <div>
+          <button
+            className="font-bold py-2 px-4 rounded"
+            onClick={() =>
+              setCurrentMonth(
+                new Date(
+                  currentMonth.getFullYear(),
+                  currentMonth.getMonth() - 1
+                )
+              )
+            }
+          >
+            <Image
+              src="/images/icon/angle-left-gray.svg"
+              alt="angle-right-gray-icon"
+              className="w-auto h-auto"
+              width={9}
+              height={16.5}
+            />
+          </button>
+          <button
+            className="font-bold py-2 px-4 rounded"
+            onClick={() =>
+              setCurrentMonth(
+                new Date(
+                  currentMonth.getFullYear(),
+                  currentMonth.getMonth() + 1
+                )
+              )
+            }
+          >
+            <Image
+              src="/images/icon/angle-right-gray.svg"
+              alt="angle-right-right-icon"
+              className="w-auto h-auto"
+              width={9}
+              height={16.5}
+            />
+          </button>{" "}
+        </div>
+      </div>
+    );
+  };
 
   const renderYearPicker = () => {
-    const startYear = date.getFullYear() - 10;
-    const endYear = date.getFullYear() + 10;
-  
-    const years = Array.from({ length: endYear - startYear + 1 }, (_, index) => startYear + index);
-  
+    const startYear = 1900;
+    const endYear = new Date().getFullYear() + 10;
+    const years = [];
+
+    for (let year = startYear; year <= endYear; year++) {
+      years.push(
+        <option key={year} value={year}>
+          {year}
+        </option>
+      );
+    }
+
     return (
-      <div className="year-picker">
-        <button className="year-picker-nav" onClick={handlePrevYear}>
-          &lt;
-        </button>
-        {years.map((year) => (
-          <button
-            key={year}
-            className={`${
-              year === date.getFullYear() ? 'selected bg-custom' : ''
-            }`}
-            onClick={() => handleYearChange(year)}
-          >
-            {year}
-          </button>
-        ))}
-        <button className="year-picker-nav" onClick={handleNextYear}>
-          &gt;
-        </button>
-      </div>
+      <select
+        className="py-2 rounded cursor-pointer"
+        value={currentMonth.getFullYear()}
+        onChange={handleYearChange}
+      >
+        {years}
+      </select>
     );
   };
-  
-//   const renderYearPicker = () => {
-//     const startYear = date.getFullYear() - 10;
-//     const endYear = date.getFullYear() + 10;
-  
-//     const years = Array.from({ length: endYear - startYear + 1 }, (_, index) => startYear + index);
-  
-//     return (
-//       <div className="year-picker">
-//         {years.map((year) => (
-//           <button
-//             key={year}
-//             className={`${
-//               year === date.getFullYear() ? 'selected bg-custom' : ''
-//             }`}
-//             onClick={() => handleYearChange(year)}
-//           >
-//             {year}
-//           </button>
-//         ))}
-//       </div>
-//     );
-//   };
-  
 
   const renderMonthPicker = () => {
-    const months = Array.from({ length: 12 }, (_, index) => {
-      const monthDate = new Date(date.getFullYear(), index, 1);
-      const options = { month: 'long' };
-      return monthDate.toLocaleDateString(undefined, options);
-    });
-  
+    const monthOptions = [
+      "Jan",
+      "Feb",
+      "Mar",
+      "Apr",
+      "May",
+      "Jun",
+      "Jul",
+      "Aug",
+      "Sep",
+      "Oct",
+      "Nov",
+      "Dec",
+    ];
+
     return (
-      <div className="month-picker">
-        {months.map((month, index) => (
-          <button
-            key={index}
-            className={`${
-              index === date.getMonth() ? 'selected bg-custom' : ''
-            }`}
-            onClick={() => handleMonthChange(index)}
-          >
+      <select
+        className="py-2 rounded cursor-pointer"
+        value={currentMonth.getMonth()}
+        onChange={handleMonthChange}
+        style={{ width: 60 }}
+      >
+        {monthOptions.map((month, index) => (
+          <option key={index} value={index}>
             {month}
-          </button>
+          </option>
+        ))}
+      </select>
+    );
+  };
+
+  const Weekdays = () => {
+    const weekdays = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+
+    return (
+      <div className="grid grid-cols-7 gap-2">
+        {weekdays.map((weekday) => (
+          <div key={weekday} className="text-center font-medium  w-9">
+            {weekday}
+          </div>
         ))}
       </div>
     );
   };
-  
 
-  const handleMonthChange = month => {
-    setDate(prevDate => {
-      const newDate = new Date(prevDate.getFullYear(), month, 1);
-      return newDate;
-    });
-  };
+  const renderDays = () => {
+    const firstDayOfMonth = new Date(
+      currentMonth.getFullYear(),
+      currentMonth.getMonth(),
+      1
+    );
+    const numDaysInMonth = new Date(
+      currentMonth.getFullYear(),
+      currentMonth.getMonth() + 1,
+      0
+    ).getDate();
+    const days = [];
 
-  const renderCalendarDates = () => {
-    const daysInMonth = new Date(date.getFullYear(), date.getMonth() + 1, 0).getDate();
-    const firstDayIndex = new Date(date.getFullYear(), date.getMonth(), 1).getDay();
-    const days = Array.from({ length: daysInMonth }, (_, index) => index + 1);
+    for (let i = 0; i < firstDayOfMonth.getDay(); i++) {
+      const previousMonth = new Date(
+        currentMonth.getFullYear(),
+        currentMonth.getMonth(),
+        0
+      );
+      const day = previousMonth.getDate() - firstDayOfMonth.getDay() + i + 1;
+      const date = new Date(
+        previousMonth.getFullYear(),
+        previousMonth.getMonth(),
+        day
+      );
+      const isToday = date.toDateString() === new Date().toDateString();
 
-    const emptyDays = Array.from({ length: firstDayIndex }, (_, index) => (
-      <div key={`empty-${index}`} className="calendar-date empty"></div>
-    ));
+      const dayClass = classNames(
+        "text-center rounded-full py-2 cursor-pointer",
+        {
+          "text-ash text-sm te w-9": !isToday,
+          "text-black": isToday,
+        }
+      );
 
-    const calendarDays = days.map(day => {
-      const currentDate = new Date(date.getFullYear(), date.getMonth(), day);
-
-      let classNames = 'calendar-date';
-      if (currentDate.toDateString() === new Date().toDateString()) {
-        classNames += ' today bg-custom';
-      }
-      if (currentDate.toDateString() === (selectedDate && selectedDate.toDateString())) {
-        classNames += ' selected bg-custom11';
-      }
-
-      return (
-        <div key={`day-${day}`} className={classNames} onClick={() => handleDateClick(currentDate)}>
+      days.push(
+        <div
+          key={`empty-${i}`}
+          className={dayClass}
+          onClick={() => handleDateClick(date, i)}
+        >
           {day}
         </div>
       );
-    });
+    }
 
-    return [...emptyDays, ...calendarDays];
+    for (let day = 1; day <= numDaysInMonth; day++) {
+      const date = new Date(
+        currentMonth.getFullYear(),
+        currentMonth.getMonth(),
+        day
+      );
+      const isToday = date.toDateString() === new Date().toDateString();
+      const isSelected =
+        selectedDate && date.toDateString() === selectedDate.toDateString();
+
+      const dayClass = classNames(
+        "text-center rounded-full py-2 cursor-pointer w-9 text-sm",
+        {
+          "text-gray-700": !isSelected && !isToday,
+          "bg-custom text-custom1": isSelected && !isToday,
+          "text-white bg-green-500": isSelected && isToday,
+          "bg-custom-r text-custom1": isToday,
+          "text-red-500": isSelected && !isToday,
+        }
+      );
+
+      days.push(
+        <div
+          key={day}
+          className={dayClass}
+          onClick={() => handleDateClick(date, day - 1)}
+        >
+          {day}
+        </div>
+      );
+    }
+
+    return <div className="grid grid-cols-7 gap-1">{days}</div>;
   };
 
   return (
-    <div className="calendar">
-      {renderCalendarHeader()}
-      {showYearPicker ? renderYearPicker() : renderMonthPicker()}
-      {renderCalendarDates()}
-    </div>
+    <>
+      <div className="border border-ash3 rounded-tr-lg rounded-tl-lg p-8">
+        {renderHeader()}
+        <div className="flex justify-between mb-4">
+          <div>
+            <span className="font-semibold">Year:</span>
+            {renderYearPicker()}
+          </div>
+          <div>
+            <span className="font-semibold">Month:</span>
+            {renderMonthPicker()}
+          </div>
+        </div>
+        <Weekdays />
+        {renderDays()}
+      </div>
+
+      <div className="border border-ash3 rounded-bl-lg rounded-br-lg p-5">
+        <p className="mb-4">Today</p>
+        <div className="flex">
+          <div className="space-y-6 mr-3">
+            {appointmentTime.map((time, index) => {
+              let color = index === 3 ? "custom-r" : "ash";
+              return <p className={`font-semibold text-${color} text-sm`} key={index}>
+                {time}
+              </p>
+            })}
+          </div>
+          <div className="text-sm">
+            <div className="bg-custom-g2 p-6 rounded-2xl mt-2">
+              Appointment with Dr Fred
+            </div>
+            <div className="bg-custom-r-shade p-6 rounded-2xl mt-14">
+              Appointment with Dr Ubong
+            </div>
+            <div className="bg-custom-g2 p-6 rounded-2xl mt-4">
+              Appointment with Dr Simi
+            </div>
+          </div>
+        </div>
+      </div>
+    </>
   );
-}
+};
 
 export default Calendar;
