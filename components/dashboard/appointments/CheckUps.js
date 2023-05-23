@@ -70,7 +70,7 @@ const Checkups = () => {
         <tbody className="mt-20 py-10">
           {checkUps.map((checkUpData, index) => {
             const oddNumber = index % 2 !== 0;
-            const color = !oddNumber ? "bg-ash3" : ""; //TODO=> refactoring with Calculus
+            const color = !oddNumber ? "bg-ash3" : ""; //TODO => refactoring with Calculus
             return (
               <tr key={index} className={color}>
                 <td className="flex items-center h-16 py-2 pl-5 space-x-7">
