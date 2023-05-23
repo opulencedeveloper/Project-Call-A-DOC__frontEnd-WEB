@@ -11,14 +11,14 @@ const pageContent = [
   },
   {
     icon: "appointments",
-    link: "/dashboard",
+    link: "/dashboard/appointments",
     title: "Appointments",
     color: "",
     textColor: "text-ash2",
   },
   {
     icon: "folder",
-    link: "/dashboard",
+    link: "/dashboard/appointments",
     title: "My Folder",
     color: "",
     textColor: "text-ash2",
