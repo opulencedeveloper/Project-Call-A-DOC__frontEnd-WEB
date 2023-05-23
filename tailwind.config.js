@@ -62,6 +62,7 @@ module.exports = {
       "ash3": "#F5F7FA",
       "ash4": "#E4E7EB",
       "ash5": "#7B8794",
+      "ash6": "#9AA5B1",
       '49207E': '#49207E',
       '57B7FF': '#57B7FF',
       '49207E': '#49207E',
@@ -83,6 +84,7 @@ module.exports = {
       "custom-r": "#CF1124",
       "custom-r-shade": "#FFE3E3",
       "custom-r-shade1": "#F86A6A"
+      
       
       
     },

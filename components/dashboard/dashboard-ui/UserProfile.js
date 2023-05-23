@@ -3,8 +3,8 @@ import Image from "next/image";
 import MyCalendar from "./Calender";
 
 const UserProfile = () => {
-    return <div className="flex flex-col items-center mb-10 mt-5 xl:mr-5 xl:w-96 xl:mt-auto">
-    <div className="flex justify-between w-full mb-12">
+    return <div className="flex flex-col items-center mt-5 xl:mr-5 xl:w-1/4 xl:mt-auto">
+    <div className=" flex justify-between w-full mb-12">
       {" "}
       <Image
         src="/images/icon/angle-right-gray.svg"
@@ -21,11 +21,11 @@ const UserProfile = () => {
         height={2.25}
       />
     </div>
-    <div className="relative">
+    <div className="relative flex-">
       <Image
         src="/images/profile.svg"
         alt="profile-picture"
-        className="w-44 h-44"
+        className="w-auto h-auto"
         width={222}
         height={222}
       />

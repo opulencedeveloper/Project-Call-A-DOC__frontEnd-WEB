@@ -180,9 +180,9 @@ const Calendar = () => {
     const weekdays = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
 
     return (
-      <div className="grid grid-cols-7 gap-2">
+      <div className="grid grid-cols-7 gap-1">
         {weekdays.map((weekday) => (
-          <div key={weekday} className="text-center font-medium  w-9">
+          <div key={weekday} className="text-center text-sm font-medium  w-9">
             {weekday}
           </div>
         ))}
@@ -220,7 +220,7 @@ const Calendar = () => {
       const dayClass = classNames(
         "text-center rounded-full py-2 cursor-pointer",
         {
-          "text-ash text-sm te w-9": !isToday,
+          "text-ash text-sm w-9": !isToday,
           "text-black": isToday,
         }
       );
@@ -247,7 +247,7 @@ const Calendar = () => {
         selectedDate && date.toDateString() === selectedDate.toDateString();
 
       const dayClass = classNames(
-        "text-center rounded-full py-2 cursor-pointer w-9 text-sm",
+        "text-center rounded-full py-2 cursor-pointer w-9 text-sm font-medium",
         {
           "text-gray-700": !isSelected && !isToday,
           "bg-custom text-custom1": isSelected && !isToday,
@@ -289,13 +289,13 @@ const Calendar = () => {
         {renderDays()}
       </div>
 
-      <div className="border border-ash3 rounded-bl-lg rounded-br-lg p-5">
+      <div className="border border-ash3 rounded-bl-lg rounded-br-lg pl-5">
         <p className="mb-4">Today</p>
         <div className="flex">
-          <div className="space-y-6 mr-3">
+          <div className="h-84 flex flex-col justify-between w-24 mr-3">
             {appointmentTime.map((time, index) => {
-              let color = index === 3 ? "custom-r" : "ash";
-              return <p className={`font-semibold text-${color} text-sm`} key={index}>
+              let color = index === 3 ? "text-custom-r" : "text-ash";
+              return <p className={`font-semibold ${color} text-sm`} key={index}>
                 {time}
               </p>
             })}

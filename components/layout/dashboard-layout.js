@@ -2,10 +2,10 @@ import DashBoardNavigation from "./dashboard-navigation";
 
 const DashBoardLayout = (props) => {
   return (
-    <div className="flex h-screen pt-8 mb-12 mb-40">
-      <DashBoardNavigation/>
-      <main className="flex-1">{props.children}</main>
-    </div>
+    <div className="flex pt-8">
+     <div> <DashBoardNavigation /> </div>
+     <div className="flex flex-col w-full pl-5 pr-3 lg:flex-row 2xl:pl-14 2xl:pr-auto">{props.children}
+     </div> </div>
   );
 };
 

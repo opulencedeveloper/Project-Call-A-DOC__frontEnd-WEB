@@ -4,13 +4,15 @@ import Link from "next/link";
 const pageContent = [
   {
     icon: "home",
+    icon2: "home",
     link: "/dashboard",
     title: "Home",
     color: "bg-custom",
     textColor: "text-custom1",
   },
   {
-    icon: "appointments",
+    icon: "appointment-gray",
+    icon2: "appointment-gray",
     link: "/dashboard/appointments",
     title: "Appointments",
     color: "",
@@ -18,6 +20,7 @@ const pageContent = [
   },
   {
     icon: "folder",
+    icon2: "folder",
     link: "/dashboard/appointments",
     title: "My Folder",
     color: "",
@@ -25,6 +28,7 @@ const pageContent = [
   },
   {
     icon: "settings",
+    icon2: "settings",
     link: "/dashboard",
     title: "Settings",
     color: "",
@@ -32,6 +36,7 @@ const pageContent = [
   },
   {
     icon: "help",
+    icon2: "help",
     link: "/dashboard",
     title: "Help",
     color: "",

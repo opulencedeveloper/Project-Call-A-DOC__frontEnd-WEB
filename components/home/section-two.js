@@ -20,9 +20,9 @@ const contents = [
 const SectionTwo = (props) => {
   return contents.map((content) => {
     return (
-      <div className="flex flex-col lg:flex-row border-b-2 border-ash py-10 px-5 md:px-20" key={content.content1} >
+      <div className="flex flex-col lg:flex-row border-b-2 border-ash py-10 px-5 md:px-24" key={content.content1} >
 
-        <div className="">
+        <div className="lg:w-1/2">
           <Image
           src={content.image}
           alt="doctor1"
@@ -32,7 +32,7 @@ const SectionTwo = (props) => {
         /></div>
         
     
-        <div className="pt-auto space-y-10 md:pt-20 lg:pt-40">
+        <div className="pt-auto space-y-10 md:pt-20 lg:pt-40 lg:w-1/2">
                 <div className="flex items-end text-ash text-xl font-medium ">
                   <p>
                     FOR PATIENTS
@@ -45,10 +45,10 @@ const SectionTwo = (props) => {
 
 
  
-               <p className="text-3xl pr-36 md:text-5xl md:pr-80">
+               <p className="text-3xl pr-36 md:text-5xl">
                   {content.content1}
                 </p>
-                <p className="text-md pr-10 md:pr-72">{content.content2}</p>
+                <p className="text-md pr-10">{content.content2}</p>
                 <button className="flex justify-center items-center">
                   <p className="text-base text-49207E mr-2">Get Started</p>
                   <Image

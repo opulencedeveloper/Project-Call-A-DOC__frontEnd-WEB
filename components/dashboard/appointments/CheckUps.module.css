@@ -1,0 +1,5 @@
+/* TABLE */
+.table_spacing {
+    border-collapse: separate;
+    border-spacing: 0 2.5rem; /* Adjust the vertical spacing as needed */
+  }

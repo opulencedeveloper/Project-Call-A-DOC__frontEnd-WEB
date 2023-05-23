@@ -299,7 +299,7 @@ const SectionFour = (props) => {
         </div>
       </div>
 
-      <Input />
+      <div className="w-full px-auto md:px-96"><Input /></div> 
     </section>
   );
 };

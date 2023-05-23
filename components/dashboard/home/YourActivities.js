@@ -19,7 +19,7 @@ const YourActivities = () => {
         height={268}
       />
     </div>
-    <div className="bg-custom14 w-72 py-6 rounded-lg px-10 mt-10 lg:mt-auto">
+    <div className="bg-custom14 w-72 py-10 rounded-lg px-14 mt-10 lg:mt-auto">
       <div className="flex flex-col items-center justify-center space-y-3 h-full">
         <p className="text-custom1 text-xl">You have</p>
         <div className="rounded-full bg-custom1 flex items-center justify-center">
