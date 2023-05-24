@@ -3,7 +3,7 @@ import Image from "next/image";
 import MyCalendar from "./Calender";
 
 const UserProfile = () => {
-    return <div className="flex flex-col items-center mt-5 xl:mr-5 xl:w-1/4 xl:mt-auto">
+    return <div className="flex flex-col mb-5 items-center mt-5 xl:mr-5 xl:w-1/4 xl:mt-auto">
     <div className=" flex justify-between w-full mb-12">
       {" "}
       <Image

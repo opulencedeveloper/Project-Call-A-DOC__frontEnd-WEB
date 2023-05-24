@@ -53,8 +53,8 @@ const Checkups = () => {
           placeholder="Search"
         />{" "}
       </div>
-
-      <table className={`min-w-full ${table_spacing}`}>
+<div className="overflow-x-auto w-full">
+      <table className={`w-boxw2 ${table_spacing} md:w-full`}>
         <thead>
           <tr className="text-ash2">
             <th className="text-start font-normal text-sm text-ash2 pl-5">
@@ -81,12 +81,12 @@ const Checkups = () => {
                     width={48}
                     height={48}
                   />
-                  <p>{checkUpData.name}</p>
+                  <p className="text-sm">{checkUpData.name}</p>
                 </td>
-                <td>{checkUpData.date}</td>
-                <td>{checkUpData.time}</td>
-                <td>{checkUpData.status}</td>
-                <td>{checkUpData.nextCheckup}</td>
+                <td className="text-sm">{checkUpData.date}</td>
+                <td className="text-sm">{checkUpData.time}</td>
+                <td className="text-sm">{checkUpData.status}</td>
+                <td className="text-sm">{checkUpData.nextCheckup}</td>
                 <td>
                   <Image
                     src="/images/icon/three-dot-vert.svg"
@@ -100,7 +100,8 @@ const Checkups = () => {
             );
           })}
         </tbody>
-      </table>
+      </table> 
+      </div>
     </div>
   );
 };

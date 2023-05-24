@@ -273,7 +273,7 @@ const Calendar = () => {
 
   return (
     <>
-      <div className="border border-ash3 rounded-tr-lg rounded-tl-lg p-8">
+      <div className="overflow-x-auto whitespace-nowrap border border-ash3 rounded-tr-lg rounded-tl-lg p-8">
         {renderHeader()}
         <div className="flex justify-between mb-4">
           <div>
@@ -289,7 +289,7 @@ const Calendar = () => {
         {renderDays()}
       </div>
 
-      <div className="border border-ash3 rounded-bl-lg rounded-br-lg pl-5">
+      <div className="border border-ash3 rounded-bl-lg rounded-br-lg py-3 pl-5">
         <p className="mb-4">Today</p>
         <div className="flex">
           <div className="h-84 flex flex-col justify-between w-24 mr-3">
