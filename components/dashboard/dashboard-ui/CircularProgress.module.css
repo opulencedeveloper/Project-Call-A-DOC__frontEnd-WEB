@@ -4,11 +4,19 @@
   
   .progress_bar {
     fill: none;
-    stroke: #9E77D1; /* Default progress bar color */
+    /* stroke: #9E77D1; //Default progress bar color */
     stroke-width: 10px; /* Progress bar thickness */
     stroke-dasharray: 302; /* Circumference of the circle (2 * pi * radius) */
     /* stroke-linecap: round; */
     transition: stroke-dashoffset 0.3s ease;
+  }
+
+  .progress_bar_data_state {
+    stroke: #9E77D1; /* Default progress bar color */
+  }
+
+  .progress_bar_no_data_state {
+    stroke: #9AA5B1; /* Default progress bar color */
   }
   
   .track_bar {

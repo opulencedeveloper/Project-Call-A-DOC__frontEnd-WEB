@@ -1,6 +1,15 @@
 import styles from "./CircularProgress.module.css";
 
-const { circular_progress, track_bar, progress_bar } = styles;
+//class for data state => progress_bar_data_state
+//class for no data state => progress_bar_no_data_state
+
+const {
+  circular_progress,
+  track_bar,
+  progress_bar,
+  progress_bar_data_state,
+  progress_bar_no_data_state,
+} = styles;
 
 const CircularProgress = ({ value }) => {
   const normalizedValue = Math.min(Math.max(value, 1), 100); // Ensure the value stays within 1 to 100
@@ -18,7 +27,7 @@ const CircularProgress = ({ value }) => {
     >
       <circle className={track_bar} cx="0" cy="0" r="45" />
       <circle
-        className={progress_bar}
+        className={`${progress_bar} ${progress_bar_no_data_state}`}
         cx="0"
         cy="0"
         r="45"
@@ -32,7 +41,7 @@ const CircularProgress = ({ value }) => {
         dominantBaseline="middle"
         textAnchor="middle"
       >
-        10
+        {value}
       </text>
     </svg>
   );

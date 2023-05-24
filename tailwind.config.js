@@ -34,6 +34,7 @@ module.exports = {
         "boxh3": "30rem",
         "boxh4": "35rem",
         "boxh5": "50rem",
+        "boxh6": "42rem",
       },
       width: {
         "piw1": "50rem",
@@ -52,6 +53,7 @@ module.exports = {
         "boxw1": '32rem',
         "boxw2": '40rem',
         "boxw3": '40rem',
+        "boxw4": '28rem',
       }
     },
     colors: {
@@ -84,6 +86,8 @@ module.exports = {
       "custom-r": "#CF1124",
       "custom-r-shade": "#FFE3E3",
       "custom-r-shade1": "#F86A6A"
+      
+      
       
       
       

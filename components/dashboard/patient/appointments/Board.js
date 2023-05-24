@@ -2,28 +2,31 @@ import Image from "next/image";
 
 const pageContent = [
   {
-    appointmentNumber: "330",
+    appointmentNumber: "0",
     title: "Total",
     subTitle: "Appointments",
-    color: "bg-custom14",
+   // Data state color => bg-custom14
+    color: "bg-ash6",
   },
   {
-    appointmentNumber: "220",
+    appointmentNumber: "0",
     title: "Successful",
     subTitle: "Checkups",
-    color: "bg-custom-g3"
+    //Data state color => bg-custom-g3
+    color: "bg-ash6"
   },
   {
-    appointmentNumber: "100",
+    appointmentNumber: "0",
     title: "Missed",
     subTitle: "Checkups",
-    color: "bg-custom-r-shade1"
+    //Data state color => bg-custom-r-shade1
+    color: "bg-ash6"
   },
 ];
 
 const Board = () => {
   return (
-    <div className="flex flex-col w-full space-y-4 space-x-auto justify-between text-custom1 xl:flex-row xl:space-x-2 xl:space-y-0">
+    <div className="flex flex-col space-y-4 space-x-auto justify-between text-custom1 xl:flex-row xl:space-y-0">
       {pageContent.map((content, index) => (
         <div key={index} className={`${content.color} pt-8 pb-6 px-6 rounded-lg space-y-3`}>
           <div className="text-5xl font-light md:text-5xl">{content.appointmentNumber}</div>

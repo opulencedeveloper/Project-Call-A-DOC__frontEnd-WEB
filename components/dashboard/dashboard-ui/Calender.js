@@ -273,7 +273,7 @@ const Calendar = () => {
 
   return (
     <>
-      <div className="overflow-x-auto whitespace-nowrap border border-ash3 rounded-tr-lg rounded-tl-lg p-8">
+      <div className="overflow-x-auto whitespace-nowrap border border-ash3 rounded-tr-lg rounded-tl-lg p-5">
         {renderHeader()}
         <div className="flex justify-between mb-4">
           <div>
