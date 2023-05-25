@@ -5,7 +5,7 @@ const pageContent = [
   {
     icon: "home",
     icon2: "home",
-    link: "/dashboard/patient-dashboard",
+    link: "/patient-dashboard",
     title: "Home",
     color: "bg-custom",
     textColor: "text-custom1",
@@ -13,7 +13,7 @@ const pageContent = [
   {
     icon: "appointment-gray",
     icon2: "appointment-gray",
-    link: "/dashboard/patient-dashboard/appointments",
+    link: "patient-dashboard/appointments",
     title: "Appointments",
     color: "",
     textColor: "text-ash2",
@@ -21,7 +21,7 @@ const pageContent = [
   {
     icon: "folder",
     icon2: "folder",
-    link: "/dashboard/patient-dashboard/my-folder",
+    link: "patient-dashboard/my-folder",
     title: "My Folder",
     color: "",
     textColor: "text-ash2",

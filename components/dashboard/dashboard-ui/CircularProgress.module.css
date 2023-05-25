@@ -1,37 +1,41 @@
+.stroke_dasharray {
+    stroke-dasharray: 302; /* Circumference of the circle (2 * pi * radius) */
+ 
+}
+
 .circular_progress {
-    transform: rotate(-90deg);
-  }
-  
-  .progress_bar {
-    fill: none;
-    /* stroke: #9E77D1; //Default progress bar color */
-    stroke-width: 10px; /* Progress bar thickness */
-    stroke-dasharray: 302; /* Circumference of the circle (2 * pi * radius) */
-    /* stroke-linecap: round; */
-    transition: stroke-dashoffset 0.3s ease;
-  }
+  transform: rotate(-90deg);
+}
 
-  .progress_bar_data_state {
-    stroke: #9E77D1; /* Default progress bar color */
-  }
+/* .progress_bar {
+  fill: none;
+  /* stroke: #9E77D1; //Default progress bar color 
+  stroke-width: 10px;  Progress bar thickness 
+  stroke-dasharray: 302;  Circumference of the circle (2 * pi * radius) 
+  /* stroke-linecap: round; 
+  transition: stroke-dashoffset 0.3s ease;
+}
 
-  .progress_bar_no_data_state {
-    stroke: #9AA5B1; /* Default progress bar color */
-  }
-  
-  .track_bar {
-    fill: none;
-    stroke: #e0e0e0; /* Track bar color */
-    stroke-width: 10px; /* Track bar thickness */
-    stroke-dasharray: 302; /* Circumference of the circle (2 * pi * radius) */
-    stroke-linecap: round;
-  }
+.progress_bar_data_state {
+  stroke: #9E77D1;  Default progress bar color
+}
 
-  .circular_progress_container {
-    position: relative;
-    width: 140px;
-    height: 140px;
-  }
-  
-  
-  
+.progress_bar_no_data_state {
+  stroke: #9AA5B1;  Default progress bar color 
+}
+
+.track_bar {
+  fill: none;
+  stroke: #e0e0e0;  Track bar color 
+  stroke-width: 10px;  Track bar thickness 
+  stroke-dasharray: 302; Circumference of the circle (2 * pi * radius) 
+  stroke-linecap: round;
+} */
+
+.circular_progress_container {
+  position: relative;
+  width: 140px;
+  height: 140px;
+}
+
+

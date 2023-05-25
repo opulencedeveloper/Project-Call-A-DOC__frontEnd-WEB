@@ -83,13 +83,11 @@ module.exports = {
       "custom-g": "#199473",
       "custom-g2": "#E3F8FF",
       "custom-g3": "#65D6AD",
+      "custom-g4": " #47B1FF",
       "custom-r": "#CF1124",
       "custom-r-shade": "#FFE3E3",
       "custom-r-shade1": "#F86A6A"
-      
-      
-      
-      
+     
       
     },
   },

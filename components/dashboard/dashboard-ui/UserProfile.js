@@ -25,14 +25,14 @@ const UserProfile = () => {
       <Image
         src="/images/profile.svg"
         alt="profile-picture"
-        className="w-auto h-auto"
+        className="w-[222px] h-[222px]"
         width={222}
         height={222}
       />
       <div className="absolute bottom-6 right-4">
         <Image
           src="/images/icon/online.svg"
-          alt="profile-picture"
+          alt="onlin-icon"
           className="w-auto h-auto"
           width={28}
           height={29}
