@@ -15,7 +15,7 @@ const SignInAuth = () => {
 
   return (
     <section className="flex justify-center m-auto w-screen h-screen">
-        {/* <OtpInput /> */}
+        <OtpInput />
       <div className="w-full md:w-1/2 p-10 space-y-36 overflow-auto">
         <div>
           <Image

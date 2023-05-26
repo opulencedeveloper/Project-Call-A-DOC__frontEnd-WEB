@@ -1,30 +1,9 @@
 import Image from "next/image";
 
-const pageContent = [
-  {
-    appointmentNumber: "0",
-    title: "Total",
-    subTitle: "Appointments",
-   // Data state color => bg-custom14
-    color: "bg-ash6",
-  },
-  {
-    appointmentNumber: "0",
-    title: "Successful",
-    subTitle: "Checkups",
-    //Data state color => bg-custom-g3
-    color: "bg-ash6"
-  },
-  {
-    appointmentNumber: "0",
-    title: "Missed",
-    subTitle: "Checkups",
-    //Data state color => bg-custom-r-shade1
-    color: "bg-ash6"
-  },
-];
 
-const Board = () => {
+
+const Board = (props) => {
+ const {pageContent} = props;
   return (
     <div className="flex flex-col space-y-4 space-x-auto justify-between text-custom1 xl:flex-row xl:space-y-0">
       {pageContent.map((content, index) => (

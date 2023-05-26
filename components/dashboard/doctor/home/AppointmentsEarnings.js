@@ -58,14 +58,14 @@ const AppointmentsEarnings = () => {
       </div>
       {/* SECOND DIV */}
       <div className="rounded-2xl shadow-2xl flex flex-col justify-center px-9 pt-8 pb-14 ">
-        <div className="flex justify-between pb-6  text-ash2">
-          <p className="text-xl">Earnibgs</p>
+        <div className="flex justify-between pb-6 text-ash2">
+          <p className="text-xl">Earnings</p>
           <select className={`-ml-1 text-sm`}>
             <option>This month</option>
           </select>
         </div>
         <div>
-          <div className="flex">
+          <div className="flex flex-col space-y-5 justify-center items-center md:flex-row md:space-y-0">
             <div>
               <div className="h-[244.02px] w-[244.02px] flex items-center justify-center bg-custom-g4 rounded-full">
                 <div className="h-[160px] w-[160.02px] flex flex-col items-center justify-center bg-custom1 rounded-full">

@@ -2,10 +2,10 @@ import Image from "next/image";
 
 const YourActivities = () => {
   return (
-    <div className="space-y-6 border">
+    <div className="space-y-6 ">
       <div className="font-semibold text-lg">Your activities</div>
       
-      <div className="flex space-x-5">
+      <div className="flex flex-col space-y-5 space-x-0 xl:flex-row xl:space-x-5 xl:space-y-0">
         <div>
           <div className="flex justify-between mb-4">
             <div>Appointments</div>

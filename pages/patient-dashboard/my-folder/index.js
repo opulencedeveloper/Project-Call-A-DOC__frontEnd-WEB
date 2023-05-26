@@ -1,10 +1,10 @@
-import AppointmentGraph from "@/components/dashboard/patient/appointments/AppointmentGraph";
-import Board from "@/components/dashboard/patient/appointments/Board";
+import AppointmentGraph from "@/components/dashboard/dashboard-ui/AppointmentGraph";
+import Board from "@/components/dashboard/dashboard-ui/Board";
 //import Checkups from "@/components/dashboard/appointments/CheckUps";
 import Header from "@/components/dashboard/dashboard-ui/Header";
 import Table from "@/components/dashboard/dashboard-ui/Table";
 import UserProfile from "@/components/dashboard/dashboard-ui/UserProfile";
-import DashBoardLayout from "@/components/layout/DashBoardLayout";
+import DashBoardLayout from "@/components/dashboard/dashboard-layout/DashBoardLayout";
 
 
 const checkUps = [
@@ -40,7 +40,7 @@ const checkUps = [
 
  const MyFolder = () => {
   return (
-    <DashBoardLayout>
+    <DashBoardLayout type="Patient">
         <div className="flex-1 2xl:pr-16">
           <Header title={"My Folder"} />
           <Table tableData={checkUps}
@@ -52,7 +52,8 @@ const checkUps = [
           tableEmptyStateText = "No data Yet"
           />
        </div>
-        <UserProfile />
+       <UserProfile name="Kelvin Wills" profilePicture="/images/profile.svg" online={true}/>
+
     </DashBoardLayout>
   );
 }

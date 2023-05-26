@@ -1,6 +1,5 @@
 import AppointmentGraph from "@/components/dashboard/dashboard-ui/AppointmentGraph";
 import Board from "@/components/dashboard/dashboard-ui/Board";
-//import Checkups from "@/components/dashboard/appointments/CheckUps";
 import Header from "@/components/dashboard/dashboard-ui/Header";
 import Table from "@/components/dashboard/dashboard-ui/Table";
 import UserProfile from "@/components/dashboard/dashboard-ui/UserProfile";
@@ -38,42 +37,42 @@ const checkUps = [
 ];
 
 const boardContent = [
-  {
-    appointmentNumber: "0",
-    title: "Total",
-    subTitle: "Appointments",
-    // Data state color => bg-custom14
-    color: "bg-ash6",
-  },
-  {
-    appointmentNumber: "0",
-    title: "Successful",
-    subTitle: "Checkups",
-    //Data state color => bg-custom-g3
-    color: "bg-ash6",
-  },
-  {
-    appointmentNumber: "0",
-    title: "Missed",
-    subTitle: "Checkups",
-    //Data state color => bg-custom-r-shade1
-    color: "bg-ash6",
-  },
-];
+    {
+      appointmentNumber: "0",
+      title: "Total",
+      subTitle: "Appointments",
+     // Data state color => bg-custom14
+      color: "bg-ash6",
+    },
+    {
+      appointmentNumber: "0",
+      title: "Successful",
+      subTitle: "Checkups",
+      //Data state color => bg-custom-g3
+      color: "bg-ash6"
+    },
+    {
+      appointmentNumber: "0",
+      title: "Missed",
+      subTitle: "Checkups",
+      //Data state color => bg-custom-r-shade1
+      color: "bg-ash6"
+    },
+  ];
 
-const Appointments = () => {
+ const Appointments = () => {
   return (
-    <DashBoardLayout type="Patient">
-      <div className="flex-1 2xl:pr-16">
-        <Header title={"Appointments"} />
-        <Board pageContent={boardContent} />
-        <AppointmentGraph />
-        <Table tableData={checkUps} />
-      </div>
-      <UserProfile name="Kelvin Wills" profilePicture="/images/profile.svg" online={true}/>
-
+    <DashBoardLayout type="Doctor">
+        <div className="flex-1 2xl:pr-16">
+          <Header title={"Appointments"} />
+          <Board pageContent={boardContent}/>
+          <AppointmentGraph />
+          <Table tableData={checkUps}
+          />
+       </div>
+       <UserProfile name="Dr Grace Wills" profilePicture="/images/dr-grace-wills.svg"  online={false}/>
     </DashBoardLayout>
   );
-};
+}
 
 export default Appointments;
