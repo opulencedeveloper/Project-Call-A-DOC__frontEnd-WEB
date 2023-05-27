@@ -9,7 +9,7 @@ const AppointmentsEarnings = () => {
       <div className="">
         {/* //DATA STATE  */}
         <div className="flex items-center space-x-4 rounded-xl bg-custom14 px-8 py-5">
-          <div className="h-24 w-24 flex items-center justify-center text-4xl font-medium text-custom14 rounded-full bg-custom1">
+          <div className="h-20 w-20 flex items-center justify-center text-4xl font-medium text-custom14 rounded-full bg-custom1 md:h-24 md:w-24">
             15
           </div>
           <div className="space-y-1 text-custom1">

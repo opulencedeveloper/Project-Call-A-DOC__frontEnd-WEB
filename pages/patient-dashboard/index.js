@@ -1,4 +1,4 @@
-import Header from "@/components/dashboard/dashboard-ui/Header";
+import Header from "@/components/UI/Header";
 import UserProfile from "@/components/dashboard/dashboard-ui/UserProfile";
 import CheckUp from "@/components/dashboard/patient/home/CheckUp";
 import YourActivities from "@/components/dashboard/patient/home/YourActivities";

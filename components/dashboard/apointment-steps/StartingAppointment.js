@@ -1,11 +1,14 @@
 import { useEffect } from "react";
 
+import { useRouter } from 'next/router';
 import Image from "next/image";
 
 const StartingAppointment = () => {
+  const router = useRouter();
+  
   useEffect(() => {
     const timeoutId = setTimeout(() => {
-      setStep("2");
+      router.push('/chat');
     }, 2000);
 
     return () => {

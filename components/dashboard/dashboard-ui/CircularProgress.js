@@ -28,8 +28,8 @@ const CircularProgress = (props) => {
   } = props;
 
   const setLabelState = labelState;
-  console.log(labelState);
-  const value = labelValue || 20; //integer between 0 - 100
+  const value = labelValue || 0; //integer between 0 - 100
+  console.log("labelValue", value);
   const valueFontSize = fontSize || "text-3xl";
   const valueColor = textColor || ""; //in hex
   const fontStyle = textFontStyle || "font-semibold";

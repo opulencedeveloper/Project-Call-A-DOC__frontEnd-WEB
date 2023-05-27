@@ -88,6 +88,7 @@ module.exports = {
       "custom-r-shade": "#FFE3E3",
       "custom-r-shade1": "#F86A6A"
       
+      
      
       
     },

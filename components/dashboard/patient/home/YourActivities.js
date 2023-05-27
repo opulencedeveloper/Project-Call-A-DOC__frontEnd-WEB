@@ -34,7 +34,7 @@ const YourActivities = () => {
       <div className="flex flex-col items-center justify-center space-y-3 h-full">
         <p className="text-custom1 text-xl">You have</p>
         <div className="rounded-full bg-custom1 flex items-center justify-center">
-          <CircularProgress value={0} textColor="#9AA5B1" labelState = {true}
+          <CircularProgress labelValue={0} textColor="#9AA5B1" labelState = {true}
           barColor="stroke-[#9AA5B1]"/>
         </div>
         <div className="text-center text-sm text-custom1">
