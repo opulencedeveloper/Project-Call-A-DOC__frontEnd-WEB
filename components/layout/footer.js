@@ -3,6 +3,7 @@ import Image from "next/image";
 const Footer = () => {
   return (
     <div className="bg-custom9 flex flex-col space-y-8 justify-between py-10 px-5 font-montserrat text-custom1 md:px-28 md:flex-row md:space-y-auto">
+      
       <div className="flex flex-col">
         <div className="mb-7"><Image
           src="/images/logo/logo-white.svg"

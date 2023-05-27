@@ -54,7 +54,7 @@ const OtpInput = () => {
 
   return (
     <BackDrop>
-      <div className="flex flex-col items-center justify-center bg-custom1 space-y-4 p-3 rounded-2xl shadow-2xl md:p-14  md:space-y-8">
+      <div className="flex flex-col items-center justify-center bg-custom1 space-y-4 p-5 py-7 rounded-2xl shadow-2xl md:p-14 md:py-auto  md:space-y-8">
       <p className="text-xl md:text-3xl font-medium">
         An OTP was sent to your email
       </p>
@@ -111,7 +111,7 @@ const OtpInput = () => {
           className={inputStyle}
         />
       </form>
-      <div className="bg-custom11 rounded-md text-custom1 font-semibold text-sm py-3 px-10">
+      <div className="bg-custom11 rounded-md text-custom1 font-semibold text-sm py-3 px-5 md:px-10">
         <p>The code you entered is wrong, try again</p>
       </div>
       <div className="flex space-x-2 text-sm md:text-base">

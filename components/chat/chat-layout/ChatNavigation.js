@@ -65,9 +65,6 @@ const ChatNavigation = (props) => {
         <div className="flex flex-col items-center space-y-5">
           {pageContent.map((content, index) => {
             const bgColor = activeLink === content.link ? "bg-custom" : "bg-custom2";
-            const textColor = activeLink === content.link ? "text-custom1" : "text-ash2";
-            // console.log("active",act )
-            // console.log(content.link);
             return  <Link
               href={content.link}
               key={index}

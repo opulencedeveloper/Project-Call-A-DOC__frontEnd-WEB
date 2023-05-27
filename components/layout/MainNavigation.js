@@ -1,41 +1,66 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
-import Navigation from "../UI/Navigation";
+import Navigation from "../UI/Portal";
 import { useRouter } from "next/router";
+import MobileNavigation from "./MobileNavigation";
+import Portal from "../UI/Portal";
 //import imageAsset from '/public/images/your-image-asset.webp'
-let value = '';
+let navAnimationClass = '';
 
 const MainNavigation = (props) => {
-  const [toggleNav, setToggleNav] = useState(true);
+  const [isOpen, setIsOpen] = useState(false);
   const router = useRouter();
   console.log(router.pathname)
 
   const activeLink = router.pathname;
 
-  const toggleNavHandler = () => {
-    console.log('value')
-    if(toggleNav) {
-      value = 'open';
-      setToggleNav((prevExpenses) => {
+  // const toggleNavHandler = () => {
+  //   console.log('navAnimationClass')
+  //   if(toggleNav) {
+  //     navAnimationClass = 'open';
+  //     setToggleNav((prevExpenses) => {
+  //       return !prevExpenses;
+  //     });
+  //   } else {
+  //     navAnimationClass = '';
+  //     setToggleNav((prevExpenses) => {
+  //       return !prevExpenses;
+  //     });
+  //   }
+  // };
+
+  const toggleDrawer = () => {
+    if (isOpen) {
+      navAnimationClass = "";
+      setIsOpen((prevExpenses) => {
         return !prevExpenses;
       });
     } else {
-      value = '';
-      setToggleNav((prevExpenses) => {
+      navAnimationClass = "open";
+      setIsOpen((prevExpenses) => {
         return !prevExpenses;
       });
     }
+    // setIsOpen(!isOpen);
   };
 
   return (
     <nav className="mt-5 mx-5 md:mx-12 ">
+    <Portal> <div
+        className={`fixed inset-y-0 -left-64 z-50 w-64 bg-custom1 shadow-lg transform ${
+          isOpen ? "translate-x-full" : "translate-x-0"
+        } transition-transform duration-300 ease-in-out`}
+      >
+        <MobileNavigation toggleDrawer={toggleDrawer}/>
+      </div> </Portal>
       <div className="flex justify-between md:items-start ">
         <div className="flex">
           <Image
             src="/images/logo/logo.svg"
             alt="call a doctor logo"
             className="h-auto w-auto"
+            loading="eager"
             width={576}
             height={320}
           />
@@ -65,9 +90,9 @@ const MainNavigation = (props) => {
           </button>
         </div>
         <button
-          className={`${value} block hamburger mt-7 lg:hidden focus:outline-none`}
+          className={`${navAnimationClass} block hamburger mt-7 lg:hidden focus:outline-none`}
           type="button"
-          onClick={toggleNavHandler}
+          onClick={toggleDrawer}
         >
           <span className="hamburger-top"></span>
           <span className="hamburger-middle"></span>
@@ -80,7 +105,7 @@ const MainNavigation = (props) => {
         </div> */}
       </div>
       {/* <!-- Mobile Menu --> */}
-      {value && <Navigation />}
+      {navAnimationClass && <Navigation />}
     </nav>
   );
 };

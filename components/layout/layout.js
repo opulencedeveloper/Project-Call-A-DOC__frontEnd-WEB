@@ -1,5 +1,5 @@
-import MainNavigation from "./main-navigation";
-import Footer from "@/components/layout/footer";
+import MainNavigation from "./MainNavigation";
+import Footer from "./footer";
 
 const Layout = (props) => {
   return (

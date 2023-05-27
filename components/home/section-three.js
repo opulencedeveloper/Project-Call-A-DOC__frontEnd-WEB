@@ -44,6 +44,7 @@ const SectionThree = (props) => {
                   className="w-auto h-auto"
                   width={16}
                   height={13}
+                  loading="eager"
                 />
               </button>
             </div>
@@ -75,6 +76,7 @@ const SectionThree = (props) => {
             className="w-16px h-13px mt-0.5"
             width={16}
             height={13}
+            loading="eager"
           />
         </Link>
       </div>
