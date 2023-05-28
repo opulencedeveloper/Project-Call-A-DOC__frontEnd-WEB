@@ -6,12 +6,12 @@ import { useRouter } from "next/router";
 import MobileNavigation from "./MobileNavigation";
 import Portal from "../UI/Portal";
 //import imageAsset from '/public/images/your-image-asset.webp'
-let navAnimationClass = '';
+let navAnimationClass = "";
 
 const MainNavigation = (props) => {
   const [isOpen, setIsOpen] = useState(false);
   const router = useRouter();
-  console.log(router.pathname)
+  console.log(router.pathname);
 
   const activeLink = router.pathname;
 
@@ -47,13 +47,16 @@ const MainNavigation = (props) => {
 
   return (
     <nav className="mt-5 mx-5 md:mx-12 ">
-    <Portal> <div
-        className={`fixed inset-y-0 -left-64 z-50 w-64 bg-custom1 shadow-lg transform ${
-          isOpen ? "translate-x-full" : "translate-x-0"
-        } transition-transform duration-300 ease-in-out`}
-      >
-        <MobileNavigation toggleDrawer={toggleDrawer}/>
-      </div> </Portal>
+      <Portal>
+        {" "}
+        <div
+          className={`fixed inset-y-0 -left-64 z-50 w-64 bg-custom1 shadow-lg transform ${
+            isOpen ? "translate-x-full" : "translate-x-0"
+          } transition-transform duration-300 ease-in-out`}
+        >
+          <MobileNavigation toggleDrawer={toggleDrawer} />
+        </div>{" "}
+      </Portal>
       <div className="flex justify-between md:items-start ">
         <div className="flex">
           <Image
@@ -65,29 +68,33 @@ const MainNavigation = (props) => {
             height={320}
           />
           <div className="pt-3 hidden md:flex space-x-8 font-medium text-base md:ml-10 mr-10 xl:ml-56">
-          
-          <Link href="/" className={activeLink === '/' ? "text-custom" : ""}>
+            <Link href="/" className={activeLink === "/" ? "text-custom" : ""}>
               Home
             </Link>
-            <Link href="/about-us" className={activeLink === '/about-us' ? "text-custom" : ""}>
+            <Link
+              href="/about-us"
+              className={activeLink === "/about-us" ? "text-custom" : ""}
+            >
               About us
             </Link>
-            <Link href="#">
-              Services
-            </Link>
-            <Link href="#">
-              Pricing
-            </Link>
+            <Link href="#">Services</Link>
+            <Link href="#">Pricing</Link>
           </div>
         </div>
 
-        <div className="hidden lg:flex space-x-3 pt-3 font-medium  text-base ">
-          <button className="w-80 h-48 border border-custom rounded-full">
+        <div className="hidden lg:flex space-x-3 pt-3 font-normal  text-sm ">
+          <Link
+            href="/sign-in"
+            className="w-80 h-48 border flex items-center justify-center text-custom border-custom rounded-full"
+          >
             Login
-          </button>
-          <button className="w-162 h-48 text-custom1 bg-custom rounded-full">
+          </Link>
+          <Link
+            href="/sign-up"
+            className="w-162 h-48 flex items-center justify-center text-custom1 bg-custom rounded-full"
+          >
             Get Started
-          </button>
+          </Link>
         </div>
         <button
           className={`${navAnimationClass} block hamburger mt-7 lg:hidden focus:outline-none`}

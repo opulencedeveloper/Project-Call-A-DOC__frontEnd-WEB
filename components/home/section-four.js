@@ -55,7 +55,7 @@ const SectionFour = (props) => {
           width={880}
           height={1157}
         />
-        <p className="text-2xl font-medium text-custom1">
+        <p className="text-2xl font-medium text-custom1 mb-3 md:text-3xl">
           Pricing
         </p>
         <p className="font-montserrat text-custom1 text-center 2xl:mx-96">
@@ -64,12 +64,12 @@ const SectionFour = (props) => {
           better for you
         </p>
 
-        <div className="flex mt-20 mb-16">
-          <button className="w-80 h-8 rounded-full font-normal text-base text-custom1 bg-custom3 z-10">
-            Monthly
+        <div className="flex mt-16 mb-16">
+          <button className="px-5 py-1.5 rounded-full text-sm font-normal text-base text-custom1 bg-custom3 z-10">
+            MONTHLY
           </button>
-          <button className="w-80 h-8 flex justify-end items-center pr-5 text-custom1 rounded-full -ml-10 font-normal text-base bg-custom1 text-custom3 z-0">
-            Year
+          <button className="pl-9 pr-5 py-1.5 flex justify-end items-center pr-5 text-custom1 rounded-full -ml-7 font-normal text-base bg-custom1 text-custom3 z-0">
+            YEAR
           </button>
         </div>
 
@@ -299,7 +299,7 @@ const SectionFour = (props) => {
         </div>
       </div>
 
-      <div className="w-full px-auto md:px-96"><Input /></div> 
+      <div className="w-full my-14 px-auto md:px-96"><Input /></div> 
     </section>
   );
 };

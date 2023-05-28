@@ -24,7 +24,7 @@ const SectionTwo = (props) => {
     return (
       <div
         className={
-          ` border flex flex-col lg:flex-row border-b-2 border-ash py-10 px-5 md:px-24`
+          ` border flex flex-col lg:flex-row border-b-2 border-ash border py-10 px-5 md:px-40`
         }
         key={content.content1}
       >
@@ -42,12 +42,12 @@ const SectionTwo = (props) => {
         <div className="pt-auto space-y-10 md:pt-20 lg:pt-40 lg:w-1/2">
           <div className="flex items-end text-ash text-xl font-medium ">
             <p>FOR PATIENTS</p>
-            <div className="w-80 h-0.5 mx-4 mb-3 bg-ash" />
+            <div className="w-80 h-0.5 mx-4 mb-3 bg-ash"/>
             <p>{content.content3}</p>
           </div>
 
-          <p className="text-3xl pr-36 md:text-5xl">{content.content1}</p>
-          <p className="text-md pr-10">{content.content2}</p>
+          <p className="text-3xl pr-auto md:pr-36 md:text-5xl">{content.content1}</p>
+          <p className="text-md pr-auto md:pr-10">{content.content2}</p>
           <button className="flex justify-center items-center">
             <p className="text-base text-49207E mr-2">Get Started</p>
             <Image

@@ -96,7 +96,7 @@ console.log("email message", message);
     emailHasError || (emailValue === "" && emailSubmit) ? "block" : "hidden";
 
   return (
-    <div className="flex flex-col md:px-0 lg:px-20 justify-center 2xl:px-40">
+    <div className="flex flex-col md:px-0 xl:px-20 justify-center 2xl:px-40">
       <p className="font-medium text-3xl pb-8">Sign up</p>
       {(error || otpError) && (
         <div className="bg-custom11 rounded-md text-custom1 font-semibold text-sm py-3 px-10">

@@ -14,9 +14,10 @@ const SignInAuth = () => {
   };
 
   return (
-    <section className="flex justify-center m-auto w-screen h-screen">
-        <OtpInput />
-      <div className="w-full md:w-1/2 p-10 space-y-36 overflow-auto">
+    <section className="flex justify-center h-screen">
+      {/* <OtpInput /> */}
+      {/* SECTION-1 */}
+      <div className="w-full p-10 space-y-20 md:w-1/2">
         <div>
           <Image
             src="/images/logo/logo2.svg"
@@ -26,9 +27,9 @@ const SignInAuth = () => {
             height={61}
           />
         </div>
-        <div className="flex flex-col md:px-0 lg:px-20 justify-center 2xl:px-40">
-          <p className="pb-2">Pick up from where you left</p>
-          <p className="font-medium text-3xl pb-10">Welcome back</p>
+        <div className="flex flex-col md:px-0 xl:px-20 justify-center 2xl:px-40">
+          <p className="pb-2 text-lg">Pick up from where you left off</p>
+          <p className="font-medium text-4xl mb-14">Welcome back</p>
           <form className="flex flex-col pb-3">
             <label htmlFor="email">Email</label>
             <input
@@ -39,12 +40,11 @@ const SignInAuth = () => {
             <div className=" flex justify-between px-2 border-b border-ash pb-10 mb-10 text-xs md:text-sm">
               <div className="flex items-center space-x-3">
                 <input
-                  className="form-checkbox text-gray-600 h-4"
                   type="checkbox"
                   checked={isChecked}
                   onChange={checkHandler}
                 />
-                <p className="">Remember me?</p>
+                <p className="mt-0.5">Remember me?</p>
               </div>
               <button className="text-custom">Forgot password?</button>
             </div>
@@ -75,26 +75,16 @@ const SignInAuth = () => {
             </Link>
           </div>
         </div>
-
-
-
-
-
-
       </div>
 
-      <div className="w-1/2 bg-custom hidden md:block">
-       pp
-      
-        {/* <Image
-            src="./images/drugs.svg"
-            alt="drugs"
-            fill
-    className="object-cover"
-    style={{ objectFit: 'cover' }}
-            // width={960}
-            // height={1080}
-          /> */}
+      <div className="w-1/2 h-full bg-custom hidden md:flex">
+        <Image
+          src="/images/login-image.svg"
+          alt="drugs"
+          className="w-auto h-auto"
+          width={960}
+          height={1080}
+        />
       </div>
     </section>
   );

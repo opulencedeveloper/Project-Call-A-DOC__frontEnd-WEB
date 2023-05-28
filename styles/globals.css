@@ -79,11 +79,11 @@ input[type="date"]::-webkit-calendar-picker-indicator {
   margin-left: 0.5rem;
 }
 
-input[type=checkbox] {
+/* input[type=checkbox] {
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
-}
+} */
 
 
   .dropdown-button {

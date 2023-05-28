@@ -22,7 +22,7 @@ const SignUpJourney = () => {
   <div className="mb-12 w-48">
     <Image
       src={`/images/icon/step-${step}.svg`}
-      alt="step-1"
+      alt="steps-image"
       className="w-auto h-auto"
       width={64}
       height={61}

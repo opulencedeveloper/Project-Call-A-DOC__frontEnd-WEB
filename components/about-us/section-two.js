@@ -3,7 +3,7 @@ import Image from "next/image";
 const SectionTwo = () => {
   return (
     <section>
-      <div className="space-y-5 mt-10 2xl:mt-0">
+      <div className="space-y-5 mt-10 2xl:mt-auto">
       <p className="text-ash2 text-2xl">
           Who are we?
         </p>
@@ -22,6 +22,7 @@ const SectionTwo = () => {
               src="/images/doctor6.svg"
               alt="doctor6 image"
               className="h-auto w-auto mt-24 "
+              loading="eager"
               width={388}
               height={388}
             /></div> 
@@ -35,6 +36,7 @@ const SectionTwo = () => {
             src="/images/doctor8.svg"
             alt="get medical attention image"
             className="h-auto w-auto"
+            loading="eager"
             width={388}
             height={388}
           /> </div>
@@ -50,6 +52,7 @@ const SectionTwo = () => {
             className="h-auto w-auto"
             width={388}
             height={388}
+            loading="eager"
           /> </div>
           <div className="w-full space-y-1 text-center pl-10 -mt-2 md:pl-20 xl:-mt-12">
           <p className="font-bold">Director</p>
@@ -65,6 +68,7 @@ const SectionTwo = () => {
             src="/images/doctor7.svg"
             alt="get medical attention image"
             className="h-auto w-auto"
+            loading="eager"
             width={314}
             height={314}
           /></div>
@@ -77,6 +81,7 @@ const SectionTwo = () => {
             src="/images/doctor9.svg"
             alt="get medical attention image"
             className="h-auto w-auto"
+            loading="eager"
             width={388}
             height={388}
           />

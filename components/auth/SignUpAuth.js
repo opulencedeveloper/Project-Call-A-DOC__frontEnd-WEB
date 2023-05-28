@@ -16,9 +16,9 @@ const SignUpAuth = () => {
   };
 
   return (
-    <section className="flex justify-center m-auto w-screen h-screen">
+    <section className="flex justify-center h-screen">
       {/* SECTION-1 */}
-      <div className="w-full md:w-1/2 p-10 space-y-20 overflow-auto">
+      <div className="w-full p-10 space-y-20 md:w-1/2">
         <div>
           <Image
             src="/images/logo/logo2.svg"
@@ -33,16 +33,14 @@ const SignUpAuth = () => {
       </div>
 
       {/* SECTION-2 */}
-      <div className="w-1/2 bg-custom hidden md:block">
-        {/* <Image
-            src="./images/drugs.svg"
+      <div className="w-1/2 h-full px-10 hidden md:flex">
+      <Image
+            src="/images/sign-up-doctor.svg"
             alt="drugs"
-            fill
-    className="object-cover"
-    style={{ objectFit: 'cover' }}
-            // width={960}
-            // height={1080}
-          /> */}
+            className="w-auto h-auto"
+            width={960}
+            height={1080}
+          />
       </div>
     </section>
   );

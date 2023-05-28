@@ -8,7 +8,7 @@ const Footer = () => {
         <div className="mb-7"><Image
           src="/images/logo/logo-white.svg"
           alt="call a doctor logo white"
-          className="h-75.51 w-148"
+          className="h-auto w-auto"
           width={148}
           height={75.51}
         /></div>
