@@ -3,19 +3,78 @@ import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 
+
+
 import OtpInput from "../UI/OtpInput";
+import userInputValidator from "@/hooks/user-input-validator";
+import useHttp from "@/hooks/use-http";
+
+const validateEmail = (email) => {
+  var re = /\S+@\S+\.\S+/;
+  return re.test(email);
+};
 
 const SignInAuth = () => {
   const [isChecked, setIsChecked] = useState();
+  const [emailSubmit, setEmailSubmit] = useState(false);
+  const [showOTPInput, setShowOTPInput] = useState(false);
+  
+
+  let emailButtonText = "Sign In";
+  let emailButtonDisable = false;
+
+  const {
+    emailValue,
+    emailIsValid,
+    emailHasError,
+    valueChangeHandler: emailChangeHandler,
+    inputBlurHandler: emailBlurHandler,
+  } = userInputValidator(validateEmail);
+
+  const { isLoading, error, sendRequest: OTPrequest } = useHttp();
+  
+  if (isLoading) {
+    emailButtonText = "Please Wait...";
+    emailButtonDisable = true;
+  }
 
   const checkHandler = (event) => {
     setIsChecked(event.target.checked);
     console.log(isChecked);
   };
 
+  const myResponse = (res) => {
+    console.log("email response", res);
+    const { status, message } = res;
+    if (status === "success") {
+      if(message === "OTP is successfully sent to you") {
+        
+        setShowOTPInput(true);
+      }
+    }
+    
+  };
+
+  const verifyEmailHandler = () => {
+    if (!emailIsValid) {
+      setEmailSubmit(!emailIsValid);
+      return;
+    }
+    OTPrequest(
+      {
+        url: "auth/emailotp",
+        method: "POST",
+        body: { email: emailValue },
+      },
+      myResponse
+    );
+  };
+
+  const emailClasses =
+    emailHasError || (emailValue === "" && emailSubmit) ? "block" : "hidden";
   return (
     <section className="flex justify-center h-screen">
-      {/* <OtpInput /> */}
+      {showOTPInput && <OtpInput /> }
       {/* SECTION-1 */}
       <div className="w-full p-10 space-y-20 md:w-1/2">
         <div>
@@ -30,13 +89,25 @@ const SignInAuth = () => {
         <div className="flex flex-col md:px-0 xl:px-20 justify-center 2xl:px-40">
           <p className="pb-2 text-lg">Pick up from where you left off</p>
           <p className="font-medium text-4xl mb-14">Welcome back</p>
+          {(error ) && (
+        <div className="bg-custom11 rounded-md text-custom1 font-semibold text-sm py-3 px-10">
+          <p className="text-center">{error}</p>
+        </div>
+      )}
           <form className="flex flex-col pb-3">
             <label htmlFor="email">Email</label>
             <input
               type="email"
+              id="email"
               placeholder="Email"
               className="border border-ash rounded-lg p-3 my-2 "
+              value={emailValue}
+              onBlur={emailBlurHandler}
+              onChange={emailChangeHandler}
             />
+            <p className={`${emailClasses} -mt-2 mb-2 text-sm text-custom11`}>
+          Invalid Email
+        </p>
             <div className=" flex justify-between px-2 border-b border-ash pb-10 mb-10 text-xs md:text-sm">
               <div className="flex items-center space-x-3">
                 <input
@@ -49,18 +120,20 @@ const SignInAuth = () => {
               <button className="text-custom">Forgot password?</button>
             </div>
             <button
-              type="submit"
+              type="button"
+              disabled={emailButtonDisable}
+              onClick={verifyEmailHandler}
               className="bg-custom font-medium text-custom1 py-3.5 rounded-lg mb-5 "
             >
-              Sign In
+             {emailButtonText}
             </button>
             <button
               type="submit"
               className="border py-3.5 rounded-lg flex justify-center items-center space-x-3"
             >
               <Image
-                src="./images/icon/google-logo.svg"
-                alt="google-logo"
+                src="/images/icon/google-icon.svg"
+                alt="google-icon"
                 className="w-6 h-6"
                 height={48}
                 width={48}

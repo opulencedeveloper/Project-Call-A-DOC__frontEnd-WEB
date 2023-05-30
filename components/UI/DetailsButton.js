@@ -1,9 +1,10 @@
 import Image from "next/image";
 
 const DetailsButton = (props) => {
- const {text, onClickNextHandler, onClickPrevHandler, thisButtonType} = props;
+ const {text, onClickNextHandler, onClickPrevHandler, thisButtonType, buttonActive} = props;
    const buttonText = text || 'Next';
    const buttonType = thisButtonType || "button";
+   const buttonDisable = buttonActive || false;
   const onClickNextButtonHandler = () => {
     onClickNextHandler();
   }
@@ -16,6 +17,7 @@ const DetailsButton = (props) => {
     <button
     onClick={onClickPrevButtonHandler} 
     type="button"
+    disabled={buttonDisable}
     className="flex items-center text-custom space-x-2 border border-custom rounded-md px-6 py-2">
       <Image
         src="/images/icon/angle-left-blue.svg"
@@ -29,6 +31,7 @@ const DetailsButton = (props) => {
     <button
     onClick={buttonType === "submit" ? null : onClickNextButtonHandler}
     type={buttonType}
+    disabled={buttonDisable}
      className={`flex items-center text-custom1 bg-custom space-x-2 rounded-md px-6 py-2`}>
     <p>{buttonText}</p>
       <Image

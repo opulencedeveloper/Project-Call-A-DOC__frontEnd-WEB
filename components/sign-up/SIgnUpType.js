@@ -2,7 +2,7 @@ import { useState } from "react";
 import Image from "next/image";
 import { useDispatch, useSelector } from "react-redux";
 
-import { signupActions } from "../store/signup-slice";
+import { signupActions } from "../../store/redux-store/signup-slice";
 
 const SignUpType = (props) => {
   const userSelection = useSelector((state) => state.signUp);

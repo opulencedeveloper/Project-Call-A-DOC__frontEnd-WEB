@@ -9,7 +9,7 @@ const chartData = [{
 },]
 
 const YourActivities = () => {
-    return <div className="flex flex-col justify-between space-x-auto lg:space-x-8 lg:flex-row">
+    return <div className="flex flex-col items-center justify-between space-x-auto lg:space-x-8 lg:flex-row">
     <div className="w-full ">
       <p className="text-xl font-medium pb-6">Your activties</p>
       <div className="flex text-ash2 text-sm justify-between pb-5">

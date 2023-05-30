@@ -1,4 +1,4 @@
-import Header from "@/components/UI/Header";
+import Header from "@/components/dashboard/dashboard-ui/Header";
 import UserProfile from "@/components/dashboard/dashboard-ui/UserProfile";
 import ChatLayout from "@/components/chat/chat-layout/ChatLayout";
 import MyChat from "@/components/chat/chat/MyChat";

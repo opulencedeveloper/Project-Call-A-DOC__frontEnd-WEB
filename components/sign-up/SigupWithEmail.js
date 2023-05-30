@@ -35,8 +35,8 @@ const SignUpWithEmail = (props) => {
   const { isLoading, error, sendRequest: validation } = useHttp();
 
   if (isLoading) {
-    emailVerifybuttonText = "Please Wait";
-    createAccountbuttonText = "Please Wait";
+    emailVerifybuttonText = "Please Wait...";
+    createAccountbuttonText = "Please Wait...";
     buttonActive = true;
   }
 
@@ -73,10 +73,8 @@ console.log("email message", message);
 
   const createAccountHandler = (event) => {
     event.preventDefault();
-    console.log("OTP", otpInputRef.current.value)
     const otpValue = otpInputRef.current.value;
     if(otpValue === ""){
-      console.log("In hereeeeeeeeeeeeeeeeeeeeeeeeee")
       setOtpError("Please Input OTP");
       return;
     }

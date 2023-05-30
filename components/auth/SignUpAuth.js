@@ -2,6 +2,7 @@ import Image from "next/image";
 import { useState } from "react";
 import SignUpJourney from "../sign-up/SignUpJourney";
 import SignUpWithEmail from "../sign-up/SigupWithEmail";
+import MedicalDetails from "../sign-up/MedicalDetails.";
 
 const SignUpAuth = () => {
   const [isSubmit, setIsSubmit] = useState(false);

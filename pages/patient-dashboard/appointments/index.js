@@ -1,5 +1,5 @@
 import Board from "@/components/dashboard/dashboard-ui/Board";
-import Header from "@/components/UI/Header";
+import Header from "@/components/dashboard/dashboard-ui/Header";
 import Table from "@/components/dashboard/dashboard-ui/Table";
 import UserProfile from "@/components/dashboard/dashboard-ui/UserProfile";
 import DashBoardLayout from "@/components/dashboard/dashboard-layout/DashBoardLayout";
@@ -80,7 +80,7 @@ const Appointments = () => {
   return (
     <DashBoardLayout type="Patient">
       <div className="flex-1 2xl:pr-16">
-        <Header title={"Appointments"} />
+        <Header title={"Appointments"} type={"Patient"}/>
         <Board pageContent={boardContent} />
         <div className="mt-10 mb-3">Appoinments</div>
         <ActivityLineGraph productData={chartData}/>

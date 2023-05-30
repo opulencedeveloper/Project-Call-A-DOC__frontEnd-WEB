@@ -1,8 +1,8 @@
 import Image from "next/image";
-import DashBoardNavigation from "../dashboard/dashboard-layout/DashBoardNavigation";
+import DashBoardNavigation from "../dashboard-layout/DashBoardNavigation";
 import { useState } from "react";
-import DashBoardMobileNavigation from "../dashboard/dashboard-layout/DashBoardMobileNavigation";
-import BackDrop from "./BackDrop";
+import DashBoardMobileNavigation from "../dashboard-layout/DashBoardMobileNavigation";
+import BackDrop from "../../UI/BackDrop";
 
 const currentDate = new Date();
 
@@ -18,7 +18,7 @@ const formattedDate = currentDate.toLocaleDateString("en-US", options);
 let navAnimationClass = "";
 
 const Header = (props) => {
-  const { title } = props;
+  const { title, type } = props;
   const [open, setOpen] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
 
@@ -50,7 +50,7 @@ const Header = (props) => {
           isOpen ? "translate-x-0" : "translate-x-full"
         } transition-transform duration-300 ease-in-out`}
       >
-        <DashBoardMobileNavigation toggleDrawer={toggleDrawer}/>{" "}
+        <DashBoardMobileNavigation toggleDrawer={toggleDrawer} type={type}/>{" "}
       </div>
       <div className="flex">
         <button

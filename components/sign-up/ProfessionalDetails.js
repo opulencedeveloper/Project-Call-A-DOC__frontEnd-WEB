@@ -2,11 +2,16 @@ import Image from "next/image";
 import DetailsButton from "../UI/DetailsButton";
 import { useDispatch, useSelector } from "react-redux";
 
-import { signupActions } from "../store/signup-slice";
-
+import { signupActions } from "../../store/redux-store/signup-slice";
+import { useState } from "react";
+let AOSClasses =  "hidden";
+let NPIClasses =  "hidden";
 const ProfessionalDetails = (props) => {
   const dispatchSignUp = useDispatch();
-  const initialState = useSelector((state) => state.signUp.professionalDetails);
+  const [validAOS, setValidAOS] = useState(false);
+  const [validNPI, setValidNPI] = useState(false);
+  const data = useSelector((state) => state.signUp);
+  const initialState = data.professionalDetails;
   console.log(initialState)
   const AOS = initialState.AOS;
   const NPI = initialState.NPInumber;
@@ -21,7 +26,25 @@ const ProfessionalDetails = (props) => {
     );
     
   };
+
+  AOSClasses =  validAOS  ? "block" : "hidden";
+  NPIClasses =  validNPI  ? "block" : "hidden";
   const profNextButtonHandler = () => {
+   
+    if(data.userType === "Doctor") {
+     
+      if(AOS.length === 0) {
+       setValidAOS(true)
+        return;
+       
+      }
+      if(NPI.length === 0) {
+        setValidNPI(true)
+        return;
+      }
+    }
+    setValidNPI(true)
+    setValidNPI(false)
     props.profNextStep("5");
   };
 
@@ -34,13 +57,13 @@ const ProfessionalDetails = (props) => {
       <p className="text-lg mb-12 font-medium text-ash2">
         Professional Details(if any)
       </p>
-      <div className="flex flex-col space-x-auto mb-5 2xl:flex-row 2xl:space-x-3">
+      <div className="flex flex-col space-x-auto mb-9 2xl:flex-row 2xl:space-x-3">
         {/* Area of Specialization */}
         <div className="w-full 2xl:w-1/2">
           <label htmlFor="AOS" className="text-base font-lg">
-            Area of Specialization
+            Area of Specialization(AOS)
           </label>
-          <div className="border flex border-ash rounded-lg mb-3 mt-1">
+          <div className="border flex border-ash rounded-lg mt-1">
             <div className="p-5">
               <Image
                 src="/images/icon/email.svg"
@@ -55,17 +78,21 @@ const ProfessionalDetails = (props) => {
               id="AOS"
               value={AOS}
               onChange={changeHandler}
-              className="py-4 mr-1 w-full placeholder-ash font-light focus:outline-none"
-              placeholder="Enter your area of Specialization"
+              className="py-4 mr-1 w-full placeholder-ash placeholder-sm font-light focus:outline-none"
+              placeholder="Area of Specialization"
             />{" "}
+            
           </div>{" "}
+          <p className={`${AOSClasses} text-sm text-custom11`}>
+          Please input AOS
+        </p>
         </div>
         {/* NPI number */}
-        <div className="w-full 2xl:w-1/2">
+        <div className="w-full  mt-3 2xl:w-1/2">
           <label htmlFor="NPI" className="text-base font-medium">
             NPI number
           </label>
-          <div className="border flex border-ash rounded-lg mb-3 mt-1">
+          <div className="border flex border-ash rounded-lg mt-1">
             <div className="p-5">
               <Image
                 src="/images/icon/email.svg"
@@ -81,9 +108,12 @@ const ProfessionalDetails = (props) => {
               value={NPI}
               onChange={changeHandler}
               className="py-4 mr-1 w-full placeholder-ash font-light focus:outline-none"
-              placeholder="Enter your NPI Number"
+              placeholder="NPI Number"
             />{" "}
           </div>{" "}
+          <p className={`${NPIClasses} text-sm text-custom11`}>
+          Please input NPI number
+        </p>
         </div>
       </div>{" "}
       <DetailsButton

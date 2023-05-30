@@ -1,5 +1,5 @@
 import TogglButton from "@/components/UI/ToggleButton";
-import Header from "@/components/UI/Header";
+import Header from "@/components/dashboard/dashboard-ui/Header";
 import UserProfile from "@/components/dashboard/dashboard-ui/UserProfile";
 import DashBoardLayout from "@/components/dashboard/dashboard-layout/DashBoardLayout";
 import AppointmentsEarnings from "@/components/dashboard/doctor/home/AppointmentsEarnings";
@@ -10,7 +10,7 @@ export default function DashBoard() {
   return (
     <DashBoardLayout type="Doctor">
       <div className="flex-1 2xl:pr-16">
-        <Header title={"Welcome Dr. Grace"} />
+        <Header title={"Welcome Dr. Grace"} type={"Doctor"}/>
         <TogglButton />
        <AppointmentsEarnings/>
        <YourActivities />

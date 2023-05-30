@@ -1,6 +1,5 @@
-import { useState, useReducer } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { signupActions } from "../components/store/signup-slice";
+import { signupActions } from "../store/redux-store/signup-slice";
 
 const userInputValidator = (validateValue) => {
   const dispatchSignUp = useDispatch();
@@ -54,8 +53,10 @@ const userInputValidator = (validateValue) => {
 
   const isPasswordEqual = password === confirmPassword;
 
+  const passwordLength = password.length > 7;
+
   const valueChangeHandler = (event) => {
-    const id = event.target.id;
+    const id = event.target.id || "";
     dispatchSignUp(
       signupActions.addDetails({
         value: event.target.value,
@@ -66,7 +67,7 @@ const userInputValidator = (validateValue) => {
   };
 
   const inputBlurHandler = (event) => {
-    const id = event.target.id;
+    const id = event.target.id || "";
     dispatchSignUp(
       signupActions.addDetails({
         type: "BLUR",
@@ -106,6 +107,7 @@ const userInputValidator = (validateValue) => {
     confirmPasswordHasError,
     confirmPasswordIsValid,
     isPasswordEqual,
+    passwordLength,
     valueChangeHandler,
     inputBlurHandler,
     reset,

@@ -27,6 +27,7 @@ const signupInitialState = {
     Cancer: false,
     Arthrithiss: false,
     heartFailure: false,
+    Allergies: ""
   },
   professionalDetails: {
     AOS: "",
@@ -44,6 +45,9 @@ const signupSlice = createSlice({
   name: "signup",
   initialState: signupInitialState,
   reducers: {
+    resetState(state) {
+      return signupInitialState;
+    },
     addDetails(state, action) {
       const newItem = action.payload;
 
@@ -86,10 +90,8 @@ const signupSlice = createSlice({
 
         case "phone-no":
           if (newItem.type === "BLUR") {
-            console.log("phone-blur");
             return { ...state, phoneNumberIsTouched: true };
           }
-          console.log("phone-changed");
           return { ...state, phoneNumber: newItem.value };
 
         case "user-type":
@@ -182,6 +184,15 @@ const signupSlice = createSlice({
             medicalDetails: {
               ...state.medicalDetails,
               heartFailure: newItem.value,
+            },
+          };
+
+        case "Allergies":
+          return {
+            ...state,
+            medicalDetails: {
+              ...state.medicalDetails,
+              Allergies: newItem.value,
             },
           };
 

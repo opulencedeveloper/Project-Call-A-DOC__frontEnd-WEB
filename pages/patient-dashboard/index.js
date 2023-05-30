@@ -1,4 +1,4 @@
-import Header from "@/components/UI/Header";
+import Header from "@/components/dashboard/dashboard-ui/Header";
 import UserProfile from "@/components/dashboard/dashboard-ui/UserProfile";
 import CheckUp from "@/components/dashboard/patient/home/CheckUp";
 import YourActivities from "@/components/dashboard/patient/home/YourActivities";
@@ -8,7 +8,7 @@ export default function DashBoard() {
   return (
     <DashBoardLayout type="Patient">
       <div className="flex-1 2xl:pr-16">
-        <Header title={"Welcome Kelvin"} />
+        <Header title={"Welcome Kelvin"} type={"Patient"}/>
         <CheckUp />
         <YourActivities />
       </div>

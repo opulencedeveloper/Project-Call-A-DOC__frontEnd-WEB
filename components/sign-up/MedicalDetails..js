@@ -1,8 +1,10 @@
 import { useDispatch, useSelector } from "react-redux";
-import { useState } from "react";
+
 import DetailsButton from "../UI/DetailsButton";
+
+import { signupActions } from "../../store/redux-store/signup-slice";
+
 import styles from "./SignUpStyles.module.css";
-import { signupActions } from "../store/signup-slice";
 
 const thisButtonType = "submit";
 
@@ -13,6 +15,18 @@ const MedicalDetails = (props) => {
   const checkboxHandler = (event) => {
     const id = event.target.id;
     const value = event.target.checked;
+    dispatchSignUp(
+      signupActions.addDetails({
+        value: value,
+        id: id ,
+      })
+    );
+    
+  };
+
+  const allergiesHandler = (event) => {
+    const id = event.target.id;
+    const value = event.target.value;
     dispatchSignUp(
       signupActions.addDetails({
         value: value,
@@ -64,7 +78,7 @@ const MedicalDetails = (props) => {
             </label>
           </div>
         ))}
-        <div className="flex space-x-2 pb-7">
+        {/* <div className="flex space-x-2 pb-7">
           <input
             type="checkbox"
             id="tickBox"
@@ -75,11 +89,14 @@ const MedicalDetails = (props) => {
             Others
             <span className="text-xs font-medium">(Please specify)</span>
           </label>
-        </div>
+        </div> */}
       </div>
       <p className="text-lg mb-5 font-medium text-ash2">Allergies (if any)</p>
       <textarea
         type="text"
+        id="Allergies"
+        value={initialState.Allergies}
+        onChange={allergiesHandler}
         className="border border-ash rounded-md w-full h-32 mb-14 p-5"
       />
       <DetailsButton

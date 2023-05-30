@@ -1,7 +1,7 @@
 import AppointmentGraph from "@/components/dashboard/dashboard-ui/AppointmentGraph";
 import Board from "@/components/dashboard/dashboard-ui/Board";
 //import Checkups from "@/components/dashboard/appointments/CheckUps";
-import Header from "@/components/UI/Header";
+import Header from "@/components/dashboard/dashboard-ui/Header";
 import Table from "@/components/dashboard/dashboard-ui/Table";
 import UserProfile from "@/components/dashboard/dashboard-ui/UserProfile";
 import DashBoardLayout from "@/components/dashboard/dashboard-layout/DashBoardLayout";
@@ -42,7 +42,7 @@ const checkUps = [
   return (
     <DashBoardLayout type="Patient">
         <div className="flex-1 2xl:pr-16">
-          <Header title={"My Folder"} />
+          <Header title={"My Folder"} type={"Patient"}/>
           <Table tableData={checkUps}
           tableHeaderData2="ID"
           tableHeaderData3="AppointmentDate"

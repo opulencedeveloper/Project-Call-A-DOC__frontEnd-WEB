@@ -17,7 +17,7 @@ const ActivityLineGraph = (props) => {
       toolbar: {
         show: false, // Hide the toolbar
       },
-      // parentHeightOffset: 0,
+      parentHeightOffset: 0,
     //   padding: {
     //     top: 0,
     //     right: 0,

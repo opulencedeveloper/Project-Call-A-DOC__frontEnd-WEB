@@ -20,12 +20,19 @@ const useHttp = () => {
             body: JSON.stringify(requestConfig.body)
           }
         );
-        if (!response.ok) {
-        console.log(response)
-          throw new Error('Request failed!');
+        
+        // if (!response.ok) {
+        // console.log(response)
+        //   throw new Error('Request failed!');
+        // }
+        let responseData = await response.json();
+        console.log("responseeeee", responseData)
+        if(responseData.status === "error") {
+          throw new Error(responseData.message)
         }
-        let data = await response.json();
-        applyData(data);       
+
+        console.log("data", responseData)
+        applyData(responseData);       
       } catch (err) {
         console.log("in the catch", err.message)
         if (err.message === 'Failed to fetch') {

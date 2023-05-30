@@ -1,7 +1,7 @@
 import Image from "next/image";
 import { useEffect, useReducer, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { signupActions } from "../store/signup-slice";
+import { signupActions } from "../../store/redux-store/signup-slice";
 
 import PhoneInput from "react-phone-number-input";
 import "react-phone-number-input/style.css";
@@ -30,7 +30,8 @@ const PersonalDetails = (props) => {
   const phoneNoIsValid = isNotEmpty(phoneNoValue);
   const phoneNoHasError = !phoneNoIsValid && phoneNoObj.phoneNumberIsTouched;
 
-  const phoneNumberChangeHandler = (value) => {
+  const phoneNumberChangeHandler = (data) => {
+    const value = data || "";
     dispatchSignUp(
       signupActions.addDetails({
         value: value,
@@ -142,7 +143,7 @@ const PersonalDetails = (props) => {
   };
 
   return (
-    <form className="mr-auto 2xl:-mr-40" onSubmit={personalNextButtonHandler}>
+    <form className="mr-auto pb-20 md:pb-auto 2xl:-mr-40" onSubmit={personalNextButtonHandler}>
       <p className="text-lg mb-7">Personal Details</p>
       <section>
         {/* SECTION-1 */}
@@ -287,7 +288,7 @@ const PersonalDetails = (props) => {
                 onChange={inputChangeHandler}
                 onBlur={inputBlurHandler}
                 className="py-4 mr-1 w-full placeholder-ash font-light focus:outline-none"
-                placeholder="Enter email"
+                placeholder="Enter city"
               />{" "}
             </div>{" "}
             <p className={`${cityClasses} text-sm text-custom11`}>
