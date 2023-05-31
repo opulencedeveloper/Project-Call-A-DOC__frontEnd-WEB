@@ -8,7 +8,7 @@ import "react-phone-number-input/style.css";
 
 import CountrySelect from "../UI/CountryDropDown";
 import DetailsButton from "../UI/DetailsButton";
-import userInputValidator from "@/hooks/user-input-validator";
+import userInputvalidator from "@/hooks/userInputvalidator";
 
 const isNotEmpty = (value) => value.trim() !== "";
 
@@ -71,7 +71,7 @@ const PersonalDetails = (props) => {
     valueChangeHandler: inputChangeHandler,
     inputBlurHandler: inputBlurHandler,
     //reset: resetFirstName,
-  } = userInputValidator(isNotEmpty);
+  } = userInputvalidator(isNotEmpty);
 
   console.log("DOB has error", dateOfBirthHasError);
   console.log("DOB is valid", dateOfBirthIsValid);

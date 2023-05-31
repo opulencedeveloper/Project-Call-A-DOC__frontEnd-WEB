@@ -6,8 +6,8 @@ import Link from "next/link";
 
 
 import OtpInput from "../UI/OtpInput";
-import userInputValidator from "@/hooks/user-input-validator";
-import useHttp from "@/hooks/use-http";
+import userInputvalidator from "@/hooks/userInputvalidator";
+import useHttp from "@/hooks/useHttp";
 
 const validateEmail = (email) => {
   var re = /\S+@\S+\.\S+/;
@@ -29,7 +29,7 @@ const SignInAuth = () => {
     emailHasError,
     valueChangeHandler: emailChangeHandler,
     inputBlurHandler: emailBlurHandler,
-  } = userInputValidator(validateEmail);
+  } = userInputvalidator(validateEmail);
 
   const { isLoading, error, sendRequest: OTPrequest } = useHttp();
   

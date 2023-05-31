@@ -6,10 +6,10 @@ import { useDispatch } from "react-redux";
 
 import { signupActions } from "../../store/redux-store/signup-slice";
 
-import userInputValidator from "@/hooks/user-input-validator";
+import userInputValidator from "@/hooks/userInputvalidator";
 import DetailsButton from "../UI/DetailsButton";
 import { useSelector } from "react-redux";
-import useHttp from "@/hooks/use-http";
+import useHttp from "@/hooks/useHttp";
 
 const isNotEmpty = (value) => value.trim() !== "";
 
@@ -70,8 +70,8 @@ const SecuritySetup = (props) => {
     const { status, message } = res;
     if (status === "success") {
       if (message === "Registration Completed Successfully") {
-        dispatch(signupActions.resetState());
-        router.replace("/sign-in");
+       // dispatch(signupActions.resetState());
+      //  router.replace("/sign-in");
       }
     }
     console.log("email message", message);
@@ -91,17 +91,21 @@ const SecuritySetup = (props) => {
     );
     const medicalData = keysWithTrueValue.join(", ");
     console.log(medicalDetails.Allergies);
-
+console.log("medicalDataaaaa", medicalData)
     const userType = userSelection.userType;
-
-    console.log(userType);
+const email =   userSelection.email;
+const phoneNumber = userSelection.phoneNumber;
+const cleanedPhoneNumber = phoneNumber.replace(/\+/g, "");
+    console.log(userSelection.phoneNumber);
     if (userType === "Patient") {
       submitUserData(
         {
           url: "customer/continueregister",
           method: "POST",
           body: {
-            phone: userSelection.phoneNumber,
+
+            
+            phone: cleanedPhoneNumber.toString(),
             firstname: userSelection.firstName,
             surname: userSelection.lastName,
             email: userSelection.email,
@@ -111,7 +115,7 @@ const SecuritySetup = (props) => {
             medicaldetails: medicalData,
             allergies: medicalDetails.Allergies,
             password: userSelection.securitySetup.password,
-            password_confirmation: userSelection.securitySetup.confirmPassword,
+            password_confirmation: userSelection.securitySetup.confirmPassword
           },
         },
         myResponse
@@ -139,7 +143,7 @@ const SecuritySetup = (props) => {
         },
         myResponse
       );
-    }
+     }
   };
 
   return (

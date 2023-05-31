@@ -5,20 +5,19 @@ import Image from "next/image";
 
 import { useSelector } from "react-redux";
 
-import userInputValidator from "@/hooks/user-input-validator";
-import useHttp from "@/hooks/use-http";
+import userInputvalidator from "@/hooks/userInputvalidator";
+import useHttp from "@/hooks/useHttp";
 
 const validateEmail = (email) => {
   var re = /\S+@\S+\.\S+/;
   return re.test(email);
 };
 
-
 const SignUpWithEmail = (props) => {
   const [isSubmit, setIsSubmit] = useState(false);
   const [emailSubmit, setEmailSubmit] = useState(false);
-  const [otpError, setOtpError ] = useState();
-  const otpInputRef = useRef()
+  const [otpError, setOtpError] = useState();
+  const otpInputRef = useRef();
   const phoneNoObj = useSelector((state) => state.signUp);
   let emailVerifybuttonText = "Continue with email";
   let createAccountbuttonText = "Create your Account";
@@ -30,7 +29,7 @@ const SignUpWithEmail = (props) => {
     emailHasError,
     valueChangeHandler: emailChangeHandler,
     inputBlurHandler: emailBlurHandler,
-  } = userInputValidator(validateEmail);
+  } = userInputvalidator(validateEmail);
 
   const { isLoading, error, sendRequest: validation } = useHttp();
 
@@ -44,15 +43,14 @@ const SignUpWithEmail = (props) => {
     console.log("email response", res);
     const { status, message } = res;
     if (status === "success") {
-      if(message === "Email successfully Verified.") {
+      if (message === "Email successfully Verified.") {
         props.startSignUpHandler();
         return;
       }
       setIsSubmit(true);
       return;
     }
-console.log("email message", message);
-    
+    console.log("email message", message);
   };
 
   const verifyEmailHandler = () => {
@@ -60,6 +58,8 @@ console.log("email message", message);
       setEmailSubmit(!emailIsValid);
       return;
     }
+
+    console.log("verifyEmail", emailValue);
     validation(
       {
         url: "register",
@@ -70,11 +70,10 @@ console.log("email message", message);
     );
   };
 
-
   const createAccountHandler = (event) => {
     event.preventDefault();
     const otpValue = otpInputRef.current.value;
-    if(otpValue === ""){
+    if (otpValue === "") {
       setOtpError("Please Input OTP");
       return;
     }
@@ -83,11 +82,10 @@ console.log("email message", message);
       {
         url: "verifyemail",
         method: "POST",
-        body: { email: emailValue,  otp: otpValue },
+        body: { email: emailValue, otp: otpValue },
       },
       myResponse
     );
-
   };
 
   const emailClasses =
@@ -138,9 +136,10 @@ console.log("email message", message);
         )}
 
         {isSubmit && (
-          <form 
-          onSubmit={createAccountHandler}
-          className="px-2 border-b border-ash pb-9 pt-4 space-y-3 mb-9 text-xs md:text-sm">
+          <form
+            onSubmit={createAccountHandler}
+            className="px-2 border-b border-ash pb-9 pt-4 space-y-3 mb-9 text-xs md:text-sm"
+          >
             <p className="text-center text-ash2 pb-7">
               We just sent you a temporary sign up code. Please check your email
               inbox and paste it below
@@ -181,7 +180,7 @@ console.log("email message", message);
           className="border py-2.5 bg-custom12 mb-4 rounded-lg flex justify-center items-center space-x-3"
         >
           <Image
-            src="./images/icon/apple.svg"
+            src="/images/icon/apple.svg"
             alt="apple-icon"
             className="w-6 h-6"
             height={48}
@@ -194,8 +193,8 @@ console.log("email message", message);
           className="border py-2.5 rounded-lg flex justify-center items-center space-x-3"
         >
           <Image
-            src="./images/icon/google-logo.svg"
-            alt="google-logo"
+            src="/images/icon/google-icon.svg"
+            alt="google-icon"
             className="w-6 h-6"
             height={48}
             width={48}

@@ -4,7 +4,7 @@ import { Provider } from "react-redux";
 
 import store from "@/store/redux-store";
 
-//import { AuthContextProvider } from "@/store/context-store/auth-context";
+import { AuthContextProvider } from "@/store/context-store/auth-context";
 
 import "@/styles/globals.css";
 
@@ -15,12 +15,12 @@ const montserrat = Montserrat({
 
 export default function App({ Component, pageProps }) {
   return (
-   // <AuthContextProvider>
+    <AuthContextProvider>
       <Provider store={store}>
         <main className={`${montserrat.variable} font-montserrat`}>
           <Component {...pageProps} />
         </main>
       </Provider>
-   // </AuthContextProvider>
+   </AuthContextProvider>
   );
 }

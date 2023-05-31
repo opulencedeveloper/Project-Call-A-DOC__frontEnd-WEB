@@ -1,17 +1,27 @@
-import { useRef, useState } from "react";
+import { useContext, useRef, useState } from "react";
 
 import Image from "next/image";
 
 import { useDispatch, useSelector } from "react-redux";
 
 import BackDrop from "./BackDrop";
-import useHttp from "@/hooks/use-http";
+import useHttp from "@/hooks/useHttp";
 import { signupActions } from "../../store/redux-store/signup-slice";
+import { userDataActions } from "../../store/redux-store/userData-slice";
+import { useRouter } from "next/router";
+import AuthContext from "@/store/context-store/auth-context";
+
+function removeHtmlTags(data) {
+  const val = data || "";
+  return val.replace(/<[^>]+>/g, "");
+}
 
 const OtpInput = () => {
   const { isLoading, error, sendRequest: validation } = useHttp();
   const dispatch = useDispatch();
-  const emailObject = useSelector((state) => state.signUp); 
+  const router = useRouter();
+  const emailObject = useSelector((state) => state.signUp);
+  const authCtx = useContext(AuthContext);
   const inputRefs = [
     useRef(null),
     useRef(null),
@@ -24,6 +34,15 @@ const OtpInput = () => {
   const inputStyle =
     "w-10 h-9 bg-ash3 rounded-md text-center font-bold border-2 border-ash3 md:w-14 md:h-12 focus:border-custom outline-none ";
 
+  let otpButtonText = "Submit";
+  let otpButtonDisable = false;
+
+  const errorMessage = removeHtmlTags(error);
+
+  if (isLoading) {
+    otpButtonText = "Please Wait...";
+    otpButtonDisable = true;
+  }
   //e is the input value
   //index in the input postion
   const handleInputChange = (e, index) => {
@@ -48,6 +67,25 @@ const OtpInput = () => {
     }
   };
 
+  const myResponse = (res) => {
+    console.log("Data response", res);
+    const { status, message, role, token, doctor, patient } = res;
+
+    if (status === "success" && message === "Otp Verification Successful.") {
+      const targetRoute =
+        role === "1" ? "/patient-dashboard" : "/doctor-dashboard";
+      //const userData = role === "1" ? patient : doctor;
+      const userData = doctor;
+      console.log("doneeeeeeeee", doctor)
+     dispatch(userDataActions.addUserData(doctor));
+     //authCtx.login(token, expirationTime.toISOString());
+     authCtx.login(token);
+      
+     // dispatch(signupActions.resetState());
+      //router.replace(targetRoute);
+    }
+  };
+
   const validateOTPHandler = () => {
     // if (
     //   inputValues[0] !== "" &&
@@ -61,102 +99,109 @@ const OtpInput = () => {
     // }
     console.log(inputValues);
     console.log(emailObject.email);
-    return
 
-    //START HEREEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE
+    const convertedToArrayofInt = inputValues.map((num) => +num);
+    //converting array of Int to a single Int.
+    const otp = parseInt(convertedToArrayofInt.join(""));
+    console.log(otp);
     validation(
       {
-        url: "register",
+        url: "auth/verifyotp",
         method: "POST",
-        body: { email: emailValue },
+        body: { email: emailObject.email, otp: otp },
       },
       myResponse
     );
-    dispatch(signupActions.resetState());
-    
   };
 
   return (
     <BackDrop>
       <div className="flex flex-col items-center justify-center bg-custom1 space-y-4 p-5 py-7 rounded-2xl shadow-2xl md:p-14 md:py-auto  md:space-y-8">
-      <p className="text-xl md:text-3xl font-medium">
-        An OTP was sent to your email
-      </p>
-      <p className="text-xs text-ash2 md:text-base">
-        Input the six digits number
-      </p>
-      <form className="flex space-x-2 md:space-x-3 ">
-        <input
-          ref={inputRefs[0]}
-          type="number"
-          maxLength={1}
-          value={inputValues[0]}
-          onChange={(e) => handleInputChange(e, 0)}
-          className={inputStyle}
-        />
-        <input
-          ref={inputRefs[1]}
-          type="number"
-          maxLength={1}
-          value={inputValues[1]}
-          onChange={(e) => handleInputChange(e, 1)}
-          className={inputStyle}
-        />
-        <input
-          ref={inputRefs[2]}
-          type="number"
-          maxLength={1}
-          value={inputValues[2]}
-          onChange={(e) => handleInputChange(e, 2)}
-          className={inputStyle}
-        />
-        <input
-          ref={inputRefs[3]}
-          type="number"
-          maxLength={1}
-          value={inputValues[3]}
-          onChange={(e) => handleInputChange(e, 3)}
-          className={inputStyle}
-        />
-        <input
-          ref={inputRefs[4]}
-          type="number"
-          maxLength={1}
-          value={inputValues[4]}
-          onChange={(e) => handleInputChange(e, 4)}
-          className={inputStyle}
-        />
-        <input
-          ref={inputRefs[5]}
-          type="number"
-          maxLength={1}
-          value={inputValues[5]}
-          onChange={(e) => handleInputChange(e, 5)}
-          className={inputStyle}
-        />
-      </form>
-      {/* <div className="bg-custom11 rounded-md text-custom1 font-semibold text-sm py-3 px-5 md:px-10">
-        <p>The code you entered is wrong, try again</p>
-      </div> */}
-      <div className="flex space-x-2 text-sm md:text-base">
-        <p>If you did't receive a code </p>
-        <button className="flex items-center space-x-2 text-custom">
-          <p>Receive code</p>{" "}
-          <Image
-            src="/images/icon/refresh.svg"
-            alt="refresh-icon"
-            className="w-3 h-3"
-            width={12}
-            height={12}
+        <p className="text-xl md:text-3xl font-medium">
+          An OTP was sent to your email
+        </p>
+        <p className="text-xs text-ash2 md:text-base">
+          Input the six digits number
+        </p>
+        <form className="flex space-x-2 md:space-x-3 ">
+          <input
+            ref={inputRefs[0]}
+            type="number"
+            maxLength={1}
+            value={inputValues[0]}
+            onChange={(e) => handleInputChange(e, 0)}
+            className={inputStyle}
           />
+          <input
+            ref={inputRefs[1]}
+            type="number"
+            maxLength={1}
+            value={inputValues[1]}
+            onChange={(e) => handleInputChange(e, 1)}
+            className={inputStyle}
+          />
+          <input
+            ref={inputRefs[2]}
+            type="number"
+            maxLength={1}
+            value={inputValues[2]}
+            onChange={(e) => handleInputChange(e, 2)}
+            className={inputStyle}
+          />
+          <input
+            ref={inputRefs[3]}
+            type="number"
+            maxLength={1}
+            value={inputValues[3]}
+            onChange={(e) => handleInputChange(e, 3)}
+            className={inputStyle}
+          />
+          <input
+            ref={inputRefs[4]}
+            type="number"
+            maxLength={1}
+            value={inputValues[4]}
+            onChange={(e) => handleInputChange(e, 4)}
+            className={inputStyle}
+          />
+          <input
+            ref={inputRefs[5]}
+            type="number"
+            maxLength={1}
+            value={inputValues[5]}
+            onChange={(e) => handleInputChange(e, 5)}
+            className={inputStyle}
+          />
+        </form>
+        {errorMessage && (
+          <div className="bg-custom11 rounded-md text-custom1 font-semibold text-sm py-3 px-5 md:px-10">
+            <p>{errorMessage.trim()}</p>
+          </div>
+        )}
+        <div className="flex space-x-2 text-sm md:text-base">
+          <p>If you did't receive a code </p>
+          <button
+            onClick={validateOTPHandler}
+            className="flex items-center space-x-2 text-custom"
+          >
+            <p>Resend code</p>{" "}
+            <Image
+              src="/images/icon/refresh.svg"
+              alt="refresh-icon"
+              className="w-3 h-3"
+              width={12}
+              height={12}
+            />
+          </button>
+        </div>
+        <button
+          type="button"
+          disabled={otpButtonDisable}
+          onClick={validateOTPHandler}
+          className="py-2 px-8 text-custom1 bg-custom10 rounded-full md:py-4 md:px-12"
+        >
+          {otpButtonText}
         </button>
-      </div>
-      <button 
-      type="button"
-      onClick={validateOTPHandler}
-      className="py-2 px-8 text-custom1 bg-custom10 rounded-full md:py-4 md:px-12">
-        Submit
-      </button>
       </div>
     </BackDrop>
   );

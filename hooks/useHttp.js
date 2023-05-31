@@ -6,6 +6,8 @@ const useHttp = () => {
 
 
     const sendRequest = async (requestConfig, applyData) => {
+      console.log("requestConfig.body", requestConfig.body)
+     // return;
       setIsLoading(true);
       setError(null);
       console.log("requestConfig.body", requestConfig)
@@ -25,9 +27,12 @@ const useHttp = () => {
         // console.log(response)
         //   throw new Error('Request failed!');
         // }
+
+       
         let responseData = await response.json();
         console.log("responseeeee", responseData)
         if(responseData.status === "error") {
+          console.log("hereeeeeeeeeeeeeeeeeeeeeee")
           throw new Error(responseData.message)
         }
 

@@ -1,10 +1,10 @@
 import { useDispatch, useSelector } from "react-redux";
 import { signupActions } from "../store/redux-store/signup-slice";
 
-const userInputValidator = (validateValue) => {
+const userInputvalidator = (validateValue) => {
   const dispatchSignUp = useDispatch();
   const initialInputState = useSelector((state) => state.signUp);
-  console.log("userInputValidator");
+  console.log("userInputvalidator");
 
   const {
     email,
@@ -114,4 +114,4 @@ const userInputValidator = (validateValue) => {
   };
 };
 
-export default userInputValidator;
+export default userInputvalidator;
