@@ -103,8 +103,6 @@ const cleanedPhoneNumber = phoneNumber.replace(/\+/g, "");
           url: "customer/continueregister",
           method: "POST",
           body: {
-
-            
             phone: cleanedPhoneNumber.toString(),
             firstname: userSelection.firstName,
             surname: userSelection.lastName,
