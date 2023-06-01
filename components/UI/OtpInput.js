@@ -74,15 +74,13 @@ const OtpInput = () => {
     if (status === "success" && message === "Otp Verification Successful.") {
       const targetRoute =
         role === "1" ? "/patient-dashboard" : "/doctor-dashboard";
-      //const userData = role === "1" ? patient : doctor;
-      const userData = doctor;
-      console.log("doneeeeeeeee", doctor)
-     dispatch(userDataActions.addUserData(doctor));
-     //authCtx.login(token, expirationTime.toISOString());
-     authCtx.login(token);
-      
-     // dispatch(signupActions.resetState());
-      //router.replace(targetRoute);
+     // const userData = role === "1" ? patient : doctor;
+     // console.log("doneeeeeeeee", doctor);
+     // dispatch(userDataActions.addUserData(userData));
+     console.log("Token in the OTP fn", token)
+      authCtx.login(token);
+      dispatch(signupActions.resetState());
+      router.replace(targetRoute);
     }
   };
 

@@ -1,7 +1,8 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const userDataInitialState = {
-  id: 8,
+  justAuth: false,
+  id: "",
   active: null,
   aos: "",
   availability: null,
@@ -40,7 +41,7 @@ const userDataSlice = createSlice({
       const userData = action.payload;
       console.log("userData", userData);
       // Overwrite the state with newItem
-      return { ...state, ...userData };
+      return { ...state, ...userData, justAuth: true};
     },
   },
 });

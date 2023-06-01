@@ -79,7 +79,7 @@ const DashBoardMobileNavigation = (props) => {
                 href={content.link}
                 key={index}
                 onClick={toggleDrawer}
-                className={`${bgColor} cursor-pointer flex space-x-3 rounded-tr-md rounded-br-md py-3 pl-6`}
+                className={`${bgColor} cursor-pointer flex space-x-3 rounded-tl-md rounded-bl-md py-3 pl-6`}
               >
                 <Image
                   src={

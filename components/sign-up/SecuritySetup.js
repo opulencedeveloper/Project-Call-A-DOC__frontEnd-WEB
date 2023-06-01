@@ -5,6 +5,7 @@ import { useRouter } from "next/router";
 import { useDispatch } from "react-redux";
 
 import { signupActions } from "../../store/redux-store/signup-slice";
+import { userDataActions } from "../../store/redux-store/userData-slice";
 
 import userInputValidator from "@/hooks/userInputvalidator";
 import DetailsButton from "../UI/DetailsButton";
@@ -30,8 +31,6 @@ const SecuritySetup = (props) => {
     finishUpButtonText = "Please Wait...";
     buttonDisable = true;
   }
-
-  console.log("error", error);
 
   const {
     passwordValue,
@@ -67,81 +66,78 @@ const SecuritySetup = (props) => {
 
   const myResponse = (res) => {
     console.log("email response", res);
-    const { status, message } = res;
-    if (status === "success") {
-      if (message === "Registration Completed Successfully") {
-       // dispatch(signupActions.resetState());
-      //  router.replace("/sign-in");
-      }
+    const { status, message, doctor, patient, role } = res;
+    if (
+      status === "success" &&
+      message === "Registration Completed Successfully"
+    ) {
+      const targetRoute =
+        role === "1" ? "/patient-dashboard" : "/doctor-dashboard";
+      const userData = role === "1" ? patient : doctor;
+      dispatch(userDataActions.addUserData(userData));
+      dispatch(signupActions.resetState());
+      router.replace(targetRoute);
     }
-    console.log("email message", message);
   };
+
 
   const finisUpHandler = (event) => {
     event.preventDefault();
+
     if (!formIsValid) {
       setSubmitValidator(true);
       return;
     }
-    console.log("reached");
-    console.log(userSelection);
-    const { medicalDetails } = userSelection;
-    const keysWithTrueValue = Object.keys(medicalDetails).filter(
-      (key) => medicalDetails[key] === true
+
+    const {
+      medicalDetails,
+      userType,
+      email,
+      phoneNumber,
+      firstName,
+      lastName,
+      City,
+      Country,
+      dateOfBirth,
+      professionalDetails,
+      securitySetup,
+    } = userSelection;
+
+    //Iterating the map to return the keys with values of true, and storing it in a Set()
+    const keysWithTrueValue = Object.keys(medicalDetails).reduce(
+      (keys, key) => {
+        if (medicalDetails[key]) {
+          keys.add(key);
+        }
+        return keys;
+      },
+      new Set()
     );
-    const medicalData = keysWithTrueValue.join(", ");
-    console.log(medicalDetails.Allergies);
-console.log("medicalDataaaaa", medicalData)
-    const userType = userSelection.userType;
-const email =   userSelection.email;
-const phoneNumber = userSelection.phoneNumber;
-const cleanedPhoneNumber = phoneNumber.replace(/\+/g, "");
-    console.log(userSelection.phoneNumber);
-    if (userType === "Patient") {
-      submitUserData(
-        {
-          url: "customer/continueregister",
-          method: "POST",
-          body: {
-            phone: cleanedPhoneNumber.toString(),
-            firstname: userSelection.firstName,
-            surname: userSelection.lastName,
-            email: userSelection.email,
-            city: userSelection.City,
-            country: userSelection.Country,
-            dob: userSelection.dateOfBirth,
-            medicaldetails: medicalData,
-            allergies: medicalDetails.Allergies,
-            password: userSelection.securitySetup.password,
-            password_confirmation: userSelection.securitySetup.confirmPassword
-          },
-        },
-        myResponse
-      );
-    } else {
-      submitUserData(
-        {
-          url: "doctor/continueregister",
-          method: "POST",
-          body: {
-            phone: userSelection.phoneNumber,
-            firstname: userSelection.firstName,
-            surname: userSelection.lastName,
-            email: userSelection.email,
-            city: userSelection.City,
-            country: userSelection.Country,
-            dob: userSelection.dateOfBirth,
-            npi: userSelection.professionalDetails.NPInumber,
-            medicaldetails: medicalData,
-            allergies: medicalDetails.Allergies,
-            aos: userSelection.professionalDetails.AOS,
-            password: userSelection.securitySetup.password,
-            password_confirmation: userSelection.securitySetup.confirmPassword,
-          },
-        },
-        myResponse
-      );
-     }
+
+    const medicalData = Array.from(keysWithTrueValue).join(", ");
+    const cleanedPhoneNumber = phoneNumber.replace("+", "");
+
+    const commonData = { phone: cleanedPhoneNumber, firstname: firstName, surname: lastName, email, city: City, country: Country, dob: dateOfBirth, medicaldetails: medicalData, allergies: medicalDetails.Allergies, password: securitySetup.password, password_confirmation: securitySetup.confirmPassword, };
+
+    const requestData = {
+      url:
+        userType === "Patient"
+          ? "customer/continueregister"
+          : "doctor/continueregister",
+      method: "POST",
+      body:
+        userType === "Patient"
+          ? {
+              ...commonData,
+            }
+          : {
+              ...commonData,
+              npi: professionalDetails.NPInumber,
+              aos: professionalDetails.AOS,
+            },
+    };
+
+    submitUserData(requestData, myResponse);
   };
 
   return (

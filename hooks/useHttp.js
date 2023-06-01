@@ -6,7 +6,7 @@ const useHttp = () => {
 
 
     const sendRequest = async (requestConfig, applyData) => {
-      console.log("requestConfig.body", requestConfig.body)
+      console.log("requestConfig.token", requestConfig.token)
      // return;
       setIsLoading(true);
       setError(null);
@@ -18,6 +18,7 @@ const useHttp = () => {
             method: requestConfig.method ? requestConfig.method : 'GET',
             headers: {
                 "Content-Type": "application/json",
+                "Authorization": `Bearer ${requestConfig.token}`,
               },
             body: JSON.stringify(requestConfig.body)
           }
