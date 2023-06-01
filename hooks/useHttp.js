@@ -18,7 +18,7 @@ const useHttp = () => {
             method: requestConfig.method ? requestConfig.method : 'GET',
             headers: {
                 "Content-Type": "application/json",
-                "Authorization": `Bearer ${requestConfig.token}`,
+                "Authorization": requestConfig.token ? `Bearer ${requestConfig.token}` : "",
               },
             body: JSON.stringify(requestConfig.body)
           }
