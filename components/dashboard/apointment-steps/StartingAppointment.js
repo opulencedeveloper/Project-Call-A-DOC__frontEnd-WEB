@@ -21,6 +21,7 @@ const StartingAppointment = () => {
         src="/images/icon/options.svg"
         alt="options-icon"
         className=" w-auto h-auto"
+        
         width={48.81}
         height={62.13}
       />

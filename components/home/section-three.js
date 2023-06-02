@@ -42,6 +42,7 @@ const SectionThree = (props) => {
                   src="/images/icon/arrow-right-white.svg"
                   alt="doctor1"
                   className="w-auto h-auto"
+                   
                   width={16}
                   height={13}
                   loading="eager"
@@ -56,6 +57,7 @@ const SectionThree = (props) => {
                 className="w-/12 h-auto"
                 width={1159}
                 height={1034}
+                
                 loading="eager"
               /> </div>
           </div>
@@ -77,6 +79,7 @@ const SectionThree = (props) => {
             className="block w-3 h-3 mt-0.5 md:w-auto md:h-auto"
             width={16}
             height={13}
+            
             loading="eager"
           />
         </Link>

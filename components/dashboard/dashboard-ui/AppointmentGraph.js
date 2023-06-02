@@ -8,6 +8,7 @@ const AppointmentGraph = () => {
               src="/images/appointment-graph-no-data.svg"
               alt="appointment-graph"
               className="w-auto h-auto"
+              
               width={1220}
               height={290}
             />

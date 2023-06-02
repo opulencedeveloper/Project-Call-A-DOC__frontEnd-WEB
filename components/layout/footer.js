@@ -9,6 +9,7 @@ const Footer = () => {
           src="/images/logo/logo-white.svg"
           alt="call a doctor logo white"
           className="h-auto w-auto"
+          
           width={148}
           height={75.51}
         /></div>
@@ -47,6 +48,7 @@ const Footer = () => {
             src="/images/icon/twitter.svg"
             alt="twitter-icon"
             className="h-auto w-auto 2xl:h-11 w-11"
+            
             width={42}
             height={42}
           />
@@ -54,6 +56,7 @@ const Footer = () => {
             src="/images/icon/facebook.svg"
             alt="facebook-icon"
             className="h-auto w-auto 2xl:h-11 w-11"
+            
             width={42}
             height={42}
           />
@@ -61,6 +64,7 @@ const Footer = () => {
             src="/images/icon/instagram.svg"
             alt="instagram-icon"
             className="h-auto w-auto 2xl:h-11 w-11"
+            
             width={42}
             height={42}
           />

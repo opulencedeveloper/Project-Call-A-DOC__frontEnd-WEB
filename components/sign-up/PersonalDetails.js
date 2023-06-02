@@ -159,6 +159,7 @@ const PersonalDetails = (props) => {
                   src="/images/icon/email.svg"
                   alt="email-icon"
                   className="w-auto h-auto"
+                  
                   width={12}
                   height={12}
                 />
@@ -188,6 +189,7 @@ const PersonalDetails = (props) => {
                   src="/images/icon/email.svg"
                   alt="email-icon"
                   className="w-auto h-auto"
+                  
                   width={12}
                   height={12}
                 />

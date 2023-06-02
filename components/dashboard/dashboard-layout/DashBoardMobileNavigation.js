@@ -1,15 +1,37 @@
+import { useEffect, useState } from 'react';
+import { useRouter } from 'next/router';
+
 import BackDrop from "@/components/UI/BackDrop";
 import Image from "next/image";
 import Link from "next/link";
-import { useRouter } from "next/router";
 import AppointmentJourney from "../dashboard-ui/AppointmentJourney";
-import { useState } from "react";
+
+
 
 const DashBoardMobileNavigation = (props) => {
   const [startAppointment, setStartAppointment] = useState(false);
-  const router = useRouter();
+  const router = useRouter(); 
   const activeLink = router.pathname;
   const { type, toggleDrawer } = props;
+
+  useEffect(() => {
+    const handleBeforeUnload = (e) => {
+      e.preventDefault();
+      const remeberMe = localStorage.getItem("remeberMe");
+      if (remeberMe === "false") {
+        console.log("To return null")
+        localStorage.setItem("token", "");
+      }
+      console.log("User is leaving the pageeeeeeeeeeeeeeeeeeeeeeeeee...");
+      return;
+    };
+
+    window.addEventListener('beforeunload', handleBeforeUnload);
+
+    return () => {
+      window.removeEventListener('beforeunload', handleBeforeUnload);
+    };
+  }, []);
 
   const startAppointmentHandler = () => {
     toggleDrawer();
@@ -64,6 +86,7 @@ const DashBoardMobileNavigation = (props) => {
             src="/images/logo/logo.svg"
             alt="call a doctor logo"
             className="h-auto w-auto"
+            // ""
             width={576}
             height={320}
           />
@@ -89,6 +112,7 @@ const DashBoardMobileNavigation = (props) => {
                   }
                   alt={content.title}
                   className="h-auto w-auto"
+                  
                   width={13.5}
                   height={13.87}
                 />{" "}
@@ -111,6 +135,7 @@ const DashBoardMobileNavigation = (props) => {
           src="/images/icon/plus-circle.svg"
           alt="plus-circle-icon"
           className="h-auto w-auto"
+          
           width={32}
           height={32}
         />

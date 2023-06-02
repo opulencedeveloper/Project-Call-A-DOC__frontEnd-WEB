@@ -1,10 +1,10 @@
-import BackDrop from "@/components/UI/BackDrop";
+import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import AppointmentJourney from "../dashboard-ui/AppointmentJourney";
-import { useState } from "react";
 
+import BackDrop from "@/components/UI/BackDrop";
+import AppointmentJourney from "../dashboard-ui/AppointmentJourney";
 
 const DashBoardNavigation = (props) => {
   const [startAppointment, setStartAppointment] = useState(false);
@@ -61,6 +61,7 @@ const DashBoardNavigation = (props) => {
             src="/images/logo/logo.svg"
             alt="call a doctor logo"
             className="h-auto w-auto"
+          //  ""
             width={576}
             height={320}
           />
@@ -80,6 +81,7 @@ const DashBoardNavigation = (props) => {
                 src={activeLink === content.link ? `/images/icon/${content.icon1}.svg` : `/images/icon/${content.icon2}.svg`}
                 alt={content.title}
                 className="h-auto w-auto"
+                
                 width={13.5}
                 height={13.87}
               />{" "}
@@ -100,6 +102,7 @@ const DashBoardNavigation = (props) => {
           src="/images/icon/plus-circle.svg"
           alt="plus-circle-icon"
           className="h-auto w-auto"
+          
           width={32}
           height={32}
         />

@@ -34,6 +34,7 @@ const SectionFour = (props) => {
                   src="/images/icon/angle-right.svg"
                   alt="doctor1"
                   className="w-auto h-auto z-0 pr-2 md:pr-4"
+                   
                   width={11}
                   height={23}
                 />
@@ -52,6 +53,7 @@ const SectionFour = (props) => {
           src="/images/icon/temp.svg"
           alt="temp"
           className="w-piw5 h-pih5 mr-5 absolute left-0 bottom-0 z-0"
+          
           width={880}
           height={1157}
         />
@@ -88,6 +90,7 @@ const SectionFour = (props) => {
                 src="/images/icon/check.svg"
                 alt="doctor1"
                 className="w-13 h-25 mr-5"
+                
                 width={13}
                 height={25}
               />
@@ -100,6 +103,7 @@ const SectionFour = (props) => {
                 src="/images/icon/check.svg"
                 alt="doctor1"
                 className="w-13 h-25 mr-5"
+                
                 width={13}
                 height={25}
               />
@@ -112,6 +116,7 @@ const SectionFour = (props) => {
                 src="/images/icon/check.svg"
                 alt="doctor1"
                 className="w-13 h-25 mr-5"
+                
                 width={13}
                 height={25}
               />
@@ -124,6 +129,7 @@ const SectionFour = (props) => {
                 src="/images/icon/check.svg"
                 alt="doctor1"
                 className="w-13 h-25 mr-5"
+                
                 width={13}
                 height={25}
               />
@@ -136,6 +142,7 @@ const SectionFour = (props) => {
                 src="/images/icon/check.svg"
                 alt="doctor1"
                 className="w-13 h-25 mr-5"
+                
                 width={13}
                 height={25}
               />
@@ -161,6 +168,7 @@ const SectionFour = (props) => {
               <Image
                 src="/images/icon/check.svg"
                 alt="doctor1"
+                
                 className="w-13 h-25 mr-5"
                 width={13}
                 height={25}
@@ -173,6 +181,7 @@ const SectionFour = (props) => {
               <Image
                 src="/images/icon/check.svg"
                 alt="doctor1"
+                
                 className="w-13 h-25 mr-5"
                 width={13}
                 height={25}
@@ -186,6 +195,7 @@ const SectionFour = (props) => {
                 src="/images/icon/check.svg"
                 alt="doctor1"
                 className="w-13 h-25 mr-5"
+                
                 width={13}
                 height={25}
               />
@@ -198,6 +208,7 @@ const SectionFour = (props) => {
                 src="/images/icon/check.svg"
                 alt="doctor1"
                 className="w-13 h-25 mr-5"
+                
                 width={13}
                 height={25}
               />
@@ -210,6 +221,7 @@ const SectionFour = (props) => {
                 src="/images/icon/check.svg"
                 alt="doctor1"
                 className="w-13 h-25 mr-5"
+                
                 width={13}
                 height={25}
               />
@@ -236,6 +248,7 @@ const SectionFour = (props) => {
                 src="/images/icon/check.svg"
                 alt="doctor1"
                 className="w-13 h-25 mr-5"
+                
                 width={13}
                 height={25}
               />
@@ -248,6 +261,7 @@ const SectionFour = (props) => {
                 src="/images/icon/check.svg"
                 alt="doctor1"
                 className="w-13 h-25 mr-5"
+                
                 width={13}
                 height={25}
               />
@@ -260,6 +274,7 @@ const SectionFour = (props) => {
                 src="/images/icon/check.svg"
                 alt="doctor1"
                 className="w-13 h-25 mr-5"
+                
                 width={13}
                 height={25}
               />
@@ -272,6 +287,7 @@ const SectionFour = (props) => {
                 src="/images/icon/check.svg"
                 alt="doctor1"
                 className="w-13 h-25 mr-5"
+                 
                 width={13}
                 height={25}
               />
@@ -284,6 +300,7 @@ const SectionFour = (props) => {
                 src="/images/icon/check.svg"
                 alt="doctor1"
                 className="w-13 h-25 mr-5"
+                
                 width={13}
                 height={25}
               />

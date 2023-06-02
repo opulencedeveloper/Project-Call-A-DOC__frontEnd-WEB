@@ -1,5 +1,4 @@
 import AppointmentGraph from "@/components/dashboard/dashboard-ui/AppointmentGraph";
-import Board from "@/components/dashboard/dashboard-ui/Board";
 //import Checkups from "@/components/dashboard/appointments/CheckUps";
 import Header from "@/components/dashboard/dashboard-ui/Header";
 import Table from "@/components/dashboard/dashboard-ui/Table";

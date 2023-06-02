@@ -20,6 +20,7 @@ semper congue velit. Dolor, lacinia nunc consectetur facilisis nullam nulla.
         loading="eager"
         alt="doctor-5"
         src={"/images/doctor5.svg"}
+        
         height={1007}
         width={1076}
       /></div>

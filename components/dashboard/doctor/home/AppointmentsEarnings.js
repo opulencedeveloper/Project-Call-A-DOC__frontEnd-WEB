@@ -29,6 +29,7 @@ const AppointmentsEarnings = () => {
                   src="/images/user1.svg"
                   alt="doctor11"
                   className="w-[68px] h-[68px]"
+                  
                   width={68}
                   height={68}
                 />
@@ -125,6 +126,7 @@ const AppointmentsEarnings = () => {
               <Image
               src="/images/icon/arrow-from-bottom.svg"
               alt="arrow-from-bottom-icon"
+              
               className="h-auto w-auto"
               width={16}
               height={16}
@@ -140,6 +142,7 @@ const AppointmentsEarnings = () => {
                     src="/images/icon/pills.svg"
                     alt="doctor11"
                     className="w-auto h-auto"
+                     ""
                     width={76}
                     height={76}
                   />

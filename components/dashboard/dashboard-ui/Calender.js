@@ -92,6 +92,7 @@ const Calendar = () => {
               src="/images/icon/angle-left-gray.svg"
               alt="angle-right-gray-icon"
               className="w-auto h-auto"
+              
               width={9}
               height={16.5}
             />
@@ -111,6 +112,7 @@ const Calendar = () => {
               src="/images/icon/angle-right-gray.svg"
               alt="angle-right-right-icon"
               className="w-auto h-auto"
+              
               width={9}
               height={16.5}
             />

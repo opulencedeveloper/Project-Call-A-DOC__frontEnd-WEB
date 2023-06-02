@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 
 const AuthContext = React.createContext({
   token: "",
+  remeberMe: false,
   login: (token) => {},
   logout: () => {},
 });
@@ -12,7 +13,9 @@ const retrieveStoredToken = () => {
   }
 
   const storedToken = localStorage.getItem("token");
-  if (!storedToken) {
+  
+  if (storedToken === "") {
+    console.log("To return null")
     return null;
   }
 
@@ -22,23 +25,25 @@ const retrieveStoredToken = () => {
 };
 
 export const AuthContextProvider = ({ children }) => {
+  console.log("In the AuthContextProvider");
   const tokenData = retrieveStoredToken();
-
+console.log("The retrived token is", tokenData)
   let initialToken;
   if (tokenData) {
     initialToken = tokenData.token;
   }
   const [token, setToken] = useState(initialToken);
-  console.log("In the AuthContextProvider");
+ 
 
   useEffect(() => {
+    console.log("In the AuthContextProvider Effect");
     if (typeof window !== "undefined") {
       const storedToken = localStorage.getItem("token");
       if (storedToken && storedToken !== token) {
         setToken(storedToken);
       }
     }
-  }, []);
+  }, [token]);
 
   const logoutHandler = () => {
     setToken(null);
@@ -47,11 +52,12 @@ export const AuthContextProvider = ({ children }) => {
     }
   };
 
-  const loginHandler = (token) => {
+  const loginHandler = (token, remeberMe) => {
     setToken(token);
     console.log("token in the login handler", token);
     if (typeof window !== "undefined") {
       localStorage.setItem("token", token);
+      localStorage.setItem("remeberMe", remeberMe);
     }
   };
 

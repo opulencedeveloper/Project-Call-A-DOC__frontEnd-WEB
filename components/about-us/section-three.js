@@ -24,7 +24,8 @@ const SectionThree = () => {
        <div><Image
           src="/images/image1.svg"
           alt="doctor1"
-          className="w-auto h-auto "
+          className="w-auto h-auto"
+          
           width={580}
           height={762}
         /></div> 
@@ -50,6 +51,7 @@ const SectionThree = () => {
           src="/images/image3.svg"
           alt="doctor1"
           className="w-auto h-auto"
+          
           width={580}
           height={762}
         /></div> 

@@ -25,6 +25,7 @@ const SignUpAuth = () => {
             src="/images/logo/logo2.svg"
             alt="call-a-doc-logo-two"
             className="w-auto h-auto"
+            
             width={64}
             height={61}
           />
@@ -39,6 +40,7 @@ const SignUpAuth = () => {
             src="/images/sign-up-doctor.svg"
             alt="drugs"
             className="w-auto h-auto"
+            
             width={960}
             height={1080}
           />

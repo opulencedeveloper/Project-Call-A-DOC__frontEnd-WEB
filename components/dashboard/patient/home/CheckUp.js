@@ -27,6 +27,7 @@ const CheckUp = () => {
               src="/images/doctor11.svg"
               alt="doctor11"
               className="w-auto h-auto"
+               ""
               width={90}
               height={90}
             />
@@ -53,6 +54,7 @@ const CheckUp = () => {
               src="/images/doctor12.svg"
               alt="doctor11"
               className="w-auto h-auto"
+               ""
               width={90}
               height={90}
             />
@@ -89,6 +91,7 @@ yet</div>
                 src="/images/icon/pills.svg"
                 alt="doctor11"
                 className="w-auto h-auto"
+                 ""
                 width={76}
                 height={76}
               />

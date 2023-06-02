@@ -58,6 +58,7 @@ const ChatNavigation = (props) => {
             src="/images/logo/logo2.svg"
             alt="call a doctor logo"
             className="h-auto w-auto"
+            
             width={576}
             height={320}
           />
@@ -74,6 +75,7 @@ const ChatNavigation = (props) => {
                 src={activeLink === content.link ? `/images/icon/${content.icon1}.svg` : `/images/icon/${content.icon2}.svg`}
                 alt={content.title}
                 className="h-auto w-auto"
+                
                 width={13.5}
                 height={13.87}
               />{" "}
@@ -89,6 +91,7 @@ const ChatNavigation = (props) => {
           src="/images/icon/add.svg"
           alt="add-icon"
           className="h-auto w-auto"
+          
           width={32}
           height={32}
         />

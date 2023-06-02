@@ -74,6 +74,7 @@ const Header = (props) => {
           src="/images/icon/search.svg"
           alt="search-icon"
           className="w-auto h-auto p-2 md:p-4"
+          
           width={16}
           height={16}
         />

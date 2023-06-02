@@ -14,6 +14,7 @@ const MyChat = () => {
             src="/images/doctor-joseph.svg"
             alt="doctor"
             className="h-[82px] w-[82px]"
+            
             width={82}
             height={82}
           />
@@ -23,6 +24,7 @@ const MyChat = () => {
           src="/images/icon/three-dot-vert.svg"
           alt="doctor"
           className="h-[24px] w-[24px]"
+          
           width={24}
           height={24}
         />
@@ -43,6 +45,7 @@ const MyChat = () => {
               src="/images/doctor-joseph.svg"
               alt="doctor"
               className="h-[42px] w-[42px]"
+              
               width={576}
               height={320}
             />
@@ -54,6 +57,7 @@ const MyChat = () => {
             src="/images/doctor-joseph.svg"
             alt="doctor"
             className="h-[42px] w-[42px]"
+             
             width={576}
             height={320}
           />
@@ -77,6 +81,7 @@ const MyChat = () => {
             src="/images/icon/send.svg"
             alt="doctor"
             className="h-auto w-auto"
+            
             width={29}
             height={28}
           />{" "}

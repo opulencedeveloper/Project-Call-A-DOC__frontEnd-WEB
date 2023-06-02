@@ -16,12 +16,15 @@ function removeHtmlTags(data) {
   return val.replace(/<[^>]+>/g, "");
 }
 
-const OtpInput = () => {
+const OtpInput = (props) => {
+  console.log("OTP Component")
   const { isLoading, error, sendRequest: validation } = useHttp();
   const dispatch = useDispatch();
   const router = useRouter();
   const emailObject = useSelector((state) => state.signUp);
   const authCtx = useContext(AuthContext);
+  const {isChecked} = props
+  console.log("OTP Component isChecked", isChecked)
   const inputRefs = [
     useRef(null),
     useRef(null),
@@ -34,15 +37,8 @@ const OtpInput = () => {
   const inputStyle =
     "w-10 h-9 bg-ash3 rounded-md text-center font-bold border-2 border-ash3 md:w-14 md:h-12 focus:border-custom outline-none ";
 
-  let otpButtonText = "Submit";
-  let otpButtonDisable = false;
-
   const errorMessage = removeHtmlTags(error);
 
-  if (isLoading) {
-    otpButtonText = "Please Wait...";
-    otpButtonDisable = true;
-  }
   //e is the input value
   //index in the input postion
   const handleInputChange = (e, index) => {
@@ -78,7 +74,7 @@ const OtpInput = () => {
      // console.log("doneeeeeeeee", doctor);
      // dispatch(userDataActions.addUserData(userData));
      console.log("Token in the OTP fn", token)
-      authCtx.login(token);
+      authCtx.login(token, isChecked);
       dispatch(signupActions.resetState());
       router.replace(targetRoute);
     }
@@ -194,11 +190,11 @@ const OtpInput = () => {
         </div>
         <button
           type="button"
-          disabled={otpButtonDisable}
+          disabled={isLoading}
           onClick={validateOTPHandler}
           className="py-2 px-8 text-custom1 bg-custom10 rounded-full md:py-4 md:px-12"
         >
-          {otpButtonText}
+          {isLoading ? "Please wait..." : "Submit"}
         </button>
       </div>
     </BackDrop>

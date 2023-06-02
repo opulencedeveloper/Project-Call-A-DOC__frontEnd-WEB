@@ -26,6 +26,7 @@ const YourActivities = () => {
             src="/images/doctor-activity-line-chart.svg"
             alt="doctor-activity-line-chart"
             className="w-auto h-auto"
+             ""
             width={614}
             height={268}
           /> */}
@@ -43,6 +44,7 @@ const YourActivities = () => {
             src="/images/doctor-activity-bar-chart.svg"
             alt="doctor-activity-bar-chart"
             className="w-auto h-auto"
+             ""
             width={614}
             height={268}
           /> */}

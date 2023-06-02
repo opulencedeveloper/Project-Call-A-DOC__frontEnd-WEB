@@ -30,6 +30,7 @@ const Table = (props) => {
           src="/images/icon/search-gray-shade.svg"
           alt="search-icon"
           className="w-auto h-auto p-3.5"
+          
           width={16}
           height={16}
         />
@@ -67,6 +68,7 @@ const Table = (props) => {
                       src="/images/doctor11.svg"
                       alt="doctor11"
                       className="w-10 h-10"
+                       ""
                       width={48}
                       height={48}
                     />
@@ -81,6 +83,7 @@ const Table = (props) => {
                       src="/images/icon/three-dot-vert.svg"
                       alt="three-dot-icon"
                       className="w-auto h-auto"
+                       ""
                       width={20}
                       height={20}
                     />

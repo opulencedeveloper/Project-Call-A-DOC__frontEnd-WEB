@@ -27,17 +27,19 @@ const UserProfile = (props) => {
         />
       </div>
       <div className="relative flex-">
-        <Image
-          src={profilePicture}
-          alt="profile-picture"
-          className="w-[222px] h-[222px]"
-          width={222}
-          height={222}
-        />
+        <div className="rounded-full overflow-hidden">
+          <Image
+            src={profilePicture || "/images/profile-picture-placeholder.jpg"}
+            alt="profile-picture"
+            className="w-[222px] h-[222px]"
+            width={222}
+            height={222}
+          />
+        </div>
         <div className="absolute bottom-6 right-4">
           <Image
             src={`/images/icon/${onlineStatus}.svg`}
-            alt="onlin-icon"
+            alt="online-icon"
             className="w-auto h-auto"
             width={28}
             height={29}
@@ -45,7 +47,9 @@ const UserProfile = (props) => {
         </div>
       </div>
       <p className="mt-5 text-xl font-medium">{name}</p>
-      <p className={`${onlineStatusTextColor} text-sm mb-5`}>{onlineStatusText}</p>
+      <p className={`${onlineStatusTextColor} text-sm mb-5`}>
+        {onlineStatusText}
+      </p>
       <button className="bg-custom px-7 flex items-center rounded-full py-2.5 mb-8 space-x-2">
         <Image
           src="/images/icon/edit.svg"

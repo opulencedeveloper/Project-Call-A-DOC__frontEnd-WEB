@@ -1,7 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const userDataInitialState = {
-  justAuth: false,
   id: "",
   active: null,
   aos: "",
@@ -39,9 +38,8 @@ const userDataSlice = createSlice({
     },
     addUserData(state, action) {
       const userData = action.payload;
-      console.log("userData", userData);
-      // Overwrite the state with newItem
-      return { ...state, ...userData, justAuth: true};
+      console.log("in the addUserData reducer");
+      return { ...state, ...userData};
     },
   },
 });

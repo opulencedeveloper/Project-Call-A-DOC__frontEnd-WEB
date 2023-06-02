@@ -64,6 +64,7 @@ const MainNavigation = (props) => {
             alt="call a doctor logo"
             className="h-auto w-auto"
             loading="eager"
+           //  ""
             width={576}
             height={320}
           />

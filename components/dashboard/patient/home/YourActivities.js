@@ -24,6 +24,7 @@ const YourActivities = () => {
         src="/images/appointment-line-chart-no-data.svg"
         alt="appointment-line-chart-data"
         className="w-auto h-auto"
+         ""
         width={762}
         height={268}
       /> */}
@@ -34,6 +35,7 @@ const YourActivities = () => {
         className="w-auto h-auto"
         width={762}
         height={268}
+         ""
       /> */}
     </div>
     {/* Data state class => bg-custom14 */}

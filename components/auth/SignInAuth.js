@@ -3,11 +3,10 @@ import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 
-
-
-import OtpInput from "../UI/OtpInput";
 import userInputvalidator from "@/hooks/userInputvalidator";
 import useHttp from "@/hooks/useHttp";
+
+import OtpInput from "../UI/OtpInput";
 
 const validateEmail = (email) => {
   var re = /\S+@\S+\.\S+/;
@@ -15,13 +14,9 @@ const validateEmail = (email) => {
 };
 
 const SignInAuth = () => {
-  const [isChecked, setIsChecked] = useState();
+  const [isChecked, setIsChecked] = useState(false);
   const [emailSubmit, setEmailSubmit] = useState(false);
   const [showOTPInput, setShowOTPInput] = useState(false);
-  
-
-  let emailButtonText = "Sign In";
-  let emailButtonDisable = false;
 
   const {
     emailValue,
@@ -32,27 +27,16 @@ const SignInAuth = () => {
   } = userInputvalidator(validateEmail);
 
   const { isLoading, error, sendRequest: OTPrequest } = useHttp();
-  
-  if (isLoading) {
-    emailButtonText = "Please Wait...";
-    emailButtonDisable = true;
-  }
 
   const checkHandler = (event) => {
     setIsChecked(event.target.checked);
-    console.log(isChecked);
   };
 
   const myResponse = (res) => {
-    console.log("email response", res);
     const { status, message } = res;
-    if (status === "success") {
-      if(message === "OTP is successfully sent to you") {
-        
-        setShowOTPInput(true);
-      }
+    if (status === "success" && message === "OTP is successfully sent to you") {
+      setShowOTPInput(true);
     }
-    
   };
 
   const verifyEmailHandler = () => {
@@ -74,14 +58,14 @@ const SignInAuth = () => {
     emailHasError || (emailValue === "" && emailSubmit) ? "block" : "hidden";
   return (
     <section className="flex justify-center h-screen">
-      {showOTPInput && <OtpInput /> }
+      {showOTPInput && <OtpInput isChecked={isChecked} />}
       {/* SECTION-1 */}
       <div className="w-full p-10 space-y-20 md:w-1/2">
         <div>
           <Image
             src="/images/logo/logo2.svg"
             alt="call-a-doc-logo-two"
-            className="w-16 h-14"
+            className="w-auto h-auto"
             width={64}
             height={61}
           />
@@ -89,11 +73,11 @@ const SignInAuth = () => {
         <div className="flex flex-col md:px-0 xl:px-20 justify-center 2xl:px-40">
           <p className="pb-2 text-lg">Pick up from where you left off</p>
           <p className="font-medium text-4xl mb-14">Welcome back</p>
-          {(error ) && (
-        <div className="bg-custom11 rounded-md text-custom1 font-semibold text-sm py-3 px-10">
-          <p className="text-center">{error}</p>
-        </div>
-      )}
+          {error && (
+            <div className="bg-custom11 rounded-md text-custom1 font-semibold text-sm py-3 px-10">
+              <p className="text-center">{error}</p>
+            </div>
+          )}
           <form className="flex flex-col pb-3">
             <label htmlFor="email">Email</label>
             <input
@@ -106,8 +90,8 @@ const SignInAuth = () => {
               onChange={emailChangeHandler}
             />
             <p className={`${emailClasses} -mt-2 mb-2 text-sm text-custom11`}>
-          Invalid Email
-        </p>
+              Invalid Email
+            </p>
             <div className=" flex justify-between px-2 border-b border-ash pb-10 mb-10 text-xs md:text-sm">
               <div className="flex items-center space-x-3">
                 <input
@@ -121,11 +105,11 @@ const SignInAuth = () => {
             </div>
             <button
               type="button"
-              disabled={emailButtonDisable}
+              disabled={isLoading}
               onClick={verifyEmailHandler}
               className="bg-custom font-medium text-custom1 py-3.5 rounded-lg mb-5 "
             >
-             {emailButtonText}
+              {isLoading ? "Please Wait..." : "Sign In"}
             </button>
             <button
               type="submit"

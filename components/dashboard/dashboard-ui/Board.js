@@ -22,6 +22,7 @@ const Board = (props) => {
               src="/images/icon/bookmark.svg"
               alt="book-mark-icon"
               className="w-auto h-auto"
+              
               width={35.63}
               height={46.31}
             />

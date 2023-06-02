@@ -7,6 +7,7 @@ const DoctorSearch = () => {
         src="/images/icon/location.svg"
         alt="close-icon"
         className=" w-auto h-auto"
+        
         width={48.81}
         height={62.13}
       />
