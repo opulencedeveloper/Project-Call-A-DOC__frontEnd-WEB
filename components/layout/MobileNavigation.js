@@ -27,6 +27,18 @@ const pageContent = [
     link: "/okk",
     title: "Pricing",
   },
+  {
+    icon1: "settings",
+    icon2: "settings",
+    link: "/login",
+    title: "Login",
+  },
+  {
+    icon1: "settings",
+    icon2: "settings",
+    link: "/signup",
+    title: "Signup",
+  },
 ];
 
 const MobileNavigation = (props) => {
