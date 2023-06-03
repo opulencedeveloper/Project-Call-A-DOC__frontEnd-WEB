@@ -12,7 +12,7 @@ import Board from "@/components/dashboard/dashboard-ui/Board";
 import Header from "@/components/dashboard/dashboard-ui/Header";
 import Table from "@/components/dashboard/dashboard-ui/Table";
 import UserProfile from "@/components/dashboard/dashboard-ui/UserProfile";
-import DashBoardMyLayout from "@/components/dashboard/dashboard-MyLayout/DashBoardMyLayout";
+import DashBoardLayout from "@/components/dashboard/dashboard-MyLayout/DashBoardLayout";
 import ActivityLineGraph from "@/components/dashboard/dashboard-ui/ActivityChart";
 import useHttp from "@/hooks/useHttp";
 
@@ -134,7 +134,7 @@ const Appointments = () => {
   }
 
   return (
-    <DashBoardMyLayout type="Patient">
+    <DashBoardLayout type="Patient">
       <div className="flex-1 2xl:pr-16">
         <Header title="Appointments" type="Patient" />
         <Board pageContent={boardContent} />
@@ -147,7 +147,7 @@ const Appointments = () => {
         profilePicture={profilepicture}
         online={isOnline}
       />
-    </DashBoardMyLayout>
+    </DashBoardLayout>
   );
 };
 

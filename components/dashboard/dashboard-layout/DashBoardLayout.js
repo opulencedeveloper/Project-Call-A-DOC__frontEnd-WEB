@@ -1,6 +1,6 @@
 import DashBoardNavigation from "./DashBoardNavigation";
 
-const DashBoardMyLayout = (props) => {
+const DashBoardLayout = (props) => {
   const {type} = props;
   return (
     <div className="flex pt-8">
@@ -11,4 +11,4 @@ const DashBoardMyLayout = (props) => {
   );
 };
 
-export default DashBoardMyLayout;
+export default DashBoardLayout;

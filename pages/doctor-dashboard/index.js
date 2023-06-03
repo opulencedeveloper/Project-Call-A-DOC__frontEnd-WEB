@@ -9,7 +9,7 @@ import useHttp from "@/hooks/useHttp"
 import TogglButton from "@/components/UI/ToggleButton";
 import Header from "@/components/dashboard/dashboard-ui/Header";
 import UserProfile from "@/components/dashboard/dashboard-ui/UserProfile";
-import DashBoardMyLayout from "@/components/dashboard/dashboard-MyLayout/DashBoardMyLayout";
+import DashBoardLayout from "@/components/dashboard/dashboard-MyLayout/DashBoardLayout";
 import AppointmentsEarnings from "@/components/dashboard/doctor/home/AppointmentsEarnings";
 import YourActivities from "@/components/dashboard/doctor/home/YourActivities";
 import LoadingSpinner from "@/components/UI/LoadingSpinner";
@@ -64,7 +64,7 @@ export default function DashBoard() {
   }
 
   return (
-    <DashBoardMyLayout type="Doctor">
+    <DashBoardLayout type="Doctor">
       <div className="flex-1 2xl:pr-16">
         <Header title={`Welcome Dr. ${doctorFirstName}`} type={"Doctor"}/>
         <TogglButton />
@@ -77,6 +77,6 @@ export default function DashBoard() {
         profilePicture={profilepicture}
         online={isOnline}
       />
-    </DashBoardMyLayout>
+    </DashBoardLayout>
   );
 }

@@ -11,7 +11,7 @@ const { addUserData } = userDataActions;
 import Header from "@/components/dashboard/dashboard-ui/Header";
 import Table from "@/components/dashboard/dashboard-ui/Table";
 import UserProfile from "@/components/dashboard/dashboard-ui/UserProfile";
-import DashBoardMyLayout from "@/components/dashboard/dashboard-MyLayout/DashBoardMyLayout";
+import DashBoardLayout from "@/components/dashboard/dashboard-MyLayout/DashBoardLayout";
 
 let isOnline = false;
 
@@ -87,7 +87,7 @@ const MyFolder = () => {
     return <LoadingSpinner errorMessage={error} />;
   }
   return (
-    <DashBoardMyLayout type="Patient">
+    <DashBoardLayout type="Patient">
       <div className="flex-1 2xl:pr-16">
         <Header title={"My Folder"} type={"Patient"} />
         <Table
@@ -105,7 +105,7 @@ const MyFolder = () => {
         profilePicture={profilepicture}
         online={isOnline}
       />
-    </DashBoardMyLayout>
+    </DashBoardLayout>
   );
 };
 
