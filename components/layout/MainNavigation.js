@@ -63,8 +63,8 @@ const MainNavigation = (props) => {
             src="/images/logo/logo.svg"
             alt="call a doctor logo"
             className="h-auto w-auto"
+            priority={true}
             loading="eager"
-           //  ""
             width={576}
             height={320}
           />
