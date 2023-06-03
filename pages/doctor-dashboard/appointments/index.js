@@ -10,7 +10,7 @@ import Board from "@/components/dashboard/dashboard-ui/Board";
 import Header from "@/components/dashboard/dashboard-ui/Header";
 import Table from "@/components/dashboard/dashboard-ui/Table";
 import UserProfile from "@/components/dashboard/dashboard-ui/UserProfile";
-import DashBoardLayout from "@/components/dashboard/dashboard-layout/DashBoardLayout";
+import DashBoardMyLayout from "@/components/dashboard/dashboard-MyLayout/DashBoardMyLayout";
 import ActivityLineGraph from "@/components/dashboard/dashboard-ui/ActivityChart";
 import LoadingSpinner from "@/components/UI/LoadingSpinner";
 
@@ -134,7 +134,7 @@ const boardContent = [
     return <LoadingSpinner errorMessage={error} />;
   }
   return (
-    <DashBoardLayout type="Doctor">
+    <DashBoardMyLayout type="Doctor">
         <div className="flex-1 2xl:pr-16">
           <Header title={"Appointments"} type ={"Doctor"}/>
           <Board pageContent={boardContent}/>
@@ -147,7 +147,7 @@ const boardContent = [
         profilePicture={profilepicture}
         online={isOnline}
       />
-    </DashBoardLayout>
+    </DashBoardMyLayout>
   );
 }
 

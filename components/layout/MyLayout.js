@@ -1,15 +1,15 @@
 import MainNavigation from "./MainNavigation";
-import Footer from "./Footer";
+import MyFooter from "./MyFooter";
 
 
-const Layout = (props) => {
+const MyMyLayout = (props) => {
   return (
     <>
       <MainNavigation />
       <main>{props.children}</main>
-      <Footer />
+      <MyFooter />
     </>
   );
 };
 
-export default Layout;
+export default MyMyLayout;

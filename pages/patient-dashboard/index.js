@@ -5,7 +5,7 @@ import Header from "@/components/dashboard/dashboard-ui/Header";
 import UserProfile from "@/components/dashboard/dashboard-ui/UserProfile";
 import CheckUp from "@/components/dashboard/patient/home/CheckUp";
 import YourActivities from "@/components/dashboard/patient/home/YourActivities";
-import DashBoardLayout from "@/components/dashboard/dashboard-layout/DashBoardLayout";
+import DashBoardMyLayout from "@/components/dashboard/dashboard-MyLayout/DashBoardMyLayout";
 import AuthContext from "@/store/context-store/auth-context";
 import LoadingSpinner from "@/components/UI/LoadingSpinner";
 import useHttp from "@/hooks/useHttp";
@@ -56,7 +56,7 @@ const Dashboard = () => {
   }
 
   return (
-    <DashBoardLayout type="Patient">
+    <DashBoardMyLayout type="Patient">
       <div className="flex-1 2xl:pr-16">
         <Header title={`Welcome ${patientFirstName}`} type="Patient" />
         <CheckUp />
@@ -67,7 +67,7 @@ const Dashboard = () => {
         profilePicture={profilepicture}
         online={isOnline}
       />
-    </DashBoardLayout>
+    </DashBoardMyLayout>
   );
 };
 

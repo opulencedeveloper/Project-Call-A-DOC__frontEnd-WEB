@@ -1,6 +1,6 @@
 import Header from "@/components/dashboard/dashboard-ui/Header";
 import UserProfile from "@/components/dashboard/dashboard-ui/UserProfile";
-import ChatLayout from "@/components/chat/chat-layout/ChatLayout";
+import ChatMyLayout from "@/components/chat/chat-MyLayout/ChatMyLayout";
 import MyChat from "@/components/chat/chat/MyChat";
 import { useContext, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
@@ -48,7 +48,7 @@ export default function Chat() {
   }
 
   return (
-    <ChatLayout>
+    <ChatMyLayout>
       <div className="flex flex-col w-full 2xl:pr-16 lg:w-9/12">
        <Header title={`Welcome ${patientFirstName}`} />
        <MyChat />
@@ -58,6 +58,6 @@ export default function Chat() {
         profilePicture={profilepicture}
         online={isOnline}
       />
-      </ChatLayout>
+      </ChatMyLayout>
   );
 }

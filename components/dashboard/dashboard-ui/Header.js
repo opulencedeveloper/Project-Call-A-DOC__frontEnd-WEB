@@ -1,7 +1,7 @@
 import Image from "next/image";
-import DashBoardNavigation from "../dashboard-layout/DashBoardNavigation";
+import DashBoardNavigation from "../dashboard-MyLayout/DashBoardNavigation";
 import { useState } from "react";
-import DashBoardMobileNavigation from "../dashboard-layout/DashBoardMobileNavigation";
+import DashBoardMobileNavigation from "../dashboard-MyLayout/DashBoardMobileNavigation";
 import BackDrop from "../../UI/BackDrop";
 
 const currentDate = new Date();
