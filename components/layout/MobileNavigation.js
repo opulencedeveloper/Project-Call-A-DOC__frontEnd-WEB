@@ -30,7 +30,7 @@ const pageContent = [
   {
     icon1: "settings",
     icon2: "settings",
-    link: "login",
+    link: "signin",
     title: "Login",
   },
   {
