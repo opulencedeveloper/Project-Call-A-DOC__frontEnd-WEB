@@ -12,7 +12,7 @@ const StartingPage = () => {
             className="h-auto w-auto"
             width={605}
             height={190}
-            
+            priority={true}
             loading="eager"
           />
           <div className="p-auto 2xl:pl-52 2xl:pt-3">
@@ -20,7 +20,7 @@ const StartingPage = () => {
               src="/images/globally-at-your-fingertips.svg"
               alt="globally at your fingertips image"
               className="h-auto w-auto"
-              
+              priority={true}
               width={257}
               height={30}
               loading="eager"
@@ -32,16 +32,16 @@ const StartingPage = () => {
           <Image
             src="/images/hero-image.png"
             alt="phone image"
-            className="h-auto w-auto"
-            
+            className="h-auto w-auto" 
             width={609}
             height={190}
+            priority={true}
             loading="eager"
           />
         </div>
       </div>
 
-      <div className="relative z-10 flex space-x-auto -mt-12 md:space-x-8 md:-mt-32 2xl:-mt-56">
+      <div className="relative z-10 flex space-x-auto -mt-10 md:space-x-8 md:-mt-32 2xl:-mt-56">
         <div>
           <div className="mb-10">
             <Image
@@ -50,7 +50,7 @@ const StartingPage = () => {
               className="w-auto h-auto"
               width={560}
               height={419}
-              
+              priority={true}
               loading="eager"
             />
           </div>
@@ -61,7 +61,7 @@ const StartingPage = () => {
               className="w-auto h-auto"
               width={560}
               height={419}
-              
+              priority={true}
               loading="eager"
             />
           </div>
@@ -75,7 +75,7 @@ const StartingPage = () => {
               className="w-auto h-auto pt-14 md:pt-20 xl:pt-40"
               width={560}
               height={419}
-              
+              priority={true}
               loading="eager"
             />
           </div>
@@ -86,7 +86,7 @@ const StartingPage = () => {
               className="w-20 h-20 md:w-40 md:h-40 xl:w-auto xl:h-auto"
               width={262}
               height={262}
-               
+              priority={true}
               loading="eager"
             />
           </div>
@@ -97,7 +97,7 @@ const StartingPage = () => {
               className="w-auto h-auto pt-36 md:pt-56 xl:pt-96"
               width={560}
               height={419}
-              
+              priority={true}
               loading="eager"
             />
           </div>

@@ -31,6 +31,7 @@ const SectionTwo = (props) => {
             className="w-auto h-auto"
             width={1159}
             height={1034}
+            priority={true}
             loading="eager"
           />
         </div>
