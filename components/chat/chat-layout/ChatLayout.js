@@ -1,6 +1,6 @@
 import ChatNavigation from "./ChatNavigation";
 
-const ChatMyLayout = (props) => {
+const ChatLayout = (props) => {
   const {type} = props;
   return (
     <div className="flex pt-8">
@@ -11,4 +11,4 @@ const ChatMyLayout = (props) => {
   );
 };
 
-export default ChatMyLayout;
+export default ChatLayout;

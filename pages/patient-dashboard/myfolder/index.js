@@ -11,7 +11,7 @@ const { addUserData } = userDataActions;
 import Header from "@/components/dashboard/dashboard-ui/Header";
 import Table from "@/components/dashboard/dashboard-ui/Table";
 import UserProfile from "@/components/dashboard/dashboard-ui/UserProfile";
-import DashBoardLayout from "@/components/dashboard/dashboard-MyLayout/DashBoardLayout";
+import DashBoardLayout from "@/components/dashboard/dashboard-layout/DashBoardLayout";
 
 let isOnline = false;
 

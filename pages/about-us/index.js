@@ -1,4 +1,4 @@
-import MyLayout from "@/components/MyLayout/MyLayout";
+import MyLayout from "@/components/layout/MyLayout";
 import SectionOne from "@/components/about-us/section-one";
 import SectionThree from "@/components/about-us/section-three";
 import SectionTwo from "@/components/about-us/section-two";

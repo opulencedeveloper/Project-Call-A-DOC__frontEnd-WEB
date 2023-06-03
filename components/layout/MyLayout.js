@@ -2,7 +2,7 @@ import MainNavigation from "./MainNavigation";
 import MyFooter from "./MyFooter";
 
 
-const MyMyLayout = (props) => {
+const MyLayout = (props) => {
   return (
     <>
       <MainNavigation />
@@ -12,4 +12,4 @@ const MyMyLayout = (props) => {
   );
 };
 
-export default MyMyLayout;
+export default MyLayout;

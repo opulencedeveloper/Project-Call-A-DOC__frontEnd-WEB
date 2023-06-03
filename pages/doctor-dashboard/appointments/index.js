@@ -10,7 +10,7 @@ import Board from "@/components/dashboard/dashboard-ui/Board";
 import Header from "@/components/dashboard/dashboard-ui/Header";
 import Table from "@/components/dashboard/dashboard-ui/Table";
 import UserProfile from "@/components/dashboard/dashboard-ui/UserProfile";
-import DashBoardLayout from "@/components/dashboard/dashboard-MyLayout/DashBoardLayout";
+import DashBoardLayout from "@/components/dashboard/dashboard-layout/DashBoardLayout";
 import ActivityLineGraph from "@/components/dashboard/dashboard-ui/ActivityChart";
 import LoadingSpinner from "@/components/UI/LoadingSpinner";
 

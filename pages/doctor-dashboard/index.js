@@ -9,7 +9,7 @@ import useHttp from "@/hooks/useHttp"
 import TogglButton from "@/components/UI/ToggleButton";
 import Header from "@/components/dashboard/dashboard-ui/Header";
 import UserProfile from "@/components/dashboard/dashboard-ui/UserProfile";
-import DashBoardLayout from "@/components/dashboard/dashboard-MyLayout/DashBoardLayout";
+import DashBoardLayout from "@/components/dashboard/dashboard-layout/DashBoardLayout";
 import AppointmentsEarnings from "@/components/dashboard/doctor/home/AppointmentsEarnings";
 import YourActivities from "@/components/dashboard/doctor/home/YourActivities";
 import LoadingSpinner from "@/components/UI/LoadingSpinner";
