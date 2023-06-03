@@ -15,18 +15,18 @@ const pageContent = [
     link: "/about-us",
     title: "About Us",
   },
-  {
-    icon1: "folder-icon1",
-    icon2: "folder-icon2",
-    link: "/fol",
-    title: "Services",
-  },
-  {
-    icon1: "settings",
-    icon2: "settings",
-    link: "/okk",
-    title: "Pricing",
-  },
+  // {
+  //   icon1: "folder-icon1",
+  //   icon2: "folder-icon2",
+  //   link: "/fol",
+  //   title: "Services",
+  // },
+  // {
+  //   icon1: "settings",
+  //   icon2: "settings",
+  //   link: "/okk",
+  //   title: "Pricing",
+  // },
   {
     icon1: "settings",
     icon2: "settings",
