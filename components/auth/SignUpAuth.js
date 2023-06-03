@@ -1,8 +1,8 @@
 import Image from "next/image";
 import { useState } from "react";
-import SignUpJourney from "../sign-up/SignUpJourney";
-import SignUpWithEmail from "../sign-up/SigupWithEmail";
-import MedicalDetails from "../sign-up/MedicalDetails.";
+import SignUpJourney from "../signup/SignUpJourney";
+import SignUpWithEmail from "../signup/SigupWithEmail";
+import MedicalDetails from "../signup/MedicalDetails.";
 
 const SignUpAuth = () => {
   const [isSubmit, setIsSubmit] = useState(false);
@@ -25,7 +25,7 @@ const SignUpAuth = () => {
             src="/images/logo/logo2.svg"
             alt="call-a-doc-logo-two"
             className="w-auto h-auto"
-            
+            loading="eager"
             width={64}
             height={61}
           />
@@ -37,7 +37,7 @@ const SignUpAuth = () => {
       {/* SECTION-2 */}
       <div className="w-1/2 h-full px-10 hidden md:flex">
       <Image
-            src="/images/sign-up-doctor.svg"
+            src="/images/signup-doctor.svg"
             alt="drugs"
             className="w-auto h-auto"
             

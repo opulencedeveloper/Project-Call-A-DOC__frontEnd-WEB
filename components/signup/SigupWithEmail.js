@@ -169,7 +169,7 @@ const SignUpWithEmail = (props) => {
         {!isSubmit && (
           <div className="flex justify-center items-center space-x-3 px-2 border-b border-ash p-5 mb-5 text-xs md:text-sm">
             <p>Already have an account yet?</p>
-            <Link href="#" className="text-custom font-semibold">
+            <Link href="/signin" className="text-custom font-semibold">
               Sign In
             </Link>
           </div>

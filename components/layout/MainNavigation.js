@@ -85,13 +85,13 @@ const MainNavigation = (props) => {
 
         <div className="hidden lg:flex space-x-3 pt-3 font-normal  text-sm ">
           <Link
-            href="/sign-in"
+            href="/signin"
             className="w-80 h-48 border flex items-center justify-center text-custom border-custom rounded-full"
           >
             Login
           </Link>
           <Link
-            href="/sign-up"
+            href="/signup"
             className="w-162 h-48 flex items-center justify-center text-custom1 bg-custom rounded-full"
           >
             Get Started

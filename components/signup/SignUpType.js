@@ -15,7 +15,6 @@ const SignUpType = (props) => {
   };
 
   function changeHandler(value) {
-    console.log(value);
     dispatchSignUp(
       signupActions.addDetails({
         value: value,

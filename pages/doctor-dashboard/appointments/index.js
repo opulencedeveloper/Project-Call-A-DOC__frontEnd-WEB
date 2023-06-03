@@ -1,10 +1,25 @@
-import AppointmentGraph from "@/components/dashboard/dashboard-ui/AppointmentGraph";
+import { useContext, useEffect } from "react";
+
+import { useRouter } from "next/router";
+
+import { useDispatch, useSelector } from "react-redux";
+
+import useHttp from "@/hooks/useHttp";
+
 import Board from "@/components/dashboard/dashboard-ui/Board";
 import Header from "@/components/dashboard/dashboard-ui/Header";
 import Table from "@/components/dashboard/dashboard-ui/Table";
 import UserProfile from "@/components/dashboard/dashboard-ui/UserProfile";
 import DashBoardLayout from "@/components/dashboard/dashboard-layout/DashBoardLayout";
 import ActivityLineGraph from "@/components/dashboard/dashboard-ui/ActivityChart";
+import LoadingSpinner from "@/components/UI/LoadingSpinner";
+
+import AuthContext from "@/store/context-store/auth-context";
+import { userDataActions } from "../../../store/redux-store/userData-slice";
+
+const { addUserData } = userDataActions;
+
+let isOnline = false;
 
 const checkUps = [
   {
@@ -79,6 +94,45 @@ const boardContent = [
   },]
 
  const Appointments = () => {
+  const router = useRouter(); useEffect
+  const dispatch = useDispatch();
+  const userInfo = useSelector((state) => state.userData); 
+  const {
+    firstname: patientFirstName,
+    lastname: patientLastName,
+    profilepicture,
+  } = userInfo;
+  const { isLoading, error, sendRequest: fetchUserData } = useHttp();
+  const authCtx = useContext(AuthContext); 
+  const { token } = authCtx;
+
+  useEffect(() => {
+    const myResponse = (res) => {
+      const { status, doctor } = res;
+      if (status === "success") {
+        dispatch(addUserData(doctor));
+        isOnline = true;
+      }
+    };
+
+    fetchUserData(
+      {
+        url: "doctor",
+        token: token,
+      },
+      myResponse
+    );
+  }, [fetchUserData, token, dispatch]);
+
+  useEffect(() => {
+    if (error === "Unauthenticated") {
+      router.replace("/signin");
+    }
+  }, [error, router]);
+
+  if (isLoading || error) {
+    return <LoadingSpinner errorMessage={error} />;
+  }
   return (
     <DashBoardLayout type="Doctor">
         <div className="flex-1 2xl:pr-16">
@@ -88,7 +142,11 @@ const boardContent = [
           <Table tableData={checkUps}
           />
        </div>
-       <UserProfile name="Dr Grace Wills" profilePicture="/images/dr-grace-wills.svg"  online={false}/>
+       <UserProfile
+        name={`${patientFirstName} ${patientLastName}`}
+        profilePicture={profilepicture}
+        online={isOnline}
+      />
     </DashBoardLayout>
   );
 }

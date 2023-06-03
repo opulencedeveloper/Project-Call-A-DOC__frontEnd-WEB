@@ -47,7 +47,7 @@ const Dashboard = () => {
 
   useEffect(() => {
     if (error === "Unauthenticated") {
-      router.replace("sign-in");
+      router.replace("signin");
     }
   }, [error, router]);
 

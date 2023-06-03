@@ -54,7 +54,6 @@ console.log("The retrived token is", tokenData)
 
   const loginHandler = (token, remeberMe) => {
     setToken(token);
-    console.log("token in the login handler", token);
     if (typeof window !== "undefined") {
       localStorage.setItem("token", token);
       localStorage.setItem("remeberMe", remeberMe);

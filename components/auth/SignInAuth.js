@@ -14,7 +14,7 @@ const validateEmail = (email) => {
 };
 
 const SignInAuth = () => {
-  const [isChecked, setIsChecked] = useState(false);
+  const [isChecked, setIsChecked] = useState(true);
   const [emailSubmit, setEmailSubmit] = useState(false);
   const [showOTPInput, setShowOTPInput] = useState(false);
 
