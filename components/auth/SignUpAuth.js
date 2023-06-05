@@ -37,8 +37,8 @@ const SignUpAuth = () => {
       {/* SECTION-2 */}
       <div className="w-1/2 h-full px-10 hidden md:flex">
       <Image
-            src="/images/signup-doctor.svg"
-            alt="drugs"
+            src="/images/sign-up-doctor.svg"
+            alt="doctor image" 
             className="w-auto h-auto"
             
             width={960}
