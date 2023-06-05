@@ -30,20 +30,21 @@ const SignUpAuth = () => {
             height={61}
           />
         </div>
-        {!startSignUp && <SignUpWithEmail startSignUpHandler={startSignUpHandler} />}
+        {!startSignUp && (
+          <SignUpWithEmail startSignUpHandler={startSignUpHandler} />
+        )}
         {startSignUp && <SignUpJourney />}
       </div>
 
       {/* SECTION-2 */}
       <div className="w-1/2 h-full px-10 hidden md:flex">
-      <Image
-            src="/images/sign-up-doctor.svg"
-            alt="doctor image" 
-            className="w-auto h-auto"
-            
-            width={960}
-            height={1080}
-          />
+        <Image
+          src="/images/sign-up-doctor.svg"
+          alt="doctor image"
+          className="w-auto h-auto"
+          width={960}
+          height={1080}
+        />
       </div>
     </section>
   );
