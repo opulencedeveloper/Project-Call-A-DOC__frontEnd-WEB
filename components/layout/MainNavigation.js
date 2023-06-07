@@ -46,7 +46,7 @@ const MainNavigation = (props) => {
   };
 
   return (
-    <nav className="mt-5 mx-5 w-full md:mx-12 ">
+    <nav className="mt-5 px-5 w-full md:px-12 ">
       <Portal>
         {" "}
         <div
