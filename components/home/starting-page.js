@@ -12,7 +12,6 @@ const StartingPage = () => {
             className="h-auto w-auto"
             width={605}
             height={190}
-            priority={true}
             loading="eager"
           />
           <div className="p-auto 2xl:pl-52 2xl:pt-3">
@@ -50,7 +49,6 @@ const StartingPage = () => {
               className="w-auto h-auto"
               width={560}
               height={419}
-              priority={true}
               loading="eager"
             />
           </div>
@@ -61,7 +59,6 @@ const StartingPage = () => {
               className="w-auto h-auto"
               width={560}
               height={419}
-              priority={true}
               loading="eager"
             />
           </div>
