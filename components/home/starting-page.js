@@ -32,8 +32,8 @@ const StartingPage = () => {
             src="/images/hero-image.png"
             alt="phone image"
             className="h-auto w-auto" 
-            width={609}
-            height={190}
+            width={409}
+            height={120}
             priority={true}
             loading="eager"
           />
