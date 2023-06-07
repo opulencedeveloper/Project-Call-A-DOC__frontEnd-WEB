@@ -39,7 +39,7 @@ const StartingPage = () => {
         </div>
       </div>
 
-      <div className="relative z-10 flex space-x-auto -mt-8 md:space-x-8 md:-mt-32 2xl:-mt-56">
+      <div className="relative z-10 flex space-x-auto -mt-8 md:space-x-8 md:-mt-28 2xl:-mt-56">
         <div>
           <div className="mb-10">
             <Image
