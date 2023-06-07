@@ -3,15 +3,15 @@ import Image from "next/image";
 
 const StartingPage = () => {
   return (
-    <section className={"animateSlideUp relative z-0"}>
+    <section className="animateSlideUp relative z-0 w-full">
       <div className="flex px-5 items-center md:justify-end lg:px-20">
         <div className="space-y-2 z-10">
           <Image
             src="/images/get-medical-attention.svg"
             alt="get medical attention image"
             className="h-auto w-auto"
-            width={605}
-            height={190}
+            width={505}
+            height={120}
             loading="eager"
           />
           <div className="p-auto 2xl:pl-52 2xl:pt-3">
@@ -19,7 +19,6 @@ const StartingPage = () => {
               src="/images/globally-at-your-fingertips.svg"
               alt="globally at your fingertips image"
               className="h-auto w-auto"
-              priority={true}
               width={257}
               height={30}
               loading="eager"
@@ -32,9 +31,9 @@ const StartingPage = () => {
             src="/images/hero-image.png"
             alt="phone image"
             className="h-auto w-auto" 
-            width={409}
-            height={120}
-            priority={true}
+            width={609}
+            height={190}
+            priority
             loading="eager"
           />
         </div>
@@ -72,7 +71,7 @@ const StartingPage = () => {
               className="w-auto h-auto pt-14 md:pt-20 xl:pt-40"
               width={560}
               height={419}
-              priority={true}
+              priority
               loading="eager"
             />
           </div>
@@ -83,7 +82,7 @@ const StartingPage = () => {
               className="w-20 h-20 md:w-40 md:h-40 xl:w-auto xl:h-auto"
               width={262}
               height={262}
-              priority={true}
+              priority
               loading="eager"
             />
           </div>
@@ -94,7 +93,7 @@ const StartingPage = () => {
               className="w-auto h-auto pt-36 md:pt-56 xl:pt-96"
               width={560}
               height={419}
-              priority={true}
+              priority
               loading="eager"
             />
           </div>
