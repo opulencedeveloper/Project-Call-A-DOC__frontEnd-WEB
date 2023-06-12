@@ -4,7 +4,7 @@ const Input = () => {
       Reach out to us
     </p>
    <div className="flex justify-center w-11/12 h-12 md:1/2">
-    <input placeholder="Input your email" className="w-full bg-custom8 pl-8 text-lg rounded-tl-full rounded-bl-full"/>
+    <input placeholder="Input your email" className="w-full bg-custom8 pl-4 text-base rounded-tl-full rounded-bl-full md:text-lg  md:pl-8"/>
     <button className="px-3 md:px-10 text-custom1 bg-custom rounded-tr-full rounded-br-full font-normal text-sm">
       Submit
       </button>

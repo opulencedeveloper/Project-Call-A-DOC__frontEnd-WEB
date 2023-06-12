@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import { useRouter } from "next/router";
 
 const contents = [
   {
@@ -17,6 +18,7 @@ const contents = [
 ];
 
 const SectionThree = (props) => {
+  const router = useRouter();
   return (
     <section id="patient" className="mb-20 md:mb-96">
       {contents.map((content) => {
@@ -26,7 +28,7 @@ const SectionThree = (props) => {
             key={content.content1}
           >
             <div className="pt-auto text-custom1 space-y-10 pt-20 lg:pt-40 lg:w-1/2">
-              <div className="flex items-end text-lg font-medium md:text-xl">
+              <div className="flex items-end justify-between max-w-xs text-base font-medium md:text-xl">
                 <p>FOR PATIENTS</p>
                 <div className="w-80 h-0.5 mx-4 mb-3 bg-custom1" />
                 <p>001</p>
@@ -36,7 +38,7 @@ const SectionThree = (props) => {
                 {content.content1}
               </p>
               <p className="text-md pr-auto md:pr-10">{content.content2}</p>
-              <button className="flex justify-center items-center">
+              <button onClick={() => router.push('signup')} className="flex justify-center items-center">
                 <p className="text-base mr-2">Get Started</p>
                 <Image
                   src="/images/icon/arrow-right-white.svg"
@@ -71,7 +73,7 @@ const SectionThree = (props) => {
           We are on a mission to bring affordable, quality medical access to
           everyone at their own convenience
         </p>
-        <Link href={"#"} className="flex justify-center items-center">
+        <Link href='about-us' className="flex justify-center items-center">
           <p className="text-49207E text-sm mr-2 md:text-lg">More about us</p>
           <Image
             src="/images/icon/arrow-right-purple.svg"

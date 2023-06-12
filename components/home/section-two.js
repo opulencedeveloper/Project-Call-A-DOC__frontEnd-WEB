@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { useRouter } from "next/router";
 
 const contents = [
   {
@@ -18,6 +19,7 @@ const contents = [
 ];
 
 const SectionTwo = (props) => {
+  const router = useRouter();
   return <section id="doctor">{ contents.map((content) => {
     return (
       <div
@@ -38,7 +40,7 @@ const SectionTwo = (props) => {
         </div>
 
         <div className="pt-auto space-y-10 md:pt-20 lg:pt-40 lg:w-1/2">
-          <div className="flex items-end text-ash text-lg font-medium md:text-xl">
+          <div className="flex items-end justify-between max-w-xs text-ash text-base font-medium md:text-xl">
             <p>FOR DOCTORS</p>
             <div className="w-80 h-0.5 mx-4 mb-3 bg-ash" />
             <p>{content.content3}</p>
@@ -48,7 +50,7 @@ const SectionTwo = (props) => {
             {content.content1}
           </p>
           <p className="text-md pr-auto md:pr-10">{content.content2}</p>
-          <button className="flex justify-center items-center">
+          <button onClick={() => router.push('signup')} className="flex justify-center items-center">
             <p className="text-base text-49207E mr-2">Get Started</p>
             <Image
               src="/images/icon/arrow-right-purple.svg"
