@@ -6,10 +6,11 @@ import MyLayout from "@/components/layout/MyLayout";
 
 
 export default function Home() {
+
   return (
     <MyLayout>
       <StartingPage />
-      <SectionTwo /> 
+      <SectionTwo/> 
        <SectionThree /> 
       <SectionFour /> 
       </MyLayout>

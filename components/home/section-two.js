@@ -18,9 +18,10 @@ const contents = [
 ];
 
 const SectionTwo = (props) => {
-  return contents.map((content) => {
+  return <section id="doctor">{ contents.map((content) => {
     return (
       <div
+      
         className={` border flex flex-col lg:flex-row border-b-2 border-ash border py-10 px-5 md:px-40`}
         key={content.content1}
       >
@@ -37,8 +38,8 @@ const SectionTwo = (props) => {
         </div>
 
         <div className="pt-auto space-y-10 md:pt-20 lg:pt-40 lg:w-1/2">
-          <div className="flex items-end text-ash text-xl font-medium ">
-            <p>FOR PATIENTS</p>
+          <div className="flex items-end text-ash text-lg font-medium md:text-xl">
+            <p>FOR DOCTORS</p>
             <div className="w-80 h-0.5 mx-4 mb-3 bg-ash" />
             <p>{content.content3}</p>
           </div>
@@ -60,7 +61,7 @@ const SectionTwo = (props) => {
         </div>
       </div>
     );
-  });
+  })}</section>;
 };
 
 export default SectionTwo;

@@ -23,7 +23,7 @@ const SectionTwo = () => {
               alt="doctor6 image"
               className="h-auto w-auto mt-24 "
               loading="eager"
-              
+              priority
               width={388}
               height={388}
             /></div> 
@@ -38,7 +38,7 @@ const SectionTwo = () => {
             alt="get medical attention image"
             className="h-auto w-auto"
             loading="eager"
-            
+            priority
             width={388}
             height={388}
           /> </div>
@@ -55,7 +55,7 @@ const SectionTwo = () => {
             width={388}
             height={388}
             loading="eager"
-            
+            priority
           /> </div>
           <div className="w-full space-y-1 text-center pl-10 -mt-2 md:pl-20 xl:-mt-12">
           <p className="font-bold">Director</p>
@@ -72,7 +72,7 @@ const SectionTwo = () => {
             alt="get medical attention image"
             className="h-auto w-auto"
             loading="eager"
-            
+            priority
             width={314}
             height={314}
           /></div>
@@ -86,6 +86,7 @@ const SectionTwo = () => {
             alt="get medical attention image"
             className="h-auto w-auto"
             loading="eager"
+            priority
             width={388}
             height={388}
           />

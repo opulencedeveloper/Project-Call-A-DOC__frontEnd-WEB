@@ -18,7 +18,7 @@ const contents = [
 
 const SectionThree = (props) => {
   return (
-    <section className="mb-20 md:mb-96">
+    <section id="patient" className="mb-20 md:mb-96">
       {contents.map((content) => {
         return (
           <div
@@ -26,7 +26,7 @@ const SectionThree = (props) => {
             key={content.content1}
           >
             <div className="pt-auto text-custom1 space-y-10 pt-20 lg:pt-40 lg:w-1/2">
-              <div className="flex items-end text-xl font-medium ">
+              <div className="flex items-end text-lg font-medium md:text-xl">
                 <p>FOR PATIENTS</p>
                 <div className="w-80 h-0.5 mx-4 mb-3 bg-custom1" />
                 <p>001</p>
