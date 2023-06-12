@@ -60,7 +60,7 @@ const SignInAuth = () => {
     <section className="flex justify-center h-screen">
       {showOTPInput && <OtpInput isChecked={isChecked} />}
       {/* SECTION-1 */}
-      <div className="w-full p-10 space-y-20  mb-5 md:w-1/2">
+      <div className="w-full p-10 space-y-20 mb-5 md:w-1/2">
         <div>
           <Image
             src="/images/logo/logo2.svg"
@@ -127,7 +127,7 @@ const SignInAuth = () => {
           </form>
           <div className="flex text-xs space-x-3 justify-center md:text-sm">
             <p>Don't have an account yet?</p>
-            <Link href="#" className="text-custom font-semibold">
+            <Link href="/signup" className="text-custom font-semibold">
               Register
             </Link>
           </div>
