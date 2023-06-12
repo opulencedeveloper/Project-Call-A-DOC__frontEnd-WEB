@@ -20,7 +20,7 @@ const contents = [
 const SectionThree = (props) => {
   const router = useRouter();
   return (
-    <section id="patient" className="mb-20 md:mb-96">
+    <section id="doctor" className="mb-20 md:mb-96">
       {contents.map((content) => {
         return (
           <div
@@ -29,7 +29,7 @@ const SectionThree = (props) => {
           >
             <div className="pt-auto text-custom1 space-y-10 pt-20 lg:pt-40 lg:w-1/2">
               <div className="flex items-end justify-between max-w-xs text-base font-medium md:text-xl">
-                <p>FOR PATIENTS</p>
+                <p>FOR DOCTORS</p>
                 <div className="w-80 h-0.5 mx-4 mb-3 bg-custom1" />
                 <p>001</p>
               </div>
