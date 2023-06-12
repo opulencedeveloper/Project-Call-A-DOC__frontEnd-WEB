@@ -40,9 +40,9 @@ const SectionTwo = (props) => {
         </div>
 
         <div className="pt-auto space-y-10 md:pt-20 lg:pt-40 lg:w-1/2">
-          <div className="flex items-end justify-between max-w-xs text-ash text-base font-medium md:text-xl">
+          <div className="flex items-end max-w-xs text-ash text-base font-medium md:text-xl">
             <p>FOR PATIENTS</p>
-            <div className="w-80 h-0.5 mx-4 mb-3 bg-ash" />
+            <div className="w-80 h-0.5 mx-3 mb-3 bg-ash" />
             <p>{content.content3}</p>
           </div>
 
