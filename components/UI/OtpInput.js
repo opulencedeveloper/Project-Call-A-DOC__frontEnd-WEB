@@ -7,7 +7,6 @@ import { useDispatch, useSelector } from "react-redux";
 import BackDrop from "./BackDrop";
 import useHttp from "@/hooks/useHttp";
 import { signupActions } from "../../store/redux-store/signup-slice";
-import { userDataActions } from "../../store/redux-store/userData-slice";
 import { useRouter } from "next/router";
 import AuthContext from "@/store/context-store/auth-context";
 
@@ -17,14 +16,12 @@ function removeHtmlTags(data) {
 }
 
 const OtpInput = (props) => {
-  console.log("OTP Component")
   const { isLoading, error, sendRequest: validation } = useHttp();
   const dispatch = useDispatch();
   const router = useRouter();
   const emailObject = useSelector((state) => state.signUp);
   const authCtx = useContext(AuthContext);
-  const {isChecked} = props
-  console.log("OTP Component isChecked", isChecked)
+  const { isChecked } = props;
   const inputRefs = [
     useRef(null),
     useRef(null),
@@ -33,13 +30,19 @@ const OtpInput = (props) => {
     useRef(null),
     useRef(null),
   ];
-  const [inputValues, setInputValues] = useState(["", "", "", "", "", ""]);
+  const [inputValues, setInputValues] = useState([]);
   const inputStyle =
     "w-10 h-9 bg-ash3 rounded-md text-center font-bold border-2 border-ash3 md:w-14 md:h-12 focus:border-custom outline-none ";
 
+  const handlePaste = (e) => {
+    const pastedText = e.clipboardData.getData("text");
+    const separatedStrings = pastedText.split("");
+    setInputValues([]);
+    setInputValues(separatedStrings);
+  };
+
   const errorMessage = removeHtmlTags(error);
 
-  //e is the input value
   //index in the input postion
   const handleInputChange = (e, index) => {
     const { value } = e.target;
@@ -59,21 +62,15 @@ const OtpInput = (props) => {
       // Otherwise, just update the input values
       newValues[index] = value;
       setInputValues(newValues);
-      console.log("inputValues");
     }
   };
 
   const myResponse = (res) => {
-    console.log("Data response", res);
-    const { status, message, role, token, doctor, patient } = res;
+    const { status, message, role, token} = res;
 
     if (status === "success" && message === "Otp Verification Successful.") {
       const targetRoute =
         role === "1" ? "/patient-dashboard" : "/doctor-dashboard";
-     // const userData = role === "1" ? patient : doctor;
-     // console.log("doneeeeeeeee", doctor);
-     // dispatch(userDataActions.addUserData(userData));
-     console.log("Token in the OTP fn", token)
       authCtx.login(token, isChecked);
       dispatch(signupActions.resetState());
       router.replace(targetRoute);
@@ -81,23 +78,8 @@ const OtpInput = (props) => {
   };
 
   const validateOTPHandler = () => {
-    // if (
-    //   inputValues[0] !== "" &&
-    //   inputValues[1] !== "" &&
-    //   inputValues[2] !== "" &&
-    //   inputValues[3] !== "" &&
-    //   inputValues[4] !== "" &&
-    //   inputValues[5] !== ""
-    // ) {
-    //   console.log(inputValues);
-    // }
-    console.log(inputValues);
-    console.log(emailObject.email);
-
     const convertedToArrayofInt = inputValues.map((num) => +num);
-    //converting array of Int to a single Int.
     const otp = parseInt(convertedToArrayofInt.join(""));
-    console.log(otp);
     validation(
       {
         url: "auth/verifyotp",
@@ -120,49 +102,73 @@ const OtpInput = (props) => {
         <form className="flex space-x-2 md:space-x-3 ">
           <input
             ref={inputRefs[0]}
+            onPaste={handlePaste}
             type="number"
             maxLength={1}
+            onInput={(e) => {
+              e.target.value = e.target.value.slice(0, 1); // Truncate input to first digit
+            }}
             value={inputValues[0]}
             onChange={(e) => handleInputChange(e, 0)}
             className={inputStyle}
           />
           <input
             ref={inputRefs[1]}
+            onPaste={handlePaste}
             type="number"
             maxLength={1}
             value={inputValues[1]}
+            onInput={(e) => {
+              e.target.value = e.target.value.slice(0, 1); // Truncate input to first digit
+            }}
             onChange={(e) => handleInputChange(e, 1)}
             className={inputStyle}
           />
           <input
             ref={inputRefs[2]}
+            onPaste={handlePaste}
             type="number"
             maxLength={1}
             value={inputValues[2]}
+            onInput={(e) => {
+              e.target.value = e.target.value.slice(0, 1); // Truncate input to first digit
+            }}
             onChange={(e) => handleInputChange(e, 2)}
             className={inputStyle}
           />
           <input
             ref={inputRefs[3]}
+            onPaste={handlePaste}
             type="number"
             maxLength={1}
             value={inputValues[3]}
+            onInput={(e) => {
+              e.target.value = e.target.value.slice(0, 1); // Truncate input to first digit
+            }}
             onChange={(e) => handleInputChange(e, 3)}
             className={inputStyle}
           />
           <input
             ref={inputRefs[4]}
+            onPaste={handlePaste}
             type="number"
             maxLength={1}
             value={inputValues[4]}
+            onInput={(e) => {
+              e.target.value = e.target.value.slice(0, 1); // Truncate input to first digit
+            }}
             onChange={(e) => handleInputChange(e, 4)}
             className={inputStyle}
           />
           <input
             ref={inputRefs[5]}
+            onPaste={handlePaste}
             type="number"
             maxLength={1}
             value={inputValues[5]}
+            onInput={(e) => {
+              e.target.value = e.target.value.slice(0, 1); // Truncate input to first digit
+            }}
             onChange={(e) => handleInputChange(e, 5)}
             className={inputStyle}
           />
