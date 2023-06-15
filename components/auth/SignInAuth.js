@@ -60,7 +60,7 @@ const SignInAuth = () => {
     <section className="flex h-screen">
       {showOTPInput && <OtpInput isChecked={isChecked} />}
       {/* SECTION-1 */}
-      <div className="w-full h-full px-5 pt-10 space-y-20 md:w-1/2 md:px-10 md:overflow-y-auto">
+      <div className="w-full overflow-y-auto h-full px-5 py-10 space-y-20 md:w-1/2 md:px-10 ">
         <div>
           <Image
             src="/images/logo/logo2.svg"
@@ -125,7 +125,7 @@ const SignInAuth = () => {
               <p className="font-semibold">Sign In with Google</p>
             </button>
           </form>
-          <div className="flex text-xs space-x-3 justify-center pb-5 md:pb-0 md:text-sm">
+          <div className="flex text-xs space-x-3 justify-center md:text-sm">
             <p>Don't have an account yet?</p>
             <Link href="/signup" className="text-custom font-semibold">
               Register
