@@ -57,10 +57,10 @@ const SignInAuth = () => {
   const emailClasses =
     emailHasError || (emailValue === "" && emailSubmit) ? "block" : "hidden";
   return (
-    <section className="flex justify-center h-screen">
+    <section className="flex h-screen">
       {showOTPInput && <OtpInput isChecked={isChecked} />}
       {/* SECTION-1 */}
-      <div className="w-full p-10 space-y-20 mb-5 md:w-1/2">
+      <div className="w-full h-full overflow-y-auto p-10 space-y-20 md:w-1/2">
         <div>
           <Image
             src="/images/logo/logo2.svg"
@@ -125,7 +125,7 @@ const SignInAuth = () => {
               <p className="font-semibold">Sign In with Google</p>
             </button>
           </form>
-          <div className="flex text-xs space-x-3 justify-center md:text-sm">
+          <div className="flex text-xs space-x-3 justify-center pb-5 md:pb-0 md:text-sm">
             <p>Don't have an account yet?</p>
             <Link href="/signup" className="text-custom font-semibold">
               Register
@@ -134,7 +134,7 @@ const SignInAuth = () => {
         </div>
       </div>
 
-      <div className="w-1/2 h-full bg-custom hidden md:flex">
+      <div className="w-1/2 overflow-y-hidden h-full bg-custom hidden md:flex justify-center items-center">
         <Image
           src="/images/login-image.svg"
           alt="drugs"

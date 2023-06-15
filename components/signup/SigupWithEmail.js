@@ -202,7 +202,7 @@ const SignUpWithEmail = (props) => {
           <p className="font-semibold pt-1">Sign In with Google</p>
         </button>
       </div>
-      <div className="flex text-xs space-x-0.5 flex-wrap justify-center md:text-sm">
+      <div className="flex text-xs space-x-0.5 pb-5 flex-wrap justify-center md:text-sm">
         <p>By signing in you agree to our </p>
         <Link href="#" className="text-custom ">
           Terms
