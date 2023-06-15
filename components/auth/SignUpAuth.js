@@ -19,7 +19,7 @@ const SignUpAuth = () => {
   return (
     <section className="flex justify-center h-screen items-center">
       {/* SECTION-1 */}
-      <div className="w-full h-full px-5 space-y-20 mb-5 md:w-1/2 md:p-10">
+      <div className="w-full h-full px-5 pt-10 space-y-20 mb-5 md:w-1/2 md:px-10">
         <div>
           <Image
             src="/images/logo/logo2.svg"

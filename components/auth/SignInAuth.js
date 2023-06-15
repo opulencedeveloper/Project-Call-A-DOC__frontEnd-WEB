@@ -60,7 +60,7 @@ const SignInAuth = () => {
     <section className="flex h-screen">
       {showOTPInput && <OtpInput isChecked={isChecked} />}
       {/* SECTION-1 */}
-      <div className="w-full h-full overflow-y-auto px-5 md:p-10 space-y-20 md:w-1/2">
+      <div className="w-full h-full overflow-y-auto px-5 pt-10 space-y-20 md:w-1/2 md:px-10">
         <div>
           <Image
             src="/images/logo/logo2.svg"
