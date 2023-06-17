@@ -46,7 +46,7 @@ const MainNavigation = (props) => {
   };
 
   return (
-    <nav className="mt-2 px-5 w-full md:px-10 md:mt-5">
+    <nav className="mt-0 px-5 w-full md:px-10 md:mt-5">
       <Portal>
         {" "}
         <div
@@ -57,7 +57,7 @@ const MainNavigation = (props) => {
           <MobileNavigation toggleDrawer={toggleDrawer} />
         </div>{" "}
       </Portal>
-      <div className="flex justify-between items-center md:items-start ">
+      <div className="flex justify-between md:items-start ">
         <div className="flex">
           <Image
             src="/images/logo/logo.svg"
@@ -98,7 +98,7 @@ const MainNavigation = (props) => {
           </Link>
         </div>
         <button
-          className={`${navAnimationClass} block hamburger mt-7 md:hidden focus:outline-none`}
+          className={`${navAnimationClass} block hamburger mt-5 md:hidden focus:outline-none`}
           type="button"
           onClick={toggleDrawer}
         >
