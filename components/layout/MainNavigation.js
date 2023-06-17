@@ -68,7 +68,7 @@ const MainNavigation = (props) => {
             width={576}
             height={320}
           />
-          <div className="pt-3 hidden md:flex space-x-8 font-medium text-base md:ml-10 mr-10 xl:ml-56">
+          <div className="pt-3 hidden md:flex space-x-8 font-medium  text-base md:text-lg md:ml-10 mr-10 xl:ml-56">
             <Link href="/" className={activeLink === "/" ? "text-custom" : ""}>
               Home
             </Link>

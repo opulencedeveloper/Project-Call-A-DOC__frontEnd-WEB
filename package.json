@@ -9,13 +9,17 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@plaiceholder/next": "^3.0.0",
     "@reduxjs/toolkit": "^1.9.5",
     "next": "13.2.3",
+    "plaiceholder": "^3.0.0",
     "react": "18.2.0",
     "react-apexcharts": "^1.4.0",
     "react-dom": "18.2.0",
+    "react-loading-skeleton": "^3.3.1",
     "react-phone-number-input": "^3.2.23",
-    "react-redux": "^8.0.5"
+    "react-redux": "^8.0.5",
+    "sharp": "^0.32.1"
   },
   "devDependencies": {
     "autoprefixer": "^10.4.14",

@@ -123,6 +123,38 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     animation-duration: 0.5s;
     animation-timing-function: ease-out;
   }
+
+
+
+
+
+
+
+
+
+  .shimmer {
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .shimmer::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: linear-gradient(to right, transparent, rgba(255, 255, 255, 0.4), transparent);
+    transform: translateX(-100%);
+    animation: shimmerAnimation 1s infinite;
+  }
+  
+  @keyframes shimmerAnimation {
+    100% {
+      transform: translateX(100%);
+    }
+  }
+  
   
  
   

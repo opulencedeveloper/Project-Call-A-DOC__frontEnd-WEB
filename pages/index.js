@@ -9,10 +9,16 @@ export default function Home() {
 
   return (
     <MyLayout>
-      <StartingPage />
+      <StartingPage/>
       <SectionTwo/> 
        <SectionThree /> 
       <SectionFour /> 
       </MyLayout>
   );
 }
+
+
+
+
+
+

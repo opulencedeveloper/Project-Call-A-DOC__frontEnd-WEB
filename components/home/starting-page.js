@@ -32,7 +32,7 @@ const StartingPage = () => {
           </div>
         </div>
         <div></div>
-        <div>
+        <div className="h-[609px] w-[190px]">
           <Image
             src="/images/hero-image.png"
             alt="phone image"
