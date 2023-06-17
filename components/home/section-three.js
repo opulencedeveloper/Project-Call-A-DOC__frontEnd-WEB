@@ -8,13 +8,15 @@ const contents = [
     content1: "Get paid for Consultations",
     content2:
       "Each consultation is charged and added to your personal wallet for convienience",
-  },
+      content3: "001",
+    },
   {
     image: "/images/get-paid-image.svg",
     content1: "Keep digital records of patients for easy access",
     content2:
       "Patients medical records are kept on the site for easy access and can be referenced for future use.",
-  },
+      content3: "002",
+    },
 ];
 
 const SectionThree = (props) => {
@@ -31,7 +33,7 @@ const SectionThree = (props) => {
               <div className="flex items-end max-w-xs text-lg font-medium text-xl">
                 <p>FOR DOCTORS</p>
                 <div className="w-80 h-0.5 mx-3 mb-3 bg-custom1" />
-                <p>001</p>
+                <p>{content.content3}</p>
               </div>
 
               <p className="text-3xl pr-auto md:pr-36 md:text-5xl">
