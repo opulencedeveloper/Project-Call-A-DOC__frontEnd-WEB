@@ -46,7 +46,7 @@ const MainNavigation = (props) => {
   };
 
   return (
-    <nav className="mt-5 px-5 w-full md:px-12 ">
+    <nav className="mt-2 px-5 w-full md:px-10 md:mt-5">
       <Portal>
         {" "}
         <div
@@ -62,13 +62,13 @@ const MainNavigation = (props) => {
           <Image
             src="/images/logo/logo.svg"
             alt="call a doctor logo"
-            className="h-auto w-auto"
+            className="h-24 w-24 md:h-auto md:w-auto"
             priority
             loading="eager"
             width={576}
             height={320}
           />
-          <div className="pt-3 hidden md:flex space-x-8 font-medium  text-base md:text-lg md:ml-10 mr-10 xl:ml-56">
+          <div className="pt-3 hidden lg:flex space-x-8 font-medium  text-base md:text-lg md:ml-10 mr-10 xl:ml-56">
             <Link href="/" className={activeLink === "/" ? "text-custom" : ""}>
               Home
             </Link>
@@ -83,7 +83,7 @@ const MainNavigation = (props) => {
           </div>
         </div>
 
-        <div className="hidden lg:flex space-x-3 pt-3 font-normal  text-sm ">
+        <div className="hidden md:flex space-x-3 pt-3 font-normal  text-sm ">
           <Link
             href="/signin"
             className="w-80 h-48 border flex items-center justify-center text-custom border-custom rounded-full"
@@ -98,7 +98,7 @@ const MainNavigation = (props) => {
           </Link>
         </div>
         <button
-          className={`${navAnimationClass} block hamburger mt-7 lg:hidden focus:outline-none`}
+          className={`${navAnimationClass} block hamburger mt-7 md:hidden focus:outline-none`}
           type="button"
           onClick={toggleDrawer}
         >
