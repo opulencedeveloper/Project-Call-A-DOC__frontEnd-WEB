@@ -32,15 +32,15 @@ const StartingPage = () => {
           </div>
         </div>
         <div></div>
-        <div className="h-[609px] w-[190px]">
-          <Image
+        <div>
+          <img
             src="/images/hero-image.png"
             alt="phone image"
             className="h-auto w-auto" 
-            width={609}
-            height={190}
-            priority
-            loading="eager"
+            // width={609}
+            // height={190}
+            // priority
+            // loading="eager"
           />
         </div>
       </div>
