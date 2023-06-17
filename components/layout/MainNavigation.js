@@ -57,7 +57,7 @@ const MainNavigation = (props) => {
           <MobileNavigation toggleDrawer={toggleDrawer} />
         </div>{" "}
       </Portal>
-      <div className="flex justify-between md:items-start ">
+      <div className="flex justify-between items-center md:items-start ">
         <div className="flex">
           <Image
             src="/images/logo/logo.svg"
