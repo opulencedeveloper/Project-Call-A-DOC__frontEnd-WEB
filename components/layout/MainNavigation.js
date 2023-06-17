@@ -98,7 +98,7 @@ const MainNavigation = (props) => {
           </Link>
         </div>
         <button
-          className={`${navAnimationClass} block hamburger mt-5 md:hidden focus:outline-none`}
+          className={`${navAnimationClass} block hamburger mt-8 md:hidden focus:outline-none`}
           type="button"
           onClick={toggleDrawer}
         >
