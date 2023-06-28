@@ -11,7 +11,7 @@ import "@/styles/globals.css";
 const montserrat = Montserrat({
   subsets: ["latin"],
   variable: "--font-montserrat",
-});
+}); //check
 
 export default function App({ Component, pageProps }) {
   return (
