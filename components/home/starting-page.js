@@ -36,13 +36,10 @@ const StartingPage = () => {
           <Image
             src="/images/hero-image.png"
             alt="phone image"
-            className="h-auto w-auto"
-            placeholder="blur"
-            blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mPk4YmuBwABkwD0dSWltwAAAABJRU5ErkJggg=="
-            width={609}
+            className="h-auto w-auto"width={609}
             height={190}
-            // priority
-            // loading="eager"
+            priority
+            loading="eager"
           />
         </div>
       </div>
@@ -66,6 +63,7 @@ const StartingPage = () => {
               className="w-auto h-auto"
               width={560}
               height={419}
+              priority
               loading="eager"
             />
           </div>
