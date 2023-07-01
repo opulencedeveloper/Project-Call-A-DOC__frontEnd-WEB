@@ -37,7 +37,7 @@ const StartingPage = () => {
           <Image
             src="/images/hero-image.png"
             alt="phone image"
-            className="h-full w-full object-contain"
+            className="h-auto w-auto"
             width={609}
             height={190}
             priority
