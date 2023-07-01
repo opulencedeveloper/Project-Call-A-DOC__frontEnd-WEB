@@ -33,7 +33,7 @@ const StartingPage = () => {
             />
           </div>
         </div>
-        <div className="w-[40%] h-44 md:h-[30rem] xl:h-[40rem]">
+        <div className="w-[60%] h-44 md:w-[40%] md:h-[30rem] xl:h-[40rem]">
           <Image
             src="/images/hero-image.png"
             alt="phone image"
