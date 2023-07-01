@@ -45,7 +45,7 @@ const StartingPage = () => {
         </div>
       </div>
 
-      <div className="relative z-10 flex space-x-auto -mt-5 md:space-x-8 md:-mt-0 2xl:-mt-48">
+      <div className="relative z-10 flex space-x-auto -mt-5 md:space-x-8 md:mt-0 2xl:-mt-36">
         <div className="w-[30%]">
           <div className="h-28 w-full mb-16 md:h-64 md:mb-28 xl:h-96">
             <Image
