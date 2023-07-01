@@ -33,7 +33,7 @@ const StartingPage = () => {
             />
           </div>
         </div>
-        <div className="w-[60%] h-44 md:w-[40%] md:h-[30rem] xl:h-[40rem]">
+        <div className="w-[50%] md:w-[40%] h-44 md:h-[30rem] xl:h-[40rem]">
           <Image
             src="/images/hero-image.png"
             alt="phone image"
@@ -91,7 +91,7 @@ const StartingPage = () => {
               loading="eager"
             />
           </div>
-          <div className="z-10 h-28 w-full mt-36 md:h-64 md:mt-56 xl:h-96 xl:mt-96">
+          <div className="z-10 h-28 w-full mt-40 md:h-64 md:mt-56 xl:h-96 xl:mt-96">
             <Image
               src="/images/doctor3.svg"
               alt="doctor3"
