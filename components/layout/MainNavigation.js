@@ -46,7 +46,7 @@ const MainNavigation = (props) => {
   };
 
   return (
-    <nav className="mt-0 px-5 w-full md:px-10 md:mt-5">
+    <header className="mt-0 px-5 md:px-10 md:mt-5">
       <Portal>
         {" "}
         <div
@@ -68,7 +68,7 @@ const MainNavigation = (props) => {
             width={576}
             height={320}
           />
-          <div className="pt-3 hidden lg:flex space-x-8 font-medium  text-base md:text-lg md:ml-10 mr-10 xl:ml-56">
+          <nav className="pt-3 hidden lg:flex space-x-8 font-medium  text-base md:text-lg md:ml-10 mr-10 xl:ml-56">
             <Link href="/" className={activeLink === "/" ? "text-custom" : ""}>
               Home
             </Link>
@@ -80,7 +80,7 @@ const MainNavigation = (props) => {
             </Link>
             <Link href="#">Services</Link>
             <Link href="#">Pricing</Link>
-          </div>
+          </nav>
         </div>
 
         <div className="hidden md:flex space-x-3 pt-3 font-normal  text-sm ">
@@ -114,7 +114,7 @@ const MainNavigation = (props) => {
       </div>
       {/* <!-- Mobile Menu --> */}
       {navAnimationClass && <Navigation />}
-    </nav>
+    </header>
   );
 };
 export default MainNavigation;
