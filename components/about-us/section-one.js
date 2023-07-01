@@ -2,7 +2,7 @@ import Image from "next/image";
 
 const SectionOne = () => {
     return <section className="flex flex-row justify-between flex-wrap xl:flex-nowrap">
-      <div className="space-y-9 2xl:-mr-96 pt-40 text">
+      <div className="space-y-9 2xl:-mr-96 pt-10 md:pt-40">
         <p className="text-ash2 text-2xl">
           Who are we?
         </p>
@@ -15,7 +15,8 @@ semper congue velit. Dolor, lacinia nunc consectetur facilisis nullam nulla.
  Utvel utnam nisi nulla suspendisse atquamin.
           </p>
       </div>
-     <div> <Image
+     <div className="max-w-5xl max-h-2xl"> 
+     <Image
         className="w-auto h-auto"
         loading="eager"
         alt="doctor-5"
@@ -23,7 +24,8 @@ semper congue velit. Dolor, lacinia nunc consectetur facilisis nullam nulla.
         priority
         height={1007}
         width={1076}
-      /></div>
+      />
+      </div>
   </section>
 } 
 
