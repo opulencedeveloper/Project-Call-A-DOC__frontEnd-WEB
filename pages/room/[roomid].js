@@ -49,11 +49,11 @@ export default function Room() {
 
   return myVideo ? (
     <div
-      className="myCallContainer"
+      className="myCallContainer desktop-only"
       ref={myMeeting}
       style={{ width: "100vw", height: "100vh" }}
     ></div>
   ) : (
-    <p>Please wait now now</p>
+    <p>Please wait now now desktop-only</p>
   );
 }
