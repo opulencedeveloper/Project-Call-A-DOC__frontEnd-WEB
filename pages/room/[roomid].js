@@ -1,5 +1,6 @@
 import { useRouter } from "next/router";
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
+let myMeeting ;
 
 export default function Room() {
   const router = useRouter();
@@ -7,53 +8,51 @@ export default function Room() {
   const roomID = router.query.roomid;
   const userId = Date.now().toString();
   const userName = "Victor Opulence";
+   // Create a ref to the container element
 
-  let myMeeting = async (element) => {
-    const { ZegoUIKitPrebuilt } = await import(
-      "@zegocloud/zego-uikit-prebuilt"
-    );
-    // generate Kit Token
-    const appID = 1065801889;
-    const serverSecret = "355bf6c1a33230a450269273f654fbaf";
-    const kitToken = ZegoUIKitPrebuilt.generateKitTokenForTest(
-      appID,
-      serverSecret,
-      roomID,
-      userId,
-      userName
-    );
+  useEffect(() => {
+     myMeeting = async () => {
+      const { ZegoUIKitPrebuilt } = await import(
+        "@zegocloud/zego-uikit-prebuilt"
+      );
+      // generate Kit Token
+      const appID = 1065801889;
+      const serverSecret = "355bf6c1a33230a450269273f654fbaf";
+      const kitToken = ZegoUIKitPrebuilt.generateKitTokenForTest(
+        appID,
+        serverSecret,
+        roomID,
+        userId,
+        userName
+      );
 
-    // Create instance object from Kit Token.
-    const zp = ZegoUIKitPrebuilt.create(kitToken);
-    // start the call
-    zp.joinRoom({
-      container: element,
-      sharedLinks: [
-        {
-          name: "Personal link",
-          url: `https://calladoc247.vercel.app/room/${roomID}`,
+      // Create instance object from Kit Token.
+      const zp = ZegoUIKitPrebuilt.create(kitToken);
+      // start the call
+      zp.joinRoom({
+        container: containerRef.current,
+        sharedLinks: [
+          {
+            name: "Personal link",
+            url: `https://calladoc247.vercel.app/room/${roomID}`,
+          },
+        ],
+        scenario: {
+          mode: ZegoUIKitPrebuilt.GroupCall, // To implement 1-on-1 calls, modify the parameter here to [ZegoUIKitPrebuilt.OneONoneCall].
         },
-      ],
-      scenario: {
-        mode: ZegoUIKitPrebuilt.GroupCall, // To implement 1-on-1 calls, modify the parameter here to [ZegoUIKitPrebuilt.OneONoneCall].
-      },
-      showScreenSharingButton: false,
-    });
-    setVideo(true);
-  };
+        showScreenSharingButton: false,
+      });
+      setVideo(true);
+    };
 
-  if (!myVideo) {
-    myMeeting();
-    //accptejgsjjjasjjk
-  }
+    if (!myVideo) {
+      myMeeting();
+    }
+  }, [myVideo, roomID, userId, userName]);
 
   return myVideo ? (
-    <div
-      className="myCallContainer desktop-only"
-      ref={myMeeting}
-     // style={{ width: "100vw", height: "100vh" }}
-    ></div>
+    <div className="myCallContainer desktop-only" ref={myMeeting}></div>
   ) : (
-    <p>Please wait now now desktop-only height</p>
+    <p>Please wait...</p>
   );
 }
