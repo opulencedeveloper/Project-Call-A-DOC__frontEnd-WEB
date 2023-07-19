@@ -1,5 +1,5 @@
 import { useRouter } from "next/router";
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect } from "react";
 
 function randomID(len) {
   let result = "";
@@ -14,7 +14,7 @@ function randomID(len) {
   return result;
 }
 
-export function getUrlParams(url = window.location.href) {
+export function getUrlParams(url = "") {
   let urlStr = url.split("?")[1];
   return new URLSearchParams(urlStr);
 }
@@ -25,7 +25,7 @@ export default function App() {
 
   useEffect(() => {
     const fetchRoomID = () => {
-      const params = getUrlParams();
+      const params = getUrlParams(window.location.href);
       const id = params.get("roomID") || randomID(5);
       setRoomID(id);
     };
@@ -37,11 +37,9 @@ export default function App() {
 
   useEffect(() => {
     if (roomID) {
-      const myMeeting = async (element) => {
-        const { ZegoUIKitPrebuilt } = await import(
-          "@zegocloud/zego-uikit-prebuilt"
-        );
-        // generate Kit Token
+      const loadZegoUIKit = async () => {
+        const { ZegoUIKitPrebuilt } = await import("@zegocloud/zego-uikit-prebuilt");
+
         const appID = 1065801889;
         const serverSecret = "355bf6c1a33230a450269273f654fbaf";
         const kitToken = ZegoUIKitPrebuilt.generateKitTokenForTest(
@@ -52,11 +50,9 @@ export default function App() {
           randomID(5)
         );
 
-        // Create instance object from Kit Token.
         const zp = ZegoUIKitPrebuilt.create(kitToken);
-        // start the call
         zp.joinRoom({
-          container: element,
+          container: document.querySelector(".myCallContainer"),
           sharedLinks: [
             {
               name: "Copy the link",
@@ -64,19 +60,19 @@ export default function App() {
             },
           ],
           scenario: {
-            mode: ZegoUIKitPrebuilt.GroupCall, // To implement 1-on-1 calls, modify the parameter here to [ZegoUIKitPrebuilt.OneONoneCall].
+            mode: ZegoUIKitPrebuilt.GroupCall,
           },
         });
       };
 
-      const element = document.querySelector(".myCallContainer");
-      if (element) {
-        myMeeting(element);
-      }
+      loadZegoUIKit();
     }
   }, [roomID]);
 
   return (
-    <div className="myCallContainer" style={{ width: "100vw", height: "100vh" }}></div>
+    <div
+      className="myCallContainer"
+      style={{ width: "100vw", height: "100vh" }}
+    ></div>
   );
 }
