@@ -24,7 +24,7 @@ const Room = () => {
       zc.joinRoom({
         container: element,
         sharedLinks: [
-          { name: "Copy Link", url: `https://calladoc247.vercel.app//room/${roomid}` },
+          { name: "Copy Link", url: `https://calladoc247.vercel.app/room/${roomid}` },
         ],
         scenario: {
           mode: ZegoUIKitPrebuilt.OneONoneCall,
