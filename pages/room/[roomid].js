@@ -47,11 +47,11 @@ export default function Room() {
 
   return  <>
   <Head>
-        <meta name="viewport" content="width=1366" />
+        <meta name="viewport" content="width=9366" />
         {/* Replace "1200" with the desired width for your desktop view */}
       </Head> 
   <div
-    className={`${myVideo ? "show" : "hide"}`}
+    className={`h-screen w-screen ${myVideo ? "show" : "hide"}`}
     ref={myMeeting}
   />
   {!myVideo && <p>Please wait.mmmmm</p>}
