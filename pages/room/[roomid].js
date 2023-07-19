@@ -51,9 +51,9 @@ export default function Room() {
     <div
       className="myCallContainer desktop-only"
       ref={myMeeting}
-      style={{ width: "100vw", height: "100vh" }}
+     // style={{ width: "100vw", height: "100vh" }}
     ></div>
   ) : (
-    <p>Please wait now now desktop-only</p>
+    <p>Please wait now now desktop-only height</p>
   );
 }
