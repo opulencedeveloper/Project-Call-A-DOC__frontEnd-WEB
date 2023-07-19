@@ -1,20 +1,16 @@
 import { useRouter } from "next/router";
-import { useState, useEffect, useRef } from "react";
-let myMeeting ;
-
+import { useState, useEffect } from "react";
+let myMeeting;
 export default function Room() {
   const router = useRouter();
   const [myVideo, setVideo] = useState(false);
   const roomID = router.query.roomid;
   const userId = Date.now().toString();
   const userName = "Victor Opulence";
-   // Create a ref to the container element
 
   useEffect(() => {
-     myMeeting = async () => {
-      const { ZegoUIKitPrebuilt } = await import(
-        "@zegocloud/zego-uikit-prebuilt"
-      );
+    myMeeting = async (element) => {
+      const { ZegoUIKitPrebuilt } = await import("@zegocloud/zego-uikit-prebuilt");
       // generate Kit Token
       const appID = 1065801889;
       const serverSecret = "355bf6c1a33230a450269273f654fbaf";
@@ -30,7 +26,7 @@ export default function Room() {
       const zp = ZegoUIKitPrebuilt.create(kitToken);
       // start the call
       zp.joinRoom({
-        container: containerRef.current,
+        container: element,
         sharedLinks: [
           {
             name: "Personal link",
@@ -44,15 +40,17 @@ export default function Room() {
       });
       setVideo(true);
     };
-  }, [ roomID, userId, userName]);
 
-  // if (!myVideo) {
-  //   myMeeting();
-  // }
+    myMeeting();
+  }, []); // Empty dependency array ensures the effect is only run once on mount
 
   return myVideo ? (
-    <div className="myCallContainer" ref={myMeeting}></div>
+    <div
+      className="myCallContainer desktop-only"
+      ref={myMeeting}
+      // style={{ width: "100vw", height: "100vh" }}
+    ></div>
   ) : (
-    <p>Please wait...,,,,</p>
+    <p>Please wait now now desktop-only height</p>
   );
 }
