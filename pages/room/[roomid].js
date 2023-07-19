@@ -42,8 +42,8 @@ export default function App() {
           "@zegocloud/zego-uikit-prebuilt"
         );
         // generate Kit Token
-        const appID = 2145588405;
-        const serverSecret = "bf10471bd0b2a4775ee32559fe80afb4";
+        const appID = 1065801889;
+        const serverSecret = "355bf6c1a33230a450269273f654fbaf";
         const kitToken = ZegoUIKitPrebuilt.generateKitTokenForTest(
           appID,
           serverSecret,
