@@ -7,6 +7,7 @@ export default function Room() {
   const roomID = router.query.roomid;
   const userId = Date.now().toString();
   const userName = "Victor Opulence";
+
   let myMeeting = async (element) => {
     const { ZegoUIKitPrebuilt } = await import(
       "@zegocloud/zego-uikit-prebuilt"
@@ -38,8 +39,13 @@ export default function Room() {
       },
       showScreenSharingButton: false,
     });
-    setVideo(true);
+    
   };
+
+  if(!myVideo) {
+    setVideo(true);
+  }
+ 
 
   return myVideo ? (
     <div
@@ -48,6 +54,6 @@ export default function Room() {
       style={{ width: "100vw", height: "100vh" }}
     ></div>
   ) : (
-    <p>Please wait</p>
+    <p>Please wait now</p>
   );
 }
