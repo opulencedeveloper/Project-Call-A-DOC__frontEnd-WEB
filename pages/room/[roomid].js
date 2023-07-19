@@ -51,7 +51,7 @@ export default function Room() {
   }, [myVideo, roomID, userId, userName]);
 
   return myVideo ? (
-    <div className="myCallContainer desktop-only" ref={myMeeting}></div>
+    <div className="myCallContainer" ref={myMeeting}></div>
   ) : (
     <p>Please wait...</p>
   );
