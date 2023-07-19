@@ -1,3 +1,4 @@
+import Head from "next/head";
 import { useRouter } from "next/router";
 import { useState, useEffect } from "react";
 let myMeeting;
@@ -45,10 +46,14 @@ export default function Room() {
   }, []); // Empty dependency array ensures the effect is only run once on mount
 
   return  <>
+  <Head>
+        <meta name="viewport" content="width=1200" />
+        {/* Replace "1200" with the desired width for your desktop view */}
+      </Head> 
   <div
     className={`myCallContainer ${myVideo ? "show" : "hide"}`}
     ref={myMeeting}
   ></div>
-  {!myVideo && <p>Please wait now now desktop-only height cool</p>}
+  {!myVideo && <p>Please wait....</p>}
 </>
 }
