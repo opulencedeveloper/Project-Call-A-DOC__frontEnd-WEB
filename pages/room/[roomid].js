@@ -47,13 +47,13 @@ export default function Room() {
 
   return  <>
   <Head>
-        <meta name="viewport" content="width=1200" />
+        <meta name="viewport" content="width=1366" />
         {/* Replace "1200" with the desired width for your desktop view */}
       </Head> 
   <div
     className={`myCallContainer ${myVideo ? "show" : "hide"}`}
     ref={myMeeting}
   ></div>
-  {!myVideo && <p>Please wait....</p>}
+  {!myVideo && <p>Please wait.</p>}
 </>
 }
