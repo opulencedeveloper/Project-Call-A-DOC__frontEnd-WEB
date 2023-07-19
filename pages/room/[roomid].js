@@ -39,13 +39,13 @@ export default function Room() {
       },
       showScreenSharingButton: false,
     });
-    
+    setVideo(true);
   };
 
-  if(!myVideo) {
-    setVideo(true);
+  if (!myVideo) {
+    myMeeting();
+    //accptejgsjjjasjjk
   }
- 
 
   return myVideo ? (
     <div
@@ -54,6 +54,6 @@ export default function Room() {
       style={{ width: "100vw", height: "100vh" }}
     ></div>
   ) : (
-    <p>Please wait now</p>
+    <p>Please wait now now</p>
   );
 }
