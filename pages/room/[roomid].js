@@ -44,15 +44,15 @@ export default function Room() {
       });
       setVideo(true);
     };
+  }, [ roomID, userId, userName]);
 
-    if (!myVideo) {
-      myMeeting();
-    }
-  }, [myVideo, roomID, userId, userName]);
+  // if (!myVideo) {
+  //   myMeeting();
+  // }
 
   return myVideo ? (
     <div className="myCallContainer" ref={myMeeting}></div>
   ) : (
-    <p>Please wait...</p>
+    <p>Please wait...,,,,</p>
   );
 }
