@@ -44,7 +44,7 @@ export default function App() {
       container: element,
       sharedLinks: [
         {
-          name: "Copy link",
+          name: "Copy the link",
           url: `http://calladoc247.vercel.app/room/${roomID}`,
         },
       ],
