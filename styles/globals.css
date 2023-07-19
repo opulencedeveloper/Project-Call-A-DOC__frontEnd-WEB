@@ -156,11 +156,13 @@ input[type="date"]::-webkit-calendar-picker-indicator {
   }
   
   
- /* Define the styles for desktop devices */
-@media (max-width: 768px) {
-  .desktop-only {
-    display: none;
-  }
+/* CSS file or inline styles */
+.show {
+  display: block;
+}
+
+.hide {
+  display: none;
 }
 
   

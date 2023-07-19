@@ -44,13 +44,11 @@ export default function Room() {
     myMeeting();
   }, []); // Empty dependency array ensures the effect is only run once on mount
 
-  return myVideo ? (
-    <div
-      className="myCallContainer desktop-only"
-      ref={myMeeting}
-      // style={{ width: "100vw", height: "100vh" }}
-    ></div>
-  ) : (
-    <p>Please wait now now desktop-only height</p>
-  );
+  return  <>
+  <div
+    className={`myCallContainer ${myVideo ? "show" : "hide"}`}
+    ref={myMeeting}
+  ></div>
+  {!myVideo && <p>Please wait now now desktop-only height cool</p>}
+</>
 }
