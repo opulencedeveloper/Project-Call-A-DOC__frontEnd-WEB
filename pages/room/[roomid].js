@@ -9,37 +9,35 @@ const Room = () => {
   const elementRef = useRef(null);
 
   useEffect(() => {
-    const loadZegoUIKit = async () => {
+    const myMeeting = async (element) => {
       const { ZegoUIKitPrebuilt } = await import("@zegocloud/zego-uikit-prebuilt");
 
-      const myMeeting = async (element) => {
-        const appId = 2145588405;
-        const serverSecret = "bf10471bd0b2a4775ee32559fe80afb4";
-        const kitToken = ZegoUIKitPrebuilt.generateKitTokenForTest(
-          appId,
-          serverSecret,
-          roomid,
-          userId,
-          userName
-        );
+      const appId = 2145588405;
+      const serverSecret = "bf10471bd0b2a4775ee32559fe80afb4";
+      const kitToken = ZegoUIKitPrebuilt.generateKitTokenForTest(
+        appId,
+        serverSecret,
+        roomid,
+        userId,
+        userName
+      );
 
-        const zc = ZegoUIKitPrebuilt.create(kitToken);
-        zc.joinRoom({
-          container: element,
-          sharedLinks: [
-            { name: "Copy Link", url: `http://localhost:4000/room/${roomid}` },
-          ],
-          scenario: {
-            mode: ZegoUIKitPrebuilt.OneONoneCall,
+      const zc = ZegoUIKitPrebuilt.create(kitToken);
+      zc.joinRoom({
+        container: element,
+        sharedLinks: [
+          {
+            name: 'Personal link',
+            url: window.location.protocol + '//' + window.location.host + window.location.pathname + '?roomID=' + roomid,
           },
-          showScreenSharingButton: false,
-        });
-      };
-
-      myMeeting(elementRef.current);
+        ],
+        scenario: {
+          mode: ZegoUIKitPrebuilt.GroupCall, // To implement 1-on-1 calls, modify the parameter here to [ZegoUIKitPrebuilt.OneONoneCall].
+        },
+      });
     };
 
-    loadZegoUIKit();
+    myMeeting(elementRef.current);
   }, [roomid, userId, userName]);
 
   return (
