@@ -11,7 +11,9 @@ export default function Room() {
 
   useEffect(() => {
     myMeeting = async (element) => {
-      const { ZegoUIKitPrebuilt } = await import("@zegocloud/zego-uikit-prebuilt");
+      const { ZegoUIKitPrebuilt } = await import(
+        "@zegocloud/zego-uikit-prebuilt"
+      );
       // generate Kit Token
       const appID = 1065801889;
       const serverSecret = "355bf6c1a33230a450269273f654fbaf";
@@ -45,15 +47,13 @@ export default function Room() {
     myMeeting();
   }, []); // Empty dependency array ensures the effect is only run once on mount
 
-  return  <>
-  <Head>
-        <meta name="viewport" content="width=9366" />
-        {/* Replace "1200" with the desired width for your desktop view */}
-      </Head> 
-  <div
-    className={`h-screen w-screen ${myVideo ? "show" : "hide"}`}
-    ref={myMeeting}
-  />
-  {!myVideo && <p>Please wait.mmmmm</p>}
-</>
+  return (
+    <>
+      <div
+        className={`h-screen w-screen ${myVideo ? "show" : "hide"}`}
+        ref={myMeeting}
+      />
+      {!myVideo && <p>Please wait.mmmmm</p>}
+    </>
+  );
 }
