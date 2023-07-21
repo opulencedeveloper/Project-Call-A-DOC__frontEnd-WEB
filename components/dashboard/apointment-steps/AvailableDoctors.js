@@ -16,7 +16,7 @@ const AvailableDoctors = (props) => {
   } 
 
   return (
-    <div className="flex flex-col overflow-y-auto items-center pt-10 md:pt-auto">
+    <div className="flex flex-col overflow-y-auto h-40 md:h-max items-center pt-10 md:pt-auto">
       {" "}
       {availableDoctors.map((content, index) => (
         <div
