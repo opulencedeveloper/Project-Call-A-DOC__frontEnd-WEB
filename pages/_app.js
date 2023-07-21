@@ -1,5 +1,4 @@
 import { Montserrat } from "next/font/google";
-
 import { Provider } from "react-redux";
 
 import store from "@/store/redux-store";
@@ -12,6 +11,7 @@ const montserrat = Montserrat({
   subsets: ["latin"],
   variable: "--font-montserrat",
 }); 
+
 
 export default function App({ Component, pageProps }) {
   return (

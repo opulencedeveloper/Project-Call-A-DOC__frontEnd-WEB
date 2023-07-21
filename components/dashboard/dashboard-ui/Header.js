@@ -62,14 +62,14 @@ const Header = (props) => {
           <span className="hamburger-middle"></span>
           <span className="hamburger-bottom"></span>
         </button>
-        <div className="space-y-2.5">
+        <div className="space-y-1 md:space-y-2.5">
           {" "}
-          <p className="font-semibold text-3xl md:text-4xl">{title}</p>
-          <p className="text-ash2 text-sm md:text-lg">{formattedDate}</p>
+          <p className="font-semibold text-xl md:text-4xl">{title}</p>
+          <p className="text-ash2 text-xs md:text-lg">{formattedDate}</p>
         </div>
       </div>
 
-      <div className="bg-ash4 pl-2 w-full flex rounded-full mr-2 mt-5 h-11 md:h-12 md:mt-auto md:pl-0 md:w-max">
+      <div className="bg-ash4 pl-2 w-full flex rounded-full mr-2 mt-2 h-10 z-20 md:h-12 md:mt-auto md:pl-0 md:w-max">
         <Image
           src="/images/icon/search.svg"
           alt="search-icon"
