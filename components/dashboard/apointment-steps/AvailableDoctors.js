@@ -62,7 +62,7 @@ const AvailableDoctors = (props) => {
      {" "}
     </div> <button
         onClick={() => confirmAppointmentHandler(selectedDoctor)}
-        className="mt-20 bg-custom rounded-full px-12 py-4 text-custom1 font-thin text-xl"
+        className="mt-5 bg-custom rounded-full px-12 py-4 text-custom1 font-thin text-xl md:mt-20"
       >
         Confirm Appoinmenmt
       </button> </div>

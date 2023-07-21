@@ -45,8 +45,8 @@ const AppointmentJourney = ({ endAppointmentHandler }) => {
           <p className="text-center">{error}</p>
         </div>
       )}
-      <div className="flex bg-white justify-between absolute top-9 right-9 left-9">
-        <div className="text-ash2 text-lg font-medium">
+      <div className="flex  justify-between absolute top-9 right-9 left-9">
+        <div className="text-ash2 bg-white text-lg font-medium">
           {step === "2" &&
             `${availableDoctors.length} doctors found based on your location `}
         </div>
