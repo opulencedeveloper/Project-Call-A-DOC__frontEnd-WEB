@@ -16,7 +16,7 @@ const AvailableDoctors = (props) => {
   } 
 
   return (
-    <div className="flex flex-col overflow-y-auto h-40 md:h-max items-center pt-10 md:pt-auto">
+    <div><div className="flex flex-col overflow-y-auto h-60 md:h-max items-center pt-10 md:pt-auto">
       {" "}
       {availableDoctors.map((content, index) => (
         <div
@@ -59,13 +59,13 @@ const AvailableDoctors = (props) => {
           </div>
         </div>
       ))}
-      <button
+     {" "}
+    </div> <button
         onClick={() => confirmAppointmentHandler(selectedDoctor)}
         className="mt-20 bg-custom rounded-full px-12 py-4 text-custom1 font-thin text-xl"
       >
         Confirm Appoinmenmt
-      </button>{" "}
-    </div>
+      </button> </div>
   );
 };
 
