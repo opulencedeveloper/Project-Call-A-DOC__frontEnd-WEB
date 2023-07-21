@@ -33,6 +33,9 @@ export default function Chat() {
   const { token } = authCtx;
 
   useEffect(() => {
+    //const section = document.getElementById("mychat");
+
+    //section.scrollIntoView({ behavior: 'smooth' });
     const myResponse = (res) => {
       const { status, message, customer, chats } = res;
       if (status === "success") {
@@ -59,12 +62,8 @@ export default function Chat() {
       myResponse
     );
 
-    const section = document.getElementById("mychat");
-  if (section) {
-
-    console.log("In the scrollllllllllllllllllll")
-    section.scrollIntoView({ behavior: 'smooth', block: 'end' });
-  }
+    
+  
   }, [fetchUserData, token, dispatch]);
 
   if (isLoading || error) {
@@ -74,8 +73,8 @@ export default function Chat() {
   return (
     <ChatLayout>
       <div className="flex flex-col justify-between h-screen w-full 2xl:pr-16 lg:w-9/12">
-        <div className="h-[15%] "><Header title={`Welcome ${patientFirstName}`} /> </div>
-        <div className="h-[80%] mb-5"> <MyChat chats={chats}/></div>
+        <div className="h-[15%] px-5 lg:px-0"><Header title={`Welcome ${patientFirstName}`} /> </div>
+        <div className="h-[80%] overflow-auto mb-5"> <MyChat chats={chats}/></div>
       </div>
       <UserProfile
         name={`${patientFirstName} ${patientLastName}`}
