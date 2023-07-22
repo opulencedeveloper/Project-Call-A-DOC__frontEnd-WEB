@@ -1,3 +1,5 @@
+
+
 import Header from "@/components/dashboard/dashboard-ui/Header";
 import UserProfile from "@/components/dashboard/dashboard-ui/UserProfile";
 import ChatLayout from "@/components/chat/chat-layout/ChatLayout";
@@ -14,15 +16,17 @@ const { addUserData } = userDataActions;
 
 let isOnline = false;
 
+
+
+
 export default function Chat() {
   const dispatch = useDispatch();
   const userInfo = useSelector((state) => state.userData);
-  const [chats, setChats] = useState([]);
+  
+  const [mounted, setMounted] = useState(false);
   const router = useRouter();
   const appointmentId = router.query.appointmentId;
   
-
-  console.log("The appointmentId in the chat is", appointmentId);
   const {
     firstname: patientFirstName,
     lastname: patientLastName,
@@ -31,13 +35,12 @@ export default function Chat() {
   const { isLoading, error, sendRequest: fetchUserData } = useHttp();
   const authCtx = useContext(AuthContext);
   const { token } = authCtx;
-
+  
   useEffect(() => {
-    //const section = document.getElementById("mychat");
-
-    //section.scrollIntoView({ behavior: 'smooth' });
+    
     const myResponse = (res) => {
       const { status, message, customer, chats } = res;
+      
       if (status === "success") {
         dispatch(addUserData(customer));
         isOnline = true;
@@ -54,27 +57,31 @@ export default function Chat() {
       },
       myResponse
     );
-    fetchUserData(
-      {
-        url: "appointment/fetchappointmentchats?appointmentid=AP1688230670",
-        token: token,
-      },
-      myResponse
-    );
+    
 
     
-  
+    
+  setMounted(true)
   }, [fetchUserData, token, dispatch]);
+ 
 
   if (isLoading || error) {
     return <LoadingSpinner errorMessage={error} />;
   }
 
+  
+    
+  
+
+
+  console.log('In the Chat Component',);
+  
+
   return (
     <ChatLayout>
       <div className="flex flex-col justify-between h-screen w-full 2xl:pr-16 lg:w-9/12">
         <div className="h-[15%] px-5 lg:px-0"><Header title={`Welcome ${patientFirstName}`} /> </div>
-        <div className="h-[80%] overflow-auto mb-5"> <MyChat chats={chats}/></div>
+        <div className="h-[80%] overflow-auto mb-5"> <MyChat /></div>
       </div>
       <UserProfile
         name={`${patientFirstName} ${patientLastName}`}

@@ -39,7 +39,7 @@ const AppointmentJourney = ({ endAppointmentHandler }) => {
   };
 
   return (
-    <div className="relative flex flex-col overflow-y-auto relative z-50 mx-3 relative items-center justify-center bg-custom1 space-y-4 p-8 rounded-2xl shadow-2xl md:p-20 ">
+    <div className="border border-black relative flex flex-col overflow-y-auto relative z-50 mx-3 items-center justify-center bg-custom1 space-y-4 p-8 rounded-2xl shadow-2xl md:p-20 ">
       {error && (
         <div className="bg-custom11 mr-5 rounded-md text-custom1 font-semibold text-sm py-3 px-10">
           <p className="text-center">{error}</p>

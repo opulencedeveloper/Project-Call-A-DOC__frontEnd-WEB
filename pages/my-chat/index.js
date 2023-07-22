@@ -16,7 +16,7 @@ const MyComponent = () => {
       const { status, doctor } = res;
       if (status === "success") {
         console.log("In the webhook success")
-        setWebhookData(data);
+       // setWebhookData(data);
       }
     };
 
@@ -30,7 +30,7 @@ const MyComponent = () => {
       },
       myResponse
     );
-    setMounted(true);
+    
     window.Pusher = Pusher;
   window.Echo = new Echo({
     broadcaster: "pusher",
@@ -38,6 +38,7 @@ const MyComponent = () => {
     cluster: "us2",
     forceTLS: true,
   });
+  setMounted(true);
   }, [fetchUserData, token]);
 
   if (!mounted || typeof window === "undefined") {

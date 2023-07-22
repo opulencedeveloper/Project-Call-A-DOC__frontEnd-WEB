@@ -3,7 +3,7 @@ import { useCallback, useState } from "react";
 const useHttp = () => {
     const [isLoading, setIsLoading] = useState(false);
     const [error, setError] = useState(null);
-
+console.log("Use Http called")
 
     const sendRequest = useCallback( async (requestConfig, applyData) => {
       console.log("requestConfig.token", requestConfig.token)

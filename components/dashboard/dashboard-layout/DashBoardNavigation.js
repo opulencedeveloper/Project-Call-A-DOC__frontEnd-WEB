@@ -54,9 +54,7 @@ const DashBoardNavigation = (props) => {
   return (
     <div className="flex flex-col h-full justify-between items-start w-52 hidden 2xl:flex">
       {startAppointment && (
-       <Portal>
-          <AppointmentJourney endAppointmentHandler={startAppointmentHandler} />
-          </Portal>
+       <BackDrop> <AppointmentJourney endAppointmentHandler={startAppointmentHandler} /> </BackDrop>
       )}
       <div className="space-y-14 w-full">
         <div className="flex justify-center">
