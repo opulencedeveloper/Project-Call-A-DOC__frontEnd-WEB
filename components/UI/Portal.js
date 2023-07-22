@@ -13,7 +13,7 @@ const Portal = ({children}) => {
   }
 
   return ReactDOM.createPortal(
-    <>{children}</>,
+    <div className="relative z-50">{children}</div>,
     document.getElementById("navigation")
   );
 };

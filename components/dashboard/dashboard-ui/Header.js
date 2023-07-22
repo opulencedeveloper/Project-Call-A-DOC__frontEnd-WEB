@@ -44,7 +44,7 @@ const Header = (props) => {
   };
 
   return (
-    <div className={`flex  flex-col relative z-0 justify-between items-start pb-8 pt-2 md:flex-row md:items-center`}>
+    <div className={`flex  flex-col relative z-10 justify-between items-start pb-8 pt-2 md:flex-row md:items-center`}>
       {/* className={`${value} block hamburger mt-7 lg:hidden focus:outline-none`} */}
      <Portal> <div
         className={`fixed inset-y-0 right-0 z-50 w-64 bg-custom1 shadow-lg transform ${

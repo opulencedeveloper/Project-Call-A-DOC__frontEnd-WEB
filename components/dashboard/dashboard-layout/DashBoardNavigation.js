@@ -5,6 +5,7 @@ import { useRouter } from "next/router";
 
 import BackDrop from "@/components/UI/BackDrop";
 import AppointmentJourney from "../dashboard-ui/AppointmentJourney";
+import Portal from "@/components/UI/Portal";
 
 const DashBoardNavigation = (props) => {
   const [startAppointment, setStartAppointment] = useState(false);
@@ -53,9 +54,9 @@ const DashBoardNavigation = (props) => {
   return (
     <div className="flex flex-col h-full justify-between items-start w-52 hidden 2xl:flex">
       {startAppointment && (
-        <BackDrop>
+       <Portal>
           <AppointmentJourney endAppointmentHandler={startAppointmentHandler} />
-        </BackDrop>
+          </Portal>
       )}
       <div className="space-y-14 w-full">
         <div className="flex justify-center">
