@@ -35,6 +35,8 @@ const AvailableDoctors = (props) => {
                 src="/images/doctor-joseph.svg"
                 alt="doctor-image"
                 className="w-14 h-14 md:w-[91.56px] md:h-[91.56px]"
+                priority
+                loading="eager"
                 width={91.56}
                 height={91.56}
               />
@@ -55,6 +57,8 @@ const AvailableDoctors = (props) => {
                 }
                 alt="radion-icon"
                 className=" w-auto h-auto z-0"
+                priority
+                loading="eager"
                 width={24}
                 height={24}
               />

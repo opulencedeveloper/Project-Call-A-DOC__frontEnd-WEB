@@ -52,7 +52,8 @@ const StartingAppointment = (props) => {
         src="/images/icon/options.svg"
         alt="options-icon"
         className=" w-auto h-auto"
-        
+        priority
+        loading="eager"
         width={48.81}
         height={62.13}
       />

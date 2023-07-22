@@ -5,9 +5,9 @@ export default function Document() {
     <Html lang="en">
       <Head/>
       <body>
+      <div id="navigation"></div>
         <Main />
         <NextScript />
-        <div id="navigation"></div>
       </body>
     </Html>
   );

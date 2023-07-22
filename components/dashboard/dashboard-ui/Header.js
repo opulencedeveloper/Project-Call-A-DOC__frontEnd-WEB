@@ -3,6 +3,7 @@ import DashBoardNavigation from "../dashboard-layout/DashBoardNavigation";
 import { useState } from "react";
 import DashBoardMobileNavigation from "../dashboard-layout/DashBoardMobileNavigation";
 import BackDrop from "../../UI/BackDrop";
+import Portal from "@/components/UI/Portal";
 
 const currentDate = new Date();
 
@@ -45,13 +46,13 @@ const Header = (props) => {
   return (
     <div className={`flex  flex-col relative z-0 justify-between items-start pb-8 pt-2 md:flex-row md:items-center`}>
       {/* className={`${value} block hamburger mt-7 lg:hidden focus:outline-none`} */}
-      <div
+     <Portal> <div
         className={`fixed inset-y-0 right-0 z-50 w-64 bg-custom1 shadow-lg transform ${
           isOpen ? "translate-x-0" : "translate-x-full"
         } transition-transform duration-300 ease-in-out`}
       >
         <DashBoardMobileNavigation toggleDrawer={toggleDrawer} type={type}/>{" "}
-      </div>
+      </div></Portal>
       <div className="flex">
         <button
           className={`${navAnimationClass} block hamburger mt-7 mr-5 2xl:hidden focus:outline-none`}
@@ -74,7 +75,8 @@ const Header = (props) => {
           src="/images/icon/search.svg"
           alt="search-icon"
           className="w-auto h-auto p-2 md:p-4"
-          
+          priority
+          loading="eager"
           width={16}
           height={16}
         />

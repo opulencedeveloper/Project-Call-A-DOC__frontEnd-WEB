@@ -55,6 +55,8 @@ const AppointmentJourney = ({ endAppointmentHandler }) => {
           src="/images/icon/close.svg"
           alt="close-icon"
           className=" w-auto h-auto"
+          priority
+          loading="eager"
           width={18.88}
           height={18.88}
           onClick={endAppointmentHandler}
