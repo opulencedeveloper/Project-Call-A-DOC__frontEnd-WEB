@@ -2,6 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const userDataInitialState = {
   id: "",
+  role: "",
   active: null,
   aos: "",
   availability: null,

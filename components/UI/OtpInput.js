@@ -9,6 +9,8 @@ import useHttp from "@/hooks/useHttp";
 import { signupActions } from "../../store/redux-store/signup-slice";
 import { useRouter } from "next/router";
 import AuthContext from "@/store/context-store/auth-context";
+import { userDataActions } from "@/store/redux-store/userData-slice";
+const { addUserData } = userDataActions;
 
 function removeHtmlTags(data) {
   const val = data || "";
@@ -72,6 +74,9 @@ const OtpInput = (props) => {
       const targetRoute =
         role === "1" ? "/patient-dashboard" : "/doctor-dashboard";
       authCtx.login(token, isChecked);
+     if(role !== "1") {
+      dispatch(addUserData({role: role}));
+     }   
       dispatch(signupActions.resetState());
       router.replace(targetRoute);
     }

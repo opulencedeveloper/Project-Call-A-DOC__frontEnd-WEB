@@ -18,12 +18,12 @@ const AvailableDoctors = (props) => {
 
   return (
     <div className="flex flex-col items-center">
-      <div className="flex flex-col overflow-y-auto h-96 items-center pt-10 md:pt-auto md:h-[20rem] 2xl:h-[30rem]">
+      <div className="flex flex-col overflow-y-auto h-96 w-full items-center pt-10 md:pt-auto md:h-[20rem] 2xl:h-[30rem]">
         {" "}
         {availableDoctors.map((content, index) => (
           <div
             key={index}
-            className="cursor-pointer flex items-center px-5 space-x-14 border-b border-ash py-8 md:space-x-52"
+            className="cursor-pointer flex justify-between items-center px-5 w-full border-b border-ash py-8 md:space-x-52"
             id={content.doctorid}
             onClick={availableDoctorsHandler}
           >
@@ -31,15 +31,15 @@ const AvailableDoctors = (props) => {
               className="flex "
               style={{ pointerEvents: "none" }} //this lets the div onclick event of the parent container cover up its child
             >
-              <Image
-                src="/images/doctor-joseph.svg"
+             <div className="w-14 h-14 md:w-[91.56px] md:h-[91.56px] rounded-full overflow-hidden"> <Image
+                src={content.profilepicture}
                 alt="doctor-image"
-                className="w-14 h-14 md:w-[91.56px] md:h-[91.56px]"
+                className="w-full h-full object-cover"
                 priority
                 loading="eager"
                 width={91.56}
                 height={91.56}
-              />
+              /> </div>
               <div className="flex flex-col justify-center ml-5 max-w-2xl">
                 <div className="text-lg md:text-2xl">{`${content.firstname} ${content.lastname}`}</div>
                 <div className="text-sm md:text-base">{content.aos}</div>

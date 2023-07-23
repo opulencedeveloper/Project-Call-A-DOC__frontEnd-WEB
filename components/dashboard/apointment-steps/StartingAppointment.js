@@ -4,10 +4,12 @@ import { useRouter } from 'next/router';
 import Image from "next/image";
 import useHttp from "@/hooks/useHttp";
 import AuthContext from "@/store/context-store/auth-context";
+import { useSelector } from "react-redux";
+
 
 const StartingAppointment = (props) => {
   const router = useRouter();
-  const { error, sendRequest: fetchAppointmentId } = useHttp(); useHttp
+  const { error, sendRequest: fetchAppointmentId } = useHttp(); 
   const authCtx = useContext(AuthContext); 
   const { token } = authCtx; 
   
@@ -51,7 +53,7 @@ const StartingAppointment = (props) => {
       <Image
         src="/images/icon/options.svg"
         alt="options-icon"
-        className=" w-auto h-auto"
+        className=" w-auto h-auto z-20"
         priority
         loading="eager"
         width={48.81}
