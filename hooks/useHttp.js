@@ -31,9 +31,9 @@ console.log("Use Http called")
 
        
         let responseData = await response.json();
-        console.log("responseeeee", responseData)
+        console.log("http response", responseData)
         if(responseData.status === "error") {
-          console.log("hereeeeeeeeeeeeeeeeeeeeeee")
+          console.log("catch called")
           throw new Error(responseData.message)
         }
 

@@ -32,7 +32,7 @@ const OtpInput = (props) => {
     useRef(null),
     useRef(null),
   ];
-  const [inputValues, setInputValues] = useState([]);
+  const [inputValues, setInputValues] = useState([""]);
   const inputStyle =
     "w-10 h-9 bg-ash3 rounded-md text-center font-bold border-2 border-ash3 md:w-14 md:h-12 focus:border-custom outline-none ";
 
@@ -68,15 +68,17 @@ const OtpInput = (props) => {
   };
 
   const myResponse = (res) => {
-    const { status, message, role, token} = res;
+    const { status, message, role, token } = res;
 
     if (status === "success" && message === "Otp Verification Successful.") {
       const targetRoute =
         role === "1" ? "/patient-dashboard" : "/doctor-dashboard";
       authCtx.login(token, isChecked);
-     if(role !== "1") {
-      dispatch(addUserData({role: role}));
-     }   
+      if (role === "1") {
+        localStorage.setItem("userType", "patient");
+      } else {
+        localStorage.setItem("userType", "doctor");
+      }
       dispatch(signupActions.resetState());
       router.replace(targetRoute);
     }

@@ -46,7 +46,7 @@ const Dashboard = () => {
   }, [fetchUserData, token, dispatch]);
 
   useEffect(() => {
-    if (error === "Unauthenticated") {
+    if (error === "Unauthenticated" || error === "Not Authorized") {
       router.replace("signin");
     }
   }, [error, router]);

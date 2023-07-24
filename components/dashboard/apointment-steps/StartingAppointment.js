@@ -1,37 +1,40 @@
 import { useContext, useEffect } from "react";
 
-import { useRouter } from 'next/router';
+import { useRouter } from "next/router";
 import Image from "next/image";
 import useHttp from "@/hooks/useHttp";
 import AuthContext from "@/store/context-store/auth-context";
 import { useSelector } from "react-redux";
 
-
 const StartingAppointment = (props) => {
   const router = useRouter();
-  const { error, sendRequest: fetchAppointmentId } = useHttp(); 
-  const authCtx = useContext(AuthContext); 
-  const { token } = authCtx; 
-  
+  const { error, sendRequest: makeAppointment } = useHttp();
+  const authCtx = useContext(AuthContext);
+  const { token } = authCtx;
+
   useEffect(() => {
     const myResponse = (res) => {
       const { status, message, appointment } = res;
-      if (status === "success" && message === "Appointment Booked Successfully") {
-       router.push("/chat/" + appointment.appointmentid);
+      if (
+        status === "success" &&
+        message === "Appointment Booked Successfully"
+      ) {
+        props.setStepHandler("4");
+        //  router.push("/chat/" + appointment.appointmentid);
         return;
       }
     };
 
-    fetchAppointmentId(
+    makeAppointment(
       {
         url: "customer/makeappointment",
         token: token,
         method: "POST",
-        body: { "doctor": props.doctorId },
+        body: { doctor: props.doctorId },
       },
       myResponse
     );
-  }, [fetchAppointmentId, token]); 
+  }, [makeAppointment, token]);
 
   // useEffect(() => {
   //   const timeoutId = setTimeout(() => {
@@ -44,12 +47,12 @@ const StartingAppointment = (props) => {
   // }, []);
   return (
     <>
-    {error && (
-            <div className="bg-custom11 mr-5 rounded-md text-custom1 font-semibold text-sm py-3 px-10">
-              <p className="text-center">{error}</p>
-            </div>
-          )}
-          
+      {error && (
+        <div className="bg-custom11 mr-5 rounded-md text-custom1 font-semibold text-sm py-3 px-10">
+          <p className="text-center">{error}</p>
+        </div>
+      )}
+
       <Image
         src="/images/icon/options.svg"
         alt="options-icon"

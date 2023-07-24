@@ -73,7 +73,7 @@ const MyChat = (props) => {
 
     sendChatRequest(
       {
-        url: "appointment/fetchappointmentchats?appointmentid=AP1688230670",
+        url: `appointment/fetchappointmentchats?appointmentid=${props.appointmentId}`,
         token: token,
       },
       myResponse
@@ -81,9 +81,9 @@ const MyChat = (props) => {
     const chatListener = (e) => {
       setChats((prevArray) => [...prevArray, e.chat]);
     };
-    window.Echo.channel("AP1688230670").listen("ChatMessenger", chatListener);
+    window.Echo.channel(`${props.appointmentId}`).listen("ChatMessenger", chatListener);
     return () => {
-      window.Echo.leaveChannel("AP1688230670");
+      window.Echo.leaveChannel(`${props.appointmentId}`);
     };
   }, []);
   const sendChat = (event) => {
@@ -102,7 +102,7 @@ const MyChat = (props) => {
       {
         url: "appointment/sendchat",
         method: "POST",
-        body: { appointmentid: "AP1688230670", message: inputValue },
+        body: { appointmentid: `${props.appointmentId}`, message: inputValue },
         token: token,
       },
       myResponse

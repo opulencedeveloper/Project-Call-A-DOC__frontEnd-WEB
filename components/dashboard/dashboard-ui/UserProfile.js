@@ -8,7 +8,7 @@ const UserProfile = (props) => {
   const onlineStatusTextColor = online ? "text-custom-g" : "text-custom11";
 
   return (
-    <div className="flex flex-col flex-2 mb-5 items-center jusify-start lg:ml-5 2xl:ml-auto mt-5 xl:w-1/4 xl:mt-auto">
+    <div className="h-full flex flex-col mb-5 items-center jusify-start lg:ml-5 2xl:ml-auto mt-5 xl:w-1/4 xl:mt-auto">
       <div className=" flex justify-between w-full mb-12">
         {" "}
         <Image

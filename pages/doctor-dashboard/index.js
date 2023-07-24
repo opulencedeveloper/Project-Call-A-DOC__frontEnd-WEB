@@ -54,7 +54,7 @@ export default function DashBoard() {
   }, [fetchUserData, token, dispatch]);
 
   useEffect(() => {
-    if (error === "Unauthenticated") {
+    if (error === "Unauthenticated" || error === "Not Authorized") {
       router.replace("signin");
     }
   }, [error, router]);
@@ -72,7 +72,7 @@ export default function DashBoard() {
        <YourActivities />
          {/*  <YourActivities /> */}
       </div>
-      <UserProfile
+     <UserProfile
         name={`${patientFirstName} ${patientLastName}`}
         profilePicture={profilepicture}
         online={isOnline}

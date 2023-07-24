@@ -6,6 +6,7 @@ import StartingAppointment from "../apointment-steps/StartingAppointment";
 import AuthContext from "@/store/context-store/auth-context";
 import useHttp from "@/hooks/useHttp";
 import { useSelector } from "react-redux";
+import AppointmentSuccessful from "../apointment-steps/AppointmentSuccesful";
 
 const AppointmentJourney = ({ endAppointmentHandler }) => {
   const [step, setStep] = useState("1");
@@ -14,8 +15,6 @@ const AppointmentJourney = ({ endAppointmentHandler }) => {
   const { error, sendRequest: fetchUserData } = useHttp();
   const userInfo = useSelector((state) => state.userData);
   const { role } = userInfo;
-
-  console.log("The role is", role);
   const authCtx = useContext(AuthContext);
   const { token } = authCtx;
 
@@ -48,7 +47,9 @@ const AppointmentJourney = ({ endAppointmentHandler }) => {
   }, [fetchUserData, token]);
 
   const setStepHandler = (step, doctorId) => {
-    setDoctorId(doctorId);
+    if (doctorId) {
+      setDoctorId(doctorId);
+    }
     setStep(step);
   };
 
@@ -83,7 +84,17 @@ const AppointmentJourney = ({ endAppointmentHandler }) => {
           setStepHandler={setStepHandler}
         />
       )}
-      {step === "3" && <StartingAppointment doctorId={doctorId} />}
+      {step === "3" && (
+        <StartingAppointment
+          doctorId={doctorId}
+          setStepHandler={setStepHandler}
+        />
+      )}
+      {step === "4" && (
+        <AppointmentSuccessful
+          closeAppointmentHandler={endAppointmentHandler}
+        />
+      )}
     </div>
   );
 };
