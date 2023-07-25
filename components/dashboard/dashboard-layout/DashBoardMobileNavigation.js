@@ -56,13 +56,13 @@ const DashBoardMobileNavigation = (props) => {
     {
       icon1: "folder-icon1",
       icon2: "folder-icon2",
-      link: `${link}/my-folder`,
+      link: `${link}/myfolder`,
       title: "My Folder",
     },
     {
       icon1: "settings",
       icon2: "settings",
-      link: "dashboard",
+      link: `${link}/settings`,
       title: "Settings",
     },
     {
@@ -73,7 +73,7 @@ const DashBoardMobileNavigation = (props) => {
     },
   ];
   return (
-    <div className="flex flex-col justify-between py-14 h-full">
+    <div className="flex flex-col justify-between pt-14 pb-2 h-screen">
       {" "}
       {startAppointment && (
         <BackDrop>

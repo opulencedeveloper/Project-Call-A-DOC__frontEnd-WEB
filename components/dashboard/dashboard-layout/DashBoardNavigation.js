@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/router";
@@ -12,6 +12,25 @@ const DashBoardNavigation = (props) => {
   const router = useRouter();
   const activeLink = router.pathname;
   const { type } = props;
+
+  useEffect(() => {
+    const handleBeforeUnload = (e) => {
+      e.preventDefault();
+      const remeberMe = localStorage.getItem("remeberMe");
+      if (remeberMe === "false") {
+        console.log("To return null")
+        localStorage.setItem("token", "");
+      }
+      console.log("User is leaving the pageeeeeeeeeeeeeeeeeeeeeeeeee...");
+      return;
+    };
+
+    window.addEventListener('beforeunload', handleBeforeUnload);
+
+    return () => {
+      window.removeEventListener('beforeunload', handleBeforeUnload);
+    };
+  }, []);
 
   const startAppointmentHandler = () => {
     setStartAppointment((prevVal) => !prevVal);
@@ -35,13 +54,13 @@ const DashBoardNavigation = (props) => {
     {
       icon1: "folder-icon1",
       icon2: "folder-icon2",
-      link: `${link}/my-folder`,
+      link: `${link}/myfolder`,
       title: "My Folder",
     },
     {
       icon1: "settings",
       icon2: "settings",
-      link: "dashboard",
+      link: `${link}/settings`,
       title: "Settings",
     },
     {
@@ -52,7 +71,7 @@ const DashBoardNavigation = (props) => {
     },
   ];
   return (
-    <div className="flex flex-col h-full justify-between items-start w-52 hidden 2xl:flex">
+    <div className="flex flex-col h-full pb-2 justify-between items-start w-60 hidden 2xl:flex">
       {startAppointment && (
        <BackDrop> <AppointmentJourney endAppointmentHandler={startAppointmentHandler} /> </BackDrop>
       )}
@@ -62,7 +81,8 @@ const DashBoardNavigation = (props) => {
             src="/images/logo/logo.svg"
             alt="call a doctor logo"
             className="h-auto w-auto"
-            //  ""
+            loading="eager"
+            priority
             width={576}
             height={320}
           />

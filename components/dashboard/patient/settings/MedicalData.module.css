@@ -1,0 +1,28 @@
+input[type=checkbox].checkbox {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+  }
+  
+  .checkbox {
+      width: 1.5rem;
+      height: 1.5rem;
+      outline: none;
+      border: 2px solid #ccc; 
+      border-radius: 5px;
+    }
+    
+    .checkbox:checked {
+      background-image: url('/images/icon/drop-down.svg'); 
+      background-repeat: no-repeat;
+      background-position: center;
+      background-color: #007FDD;
+      border-radius: 5px;
+    }
+    
+    .label {
+      margin-left: 5px;
+    }
+  
+    
+    
