@@ -2,13 +2,14 @@ import Image from "next/image";
 import MyCalendar from "./Calender";
 
 const UserProfile = (props) => {
-  const { name, profilePicture, online } = props;
+  const { name, profilePicture, online, style } = props;
   const onlineStatus = online ? "online" : "offline";
   const onlineStatusText = online ? "Online" : "Offline";
   const onlineStatusTextColor = online ? "text-custom-g" : "text-custom11";
+  const styling = style || "flex"
 
   return (
-    <div className="h-full flex flex-col mb-5 items-center jusify-start lg:ml-5 2xl:ml-auto mt-5 xl:w-1/4 xl:mt-auto">
+    <div className={`h-full ${styling} flex flex-col mb-5 items-center jusify-start lg:ml-5 2xl:ml-auto mt-5 xl:w-1/4 xl:mt-auto`}>
       <div className=" flex justify-between w-full mb-12">
         {" "}
         <Image

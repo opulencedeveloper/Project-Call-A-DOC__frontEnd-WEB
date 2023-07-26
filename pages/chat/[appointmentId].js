@@ -87,16 +87,16 @@ export default function Chat() {
         <div className="h-[15%] px-5 lg:px-0">
           <Header title={`Welcome ${firstName}`} />{" "}
         </div>
-        <div className="h-[80%] overflow-auto mb-5">
           {" "}
           <MyChat appointmentId={appointmentId} userType={userType}/>
-        </div>
+        
       </div>
-      <UserProfile
+     <UserProfile
         name={`${firstName} ${lastName}`}
         profilePicture={profilepicture}
         online={isOnline}
-      />
+        styling="hidden md:flex"
+      /> 
     </ChatLayout>
   );
 }
