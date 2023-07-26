@@ -84,7 +84,7 @@ export default function Chat() {
   return (
     <ChatLayout>
       <div className="flex flex-col justify-between h-screen w-full 2xl:pr-16 lg:w-9/12">
-        <div className="h-[15%] px-5 lg:px-0">
+        <div className="px-5 lg:px-0">
           <Header title={`Welcome ${firstName}`} />{" "}
         </div>
           {" "}
@@ -95,7 +95,7 @@ export default function Chat() {
         name={`${firstName} ${lastName}`}
         profilePicture={profilepicture}
         online={isOnline}
-        styling="hidden md:flex"
+        styling="hidden md:flex h-full mb-5  flex-col items-center jusify-start lg:ml-5 2xl:ml-auto mt-5 xl:w-1/4 xl:mt-auto"
       /> 
     </ChatLayout>
   );
