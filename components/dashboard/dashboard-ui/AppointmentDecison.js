@@ -20,7 +20,8 @@ const AppointmentDecison = (props) => {
     if (
       status === "success"
     ) {
-      router.push("/chat/" + myAppointmentId);
+      window.open("/chat/" + myAppointmentId, '_blank');
+     // router.push();
       return;
     }
   };
