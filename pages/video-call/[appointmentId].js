@@ -73,7 +73,7 @@ export default function VideoCall() {
         sharedLinks: [
           {
             name: "Personal link",
-            url: `${roomID}`,
+            url: `https://calladoc247.vercel.app/video-call/${roomID}`,
           },
         ],
         scenario: {

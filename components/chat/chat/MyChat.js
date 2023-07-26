@@ -46,6 +46,7 @@ const MyChat = (props) => {
   const chatContainerRef = useRef();
   const inputRef = useRef();
   const [inputValue, setInputValue] = useState("");
+  const [replierData, setReplierData] = useState({});
   const router = useRouter();
   const { isLoading, error, sendRequest: sendChatRequest } = useHttp();
   const [chats, setChats] = useState([]);
@@ -67,9 +68,13 @@ const MyChat = (props) => {
 
   useEffect(() => {
     const myResponse = (res) => {
-      const { status, message, customer, chats } = res;
+      const { status, message, patient, chats, doctor } = res;
 
       if (status === "success" && message === "Fetch Successfully") {
+        console.log("patient is patient", patient);
+        props.userType === "patient"
+          ? setReplierData(doctor)
+          : setReplierData(patient);
         setChats(chats);
       }
     };
@@ -121,20 +126,35 @@ const MyChat = (props) => {
 
   const startVideoCallHandler = () => {
     router.push("/video-call/" + props.appointmentId);
-  }
+  };
+
+  function isURL(str) {
+  const urlRegex = /^(https?|ftp):\/\/([^\s/$.?#].[^\s]*)$/i;
+  return urlRegex.test(str);
+}
 
   return (
-    <div className="relative h-full pb-5 bg-custom8 rounded-tl-2xl rounded-tr-2xl z-40">
+    <div className="relative h-full pb-5 bg-custom8 rounded-tl-2xl rounded-tr-2xl mt-5  md:mt-0">
       <div className="bg-custom8 absolute top-0 right-0 left-0 flex rounded-tl-2xl rounded-tr-2xl h-20 items-center justify-between border-b border-ash pb-3 pt-6 px-5 md:h-32">
         <div className="flex items-center space-x-4">
-          <Image
-            src="/images/doctor-joseph.svg"
-            alt="doctor"
-            className="h-10 w-10 md:h-[82px] md:w-[82px]"
-            width={82}
-            height={82}
-          />
-          <div className="text-sm md:text-lg">Dr. James Joseph</div>
+          <div className="h-10 w-10 rounded-full bg-white overflow-hidden md:h-[82px] md:w-[82px]">
+            {Object.keys(replierData).length && (
+              <Image
+                src={`${replierData.profilepicture}`}
+                alt="chat-profile-picture"
+                className="h-full w-full"
+                width={82}
+                height={82}
+              />
+            )}
+          </div>
+          {Object.keys(replierData).length && (
+            <div className="text-sm md:text-lg">
+              {props.userType === "patient"
+                ? `Dr. ${replierData.firstname} ${replierData.lastname}`
+                : `${replierData.firstname} ${replierData.lastname}`}
+            </div>
+          )}
         </div>
         <div className="flex space-x-2">
           {props.userType === "doctor" && (
@@ -169,35 +189,38 @@ const MyChat = (props) => {
             const chatTime = convertISOTo12HourFormat(chat.created_at);
             return chat.type === "2" ? (
               <div key={index} className="flex justify-end">
-                <div className="flex space-x-1 items-end">
+                <div className="flex items-end">
                   <div className="space-y-2 flex flex-col items-end">
                     <div className="max-w-xl ml-20 bg-ash4 p-2 md:p-4 rounded-tl-xl rounded-bl-xl rounded-tr-xl text-xs md:text-base">
-                      {chat.message}
+                    {isURL(chat.message) ? (
+                      <a href={chat.message} className="text-blue-500 underline">{chat.message}</a>
+                    ) : (
+                      chat.message
+                    )}
                     </div>
                     <div className="text-xs text-ash6">{chatTime}</div>
                     {/* chatTime */}
                   </div>
-                  <Image
-                    src="/images/doctor-joseph.svg"
-                    alt="doctor"
-                    className="h-8 w-8 md:h-[42px] md:w-[42px]"
-                    width={576}
-                    height={320}
-                  />
                 </div>{" "}
               </div>
             ) : (
               <div key={index} className="flex space-x-1 items-end">
-                <Image
-                  src="/images/doctor-joseph.svg"
-                  alt="doctor"
-                  className="h-[42px] w-[42px]"
-                  width={576}
-                  height={320}
-                />
+                <div className="h-[42px] w-[42px] overflow-hidden rounded-full">
+                  <Image
+                    src={replierData.profilepicture}
+                    alt="chat-profile-picture"
+                    className="h-full w-full"
+                    width={576}
+                    height={320}
+                  />{" "}
+                </div>
                 <div className="space-y-2">
                   <div className="mr-20 max-w-xl bg-ash4 p-2 rounded-tl-xl rounded-br-xl rounded-tr-xl text-xs md:p-4 md:text-base">
-                    {chat.message}
+                  {isURL(chat.message) ? (
+                      <a href={chat.message} className="text-blue-500 underline">{chat.message}</a>
+                    ) : (
+                      chat.message
+                    )}
                   </div>
                   <div className="text-xs text-ash6">{chatTime}</div>
                 </div>
@@ -211,18 +234,24 @@ const MyChat = (props) => {
             console.log("The user type is", props.userType, chat.type);
             return chat.type === "2" ? (
               <div key={index} className="flex space-x-1 items-end">
-                <Image
-                  src="/images/doctor-joseph.svg"
-                  alt="doctor"
-                  className="h-[42px] w-[42px]"
-                  width={576}
-                  height={320}
-                />
+                <div className="h-[42px] w-[42px] overflow-hidden rounded-full">
+                  <Image
+                    src={replierData.profilepicture}
+                    alt="chat-profile-picture"
+                    className="h-full w-full"
+                    width={576}
+                    height={320}
+                  />{" "}
+                </div>
                 <div className="space-y-2">
                   <div className="mr-20 max-w-xl bg-ash4 p-2 rounded-tl-xl rounded-br-xl rounded-tr-xl text-xs md:p-4 md:text-base">
-                    {chat.message}
+                    {chat.message.include("https") ? (
+                      <a href={chat.message} className="text-blue-500 underline">{chat.message}</a>
+                    ) : (
+                      chat.message
+                    )}
                   </div>
-                  <div className="text-xs text-ash6">{chat.type}</div>
+                  <div className="text-xs text-ash6">{chatTime}</div>
                 </div>
               </div>
             ) : (
@@ -230,18 +259,14 @@ const MyChat = (props) => {
                 <div className="flex space-x-1 items-end">
                   <div className="space-y-2 flex flex-col items-end">
                     <div className="max-w-xl ml-20 bg-ash4 p-2 md:p-4 rounded-tl-xl rounded-bl-xl rounded-tr-xl text-xs md:text-base">
-                      {chat.message}
+                    {isURL(chat.message) ? (
+                      <a href={chat.message} className="text-blue-500 underline">{chat.message}</a>
+                    ) : (
+                      chat.message
+                    )}
                     </div>
-                    <div className="text-xs text-ash6">{chat.type}</div>
-                    {/* chatTime */}
+                    <div className="text-xs text-ash6">{chatTime}</div>
                   </div>
-                  <Image
-                    src="/images/doctor-joseph.svg"
-                    alt="doctor"
-                    className="h-8 w-8 md:h-[42px] md:w-[42px]"
-                    width={576}
-                    height={320}
-                  />
                 </div>{" "}
               </div>
             );

@@ -26,8 +26,8 @@ export default function Chat() {
   
 
   const {
-    firstname: patientFirstName,
-    lastname: patientLastName,
+    firstname: firstName,
+    lastname: lastName,
     profilepicture,
   } = userInfo;
   const { isLoading, error, sendRequest: fetchUserData } = useHttp();
@@ -39,6 +39,7 @@ export default function Chat() {
     const myResponse = (res) => {
       const { status, message, doctor, chats, customer } = res;
       if (status === "success") {
+        isOnline = true;
       const user = userType === "doctor" ? doctor : customer;
         dispatch(addUserData(user))
         
@@ -84,7 +85,7 @@ export default function Chat() {
     <ChatLayout>
       <div className="flex flex-col justify-between h-screen w-full 2xl:pr-16 lg:w-9/12">
         <div className="h-[15%] px-5 lg:px-0">
-          <Header title={`Welcome ${patientFirstName}`} />{" "}
+          <Header title={`Welcome ${firstName}`} />{" "}
         </div>
         <div className="h-[80%] overflow-auto mb-5">
           {" "}
@@ -92,7 +93,7 @@ export default function Chat() {
         </div>
       </div>
       <UserProfile
-        name={`${patientFirstName} ${patientLastName}`}
+        name={`${firstName} ${lastName}`}
         profilePicture={profilepicture}
         online={isOnline}
       />
