@@ -73,7 +73,7 @@ const DashBoardMobileNavigation = (props) => {
     },
   ];
   return (
-    <div className="flex flex-col justify-between pt-14 pb-2 h-screen">
+    <div className="flex flex-col justify-between overflow-y-auto pt-14 pb-2 h-screen">
       {" "}
       {startAppointment && (
         <BackDrop>

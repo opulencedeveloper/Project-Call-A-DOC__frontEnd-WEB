@@ -155,7 +155,7 @@ const Header = (props) => {
           </div>
           <button
             onClick={toggleNotifications}
-            className="w-max h-max relative cursor-pointer"
+            className="h-12 w-12 z-20 relative cursor-pointer md:w-14 md:h-14"
           >
             {" "}
             <div className="absolute top-2 right-2 w-5 h-5 bg-red-500 text-white text-center rounded-full flex items-center justify-center">
@@ -164,7 +164,7 @@ const Header = (props) => {
             <Image
               src="/images/icon/notification-icon.svg"
               alt="doctor"
-              className=" w-14 h-14 z-20"
+              className="h-full w-full"
               priority
               loading="eager"
               width={48.81}
@@ -174,7 +174,7 @@ const Header = (props) => {
         </div>
       </div>
       {showNotification && (
-        <div className="px-5 h-96 relative bg-white z-50">
+        <div className="px-5 h-96 relative bg-white z-40">
           <div className="absolute left-0 right-0 top-0 flex justify-between bg-white py-3 px-5 mb-5">
             <div className="text-base font-semibold md:text-2xl">
               Notifications
@@ -193,7 +193,11 @@ const Header = (props) => {
             </button>
           </div>
           <div className="h-full overflow-y-auto pt-12">
-            {" "}
+            {notifications.length === 0 && (
+              <p className="text-base text-center text-ash2 mt-10">
+                You have no unread notification
+              </p>
+            )}
             {notifications.map((notification, index) =>
               userType === "doctor" ? (
                 <div

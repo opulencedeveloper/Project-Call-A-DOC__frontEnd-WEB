@@ -125,7 +125,7 @@ const MyChat = (props) => {
   };
 
   const startVideoCallHandler = () => {
-    router.push("/video-call/" + props.appointmentId);
+    window.open("/video-call/" + props.appointmentId, '_blank');
   };
 
   function isURL(str) {
@@ -193,7 +193,7 @@ const MyChat = (props) => {
                   <div className="space-y-2 flex flex-col items-end">
                     <div className="max-w-xl ml-20 bg-ash4 p-2 md:p-4 rounded-tl-xl rounded-bl-xl rounded-tr-xl text-xs md:text-base">
                     {isURL(chat.message) ? (
-                      <a href={chat.message} className="text-blue-500 underline">{chat.message}</a>
+                      <a target="_blank" rel="noopener noreferrer" href={chat.message} className="text-blue-500 underline">{chat.message}</a>
                     ) : (
                       chat.message
                     )}
@@ -204,7 +204,7 @@ const MyChat = (props) => {
                 </div>{" "}
               </div>
             ) : (
-              <div key={index} className="flex space-x-1 items-end">
+              <div key={index} className="flex space-x-1 h-max w-max items-end">
                 <div className="h-[42px] w-[42px] overflow-hidden rounded-full">
                   <Image
                     src={replierData.profilepicture}
@@ -217,7 +217,7 @@ const MyChat = (props) => {
                 <div className="space-y-2">
                   <div className="mr-20 max-w-xl bg-ash4 p-2 rounded-tl-xl rounded-br-xl rounded-tr-xl text-xs md:p-4 md:text-base">
                   {isURL(chat.message) ? (
-                      <a href={chat.message} className="text-blue-500 underline">{chat.message}</a>
+                      <a target="_blank" rel="noopener noreferrer" href={chat.message} className="text-blue-500 underline">{chat.message}</a>
                     ) : (
                       chat.message
                     )}
@@ -233,7 +233,7 @@ const MyChat = (props) => {
             const chatTime = convertISOTo12HourFormat(chat.created_at);
             console.log("The user type is", props.userType, chat.type);
             return chat.type === "2" ? (
-              <div key={index} className="flex space-x-1 items-end">
+              <div key={index} className="flex h-max w-max space-x-1 items-end">
                 <div className="h-[42px] w-[42px] overflow-hidden rounded-full">
                   <Image
                     src={replierData.profilepicture}
