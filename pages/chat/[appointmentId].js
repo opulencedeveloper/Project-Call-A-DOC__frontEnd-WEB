@@ -13,6 +13,7 @@ import { useRouter } from "next/router";
 const { addUserData } = userDataActions;
 
 let isOnline = false;
+let userType;
 
 export default function Chat() {
   const dispatch = useDispatch();
@@ -21,6 +22,8 @@ export default function Chat() {
   const [mounted, setMounted] = useState(false);
   const router = useRouter();
   const appointmentId = router.query.appointmentId;
+
+  
 
   const {
     firstname: patientFirstName,
@@ -32,17 +35,18 @@ export default function Chat() {
   const { token } = authCtx;
 
   useEffect(() => {
+    const userType = localStorage.getItem("userType")
     const myResponse = (res) => {
-      const { status, message, doctor, chats } = res;
+      const { status, message, doctor, chats, customer } = res;
       if (status === "success") {
-        dispatch(addUserData(doctor));
-        isOnline = true;
+      const user = userType === "doctor" ? doctor : customer;
+        dispatch(addUserData(user))
+        
       }
       if (status === "success" && message === "Fetch Successfully") {
         setChats(chats);
       }
-    };
-    const userType = localStorage.getItem("userType")
+    }; 
     if (userType === "patient") {
       fetchUserData(
         {
@@ -68,7 +72,13 @@ export default function Chat() {
     return <LoadingSpinner errorMessage={error} />;
   }
 
-  console.log("In the Chat Component");
+  if (typeof window !== "undefined") {
+    userType = localStorage.getItem("userType")
+ }
+
+ if(appointmentId === undefined) {
+  return
+}
 
   return (
     <ChatLayout>
@@ -78,7 +88,7 @@ export default function Chat() {
         </div>
         <div className="h-[80%] overflow-auto mb-5">
           {" "}
-          <MyChat appointmentId={appointmentId} />
+          <MyChat appointmentId={appointmentId} userType={userType}/>
         </div>
       </div>
       <UserProfile

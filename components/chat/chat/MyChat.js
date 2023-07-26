@@ -13,14 +13,15 @@ import Pusher from "pusher-js";
 
 import AuthContext from "@/store/context-store/auth-context";
 import useHttp from "@/hooks/useHttp";
+import { useRouter } from "next/router";
 
 const convertISOTo12HourFormat = (isoDate) => {
   const date = new Date(isoDate);
-  
+
   // Get the hours, minutes, and AM/PM indicator.
   let hours = date.getHours();
   let minutes = date.getMinutes();
-  const amPm = hours >= 12 ? 'pm' : 'am';
+  const amPm = hours >= 12 ? "pm" : "am";
 
   // Convert to 12-hour format.
   hours %= 12;
@@ -45,10 +46,12 @@ const MyChat = (props) => {
   const chatContainerRef = useRef();
   const inputRef = useRef();
   const [inputValue, setInputValue] = useState("");
+  const router = useRouter();
   const { isLoading, error, sendRequest: sendChatRequest } = useHttp();
   const [chats, setChats] = useState([]);
   const authCtx = useContext(AuthContext);
   const { token } = authCtx;
+  console.log("MyChat AppId is", props.appointmentId);
 
   useLayoutEffect(() => {
     const scrollToBottom = () => {
@@ -81,7 +84,10 @@ const MyChat = (props) => {
     const chatListener = (e) => {
       setChats((prevArray) => [...prevArray, e.chat]);
     };
-    window.Echo.channel(`${props.appointmentId}`).listen("ChatMessenger", chatListener);
+    window.Echo.channel(`${props.appointmentId}`).listen(
+      "ChatMessenger",
+      chatListener
+    );
     return () => {
       window.Echo.leaveChannel(`${props.appointmentId}`);
     };
@@ -89,7 +95,7 @@ const MyChat = (props) => {
   const sendChat = (event) => {
     event.preventDefault();
     if (inputValue === "") return;
-    setInputValue("")
+    setInputValue("");
     const myResponse = (res) => {
       const { status } = res;
       console.log("In the send chat response");
@@ -113,8 +119,12 @@ const MyChat = (props) => {
     setInputValue(event.target.value);
   };
 
+  const startVideoCallHandler = () => {
+    router.push("/video-call/" + props.appointmentId);
+  }
+
   return (
-    <div className="relative h-full pb-5 bg-custom8 rounded-tl-2xl rounded-tr-2xl ">
+    <div className="relative h-full pb-5 bg-custom8 rounded-tl-2xl rounded-tr-2xl z-40">
       <div className="bg-custom8 absolute top-0 right-0 left-0 flex rounded-tl-2xl rounded-tr-2xl h-20 items-center justify-between border-b border-ash pb-3 pt-6 px-5 md:h-32">
         <div className="flex items-center space-x-4">
           <Image
@@ -126,57 +136,115 @@ const MyChat = (props) => {
           />
           <div className="text-sm md:text-lg">Dr. James Joseph</div>
         </div>
-        <Image
-          src="/images/icon/three-dot-vert.svg"
-          alt="doctor"
-          className="h-4 w-4 md:h-[24px] md:w-[24px]"
-          width={24}
-          height={24}
-        />
+        <div className="flex space-x-2">
+          {props.userType === "doctor" && (
+            <button onClick={startVideoCallHandler}>
+              {" "}
+              <Image
+                src="/images/icon/video-call-icon.png"
+                alt="video call icon"
+                className="h-4 w-4 md:h-[24px] md:w-[24px]"
+                width={24}
+                height={24}
+              />{" "}
+            </button>
+          )}
+          <Image
+            src="/images/icon/three-dot-vert.svg"
+            alt="doctor"
+            className="h-4 w-4 md:h-[24px] md:w-[24px]"
+            width={24}
+            height={24}
+          />
+        </div>
       </div>
 
       <div
         ref={chatContainerRef}
-        className="overflow-y-auto h-[95%] justify-end h-full pb-20 space-y-5 px-3 md:px-8"
+        className="overflow-y-auto h-[95%] h-full pb-20 space-y-5 px-3 md:px-8"
       >
         {/* Chats here */}
-        {chats.map((chat, index) => {
-        const chatTime = convertISOTo12HourFormat(chat.created_at)
-          return chat.type === "1" ? (
-            <div key={index} className="flex justify-end">
-              <div className="flex space-x-1 items-end">
-                <div className="space-y-2 flex flex-col items-end">
-                  <div className="max-w-xl ml-20 bg-ash4 p-2 md:p-4 rounded-tl-xl rounded-bl-xl rounded-tr-xl text-xs md:text-base">
+        {props.userType === "doctor" &&
+          chats.map((chat, index) => {
+            const chatTime = convertISOTo12HourFormat(chat.created_at);
+            return chat.type === "2" ? (
+              <div key={index} className="flex justify-end">
+                <div className="flex space-x-1 items-end">
+                  <div className="space-y-2 flex flex-col items-end">
+                    <div className="max-w-xl ml-20 bg-ash4 p-2 md:p-4 rounded-tl-xl rounded-bl-xl rounded-tr-xl text-xs md:text-base">
+                      {chat.message}
+                    </div>
+                    <div className="text-xs text-ash6">{chatTime}</div>
+                    {/* chatTime */}
+                  </div>
+                  <Image
+                    src="/images/doctor-joseph.svg"
+                    alt="doctor"
+                    className="h-8 w-8 md:h-[42px] md:w-[42px]"
+                    width={576}
+                    height={320}
+                  />
+                </div>{" "}
+              </div>
+            ) : (
+              <div key={index} className="flex space-x-1 items-end">
+                <Image
+                  src="/images/doctor-joseph.svg"
+                  alt="doctor"
+                  className="h-[42px] w-[42px]"
+                  width={576}
+                  height={320}
+                />
+                <div className="space-y-2">
+                  <div className="mr-20 max-w-xl bg-ash4 p-2 rounded-tl-xl rounded-br-xl rounded-tr-xl text-xs md:p-4 md:text-base">
                     {chat.message}
                   </div>
                   <div className="text-xs text-ash6">{chatTime}</div>
                 </div>
+              </div>
+            );
+          })}
+
+        {props.userType === "patient" &&
+          chats.map((chat, index) => {
+            const chatTime = convertISOTo12HourFormat(chat.created_at);
+            console.log("The user type is", props.userType, chat.type);
+            return chat.type === "2" ? (
+              <div key={index} className="flex space-x-1 items-end">
                 <Image
                   src="/images/doctor-joseph.svg"
                   alt="doctor"
-                  className="h-8 w-8 md:h-[42px] md:w-[42px]"
+                  className="h-[42px] w-[42px]"
                   width={576}
                   height={320}
                 />
-              </div>{" "}
-            </div>
-          ) : (
-            <div key={index} className="flex space-x-1 items-end">
-              <Image
-                src="/images/doctor-joseph.svg"
-                alt="doctor"
-                className="h-[42px] w-[42px]"
-                width={576}
-                height={320}
-              />
-              <div className="space-y-2">
-                <div className="mr-20 max-w-xl bg-ash4 p-2 rounded-tl-xl rounded-br-xl rounded-tr-xl text-xs md:p-4 md:text-base">
-                  {chat.message}
+                <div className="space-y-2">
+                  <div className="mr-20 max-w-xl bg-ash4 p-2 rounded-tl-xl rounded-br-xl rounded-tr-xl text-xs md:p-4 md:text-base">
+                    {chat.message}
+                  </div>
+                  <div className="text-xs text-ash6">{chat.type}</div>
                 </div>
-                <div className="text-xs text-ash6">{chatTime}</div>
               </div>
-            </div>
-          )
+            ) : (
+              <div key={index} className="flex justify-end">
+                <div className="flex space-x-1 items-end">
+                  <div className="space-y-2 flex flex-col items-end">
+                    <div className="max-w-xl ml-20 bg-ash4 p-2 md:p-4 rounded-tl-xl rounded-bl-xl rounded-tr-xl text-xs md:text-base">
+                      {chat.message}
+                    </div>
+                    <div className="text-xs text-ash6">{chat.type}</div>
+                    {/* chatTime */}
+                  </div>
+                  <Image
+                    src="/images/doctor-joseph.svg"
+                    alt="doctor"
+                    className="h-8 w-8 md:h-[42px] md:w-[42px]"
+                    width={576}
+                    height={320}
+                  />
+                </div>{" "}
+              </div>
+            );
           })}
       </div>
 

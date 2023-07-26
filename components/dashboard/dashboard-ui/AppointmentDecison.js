@@ -27,28 +27,32 @@ const AppointmentDecison = (props) => {
   };
 
   const acceptAppointmentHandler = (appointmentId) => {
-    myAppointmentId = appointmentId;
-    appointmentRequest(
-      {
-        url: "doctor/appointment/acceptappointment",
-        token: token,
-        method: "POST",
-        body: { appointmentid: appointmentId },
-      },
-      myResponse
-    );
+    props.toggleNotifications();
+    router.push("/chat/" + appointmentId);
+    // myAppointmentId = appointmentId;
+    // appointmentRequest(
+    //   {
+    //     url: "doctor/appointment/acceptappointment",
+    //     token: token,
+    //     method: "POST",
+    //     body: { appointmentid: appointmentId },
+    //   },
+    //   myResponse
+    // );
   };
 
   return (
     <div className="flex space-x-2">
-      <button className=" bg-red-500 rounded-full px-4 py-2 text-custom1 text-sm md:px-8 md:text-xl">
-        Reject
-      </button>
+      {props.userType === "doctor" && (
+        <button className=" bg-red-500 rounded-full px-4 py-2 text-custom1 text-sm md:px-8 md:text-xl">
+          Reject
+        </button>
+      )}
       <button
         onClick={() => acceptAppointmentHandler(props.appointmentId)}
         className=" bg-green-500 rounded-full px-4 py-2 text-custom1 text-sm md:px-8 md:text-xl"
       >
-        Accept
+        {props.userType === "doctor" ? "Accept" : "Join Chat"}
       </button>
     </div>
   );

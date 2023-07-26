@@ -19,6 +19,10 @@ const options = {
 };
 
 const formattedDate = currentDate.toLocaleDateString("en-US", options);
+let userType;
+if (typeof window !== "undefined") {
+  userType = localStorage.getItem("userType");
+}
 
 let navAnimationClass = "";
 
@@ -36,12 +40,12 @@ const Header = (props) => {
   useEffect(() => {
     console.log("Header effect called");
     const myResponse = (res) => {
-      const { status, message, data, totaldisplayrecords } = res;
+      const { status, message, data, totalrecords } = res;
       console.log("the data is", data);
       // const notifications = data.map((content) => content.patient);
       // console.log("The appoitments are", notifications);
-      console.log("The appoitments are", notifications);
-      setNotificationsIndicator(totaldisplayrecords);
+      console.log("The appoitments from the header is", data);
+      setNotificationsIndicator(totalrecords);
       setNotifications(data);
       if (
         status === "success" &&
@@ -54,19 +58,19 @@ const Header = (props) => {
     };
 
     const userType = localStorage.getItem("userType");
+
     const url =
       userType === "patient"
-        ? "customer/fetchappointments?perpage=2"
-        : "doctor/fetchappointments";
-    if (userType === "patient") {
-      fetchNotifications(
-        {
-          url: url,
-          token: token,
-        },
-        myResponse
-      );
-    }
+        ? "customer/fetchunreadappointments"
+        : "doctor/fetchunreadappointments";
+    console.log("In the if, url is", url);
+    fetchNotifications(
+      {
+        url: url,
+        token: token,
+      },
+      myResponse
+    );
 
     //fetchNotifications();
   }, [fetchNotifications, token]);
@@ -170,8 +174,8 @@ const Header = (props) => {
         </div>
       </div>
       {showNotification && (
-        <div className="px-5 h-96 overflow-y-auto">
-          <div className="flex justify-between bg-white py-3 mb-5">
+        <div className="px-5 h-96 relative bg-white z-50">
+          <div className="absolute left-0 right-0 top-0 flex justify-between bg-white py-3 px-5 mb-5">
             <div className="text-base font-semibold md:text-2xl">
               Notifications
             </div>
@@ -185,21 +189,43 @@ const Header = (props) => {
                 loading="eager"
                 width={18.88}
                 height={18.88}
-                // onClick={endAppointmentHandler}
               />
             </button>
           </div>
-          {notifications.map((notification, index) => (
-            <div
-              key={index}
-              className="flex flex-col py-5 justify-between items-center border-b md:flex-row"
-            >
-              <p className="text-base my-2 md:text-lg">
-                {` A patient ${notification.patient.name} has requested an appointment with you`}{" "}
-              </p>
-              <AppointmentDecison appointmentId={notification.appointmentid} />
-            </div>
-          ))}
+          <div className="h-full overflow-y-auto pt-12">
+            {" "}
+            {notifications.map((notification, index) =>
+              userType === "doctor" ? (
+                <div
+                  key={index}
+                  className="flex flex-col py-5 justify-between items-center border-b md:flex-row"
+                >
+                  <p className="text-base my-2 md:text-lg">
+                    {` A patient with appointment Id (${notification.appointmentid}) has requested an appointment with you`}{" "}
+                  </p>
+                  <AppointmentDecison
+                    appointmentId={notification.appointmentid}
+                    userType={userType}
+                    toggleNotifications={toggleNotifications}
+                  />
+                </div>
+              ) : (
+                <div
+                  key={index}
+                  className="flex flex-col py-5 justify-between items-center border-b md:flex-row"
+                >
+                  <p className="text-base my-2 md:text-lg">
+                    {` A doctor with appointment( ${notification.appointmentid}) has has accepted your appointment`}{" "}
+                  </p>
+                  <AppointmentDecison
+                    appointmentId={notification.appointmentid}
+                    userType={userType}
+                    toggleNotifications={toggleNotifications}
+                  />
+                </div>
+              )
+            )}{" "}
+          </div>
         </div>
       )}
     </>
