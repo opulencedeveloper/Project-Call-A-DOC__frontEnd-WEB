@@ -19,7 +19,7 @@ const AppointmentSuccessful = (props) => {
         height={62.13}
       />
 
-      <p className="font-medium text-xl">Appointment Successfully sent</p>
+      <p className="font-medium text-xl text-center">Appointment Successfully sent</p>
       <button onClick={toDashBoardHandler} className=" bg-custom rounded-full px-12 py-4 text-custom1 font-thin text-base md:text-xl">Ok</button>
     </div>
   );
