@@ -18,8 +18,7 @@ const AppointmentDecison = (props) => {
     const { status, message } = res;
 
     if (
-      status === "success" &&
-      message === "Appointment Accepted successfully"
+      status === "success"
     ) {
       router.push("/chat/" + myAppointmentId);
       return;
@@ -27,18 +26,19 @@ const AppointmentDecison = (props) => {
   };
 
   const acceptAppointmentHandler = (appointmentId) => {
-    props.toggleNotifications();
-    router.push("/chat/" + appointmentId);
-    // myAppointmentId = appointmentId;
-    // appointmentRequest(
-    //   {
-    //     url: "doctor/appointment/acceptappointment",
-    //     token: token,
-    //     method: "POST",
-    //     body: { appointmentid: appointmentId },
-    //   },
-    //   myResponse
-    // );
+   // props.toggleNotifications();
+    
+    myAppointmentId = appointmentId;
+    const url = props.userType === "doctor" ? "doctor/appointment/acceptappointment" : "customer/appointment/joinappointment";
+    appointmentRequest(
+      {
+        url: url,
+        token: token,
+        method: "POST",
+        body: { appointmentid: appointmentId },
+      },
+      myResponse
+    );
   };
 
   return (
