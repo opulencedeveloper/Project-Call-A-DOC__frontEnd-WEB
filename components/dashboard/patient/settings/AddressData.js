@@ -10,7 +10,7 @@ const AddressData = () => {
         <p className="text-base font-semibold md:text-[18px]">
           Address Information
         </p>
-        <button className="flex items-center rounded-full space-x-1 h-max px-4 py-3 border border-ash-4">
+        <button className="flex items-center rounded-full space-x-1 h-max px-3 py-3 border border-ash-4 md:px-4">
           <div className="w-5 h-5">
             <Image
               src="/images/icon/edit-gray-icon.svg"
@@ -20,7 +20,7 @@ const AddressData = () => {
               height={9.23}
             />
           </div>
-          <p className="text-sm text-ash4">Edit Profile</p>
+          <p className="text-[10px] text-ash4  pt-0.5 md:pt-0 md:text-sm">Edit Profile</p>
         </button>
       </div>{" "}
       <div className="w-1/2 flex justify-between flex-wrap">

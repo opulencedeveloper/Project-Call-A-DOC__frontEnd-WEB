@@ -4,9 +4,9 @@ const ProfileData = () => {
   return (
     <div className="w-full">
       <p className="text-lg font-medium md:text-[25px] mb-8">My Profile</p>
-      <div className="flex items-center justify-between py-6 px-6 border border-ash4 rounded-xl w-full ">
+      <div className="flex items-center justify-between px-3 py-6 border border-ash4 rounded-xl w-full md:px-6">
         <div className="flex items-center space-x-3">
-          <div className="h-10 w-10 md:h-[120px] md:w-[120px]">
+          <div className="h-14 w-14 md:h-[120px] md:w-[120px]">
             <Image
               src="/images/doctor-joseph.svg"
               alt="doctor"
@@ -19,12 +19,12 @@ const ProfileData = () => {
             <p className="font-medium text-base md:text-[20px]">
               Kelvin Willis
             </p>
-            <p className="text-sm text-ash5 md:text-[13px]">
+            <p className="text-xs text-ash5 md:text-[13px]">
               Patient ID: 75648736554
             </p>
           </div>
         </div>
-        <button className="flex items-center rounded-full space-x-1 h-max px-4 py-3 border border-ash-4">
+        <button className="flex items-center rounded-full space-x-1 h-max px-3 py-3 border border-ash-4 md:px-4">
           <div className="w-5 h-5">
             <Image
               src="/images/icon/edit-gray-icon.svg"
@@ -34,7 +34,7 @@ const ProfileData = () => {
               height={9.23}
             />
           </div>
-          <p className="text-sm text-ash4">Edit Profile</p>
+          <p className="text-[10px] text-ash4  pt-0.5 md:pt-0 text-sm">Edit Profile</p>
         </button>
       </div>
     </div>

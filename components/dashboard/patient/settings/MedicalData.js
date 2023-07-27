@@ -26,7 +26,7 @@ const MedicalData = () => {
         <p className="text-base font-semibold md:text-[18px]">
           Medical Information
         </p>
-        <button className="flex items-center rounded-full space-x-1 h-max px-4 py-3 border border-ash-4">
+        <button className="flex items-center rounded-full space-x-1 h-max py-2 px-3 border border-ash-4 md:px-4">
           <div className="w-5 h-5">
             <Image
               src="/images/icon/edit-gray-icon.svg"
@@ -36,7 +36,7 @@ const MedicalData = () => {
               height={9.23}
             />
           </div>
-          <p className="text-sm text-ash4">Edit Profile</p>
+          <p className="text-[10px] text-ash4 pt-0.5 md:pt-0 md:text-sm">Edit Profile</p>
         </button>
       </div>{" "}
       <div className="flex flex-col flex-wrap h-auto xl:h-72 ">
