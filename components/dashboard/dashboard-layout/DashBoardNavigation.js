@@ -18,17 +18,17 @@ const DashBoardNavigation = (props) => {
       e.preventDefault();
       const remeberMe = localStorage.getItem("remeberMe");
       if (remeberMe === "false") {
-        console.log("To return null")
+        console.log("To return null");
         localStorage.setItem("token", "");
       }
       console.log("User is leaving the pageeeeeeeeeeeeeeeeeeeeeeeeee...");
       return;
     };
 
-    window.addEventListener('beforeunload', handleBeforeUnload);
+    window.addEventListener("beforeunload", handleBeforeUnload);
 
     return () => {
-      window.removeEventListener('beforeunload', handleBeforeUnload);
+      window.removeEventListener("beforeunload", handleBeforeUnload);
     };
   }, []);
 
@@ -52,14 +52,14 @@ const DashBoardNavigation = (props) => {
       title: "Appointments",
     },
     {
-      icon1: "folder-icon1",
-      icon2: "folder-icon2",
+      icon1: "folder-icon-white",
+      icon2: "folder-icon-gray",
       link: `${link}/myfolder`,
       title: "My Folder",
     },
     {
-      icon1: "settings",
-      icon2: "settings",
+      icon1: "settings-icon-white",
+      icon2: "settings-icon-gray",
       link: `${link}/settings`,
       title: "Settings",
     },
@@ -73,7 +73,12 @@ const DashBoardNavigation = (props) => {
   return (
     <div className="flex flex-col h-full pb-2 justify-between items-start w-60 hidden 2xl:flex">
       {startAppointment && (
-       <BackDrop> <AppointmentJourney endAppointmentHandler={startAppointmentHandler} /> </BackDrop>
+        <BackDrop>
+          {" "}
+          <AppointmentJourney
+            endAppointmentHandler={startAppointmentHandler}
+          />{" "}
+        </BackDrop>
       )}
       <div className="space-y-14 w-full">
         <div className="flex justify-center">
@@ -109,6 +114,8 @@ const DashBoardNavigation = (props) => {
                   }
                   alt={content.title}
                   className="h-auto w-auto"
+                  loading='eager'
+                  priority
                   width={13.5}
                   height={13.87}
                 />{" "}
@@ -131,6 +138,8 @@ const DashBoardNavigation = (props) => {
           src="/images/icon/plus-circle.svg"
           alt="plus-circle-icon"
           className="h-auto w-auto"
+          loading="eager"
+          priority
           width={32}
           height={32}
         />

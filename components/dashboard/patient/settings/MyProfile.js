@@ -22,12 +22,16 @@ const MyProfile = () => {
   };
 
   const SelectedTabComponent = tabComponents[selectedTab];
-  const setProfileUpdateHandler = () => {
-    setProfileUpdateSuccess(true);
+  const setProfileUpdateHandler = (val) => {
+    setProfileUpdateSuccess(val);
   };
   return (
     <div className="flex flex-col h-[80%] w-full bg-white md:flex-row ">
-      {profileUpdateSuccess && <ProfileUpdateSuccess />}
+      {profileUpdateSuccess && (
+        <ProfileUpdateSuccess
+          setProfileUpdateHandler={setProfileUpdateHandler}
+        />
+      )}
       <MyProfileNavigation selectTabHandler={selectTabHandler} />
       {SelectedTabComponent && (
         <SelectedTabComponent

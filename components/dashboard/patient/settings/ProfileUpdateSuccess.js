@@ -1,11 +1,9 @@
 import Image from "next/image";
 import BackDrop from "@/components/UI/BackDrop";
-import { useRouter } from "next/router";
 
-const ProfileUpdateSuccess = () => {
-  const router = useRouter();
+const ProfileUpdateSuccess = (props) => {
   const toDashBoardHandler = () => {
-    router.push("/patient-dashboard");
+    props.setProfileUpdateHandler(false);
   };
   return (
     <BackDrop>

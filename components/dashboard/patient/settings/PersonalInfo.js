@@ -20,7 +20,7 @@ const PersonalInfo = (props) => {
   const editButtonHandler = () => {
     setEditMode(true);
     if (editMode) {
-      props.setProfileUpdateHandler();
+      props.setProfileUpdateHandler(true);
     }
   };
   return (

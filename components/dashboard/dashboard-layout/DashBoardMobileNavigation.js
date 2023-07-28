@@ -1,16 +1,14 @@
-import { useEffect, useState } from 'react';
-import { useRouter } from 'next/router';
+import { useEffect, useState } from "react";
+import { useRouter } from "next/router";
 
 import BackDrop from "@/components/UI/BackDrop";
 import Image from "next/image";
 import Link from "next/link";
 import AppointmentJourney from "../dashboard-ui/AppointmentJourney";
 
-
-
 const DashBoardMobileNavigation = (props) => {
   const [startAppointment, setStartAppointment] = useState(false);
-  const router = useRouter(); 
+  const router = useRouter();
   const activeLink = router.pathname;
   const { type, toggleDrawer } = props;
 
@@ -19,17 +17,17 @@ const DashBoardMobileNavigation = (props) => {
       e.preventDefault();
       const remeberMe = localStorage.getItem("remeberMe");
       if (remeberMe === "false") {
-        console.log("To return null")
+        console.log("To return null");
         localStorage.setItem("token", "");
       }
       console.log("User is leaving the pageeeeeeeeeeeeeeeeeeeeeeeeee...");
       return;
     };
 
-    window.addEventListener('beforeunload', handleBeforeUnload);
+    window.addEventListener("beforeunload", handleBeforeUnload);
 
     return () => {
-      window.removeEventListener('beforeunload', handleBeforeUnload);
+      window.removeEventListener("beforeunload", handleBeforeUnload);
     };
   }, []);
 
@@ -54,14 +52,14 @@ const DashBoardMobileNavigation = (props) => {
       title: "Appointments",
     },
     {
-      icon1: "folder-icon1",
-      icon2: "folder-icon2",
+      icon1: "folder-icon-white",
+      icon2: "folder-icon-gray",
       link: `${link}/myfolder`,
       title: "My Folder",
     },
     {
-      icon1: "settings",
-      icon2: "settings",
+      icon1: "settings-icon-white",
+      icon2: "settings-icon-gray",
       link: `${link}/settings`,
       title: "Settings",
     },
@@ -112,7 +110,8 @@ const DashBoardMobileNavigation = (props) => {
                   }
                   alt={content.title}
                   className="h-auto w-auto"
-                  
+                  loading="eager"
+                  priority
                   width={13.5}
                   height={13.87}
                 />{" "}
@@ -135,7 +134,8 @@ const DashBoardMobileNavigation = (props) => {
           src="/images/icon/plus-circle.svg"
           alt="plus-circle-icon"
           className="h-auto w-auto"
-          
+          loading="eager"
+          priority
           width={32}
           height={32}
         />
