@@ -7,7 +7,7 @@ import ToggleButton from "../ToggleButton";
 
 const SubscriptionTab = () => {
   return (
-    <div className="px-7 w-full h-full overflow-y-auto w-full bg-white">
+    <div className="px-0 w-full h-full overflow-y-auto w-full bg-white md:px-7">
       <p className="text-lg font-medium md:text-[25px] mb-8">Subscriptions</p>
       <div className="border-t space-y-7 border-ash-4 w-full pt-7">
         <SubscriptionPlans /> 

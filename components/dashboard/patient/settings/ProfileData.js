@@ -24,17 +24,22 @@ const ProfileData = () => {
             </p>
           </div>
         </div>
-        <button className="flex items-center rounded-full space-x-1 h-max px-3 py-3 border border-ash-4 md:px-4">
-          <div className="w-5 h-5">
+        <button className="flex justify-center items-center rounded-full space-x-1 border border-ash-4 w-[78px] h-[35px] md:w-[107px] md:h-[54px]">
+        <p className="text-[14px] text-ash4 md:text-[18px]">
+            Edit
+          </p>
+          <div className="w-[10px] h-[10px]">
             <Image
               src="/images/icon/edit-gray-icon.svg"
               alt="edit-icon"
               className="h-full w-full"
+              loading="eager"
+              priority
               width={9.23}
               height={9.23}
             />
           </div>
-          <p className="text-[10px] text-ash4  pt-0.5 md:pt-0 text-sm">Edit Profile</p>
+          
         </button>
       </div>
     </div>

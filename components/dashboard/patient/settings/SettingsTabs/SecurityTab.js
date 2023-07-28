@@ -11,7 +11,7 @@ const SectionTemplate = (props) => {
           {props.description}
         </p>{" "}
       </div>
-      <button className={`${props.buttonLabelColor} text-xs h-max px-4 py-3 md:text-18`}>
+      <button className={`${props.buttonLabelColor} text-xs h-max px-4 py-3 md:text-[18px]`}>
         {props.buttonLabel}
       </button>
     </div>

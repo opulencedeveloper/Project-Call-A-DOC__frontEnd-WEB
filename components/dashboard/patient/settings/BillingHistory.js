@@ -26,12 +26,12 @@ const billingHistoryData = [
 const BillingHistory = () => {
   return (
     <div className="w-full">
-      <div className="flex justify-between mb-5">
-        <p className="text-lg font-medium md:text-[20px] mb-4">
+      <div className="flex items-center justify-between mb-5">
+        <p className="text-base font-medium mb-4 md:text-[20px] md:text-lg">
           Billing history
         </p>
-        <button className="w-[210px] h-[54px] rounded-full flex items-center justify-center space-x-2 bg-custom">
-          <p className="text-[18px] text-white">Download all</p>
+        <button className="w-[180px] h-[54px] rounded-full flex items-center justify-center space-x-2 bg-custom md:w-[210px]">
+          <p className="text-base text-white md:text-[18px]">Download all</p>
           <div className="w-[20px] h-[20px]">
             {" "}
             <Image

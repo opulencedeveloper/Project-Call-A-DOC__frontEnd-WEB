@@ -18,7 +18,7 @@ const MyProfileNavigation = (props) => {
         return (
           <button
             onClick={() => changeTabHandler(content)}
-            className={`${buttonBgColor} font-medium h-8 pb-0.5 w-[144px] text-[10px] rounded-full md:pb-0 md:h-[48px] md:text-base`}
+            className={`${buttonBgColor} flex items-center justify-center font-medium h-8 w-[144px] text-[10px] rounded-full md:h-[48px] md:text-base`}
           >
             {content}
           </button>

@@ -84,9 +84,9 @@ export default function Chat() {
   return (
     <ChatLayout>
       <div className="flex flex-col justify-between h-full w-full 2xl:pr-16 lg:w-9/12">
-        <div className="px-5 lg:px-0">
-          <Header title={`Welcome ${firstName}`} />{" "}
-        </div>
+      
+        <div className="px-5 h-max w-full pt-5"><Header title={`Welcome ${firstName}`} /></div>  {" "}
+       
           {" "}
           <MyChat appointmentId={appointmentId} userType={userType}/>
         
