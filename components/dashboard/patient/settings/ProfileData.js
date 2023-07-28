@@ -24,7 +24,7 @@ const ProfileData = () => {
             </p>
           </div>
         </div>
-        <button className="flex justify-center items-center rounded-full space-x-1 border border-ash-4 w-[78px] h-[35px] md:w-[107px] md:h-[54px]">
+        <button className="flex justify-center items-center rounded-full space-x-1 border border-ash-4 w-[100px] h-[35px] md:w-[107px] md:h-[54px]">
         <p className="text-[14px] text-ash4 md:text-[18px]">
             Edit
           </p>

@@ -16,6 +16,9 @@ module.exports = {
         // 'montserrat': 'Montserrat',
         montserrat: ['var(--font-montserrat)', ...fontFamily.sans],
       },
+      boxShadow: {
+        'custom-shadow': '0px 0px 60px 0px rgba(0, 0, 0, 0.15)',
+      },
       height: {
         '48': '38px',
         '51': '52px',
@@ -67,7 +70,7 @@ module.exports = {
         '49207E': '#49207E',
         '57B7FF': '#57B7FF',
         '49207E': '#49207E',
-        "custom3": '#323F4B',
+        "custom3": '#323F4B', 
         "custom4": '#3E4C59',
         "custom5": "#026BB9",
         "custom6": "#0093FF",
