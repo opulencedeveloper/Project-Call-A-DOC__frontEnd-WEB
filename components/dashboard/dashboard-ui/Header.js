@@ -103,7 +103,7 @@ const Header = (props) => {
     <>
       {" "}
       <div
-        className={`flex  flex-col relative z-10 h-[20%] justify-between items-start pb-8 md:flex-row md:items-center`}
+        className={`flex flex-col relative z-10 h-[20%] justify-between items-start pb-8 md:flex-row md:items-center`}
       >
         {/* className={`${value} block hamburger mt-7 lg:hidden focus:outline-none`} */}
         <Portal>
