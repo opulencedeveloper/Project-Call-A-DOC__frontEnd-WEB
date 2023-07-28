@@ -181,7 +181,7 @@ const MyChat = (props) => {
 
       <div
         ref={chatContainerRef}
-        className="overflow-y-auto flex flex-col justify-end h-full pb-20 space-y-5 px-3 md:px-8"
+        className="overflow-y-auto h-full w-full pb-20 space-y-5 px-3 md:px-8"
       >
         {/* Chats here */}
         {props.userType === "doctor" &&
