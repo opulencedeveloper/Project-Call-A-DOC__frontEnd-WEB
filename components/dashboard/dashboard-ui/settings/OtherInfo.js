@@ -1,16 +1,58 @@
+import LoadingSpinner from "@/components/UI/LoadingSpinner";
+import useHttp from "@/hooks/useHttp";
 import Image from "next/image";
 import { useState } from "react";
 
 const OtherInfo = (props) => {
   const [editMode, setEditMode] = useState(false);
-  const { header, label1, label1Data, label2, label2Data } = props;
+  const { header, label1, label1Data, label2, label2Data, token } = props;
+  const [myLabel1Data, setMyLabel1Data] = useState(label1Data);
+  const [myLabel2Data, setMyLabel2Data] = useState(label2Data);
+  const { isLoading, error, sendRequest: editUserData } = useHttp();
+  console.log(header);
 
+  const locationData = [myLabel1Data, myLabel2Data];
+  const label = [label1, label2];
+
+  const inputChangeHandler = (event) => {
+    switch (event.target.id) {
+      case "City/State":
+        return setMyLabel1Data(event.target.value);
+      case "Country":
+        return setMyLabel2Data(event.target.value);
+      default:
+        return null;
+    }
+  };
+  const myResponse = (res) => {
+    const { status, message } = res;
+    if (status === "success" && message === "Profile Changed Successfully") {
+      props.setProfileUpdateHandler(true);
+    }
+  };
   const editButtonHandler = () => {
+    if (editMode) {
+      let url = "";
+      if (header === "Address Information") {
+        url = "doctor/updateaddress";
+      }
+      editUserData(
+        {
+          url: url,
+          method: "POST",
+          body: {
+            city: "Ph",
+            country: "Israel",
+          },
+          token: token,
+        },
+        myResponse
+      );
+    }
+
     setEditMode(true);
   };
-  const locationData = [label1Data, label2Data];
 
-  const label = [label1, label2];
   return (
     <div className="h-max w-full py-6 px-6 border border-ash4 rounded-xl">
       <div className="flex items-center justify-between mb-8">
@@ -40,37 +82,43 @@ const OtherInfo = (props) => {
         </button>
       </div>{" "}
       <div className="w-full flex justify-between flex-wrap mb-5 lg:w-[60%]">
-        {locationData.map(
-          (data, index) => (
-            <div key={index} className="w-full mb-5 md:w-1/2 md:pr-1">
-              <label
-                htmlFor={data}
-                className="block text-[13px] text-ash5 pl-2"
-              >
-                {label[index]}
-              </label>
-              <input
-                type={label[index]}
-                readOnly={editMode ? false : true}
-                className={`block w-full h-[50px] rounded-xl pl-2 outline-none lg:w-max ${
-                  editMode ? "border" : ""
-                }`}
-                name={data}
-                value={data}
-              />
-            </div>
-          )
-          // : (
-          //   <div key={index} className="w-full md:w-1/2 mb-5">
-          //     <p className="text-[13px] text-ash5">{label[index]}</p>
-          //     <p className="text-[16px]">{data}</p>{" "}
-          //   </div>
-          // )
-          // <div key={index} className="w-full md:w-1/2 mb-5">
+        {isLoading || error ? (
+          <LoadingSpinner errorMessage={error} pageHeight="h-max" />
+        ) : (
+          locationData.map(
+            (data, index) => (
+              <div key={index} className="w-full mb-5 md:w-1/2 md:pr-1">
+                <label
+                  htmlFor={data}
+                  className="block text-[13px] text-ash5 pl-2"
+                >
+                  {label[index]}
+                </label>
+                <input
+                  id={label[index]}
+                  type={label[index]}
+                  readOnly={editMode ? false : true}
+                  onChange={inputChangeHandler}
+                  className={`block w-full h-[50px] rounded-xl pl-2 outline-none lg:w-max ${
+                    editMode ? "border" : ""
+                  }`}
+                  name={data}
+                  value={data}
+                />
+              </div>
+            )
+            // : (
+            //   <div key={index} className="w-full md:w-1/2 mb-5">
+            //     <p className="text-[13px] text-ash5">{label[index]}</p>
+            //     <p className="text-[16px]">{data}</p>{" "}
+            //   </div>
+            // )
+            // <div key={index} className="w-full md:w-1/2 mb-5">
 
-          //   <p className="text-[13px] text-ash5">{label[index]}</p>
-          //   <p className="text-[16px]">{data}</p>
-          // </div>
+            //   <p className="text-[13px] text-ash5">{label[index]}</p>
+            //   <p className="text-[16px]">{data}</p>
+            // </div>
+          )
         )}
       </div>
     </div>

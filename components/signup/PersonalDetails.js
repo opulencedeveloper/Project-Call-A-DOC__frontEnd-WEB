@@ -73,15 +73,6 @@ const PersonalDetails = (props) => {
     //reset: resetFirstName,
   } = userInputvalidator(isNotEmpty);
 
-  console.log("DOB has error", dateOfBirthHasError);
-  console.log("DOB is valid", dateOfBirthIsValid);
-  console.log("DOB value", dateValue);
-
-  console.log("firstNameIsValid");
-  console.log(firstNameIsValid);
-  console.log("firstNameHasError");
-  console.log(firstNameHasError);
-
   formIsValid =
     (firstNameIsValid &&
     lastNameIsValid &&

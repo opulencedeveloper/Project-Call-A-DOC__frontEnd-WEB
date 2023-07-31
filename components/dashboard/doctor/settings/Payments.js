@@ -27,6 +27,7 @@ const paymentHistoryData = [
 ];
 
 const Payments = (props) => {
+    const {startAddingBankDetailsHandler} = props;
   return (
     <>
       {" "}
@@ -45,7 +46,9 @@ const Payments = (props) => {
           bankName="United Bank of Africa"
         />
         <div className="border-b border-ash4 pb-7">
-          <button className="flex items-center space-x-2">
+          <button
+          onClick={() => startAddingBankDetailsHandler(true)}
+          className="flex items-center space-x-2">
             <div className="h-[12px] w-[12px]">
               <Image
                 src="/images/icon/add-icon-green.svg"

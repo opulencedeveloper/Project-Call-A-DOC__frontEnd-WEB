@@ -1,28 +1,59 @@
+import Image from "next/image";
 import BackDrop from "@/components/UI/BackDrop";
 
-const AddBankDetails = () => {
+const AddBankDetails = (props) => {
+    const {startAddingBankDetailsHandler} = props;
+    const closeAddingBankDetailsHandler = () => {
+        startAddingBankDetailsHandler(false)
+    }
   return (
     <BackDrop>
-      <form className="h-[489px] w-[90%] flex flex-col justify-center items-center space-y-6 bg-white shadow-custom-shadow rounded-3xl md:w-[475px]">
+      <form className="h-[489px] w-[90%] flex flex-col pt-10 items-center space-y-4 bg-white shadow-custom-shadow rounded-3xl md:w-[475px]">
+        <div className="w-[85%] flex justify-end">
+          <div className="w-[18px] h-[18px] cursor-pointer">
+            <Image
+              src="/images/icon/close.svg"
+              alt="close-icon"
+              className="w-full h-full"
+              priority
+              loading="eager"
+              width={18.88}
+              height={18.88}
+             onClick={closeAddingBankDetailsHandler}
+            />
+          </div>
+        </div>
         <p className="text-[20px] font-medium text-center">Add new account</p>
-        <div className="w-[85%] border-b border-ash4 pb-6">
+        <div className="space-y-3 w-[85%] border-b border-ash4 pb-6">
           {" "}
-          <label htmlFor="account-number" className=" w-full  mb-3">
-            <p className="text-[16px] text-start pb-2">Account number</p>
+          <div className="w-full space-y-2">
+            <label
+              htmlFor="account-number"
+              className="text-[16px] text-start pb-2 "
+            >
+              Account number
+            </label>
             <input
               type="text"
+              name="account-number"
               placeholder="Enter Account Number"
               className="outline-none h-[62px] w-full border border-ash6 rounded-xl pl-5"
             />{" "}
-          </label>
-          <label htmlFor="account-number" className="w-full pt-5">
-            <p className="text-[16px] text-start pb-2">Bank</p>
+          </div>
+          <div className="w-full space-y-2">
+            <label
+              htmlFor="bank-name"
+              className="w-full text-[16px] text-start"
+            >
+              Bank
+            </label>
             <input
               type="text"
+              name="bank-name"
               placeholder="Enter Bank Name"
               className="outline-none h-[62px] w-full border border-ash6 rounded-xl pl-5"
             />{" "}
-          </label>
+          </div>
           <div className="flex items-center space-x-3">
             <input
               type="checkbox"

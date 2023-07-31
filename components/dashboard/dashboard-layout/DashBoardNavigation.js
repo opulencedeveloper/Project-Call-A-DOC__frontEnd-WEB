@@ -70,6 +70,10 @@ const DashBoardNavigation = (props) => {
       title: "Help",
     },
   ];
+
+  if(type === "Doctor") {
+pageContent.splice(2, 1);
+  }
   return (
     <div className="flex flex-col h-full pb-2 justify-between items-start w-60 hidden 2xl:flex">
       {startAppointment && (

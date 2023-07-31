@@ -26,18 +26,24 @@ const tabComponentsDoctor = {
 const SettingsLayout = (props) => {
   const [selectedTab, setSelectedTab] = useState("My Profile");
   const [profileUpdateSuccess, setProfileUpdateSuccess] = useState(false);
+  const [isAddBankDetails, setIsAddBankDetails] = useState(false);
   const { type } = props;
-
+ 
   const selectTabHandler = (tab) => {
-    console.lo
     setSelectedTab(tab);
   };
+
+  const startAddingBankDetailsHandler = (val) => {
+    
+    setIsAddBankDetails(val);
+  }
 
   const SelectedTabComponent =
     type === "Doctor"
       ? tabComponentsDoctor[selectedTab]
       : tabComponentsPatient[selectedTab];
   const setProfileUpdateHandler = (val) => {
+    document.body.classList.add("overflow-hidden")
     setProfileUpdateSuccess(val);
   };
   return (
@@ -47,11 +53,12 @@ const SettingsLayout = (props) => {
           setProfileUpdateHandler={setProfileUpdateHandler}
         />
       )}
-      <AddBankDetails />
+      {isAddBankDetails && <AddBankDetails startAddingBankDetailsHandler={startAddingBankDetailsHandler}/>}
       <SettingsNavigation type={type} selectTabHandler={selectTabHandler} />
       {SelectedTabComponent && (
         <SelectedTabComponent
           type={type}
+          startAddingBankDetailsHandler={startAddingBankDetailsHandler}
           setProfileUpdateHandler={setProfileUpdateHandler}
         />
       )}

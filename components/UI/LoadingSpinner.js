@@ -1,7 +1,8 @@
 const LoadingSpinner = (props) => {
-  const { errorMessage } = props;
+  const { errorMessage, pageHeight } = props;
+  const loadedBgHeight = pageHeight || "h-screen";
   return (
-    <div className="flex justify-center items-center h-screen">
+    <div className={`flex justify-center items-center ${loadedBgHeight} w-full`}>
       {errorMessage ? (
       <div className="bg-custom11 mx-10 rounded-md text-custom1 font-semibold text-sm py-3 px-5 md:px-10">
       <p className="text-center">{errorMessage}</p>

@@ -1,7 +1,7 @@
 import Image from "next/image";
 
 const ProfileData = (props) => {
-  const { type } = props;
+  const { type, firstName, lastName, userId } = props;
 
   return (
     <div className="w-full">
@@ -19,10 +19,10 @@ const ProfileData = (props) => {
           </div>
           <div className="space-y-2">
             <p className="font-medium text-base md:text-[20px]">
-            {type === "Doctor" && "Dr"} Kelvin Willis
+            {type === "Doctor" && "Dr"} {`${firstName} ${lastName}`}
             </p>
             <p className="text-xs text-ash5 md:text-[13px]">
-            {type === "Doctor" ? "Doctor" : "Patient"} ID: 75648736554
+            {type === "Doctor" ? "Doctor" : "Patient"} ID: {userId}
             </p>
           </div>
         </div>
