@@ -1,6 +1,8 @@
 import Image from "next/image";
 
-const ProfileData = () => {
+const ProfileData = (props) => {
+  const { type } = props;
+
   return (
     <div className="w-full">
       <p className="text-lg font-medium md:text-[25px] mb-8">My Profile</p>
@@ -17,17 +19,15 @@ const ProfileData = () => {
           </div>
           <div className="space-y-2">
             <p className="font-medium text-base md:text-[20px]">
-              Kelvin Willis
+            {type === "Doctor" && "Dr"} Kelvin Willis
             </p>
             <p className="text-xs text-ash5 md:text-[13px]">
-              Patient ID: 75648736554
+            {type === "Doctor" ? "Doctor" : "Patient"} ID: 75648736554
             </p>
           </div>
         </div>
         <button className="flex justify-center items-center rounded-full space-x-1 border border-ash-4 w-[100px] h-[35px] md:w-[107px] md:h-[54px]">
-        <p className="text-[14px] text-ash4 md:text-[18px]">
-            Edit
-          </p>
+          <p className="text-[14px] text-ash4 md:text-[18px]">Edit</p>
           <div className="w-[10px] h-[10px]">
             <Image
               src="/images/icon/edit-gray-icon.svg"
@@ -39,7 +39,6 @@ const ProfileData = () => {
               height={9.23}
             />
           </div>
-          
         </button>
       </div>
     </div>

@@ -1,21 +1,20 @@
 import Image from "next/image";
 import { useState } from "react";
 
-const AddressInfo = () => {
+const OtherInfo = (props) => {
   const [editMode, setEditMode] = useState(false);
+  const { header, label1, label1Data, label2, label2Data } = props;
 
   const editButtonHandler = () => {
     setEditMode(true);
   };
-  const locationData = ["New York", "USA"];
+  const locationData = [label1Data, label2Data];
 
-  const label = ["City/State", "Country"];
+  const label = [label1, label2];
   return (
     <div className="h-max w-full py-6 px-6 border border-ash4 rounded-xl">
       <div className="flex items-center justify-between mb-8">
-        <p className="text-base font-semibold md:text-[18px]">
-          Address Information
-        </p>
+        <p className="text-base font-semibold md:text-[18px]">{header}</p>
         <button
           onClick={editButtonHandler}
           className={`flex justify-center items-center rounded-full space-x-1 border border-ash-4 w-[100px] h-[35px] md:w-[107px] md:h-[54px] ${
@@ -41,8 +40,8 @@ const AddressInfo = () => {
         </button>
       </div>{" "}
       <div className="w-full flex justify-between flex-wrap mb-5 lg:w-[60%]">
-        {locationData.map((data, index) =>
-          (
+        {locationData.map(
+          (data, index) => (
             <div key={index} className="w-full mb-5 md:w-1/2 md:pr-1">
               <label
                 htmlFor={data}
@@ -60,7 +59,7 @@ const AddressInfo = () => {
                 value={data}
               />
             </div>
-          ) 
+          )
           // : (
           //   <div key={index} className="w-full md:w-1/2 mb-5">
           //     <p className="text-[13px] text-ash5">{label[index]}</p>
@@ -78,4 +77,4 @@ const AddressInfo = () => {
   );
 };
 
-export default AddressInfo;
+export default OtherInfo;

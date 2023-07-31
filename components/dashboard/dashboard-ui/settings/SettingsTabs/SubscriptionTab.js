@@ -1,8 +1,30 @@
-
-import BillingHistory from "../BillingHistory";
+import TrasactionHistoryTable from "../TrasactionHistoryTable";
 import PaymentMethod from "../PaymentMethod";
 import SubscriptionPlans from "../SubscriptionPlans";
 import ToggleButton from "../ToggleButton";
+
+const billingHistoryData = [
+  {
+    invoice: "Basic plan - May 2023",
+    amount: "USD $4.00",
+    date: "August 2, 2013",
+  },
+  {
+    invoice: "Basic plan - May 2023",
+    amount: "USD $4.00",
+    date: "August 2, 2013",
+  },
+  {
+    invoice: "Basic plan - May 2023",
+    amount: "USD $4.00",
+    date: "August 2, 2013",
+  },
+  {
+    invoice: "Basic plan - May 2023",
+    amount: "USD $4.00",
+    date: "August 2, 2013",
+  },
+];
 
 
 const SubscriptionTab = () => {
@@ -25,7 +47,7 @@ const SubscriptionTab = () => {
           <ToggleButton /> 
         </div>
         <PaymentMethod />
-        <BillingHistory />
+        <TrasactionHistoryTable tableData={billingHistoryData}  tableTitle="Billing history"/>
       </div>
     </div>
   );

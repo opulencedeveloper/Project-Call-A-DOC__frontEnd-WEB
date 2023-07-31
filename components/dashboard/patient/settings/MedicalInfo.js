@@ -1,6 +1,6 @@
 import Image from "next/image";
 
-import styles from "./MedicalData.module.css";
+import styles from "./MedicalInfo.module.css";
 
 const MedicalInfo = () => {
   const medicalData = [

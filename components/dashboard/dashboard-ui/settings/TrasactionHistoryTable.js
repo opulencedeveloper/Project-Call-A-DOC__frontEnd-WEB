@@ -1,34 +1,12 @@
 import Image from "next/image";
 
-const billingHistoryData = [
-  {
-    invoice: "Basic plan - May 2023",
-    amount: "USD $4.00",
-    date: "August 2, 2013",
-  },
-  {
-    invoice: "Basic plan - May 2023",
-    amount: "USD $4.00",
-    date: "August 2, 2013",
-  },
-  {
-    invoice: "Basic plan - May 2023",
-    amount: "USD $4.00",
-    date: "August 2, 2013",
-  },
-  {
-    invoice: "Basic plan - May 2023",
-    amount: "USD $4.00",
-    date: "August 2, 2013",
-  },
-];
-
-const BillingHistory = () => {
+const TransactionHistoryTable = (props) => {
+  const { tableTitle, tableData } = props;
   return (
     <div className="w-full">
       <div className="flex items-center justify-between mb-5">
         <p className="text-base font-medium mb-4 md:text-[20px] md:text-lg">
-          Billing history
+          {tableTitle}
         </p>
         <button className="w-[180px] h-[54px] rounded-full flex items-center justify-center space-x-2 bg-custom md:w-[210px]">
           <p className="text-base text-white md:text-[18px]">Download all</p>
@@ -87,7 +65,7 @@ const BillingHistory = () => {
             </tr>
           </thead>
           <tbody className="mt-20 py-10 text-ash5">
-            {billingHistoryData.map((billingData, index) => (
+            {tableData.map((data, index) => (
               <tr
                 key={index}
                 className="border-b h-[74px] text-sm md:text-[16px]"
@@ -106,7 +84,7 @@ const BillingHistory = () => {
                       htmlFor="check-up"
                       className="pt-0.5 text-black font-medium"
                     >
-                      Basic plan - May 2023
+                     {data.invoice}
                     </label>
                   </div>
                 </td>
@@ -160,4 +138,4 @@ const BillingHistory = () => {
   );
 };
 
-export default BillingHistory;
+export default TransactionHistoryTable;

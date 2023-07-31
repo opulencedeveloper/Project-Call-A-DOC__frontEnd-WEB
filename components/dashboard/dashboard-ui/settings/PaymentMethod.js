@@ -22,7 +22,7 @@ const PaymentMethod = () => {
   return (
     <div>
       <p className="text-lg font-medium md:text-[20px] mb-4">Payment method</p>
-      <div className="flex w-full overflow-x-auto space-x-4">
+      {/* <div className="flex w-full overflow-x-auto space-x-4">
         {paymentMethodCard.map((cardData, index) => {
           const selectedCardStyle =
             cardData.cardType === selectedCard ? "border border-custom" : "";
@@ -87,7 +87,7 @@ const PaymentMethod = () => {
             <div className="absolute w-[2.5px] h-[40%] mx-auto bg-white rounded-full"></div>
           </div>
         </button>
-      </div>
+      </div> */}
     </div>
   );
 };

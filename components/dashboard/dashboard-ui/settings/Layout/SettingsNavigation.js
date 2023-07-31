@@ -1,14 +1,19 @@
 import { useState } from "react";
 
-const navLinks = ["My Profile", "Security", "Notifications", "Subscriptions"];
+const commonNavLinks = ["My Profile", "Security"];
+const navLinksPatient = [...commonNavLinks, "Notifications", "Subscriptions"];
+const navLinksDoctor = [...commonNavLinks, "Payments", "Notifications"];
 
-const MyProfileNavigation = (props) => {
+const SettingsNavigation = (props) => {
   const [selectedTab, setSelectedTab] = useState("My Profile");
+  const { selectTabHandler, type } = props;
 
   const changeTabHandler = (tab) => {
     setSelectedTab(tab);
-    props.selectTabHandler(tab);
+    selectTabHandler(tab);
   };
+
+  const navLinks = type === "Doctor" ? navLinksDoctor : navLinksPatient;
 
   return (
     <div className="flex flex-row h-max w-full border-r mb-10 md:mb-0 md:space-y-5 md:w-52 md:flex-col md:h-full">
@@ -29,4 +34,4 @@ const MyProfileNavigation = (props) => {
   );
 };
 
-export default MyProfileNavigation;
+export default SettingsNavigation;
