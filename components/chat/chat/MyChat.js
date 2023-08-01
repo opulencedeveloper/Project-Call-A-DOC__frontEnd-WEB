@@ -134,7 +134,7 @@ const MyChat = (props) => {
 }
 
   return (
-    <div className="relative h-[80%] flex-1  pb-5 bg-custom8 rounded-tl-2xl rounded-tr-2xl">
+    <div className="relative h-[80%] flex flex-col justify-end w-full pb-5 bg-custom8 rounded-tl-2xl rounded-tr-2xl">
       <div className="bg-custom8 absolute top-0 right-0 left-0 flex rounded-tl-2xl rounded-tr-2xl h-20 items-center justify-between border-b border-ash pb-3 pt-6 px-5 md:h-32">
         <div className="flex items-center space-x-4">
           <div className="h-10 w-10 rounded-full bg-white overflow-hidden md:h-[82px] md:w-[82px]">
@@ -181,7 +181,7 @@ const MyChat = (props) => {
 
       <div
         ref={chatContainerRef}
-        className="overflow-y-auto grid justify-items-end h-full w-full pb-20 space-y-5 px-3 md:px-8"
+        className="overflow-y-auto h-min w-full pb-20 space-y-5 px-3 md:px-8"
       >
         {/* Chats here */}
         {props.userType === "doctor" &&

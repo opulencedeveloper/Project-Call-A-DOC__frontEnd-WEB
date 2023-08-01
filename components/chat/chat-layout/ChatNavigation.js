@@ -31,14 +31,14 @@ const ChatNavigation = (props) => {
       title: "Appointments",
     },
     {
-      icon1: "folder-icon1",
-      icon2: "folder-icon2",
+      icon1: "folder-icon-white",
+      icon2: "folder-icon-gray",
       link: `/my-folder`,
       title: "My Folder",
     },
     {
-      icon1: "settings",
-      icon2: "settings",
+      icon1: "settings-icon-white",
+      icon2: "settings-icon-gray",
       link: "dashboard",
       title: "Settings",
     },

@@ -95,7 +95,7 @@ export default function Chat() {
         name={`${firstName} ${lastName}`}
         profilePicture={profilepicture}
         online={isOnline}
-        styling="hidden md:flex h-full mb-5  flex-col items-center jusify-start lg:ml-5 2xl:ml-auto mt-5 xl:w-1/4 xl:mt-auto"
+        styling="hidden lg:flex h-full mb-5  flex-col items-center jusify-start lg:ml-5 2xl:ml-auto mt-5 xl:w-1/4 xl:mt-auto"
       /> 
     </ChatLayout>
   );
