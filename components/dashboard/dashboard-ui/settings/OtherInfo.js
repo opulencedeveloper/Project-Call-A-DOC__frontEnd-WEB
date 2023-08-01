@@ -5,10 +5,11 @@ import { useState } from "react";
 
 const OtherInfo = (props) => {
   const [editMode, setEditMode] = useState(false);
-  const { header, label1, label1Data, label2, label2Data, token } = props;
+  const { header, label1, label1Data, label2, label2Data, token, type } = props;
   const [myLabel1Data, setMyLabel1Data] = useState(label1Data);
   const [myLabel2Data, setMyLabel2Data] = useState(label2Data);
   const { isLoading, error, sendRequest: editUserData } = useHttp();
+  const id = ["1", "2"];
   console.log(header);
 
   const locationData = [myLabel1Data, myLabel2Data];
@@ -16,9 +17,9 @@ const OtherInfo = (props) => {
 
   const inputChangeHandler = (event) => {
     switch (event.target.id) {
-      case "City/State":
+      case "1":
         return setMyLabel1Data(event.target.value);
-      case "Country":
+      case "2":
         return setMyLabel2Data(event.target.value);
       default:
         return null;
@@ -26,24 +27,38 @@ const OtherInfo = (props) => {
   };
   const myResponse = (res) => {
     const { status, message } = res;
-    if (status === "success" && message === "Profile Changed Successfully") {
-      props.setProfileUpdateHandler(true);
+    if (status === "success") {
+      props.setProfileUpdateHandler(true, message);
     }
   };
   const editButtonHandler = () => {
     if (editMode) {
-      let url = "";
+      let url;
+      let body;
+      // const url = type === "Doctor" ? "doctor" : "customer"
+      // editUserData(
+      //   {
+      //     url: `${url}/updateprofile`,
       if (header === "Address Information") {
-        url = "doctor/updateaddress";
+        url = type === "Doctor" ? "doctor" : "customer";
+        url = `${url}/updateaddress`;
+        body = {
+          city: myLabel1Data,
+          country: myLabel2Data,
+        };
+      }
+      if (header === "Professional Information" && type === "Doctor") {
+        url = "doctor/updateprofessionaldetails";
+        body = {
+          aos: myLabel1Data,
+          npi: myLabel2Data,
+        };
       }
       editUserData(
         {
           url: url,
           method: "POST",
-          body: {
-            city: "Ph",
-            country: "Israel",
-          },
+          body: body,
           token: token,
         },
         myResponse
@@ -81,9 +96,14 @@ const OtherInfo = (props) => {
           </div>
         </button>
       </div>{" "}
+      {error && (
+        <div className="bg-custom11 mb-5 w-max rounded-md text-custom1 font-semibold text-sm py-2 px-5 md:px-10">
+          <p className="text-center">{error}</p>
+        </div>
+      )}
       <div className="w-full flex justify-between flex-wrap mb-5 lg:w-[60%]">
-        {isLoading || error ? (
-          <LoadingSpinner errorMessage={error} pageHeight="h-max" />
+        {isLoading ? (
+          <LoadingSpinner pageHeight="h-max" />
         ) : (
           locationData.map(
             (data, index) => (
@@ -95,7 +115,7 @@ const OtherInfo = (props) => {
                   {label[index]}
                 </label>
                 <input
-                  id={label[index]}
+                  id={id[index]}
                   type={label[index]}
                   readOnly={editMode ? false : true}
                   onChange={inputChangeHandler}

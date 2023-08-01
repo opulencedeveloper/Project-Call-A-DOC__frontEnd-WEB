@@ -3,32 +3,33 @@ import MedicalInfo from "../../../patient/settings/MedicalInfo";
 import PersonalInfo from "../PersonalInfo";
 import ProfileData from "../ProfileData";
 import useHttp from "@/hooks/useHttp";
-import { useContext, useEffect, useState } from "react";
-import AuthContext from "@/store/context-store/auth-context";
+import { useEffect, useState } from "react";
 import LoadingSpinner from "@/components/UI/LoadingSpinner";
 import { useRouter } from "next/router";
 
 const ProfileTab = (props) => {
   const { isLoading, error, sendRequest: fetchUserData } = useHttp();
   const [userData, setUserData] = useState([]);
-  const router = useRouter(); 
-  const authCtx = useContext(AuthContext); 
-  const { token } = authCtx;
+  const router = useRouter();
 
-  useEffect(() => { 
+  const { type, token } = props;
+
+  useEffect(() => {
     const myResponse = (res) => {
-      const { status, doctor } = res;
+      const { status, doctor, customer } = res;
+      const data = doctor || customer;
       if (status === "success") {
-        console.log("doctor", doctor);
-        setUserData(doctor);
-      //  dispatch(addUserData(doctor));
-       // isOnline = true;
+        console.log("data", data);
+        setUserData(data);
+        //  dispatch(addUserData(doctor));
+        // isOnline = true;
       }
     };
 
+    const url = type === "Doctor" ? "doctor" : "customer";
     fetchUserData(
       {
-        url: "doctor",
+        url: url,
         token: token,
       },
       myResponse
@@ -42,24 +43,24 @@ const ProfileTab = (props) => {
   }, [error, router]);
 
   if (isLoading || error) {
-    return <LoadingSpinner errorMessage={error} pageHeight="h-full"/>;  
+    return <LoadingSpinner errorMessage={error} pageHeight="h-full" />;
   }
-
-  const { type } = props;
 
   return (
     <div className="px-0 w-full h-full space-y-6 overflow-y-auto w-full bg-white md:px-7">
-      <ProfileData type={props.type}
-      firstName={userData.firstname}
-      lastName={userData.lastname}
-      userId={type === "Patient" ? userData.patientid : userData.doctorid}
-       />
+      <ProfileData
+        type={type}
+        firstName={userData.firstname}
+        lastName={userData.lastname}
+        userId={type === "Patient" ? userData.patientid : userData.doctorid}
+      />
       <PersonalInfo
-      firstName={userData.firstname}
-      lastName={userData.lastname}
-      phoneNumber={userData.phone}
-      setProfileUpdateHandler={props.setProfileUpdateHandler}
-      token={token}
+        firstName={userData.firstname}
+        lastName={userData.lastname}
+        phoneNumber={userData.phone}
+        setProfileUpdateHandler={props.setProfileUpdateHandler}
+        token={token}
+        type={type}
       />
       <OtherInfo
         header="Address Information"
@@ -67,7 +68,9 @@ const ProfileTab = (props) => {
         label1Data={userData.city}
         label2="Country"
         label2Data={userData.country}
+        setProfileUpdateHandler={props.setProfileUpdateHandler}
         token={token}
+        type={type}
       />
       {type === "Doctor" && (
         <OtherInfo
@@ -76,10 +79,18 @@ const ProfileTab = (props) => {
           label1Data={userData.aos}
           label2="NPI Number"
           label2Data={userData.npi}
+          setProfileUpdateHandler={props.setProfileUpdateHandler}
           token={token}
+          type={type}
         />
       )}
-      {type === "Patient" && <MedicalInfo />}
+      {type === "Patient" && (
+        <MedicalInfo
+          medicalInfo={userData.medicaldetails}
+          token={token}
+          setProfileUpdateHandler={props.setProfileUpdateHandler}
+        />
+      )}
     </div>
   );
 };

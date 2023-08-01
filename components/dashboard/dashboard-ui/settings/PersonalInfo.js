@@ -1,8 +1,7 @@
 import LoadingSpinner from "@/components/UI/LoadingSpinner";
 import useHttp from "@/hooks/useHttp";
-import userInputvalidator from "@/hooks/userInputvalidator";
 import Image from "next/image";
-import { useRef, useState } from "react";
+import { useState } from "react";
 
 const personInfoInputData = [
   { type: "text", label: "FirstName", id: "first-name" },
@@ -12,7 +11,7 @@ const personInfoInputData = [
 
 const PersonalInfo = (props) => {
   const [editMode, setEditMode] = useState(false);
-  const { firstName, lastName, phoneNumber, token } = props;
+  const { firstName, lastName, phoneNumber, token, type } = props;
   const [myFirstName, setMyFirstName] = useState(firstName);
   const [myLastName, setMyLastName] = useState(lastName);
   const [myPhoneNumber, setMyPhoneNumber] = useState(phoneNumber);
@@ -35,15 +34,16 @@ const PersonalInfo = (props) => {
 
   const myResponse = (res) => {
     const { status, message } = res;
-    if (status === "success" && message === "Profile Changed Successfully") {
-      props.setProfileUpdateHandler(true);
+    if (status === "success") {
+      props.setProfileUpdateHandler(true, message);
     }
   };
   const editButtonHandler = () => {
     if (editMode) {
+      const url = type === "Doctor" ? "doctor" : "customer"
       editUserData(
         {
-          url: "doctor/updateprofile",
+          url: `${url}/updateprofile`,
           method: "POST",
           body: {
             firstname: myFirstName,
@@ -89,9 +89,12 @@ const PersonalInfo = (props) => {
           </div>
         </button>
       </div>{" "}
+      {error && <div className="bg-custom11 mb-5 w-max rounded-md text-custom1 font-semibold text-sm py-2 px-5 md:px-10">
+          <p className="text-center">{error}</p>
+        </div>}
       <div className="w-full flex justify-between flex-wrap lg:w-[60%]">
-        {isLoading || error ? (
-          <LoadingSpinner errorMessage={error} pageHeight="h-full" />
+        {isLoading ? (
+          <LoadingSpinner pageHeight="h-full" />
         ) : (
           personalData.map(
             (data, index) => (

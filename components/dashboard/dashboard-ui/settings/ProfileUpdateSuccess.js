@@ -4,8 +4,9 @@ import { useRouter } from "next/router";
 
 const ProfileUpdateSuccess = (props) => {
   const router = useRouter();
+  const {profileUpdateMessage} = props;
   const toDashBoardHandler = () => {
-   router.reload();
+  router.reload();
     props.setProfileUpdateHandler(false);
   };
   return (
@@ -26,7 +27,7 @@ const ProfileUpdateSuccess = (props) => {
           Update successful
         </p>
         <p className="text-base text-ash2 md:text-[20px] text-center leading-tight">
-          Personal information has been updated
+          {profileUpdateMessage}
         </p>
         <button
           onClick={toDashBoardHandler}

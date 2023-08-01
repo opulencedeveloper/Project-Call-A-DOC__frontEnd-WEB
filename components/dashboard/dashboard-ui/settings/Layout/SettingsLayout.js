@@ -1,4 +1,6 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
+
+import AuthContext from "@/store/context-store/auth-context"
 
 import SettingsNavigation from "./SettingsNavigation";
 import NotificationsTab from "../SettingsTabs/NotificationsTab";
@@ -23,40 +25,52 @@ const tabComponentsDoctor = {
   Notifications: NotificationsTab,
 };
 
+let profileUpdateMessage
 const SettingsLayout = (props) => {
   const [selectedTab, setSelectedTab] = useState("My Profile");
   const [profileUpdateSuccess, setProfileUpdateSuccess] = useState(false);
   const [isAddBankDetails, setIsAddBankDetails] = useState(false);
+  const authCtx = useContext(AuthContext); 
+  const { token } = authCtx;
   const { type } = props;
- 
+
   const selectTabHandler = (tab) => {
     setSelectedTab(tab);
   };
 
   const startAddingBankDetailsHandler = (val) => {
-    
     setIsAddBankDetails(val);
-  }
+    
+  };
+
+  const setProfileUpdateHandler = (val, message) => {
+    profileUpdateMessage = message;
+    setProfileUpdateSuccess(val);
+  };
 
   const SelectedTabComponent =
     type === "Doctor"
       ? tabComponentsDoctor[selectedTab]
       : tabComponentsPatient[selectedTab];
-  const setProfileUpdateHandler = (val) => {
-    document.body.classList.add("overflow-hidden")
-    setProfileUpdateSuccess(val);
-  };
+
+
   return (
     <div className="flex flex-col h-[80%] w-full bg-white md:flex-row ">
       {profileUpdateSuccess && (
         <ProfileUpdateSuccess
+        profileUpdateMessage={profileUpdateMessage}
           setProfileUpdateHandler={setProfileUpdateHandler}
         />
       )}
-      {isAddBankDetails && <AddBankDetails startAddingBankDetailsHandler={startAddingBankDetailsHandler}/>}
+      {isAddBankDetails && (
+        <AddBankDetails
+          startAddingBankDetailsHandler={startAddingBankDetailsHandler}
+        />
+      )}
       <SettingsNavigation type={type} selectTabHandler={selectTabHandler} />
       {SelectedTabComponent && (
         <SelectedTabComponent
+        token={token}
           type={type}
           startAddingBankDetailsHandler={startAddingBankDetailsHandler}
           setProfileUpdateHandler={setProfileUpdateHandler}
