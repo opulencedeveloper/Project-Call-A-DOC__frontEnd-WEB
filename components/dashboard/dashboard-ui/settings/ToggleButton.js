@@ -27,7 +27,7 @@ const ToggleButton = (props) => {
           <div className={`${buttonColor} w-10 h-6 rounded-full`}></div>
           <div
             className={`absolute left-1 top-1 bg-custom1 w-4 h-4 rounded-full transition ${
-              !isToggle ? "translate-x-full" : "translate-x-0"
+              isToggle ? "translate-x-full" : "translate-x-0"
             }`}
           ></div>
         </div>

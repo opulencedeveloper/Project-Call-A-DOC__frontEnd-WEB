@@ -16,7 +16,6 @@ const commonTabs = { "My Profile": ProfileTab, Security: SecurityTab };
 const tabComponentsPatient = {
   ...commonTabs,
   Notifications: NotificationsTab,
-  Subscriptions: SubscriptionTab,
 };
 
 const tabComponentsDoctor = {
@@ -26,6 +25,7 @@ const tabComponentsDoctor = {
 };
 
 let profileUpdateMessage
+let deactiveOrDeleteAccount = false;
 const SettingsLayout = (props) => {
   const [selectedTab, setSelectedTab] = useState("My Profile");
   const [profileUpdateSuccess, setProfileUpdateSuccess] = useState(false);
@@ -43,8 +43,9 @@ const SettingsLayout = (props) => {
     
   };
 
-  const setProfileUpdateHandler = (val, message) => {
+  const setProfileUpdateHandler = (val, message, deactiveOrDeleteAccountVal) => {
     profileUpdateMessage = message;
+    deactiveOrDeleteAccount =  deactiveOrDeleteAccountVal
     setProfileUpdateSuccess(val);
   };
 
@@ -59,11 +60,13 @@ const SettingsLayout = (props) => {
       {profileUpdateSuccess && (
         <ProfileUpdateSuccess
         profileUpdateMessage={profileUpdateMessage}
+        deactiveOrDeleteAccount={deactiveOrDeleteAccount}
           setProfileUpdateHandler={setProfileUpdateHandler}
         />
       )}
       {isAddBankDetails && (
         <AddBankDetails
+        token={token}
           startAddingBankDetailsHandler={startAddingBankDetailsHandler}
         />
       )}

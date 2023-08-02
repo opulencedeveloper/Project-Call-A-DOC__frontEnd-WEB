@@ -11,7 +11,16 @@ const personInfoInputData = [
 
 const PersonalInfo = (props) => {
   const [editMode, setEditMode] = useState(false);
-  const { firstName, lastName, phoneNumber, token, type } = props;
+  const {
+    firstName,
+    lastName,
+    phoneNumber,
+    token,
+    type,
+    setProfileUpdateHandler,
+    setReloadComponent,
+  } = props;
+  
   const [myFirstName, setMyFirstName] = useState(firstName);
   const [myLastName, setMyLastName] = useState(lastName);
   const [myPhoneNumber, setMyPhoneNumber] = useState(phoneNumber);
@@ -35,12 +44,13 @@ const PersonalInfo = (props) => {
   const myResponse = (res) => {
     const { status, message } = res;
     if (status === "success") {
-      props.setProfileUpdateHandler(true, message);
+      setReloadComponent((prev) => !prev);
+      setProfileUpdateHandler(true, message);
     }
   };
   const editButtonHandler = () => {
     if (editMode) {
-      const url = type === "Doctor" ? "doctor" : "customer"
+      const url = type === "Doctor" ? "doctor" : "customer";
       editUserData(
         {
           url: `${url}/updateprofile`,
@@ -89,9 +99,11 @@ const PersonalInfo = (props) => {
           </div>
         </button>
       </div>{" "}
-      {error && <div className="bg-custom11 mb-5 w-max rounded-md text-custom1 font-semibold text-sm py-2 px-5 md:px-10">
+      {error && (
+        <div className="bg-custom11 mb-5 w-max rounded-md text-custom1 font-semibold text-sm py-2 px-5 md:px-10">
           <p className="text-center">{error}</p>
-        </div>}
+        </div>
+      )}
       <div className="w-full flex justify-between flex-wrap lg:w-[60%]">
         {isLoading ? (
           <LoadingSpinner pageHeight="h-full" />

@@ -33,7 +33,7 @@ const Payments = (props) => {
       {" "}
       <div className="px-0 w-full h-full space-y-6 overflow-y-auto w-full bg-white md:px-7">
         <p className="text-lg font-medium md:text-[25px] mb-8">Payments</p>
-        <BankDetails
+        {/* <BankDetails
           accountTypeTextStyle="text-green-500 font-semibold"
           accountType="Primary Bank Account"
           accountNumber="7045768574"
@@ -44,7 +44,7 @@ const Payments = (props) => {
           accountType="Secondary Bank Account"
           accountNumber="57684723621"
           bankName="United Bank of Africa"
-        />
+        /> */}
         <div className="border-b border-ash4 pb-7">
           <button
           onClick={() => startAddingBankDetailsHandler(true)}

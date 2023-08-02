@@ -23,6 +23,10 @@ const SecuritySetup = (props) => {
   const router = useRouter();
   const dispatch = useDispatch();
 
+  const {
+    userType,
+  } = userSelection;
+
   let formIsValid = false;
   let finishUpButtonText = "Finish Up";
   let buttonDisable = false;
@@ -61,7 +65,8 @@ const SecuritySetup = (props) => {
     !passwordLength && submitValidator ? "block" : "hidden";
 
   const secPrevButtonHandler = () => {
-    props.secPrevStep("4");
+    const stepValue = userType !== "Doctor" ? "3" : "4";
+    props.secPrevStep(stepValue);
   };
 
   const myResponse = (res) => {

@@ -1,7 +1,7 @@
 import { useState } from "react";
 
 const commonNavLinks = ["My Profile", "Security"];
-const navLinksPatient = [...commonNavLinks, "Notifications", "Subscriptions"];
+const navLinksPatient = [...commonNavLinks, "Notifications"];
 const navLinksDoctor = [...commonNavLinks, "Payments", "Notifications"];
 
 const SettingsNavigation = (props) => {

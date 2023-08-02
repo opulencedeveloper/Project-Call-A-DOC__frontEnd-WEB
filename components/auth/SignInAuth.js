@@ -66,6 +66,8 @@ const SignInAuth = () => {
             src="/images/logo/logo2.svg"
             alt="call-a-doc-logo-two"
             className="w-auto h-auto"
+            loading="eager"
+            priority
             width={64}
             height={61}
           />
@@ -119,6 +121,8 @@ const SignInAuth = () => {
                 src="/images/icon/google-icon.svg"
                 alt="google-icon"
                 className="w-6 h-6"
+                loading="eager"
+            priority
                 height={48}
                 width={48}
               />
@@ -138,6 +142,8 @@ const SignInAuth = () => {
         <Image
           src="/images/login-image.svg"
           alt="drugs"
+          loading="eager"
+            priority
           className="w-auto h-auto"
           width={960}
           height={1080}

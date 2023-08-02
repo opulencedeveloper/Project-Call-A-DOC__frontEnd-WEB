@@ -31,7 +31,7 @@ const SecurityTab = (props) => {
   const myResponse = (res) => {
     const { status, message } = res;
     if (status === "success") {
-      props.setProfileUpdateHandler(true, message);
+      props.setProfileUpdateHandler(true, message, true);
     }
   };
 

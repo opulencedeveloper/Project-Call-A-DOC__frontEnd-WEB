@@ -10,6 +10,7 @@ import { useRouter } from "next/router";
 const ProfileTab = (props) => {
   const { isLoading, error, sendRequest: fetchUserData } = useHttp();
   const [userData, setUserData] = useState([]);
+  const [reloadComponent, setReloadComponent] = useState(false);
   const router = useRouter();
 
   const { type, token } = props;
@@ -21,8 +22,6 @@ const ProfileTab = (props) => {
       if (status === "success") {
         console.log("data", data);
         setUserData(data);
-        //  dispatch(addUserData(doctor));
-        // isOnline = true;
       }
     };
 
@@ -34,7 +33,7 @@ const ProfileTab = (props) => {
       },
       myResponse
     );
-  }, [fetchUserData, token]);
+  }, [fetchUserData, token, reloadComponent]);
 
   useEffect(() => {
     if (error === "Unauthenticated" || error === "Not Authorized") {
@@ -58,6 +57,7 @@ const ProfileTab = (props) => {
         firstName={userData.firstname}
         lastName={userData.lastname}
         phoneNumber={userData.phone}
+        setReloadComponent={setReloadComponent}
         setProfileUpdateHandler={props.setProfileUpdateHandler}
         token={token}
         type={type}

@@ -88,7 +88,7 @@ const ProfessionalDetails = (props) => {
         </p>
         </div>
         {/* NPI number */}
-        <div className="w-full  mt-3 2xl:w-1/2">
+        <div className="w-full  mt-3 2xl:mt-0 2xl:w-1/2">
           <label htmlFor="NPI" className="text-base font-medium">
             NPI number
           </label>

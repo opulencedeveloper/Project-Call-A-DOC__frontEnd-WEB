@@ -25,7 +25,8 @@ const PersonalDetails = (props) => {
   const [countrySubmit, setCountrySubmit] = useState(false);
   const dispatchSignUp = useDispatch();
   const phoneNoObj = useSelector((state) => state.signUp);
-  
+  const { userType } = phoneNoObj;
+
   const phoneNoValue = phoneNoObj.phoneNumber;
   const phoneNoIsValid = isNotEmpty(phoneNoValue);
   const phoneNoHasError = !phoneNoIsValid && phoneNoObj.phoneNumberIsTouched;
@@ -74,12 +75,12 @@ const PersonalDetails = (props) => {
   } = userInputvalidator(isNotEmpty);
 
   formIsValid =
-    (firstNameIsValid &&
+    firstNameIsValid &&
     lastNameIsValid &&
     dateOfBirthIsValid &&
     cityIsValid &&
     countryIsValid &&
-    phoneNoValue !== "");
+    phoneNoValue !== "";
 
   function getClassName(hasError, value, isSubmitted) {
     return hasError || (value === "" && isSubmitted) ? "block" : "hidden";
@@ -134,8 +135,16 @@ const PersonalDetails = (props) => {
   };
 
   return (
-    <form className="mr-auto pb-20 md:pb-auto 2xl:-mr-40" onSubmit={personalNextButtonHandler}>
-      <p className="text-lg mb-7">Personal Details</p>
+    <form
+      className="mr-auto pb-20 md:pb-auto 2xl:-mr-40"
+      onSubmit={personalNextButtonHandler}
+    >
+      <p className="text-lg mb-7">
+        Personal Details
+        {userType !== "Patient" && (
+          <span className="text-sm"> (Name must match bank name.)</span>
+        )}
+      </p>
       <section>
         {/* SECTION-1 */}
         <div className="flex flex-col space-x-auto 2xl:flex-row 2xl:space-x-3">
@@ -150,7 +159,6 @@ const PersonalDetails = (props) => {
                   src="/images/icon/email.svg"
                   alt="email-icon"
                   className="w-auto h-auto"
-                  
                   width={12}
                   height={12}
                 />
@@ -180,7 +188,6 @@ const PersonalDetails = (props) => {
                   src="/images/icon/email.svg"
                   alt="email-icon"
                   className="w-auto h-auto"
-                  
                   width={12}
                   height={12}
                 />

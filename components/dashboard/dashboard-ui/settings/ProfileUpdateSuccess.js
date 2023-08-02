@@ -4,10 +4,14 @@ import { useRouter } from "next/router";
 
 const ProfileUpdateSuccess = (props) => {
   const router = useRouter();
-  const {profileUpdateMessage} = props;
+  const {profileUpdateMessage, setProfileUpdateHandler, deactiveOrDeleteAccount} = props;
+  
   const toDashBoardHandler = () => {
-  router.reload();
-    props.setProfileUpdateHandler(false);
+    if(deactiveOrDeleteAccount) {
+      localStorage.setItem("token", "");
+      router.replace("/signin")
+    }
+    setProfileUpdateHandler(false);
   };
   return (
     <BackDrop>
@@ -33,7 +37,7 @@ const ProfileUpdateSuccess = (props) => {
           onClick={toDashBoardHandler}
           className="bg-custom10 h-[62px] w-[230px] text-[20px] rounded-full text-white md:w-[288px]"
         >
-          Back to Dashboard
+          {deactiveOrDeleteAccount ? "OK" : "Back to Dashboard"}
         </button>
       </div>
     </BackDrop>
