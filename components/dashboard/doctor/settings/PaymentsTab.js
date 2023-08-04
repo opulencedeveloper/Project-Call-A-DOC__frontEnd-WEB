@@ -32,7 +32,7 @@ const paymentHistoryData = [
 
 
 const PaymentsTab = (props) => {
-  const { startAddingBankDetailsHandler, setProfileUpdateHandler, token, doctorId } = props;
+  const { startAddingBankDetailsHandler, token, doctorId } = props;
   const { isLoading, error, sendRequest: fetchUserData } = useHttp();
   const  [accountDetails, setAccountDetails] = useState([]);
   const [reloadComponent, setReloadComponent] = useState(false);
@@ -62,11 +62,11 @@ const PaymentsTab = (props) => {
       },
       myResponse
     );
-  }, [fetchUserData, token, reloadComponent]); //reloadComponent]);
+  }, [fetchUserData, token, reloadComponent]); 
 
   if (isLoading || error) {
     return <LoadingSpinner errorMessage={error} pageHeight="h-full" />;
-  } //setReloadComponent
+  }
   return (
     <>
     {isAddBankDetails && (
@@ -96,7 +96,7 @@ const PaymentsTab = (props) => {
         })}
         <div className="border-b border-ash4 pb-7">
           <button
-            onClick={switchAddingBankDetailsHandler}//startAddingBankDetailsHandler(true)}
+            onClick={switchAddingBankDetailsHandler}
             className="flex items-center space-x-2"
           >
             <div className="h-[12px] w-[12px]">

@@ -4,7 +4,7 @@ import { useRouter } from "next/router";
 
 import { useDispatch, useSelector } from "react-redux";
 
-import useHttp from "@/hooks/useHttp"
+import useHttp from "@/hooks/useHttp";
 
 import TogglButton from "@/components/UI/ToggleButton";
 import Header from "@/components/dashboard/dashboard-ui/Header";
@@ -22,9 +22,9 @@ const { addUserData } = userDataActions;
 let isOnline = false;
 
 export default function DashBoard() {
-  const router = useRouter(); 
+  const router = useRouter();
   const userInfo = useSelector((state) => state.userData);
-  const doctorFirstName = userInfo.firstname
+  const doctorFirstName = userInfo.firstname;
   const dispatch = useDispatch();
   const {
     firstname: patientFirstName,
@@ -60,19 +60,19 @@ export default function DashBoard() {
   }, [error, router]);
 
   if (isLoading || error) {
-    return <LoadingSpinner errorMessage={error} />; 
+    return <LoadingSpinner errorMessage={error} />;
   }
 
   return (
     <DashBoardLayout type="Doctor">
       <div className="flex-1 2xl:pr-16">
-        <Header title={`Welcome Dr. ${doctorFirstName}`} type={"Doctor"}/>
+        <Header title={`Welcome Dr. ${doctorFirstName}`} type={"Doctor"} />
         <TogglButton />
-       <AppointmentsEarnings/>
-       <YourActivities />
-         {/*  <YourActivities /> */}
+        <AppointmentsEarnings />
+        <YourActivities />
+        {/*  <YourActivities /> */}
       </div>
-     <UserProfile
+      <UserProfile
         name={`${patientFirstName} ${patientLastName}`}
         profilePicture={profilepicture}
         online={isOnline}

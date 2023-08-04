@@ -13,7 +13,6 @@ const AddBankDetails = (props) => {
   const {
     switchAddingBankDetails,
     token,
-    setProfileUpdateHandler,
     doctorId,
     toPaymentTabHandler,
   } = props;
@@ -48,7 +47,6 @@ const AddBankDetails = (props) => {
     selectedBankId,
     accountIsPrimary
   ) => {
-    console.log("Clicked");
     const isPrimary = accountIsPrimary ? "1" : "0";
     httpRequest(
       {

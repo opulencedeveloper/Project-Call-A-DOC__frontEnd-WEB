@@ -174,9 +174,9 @@ const Header = (props) => {
         </div>
       </div>
       {showNotification && (
-        <div className="px-5 h-96 relative bg-white z-40">
-          <div className="absolute left-0 right-0 top-0 flex justify-between bg-white py-3 px-5 mb-5">
-            <div className="text-base font-semibold md:text-2xl">
+       <BackDrop> <div className="px-5 h-96 relative rounded-xl bg-white z-40 px-7 shadow-xl w-[90%] md:w-[50rem]">
+          <div className="absolute left-5 right-5 top-5 overflow-hidden flex justify-between bg-white mb-5">
+            <div className="text-xl font-semibold md:text-2xl">
               Notifications
             </div>
 
@@ -204,7 +204,7 @@ const Header = (props) => {
                   key={index}
                   className="flex flex-col py-5 justify-between items-center border-b md:flex-row"
                 >
-                  <p className="text-base my-2 md:text-lg">
+                  <p className="text-base my-2 w-full md:w-[70%] md:text-lg">
                     {` A patient with appointment Id (${notification.appointmentid}) has requested an appointment with you`}{" "}
                   </p>
                   <AppointmentDecison
@@ -218,7 +218,7 @@ const Header = (props) => {
                   key={index}
                   className="flex flex-col py-5 justify-between items-center border-b md:flex-row"
                 >
-                  <p className="text-base my-2 md:text-lg">
+                  <p className="text-base my-2 w-full md:w-[70%] md:text-lg">
                     {` A doctor with appointment( ${notification.appointmentid}) has has accepted your appointment`}{" "}
                   </p>
                   <AppointmentDecison
@@ -229,8 +229,8 @@ const Header = (props) => {
                 </div>
               )
             )}{" "}
-          </div>
-        </div>
+          </div> 
+        </div> </BackDrop>
       )}
     </>
   );

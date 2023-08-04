@@ -73,7 +73,7 @@ const Calendar = () => {
 
     return (
       <div className="flex justify-between items-center mb-4">
-        <div className="text-2xl font-normal">
+        <div className="text-xl md:text-2xl">
           {month} {year}
         </div>
         <div>
@@ -137,7 +137,7 @@ const Calendar = () => {
 
     return (
       <select
-        className="py-2 rounded cursor-pointer"
+        className="py-2 rounded cursor-pointer outline-none"
         value={currentMonth.getFullYear()}
         onChange={handleYearChange}
       >
@@ -164,7 +164,7 @@ const Calendar = () => {
 
     return (
       <select
-        className="py-2 rounded cursor-pointer"
+        className="py-2 rounded cursor-pointer outline-none"
         value={currentMonth.getMonth()}
         onChange={handleMonthChange}
         style={{ width: 60 }}
@@ -255,7 +255,7 @@ const Calendar = () => {
           "bg-custom text-custom1": isSelected && !isToday,
           "text-white bg-green-500": isSelected && isToday,
           "bg-custom-r text-custom1": isToday,
-          "text-red-500": isSelected && !isToday,
+          "text-white": isSelected && !isToday,
         }
       );
 

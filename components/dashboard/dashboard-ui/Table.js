@@ -24,7 +24,7 @@ const Table = (props) => {
 
   return (
     <div className="w-full">
-      <div className="mb-5">{searchHeader}</div>
+      <div className="my-5 text-base md:text-xl">{searchHeader}</div>
       <div className="border border-ash6 flex rounded-lg mr-2 h-12 w-64">
         <Image
           src="/images/icon/search-gray-shade.svg"

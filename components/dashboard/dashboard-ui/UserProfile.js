@@ -9,7 +9,7 @@ const UserProfile = (props) => {
   const style = styling || "h-full mb-5 flex flex-col items-center jusify-start lg:ml-5 2xl:ml-auto mt-5 xl:w-1/4 xl:mt-auto"
 
   return (
-    <div className={`${style} pt-8`}>
+    <div className={style}>
       <div className=" flex justify-between w-full mb-12">
         {" "}
         <Image

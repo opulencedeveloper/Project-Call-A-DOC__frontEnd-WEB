@@ -3,11 +3,8 @@ import DashBoardNavigation from "./DashBoardNavigation";
 const DashBoardLayout = (props) => {
   const { type } = props;
   return (
-    <div className="flex h-screen overflow-y-auto pt-3">
-     
-        {" "}
-        <DashBoardNavigation type={type} />{" "}
-      
+    <div className="flex h-screen pt-4 md:pt-7">
+      <DashBoardNavigation type={type} />
       <div className="flex flex-col w-full h-full overflow-y-auto px-5 lg:flex-row 2xl:pl-14 2xl:pr-auto">
         {props.children}
       </div>{" "}

@@ -8,18 +8,18 @@ const AppointmentsEarnings = () => {
     <div className=" flex mb-8 mt-7 space-x-auto flex-col xl:space-x-10 w xl:flex-row">
       <div className="">
         {/* //DATA STATE  */}
-        <div className="flex items-center space-x-4 rounded-xl bg-custom14 px-8 py-5">
-          <div className="h-20 w-20 flex items-center justify-center text-4xl font-medium text-custom14 rounded-full bg-custom1 md:h-24 md:w-24">
+        <div className="flex items-center space-x-4 rounded-xl bg-custom14 px-4 py-5 md:px-8">
+          <div className="h-16 w-16 flex-shrink-0 flex items-center justify-center text-3xl font-medium text-custom14 rounded-full bg-custom1 md:text-4xl md:h-24 md:w-24">
             15
           </div>
           <div className="space-y-1 text-custom1">
-            <p className="font-medium text-xl">Total Appointments</p>
+            <p className="font-medium text-base md:text-xl">Total Appointments</p>
             <select className={`bg-custom14 -ml-1 text-sm`}>
               <option>This month</option>
             </select>
           </div>
         </div>
-        <div className="mt-10 ml-8 space-y-4">
+        <div className="mt-10 ml-0 space-y-4 md:ml-8">
           <div className="text-ash2">Upcoming checkup</div>
           <div className="flex justify-between items-center pb-3 border-b border-ash">
             <div className="flex justify-between items-center space-x-4">
@@ -58,10 +58,10 @@ const AppointmentsEarnings = () => {
         </div>
       </div>
       {/* SECOND DIV */}
-      <div className="rounded-2xl shadow-2xl flex flex-col justify-center px-9 pt-8 pb-14 ">
+      <div className="rounded-2xl shadow-2xl flex flex-col justify-center px-5 md:px-9 pt-8 pb-14 ">
         <div className="flex justify-between pb-6 text-ash2">
-          <p className="text-xl">Earnings</p>
-          <select className={`-ml-1 text-sm`}>
+          <p className="text-lg md:text-xl">Earnings</p>
+          <select className='-ml-1 text-sm outline-none'>
             <option>This month</option>
           </select>
         </div>
@@ -116,11 +116,11 @@ const AppointmentsEarnings = () => {
               </div>
             </div>
           </div>
-          <div className="flex items-center space-x-12 mt-6">
+          <div className="flex flex-col items-center space-x-12 mt-6 md:flex-row">
             {" "}
-            <div className="text-sm text-ash6">
+            <p className="text-sm text-ash6 mb-2 md:mb-0">
               Get your funds transfered to your bank
-            </div>{" "}
+            </p>{" "}
             <button className="flex items-center justify-center space-x-3 bg-custom text-custom1 px-8 py-3 rounded-full">
               <div className="text-sm">Withdraw</div>
               <Image
