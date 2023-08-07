@@ -112,6 +112,8 @@ const PaymentsTab = (props) => {
           </button>
         </div>
         <TransactionHistoryTable
+        token={token}
+        doctorId={doctorId}
           tableData={paymentHistoryData}
           tableTitle="Payment history"
         />

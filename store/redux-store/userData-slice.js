@@ -2,6 +2,8 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const userDataInitialState = {
   id: "",
+  doctorid: "",
+  patientid: "",
   role: "",
   active: null,
   aos: "",

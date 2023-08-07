@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Navigation from "../UI/Portal";
 import { useRouter } from "next/router";
 import MobileNavigation from "./MobileNavigation";
@@ -15,20 +15,10 @@ const MainNavigation = (props) => {
 
   const activeLink = router.pathname;
 
-  // const toggleNavHandler = () => {
-  //   console.log('navAnimationClass')
-  //   if(toggleNav) {
-  //     navAnimationClass = 'open';
-  //     setToggleNav((prevExpenses) => {
-  //       return !prevExpenses;
-  //     });
-  //   } else {
-  //     navAnimationClass = '';
-  //     setToggleNav((prevExpenses) => {
-  //       return !prevExpenses;
-  //     });
-  //   }
-  // };
+  useEffect(() => {
+    console.log("in the effect")
+    localStorage.setItem("isHomeScreenVisited", "no");
+  }, []);
 
   const toggleDrawer = () => {
     if (isOpen) {

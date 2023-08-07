@@ -27,7 +27,9 @@ const billingHistoryData = [
 ];
 
 
-const SubscriptionTab = () => {
+const SubscriptionTab = (props) => {
+  const {token} = props;
+
   return (
     <div className="px-0 w-full h-full overflow-y-auto w-full bg-white md:px-7">
       <p className="text-lg font-medium md:text-[25px] mb-8">Subscriptions</p>
@@ -47,7 +49,7 @@ const SubscriptionTab = () => {
           <ToggleButton /> 
         </div>
         <PaymentMethod />
-        <TrasactionHistoryTable tableData={billingHistoryData}  tableTitle="Billing history"/>
+        <TrasactionHistoryTable token={token} type="Patient" tableData={billingHistoryData}  tableTitle="Billing history"/>
       </div>
     </div>
   );

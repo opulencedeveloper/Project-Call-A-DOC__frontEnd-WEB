@@ -54,11 +54,15 @@ const SignInAuth = () => {
     );
   };
 
+  const closeOTPInputHandler = () => {
+    setShowOTPInput(false);
+  }
+
   const emailClasses =
     emailHasError || (emailValue === "" && emailSubmit) ? "block" : "hidden";
   return (
     <section className="flex h-screen">
-      {showOTPInput && <OtpInput isChecked={isChecked} />}
+      {showOTPInput && <OtpInput isChecked={isChecked} closeOTPInputHandler={closeOTPInputHandler}/>}
       {/* SECTION-1 */}
       <div className="w-full overflow-y-auto h-full px-5 py-10 space-y-20 md:w-1/2 md:px-10 ">
         <div>

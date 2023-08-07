@@ -1,16 +1,21 @@
 import Image from "next/image";
 import MyCalendar from "./Calender";
+import { useRouter } from "next/router";
 
 const UserProfile = (props) => {
+  const router = useRouter();
   const { name, profilePicture, online, styling } = props;
   const onlineStatus = online ? "online" : "offline";
   const onlineStatusText = online ? "Online" : "Offline";
   const onlineStatusTextColor = online ? "text-custom-g" : "text-custom11";
   const style = styling || "h-full mb-5 flex flex-col items-center jusify-start lg:ml-5 2xl:ml-auto mt-5 xl:w-1/4 xl:mt-auto"
 
+  const editButtonHandler = () => {
+    router.replace("settings")
+  }
   return (
     <div className={style}>
-      <div className=" flex justify-between w-full mb-12">
+      {/* <div className=" flex justify-between w-full mb-12">
         {" "}
         <Image
           src="/images/icon/angle-right-gray.svg"
@@ -26,8 +31,8 @@ const UserProfile = (props) => {
           width={14.25}
           height={2.25}
         />
-      </div>
-      <div className="relative flex-">
+      </div> */}
+      <div className="relative pt-10">
         <div className="rounded-full overflow-hidden">
           <Image
             src={profilePicture || "/images/profile-picture-placeholder.jpg"}
@@ -51,7 +56,9 @@ const UserProfile = (props) => {
       <p className={`${onlineStatusTextColor} text-sm mb-5`}>
         {onlineStatusText}
       </p>
-      <button className="bg-custom px-7 flex items-center rounded-full py-2.5 mb-8 space-x-2">
+      <button
+      onClick={editButtonHandler}
+       className="bg-custom px-7 flex items-center rounded-full py-2.5 mb-8 space-x-2">
         <Image
           src="/images/icon/edit.svg"
           alt="profile-picture"

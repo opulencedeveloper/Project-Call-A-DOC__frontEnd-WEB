@@ -2,6 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+.select-button-icon {
+    background-image: url('/images/icon/drop-down.svg');
+}
+
 /* HAMBURGER MENU */
 
 .hamburger {
@@ -123,14 +127,6 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     animation-duration: 0.5s;
     animation-timing-function: ease-out;
   }
-
-
-
-
-
-
-
-
 
   .shimmer {
     position: relative;

@@ -137,7 +137,7 @@ const Calendar = () => {
 
     return (
       <select
-        className="py-2 rounded cursor-pointer outline-none"
+        className="py-2 rounded cursor-pointer outline-none appearance-none bg-transparent pl-2 pr-5 bg-no-repeat bg-right select-button-icon"
         value={currentMonth.getFullYear()}
         onChange={handleYearChange}
       >
@@ -164,7 +164,7 @@ const Calendar = () => {
 
     return (
       <select
-        className="py-2 rounded cursor-pointer outline-none"
+        className="py-2 rounded cursor-pointer outline-none appearance-none bg-transparent pl-1 pr-6 bg-no-repeat bg-right select-button-icon"
         value={currentMonth.getMonth()}
         onChange={handleMonthChange}
         style={{ width: 60 }}

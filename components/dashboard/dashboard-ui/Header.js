@@ -174,7 +174,7 @@ const Header = (props) => {
         </div>
       </div>
       {showNotification && (
-       <BackDrop> <div className="px-5 h-96 relative rounded-xl bg-white z-40 px-7 shadow-xl w-[90%] md:w-[50rem]">
+       <BackDrop> <div className="animateSlideUp px-5 h-96 animate relative rounded-xl bg-white z-40 px-7 shadow-xl w-[90%] md:w-[50rem]">
           <div className="absolute left-5 right-5 top-5 overflow-hidden flex justify-between bg-white mb-5">
             <div className="text-xl font-semibold md:text-2xl">
               Notifications

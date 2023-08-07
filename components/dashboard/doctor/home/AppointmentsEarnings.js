@@ -1,11 +1,25 @@
 import Image from "next/image";
 import CircularProgress from "../../dashboard-ui/CircularProgress";
+import { useState } from "react";
+import Withdrawal from "./Withdrawal";
 
 const pills = ["Panadol", "Flagyl", "Aspirin"];
 
-const AppointmentsEarnings = () => {
+const AppointmentsEarnings = (props) => {
+  const [beginWithdrwal, setBeginWithdrwal] = useState(false);
+  const { token } = props;
+
+  const startWithdrawalRequestHandler = () => {
+    setBeginWithdrwal((prev) => !prev);
+  };
   return (
     <div className=" flex mb-8 mt-7 space-x-auto flex-col xl:space-x-10 w xl:flex-row">
+      {beginWithdrwal && (
+        <Withdrawal
+          token={token}
+          startWithdrawalRequestHandler={startWithdrawalRequestHandler}
+        />
+      )}
       <div className="">
         {/* //DATA STATE  */}
         <div className="flex items-center space-x-4 rounded-xl bg-custom14 px-4 py-5 md:px-8">
@@ -13,7 +27,9 @@ const AppointmentsEarnings = () => {
             15
           </div>
           <div className="space-y-1 text-custom1">
-            <p className="font-medium text-base md:text-xl">Total Appointments</p>
+            <p className="font-medium text-base md:text-xl">
+              Total Appointments
+            </p>
             <select className={`bg-custom14 -ml-1 text-sm`}>
               <option>This month</option>
             </select>
@@ -29,14 +45,15 @@ const AppointmentsEarnings = () => {
                   src="/images/user1.svg"
                   alt="doctor11"
                   className="w-[68px] h-[68px]"
-                  
                   width={68}
                   height={68}
                 />
               </div>
               <div className="space-y-1">
                 <p className="font-semibold">Ubong John</p>
-                <p className="text-ash2 font-medium text-xs">11:00pm - 11:30pm</p>
+                <p className="text-ash2 font-medium text-xs">
+                  11:00pm - 11:30pm
+                </p>
               </div>
             </div>
             <button className="text-xs bg-ash4 py-4 px-5 rounded-full text-ash5">
@@ -61,7 +78,7 @@ const AppointmentsEarnings = () => {
       <div className="rounded-2xl shadow-2xl flex flex-col justify-center px-5 md:px-9 pt-8 pb-14 ">
         <div className="flex justify-between pb-6 text-ash2">
           <p className="text-lg md:text-xl">Earnings</p>
-          <select className='-ml-1 text-sm outline-none'>
+          <select className="-ml-1 text-sm outline-none">
             <option>This month</option>
           </select>
         </div>
@@ -121,16 +138,18 @@ const AppointmentsEarnings = () => {
             <p className="text-sm text-ash6 mb-2 md:mb-0">
               Get your funds transfered to your bank
             </p>{" "}
-            <button className="flex items-center justify-center space-x-3 bg-custom text-custom1 px-8 py-3 rounded-full">
+            <button
+              onClick={startWithdrawalRequestHandler}
+              className="flex items-center justify-center space-x-3 bg-custom text-custom1 px-8 py-3 rounded-full"
+            >
               <div className="text-sm">Withdraw</div>
               <Image
-              src="/images/icon/arrow-from-bottom.svg"
-              alt="arrow-from-bottom-icon"
-              
-              className="h-auto w-auto"
-              width={16}
-              height={16}
-            />
+                src="/images/icon/arrow-from-bottom.svg"
+                alt="arrow-from-bottom-icon"
+                className="h-auto w-auto"
+                width={16}
+                height={16}
+              />
             </button>{" "}
           </div>
         </div>

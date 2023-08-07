@@ -33,8 +33,9 @@ const OtpInput = (props) => {
     useRef(null),
   ];
   const [inputValues, setInputValues] = useState([""]);
+  const {closeOTPInputHandler} = props;
   const inputStyle =
-    "w-10 h-9 bg-ash3 rounded-md text-center font-bold border-2 border-ash3 md:w-14 md:h-12 focus:border-custom outline-none ";
+    "w-10 h-9 bg-custom8 rounded-md text-center font-bold outline-none focus:border focus:border-custom md:w-[64px] md:h-[60px]";
 
   const handlePaste = (e) => {
     const pastedText = e.clipboardData.getData("text");
@@ -87,6 +88,7 @@ const OtpInput = (props) => {
   const validateOTPHandler = () => {
     const convertedToArrayofInt = inputValues.map((num) => +num);
     const otp = parseInt(convertedToArrayofInt.join(""));
+    console.log(otp)
     validation(
       {
         url: "auth/verifyotp",
@@ -99,11 +101,21 @@ const OtpInput = (props) => {
 
   return (
     <BackDrop>
-      <div className="flex flex-col items-center justify-center bg-custom1 space-y-4 p-5 py-7 rounded-2xl shadow-2xl md:p-14 md:py-auto  md:space-y-8">
-        <p className="text-xl md:text-3xl font-medium">
+      <div className="relative flex flex-col animateSlideUp h-[350px] w-[93%] overflow-x-auto items-center justify-center bg-custom1 space-y-4 p-5 py-7 rounded-2xl shadow-custom-shadow md:h-[535px] md:w-[680px] md:p-14 md:py-auto  md:space-y-8">
+       <div className="absolute right-7 top-7 h-[18px] w-[18px]"><Image
+          src="/images/icon/close.svg"
+          alt="close-icon"
+          className="w-full h-full"
+          priority
+          loading="eager"
+          width={18.88}
+          height={18.88}
+         onClick={closeOTPInputHandler}
+        /></div>
+        <p className="text-xl md:text-[31px] font-medium">
           An OTP was sent to your email
         </p>
-        <p className="text-xs text-ash2 md:text-base">
+        <p className="text-xs text-ash2 md:text-[20px]">
           Input the six digits number
         </p>
         <form className="flex space-x-2 md:space-x-3 ">
@@ -185,7 +197,7 @@ const OtpInput = (props) => {
             <p>{errorMessage.trim()}</p>
           </div>
         )}
-        <div className="flex space-x-2 text-sm md:text-base">
+        <div className="flex space-x-2 text-sm md:text-[13px]">
           <p>If you did't receive a code </p>
           <button
             onClick={validateOTPHandler}
@@ -205,7 +217,7 @@ const OtpInput = (props) => {
           type="button"
           disabled={isLoading}
           onClick={validateOTPHandler}
-          className="py-2 px-8 text-custom1 bg-custom10 rounded-full md:py-4 md:px-12"
+          className="py-2 px-8 text-custom1 bg-custom10 rounded-full text-base md:text-[20px] md:py-4 md:px-12"
         >
           {isLoading ? "Please wait..." : "Submit"}
         </button>
