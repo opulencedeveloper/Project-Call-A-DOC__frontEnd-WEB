@@ -27,10 +27,10 @@ const ProfileUpdateSuccess = (props) => {
             height={103}
           />
         </div>
-        <p className="font-medium text-[31px] text-center leading-tight">
+        <p className="font-medium text-[25px] text-center leading-tight">
           Update successful
         </p>
-        <p className="text-base text-ash2 md:text-[20px] text-center leading-tight">
+        <p className="text-sm text-ash2 md:text-[20px] text-center leading-tight">
           {profileUpdateMessage}
         </p>
         <button
