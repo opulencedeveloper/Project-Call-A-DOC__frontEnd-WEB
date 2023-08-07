@@ -14,7 +14,8 @@ const LoadingSpinner = (props) => {
         src="/images/icon/load.gif"
         alt="angle-right-gray-icon"
         className="w-auto h-auto"
-        
+        priority
+        loading="eager"
         width={16.5}
         height={16.5}
       />
