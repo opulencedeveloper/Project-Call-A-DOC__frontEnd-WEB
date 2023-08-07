@@ -38,7 +38,7 @@ const DashBoardNavigation = (props) => {
 
   const link = type === "Doctor" ? "/doctor-dashboard" : "/patient-dashboard";
 
-  const pageContent = [
+  const navLinks = [
     {
       icon1: "home-icon1",
       icon2: "home-icon2",
@@ -72,7 +72,7 @@ const DashBoardNavigation = (props) => {
   ];
 
   if(type === "Doctor") {
-pageContent.splice(2, 1);
+navLinks.splice(2, 1);
   }
   return (
     <div className="flex flex-col h-full pb-2 justify-between items-start w-60 hidden 2xl:flex">
@@ -97,7 +97,7 @@ pageContent.splice(2, 1);
           />
         </div>
         <div className="space-y-5">
-          {pageContent.map((content, index) => {
+          {navLinks.map((content, index) => {
             const bgColor =
               activeLink === content.link ? "bg-custom" : "bg-custom2";
             const textColor =
