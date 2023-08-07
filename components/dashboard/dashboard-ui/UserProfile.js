@@ -8,11 +8,13 @@ const UserProfile = (props) => {
   const onlineStatus = online ? "online" : "offline";
   const onlineStatusText = online ? "Online" : "Offline";
   const onlineStatusTextColor = online ? "text-custom-g" : "text-custom11";
-  const style = styling || "h-full mb-5 flex flex-col items-center jusify-start lg:ml-5 2xl:ml-auto mt-5 xl:w-1/4 xl:mt-auto"
+  const style =
+    styling ||
+    "h-full mb-5 flex flex-col items-center jusify-start lg:ml-5 2xl:ml-auto mt-5 xl:w-1/4 xl:mt-auto";
 
   const editButtonHandler = () => {
-    router.replace("settings")
-  }
+    router.replace("settings");
+  };
   return (
     <div className={style}>
       {/* <div className=" flex justify-between w-full mb-12">
@@ -37,6 +39,7 @@ const UserProfile = (props) => {
           <Image
             src={profilePicture || "/images/profile-picture-placeholder.jpg"}
             alt="profile-picture"
+            loading="eager"
             className="w-[222px] h-[222px]"
             width={222}
             height={222}
@@ -46,6 +49,8 @@ const UserProfile = (props) => {
           <Image
             src={`/images/icon/${onlineStatus}.svg`}
             alt="online-icon"
+            priority
+            loading="eager"
             className="w-auto h-auto"
             width={28}
             height={29}
@@ -57,12 +62,15 @@ const UserProfile = (props) => {
         {onlineStatusText}
       </p>
       <button
-      onClick={editButtonHandler}
-       className="bg-custom px-7 flex items-center rounded-full py-2.5 mb-8 space-x-2">
+        onClick={editButtonHandler}
+        className="bg-custom px-7 flex items-center rounded-full py-2.5 mb-8 space-x-2"
+      >
         <Image
           src="/images/icon/edit.svg"
           alt="profile-picture"
           className="w-auto h-auto"
+          priority
+          loading="eager"
           width={9.23}
           height={9.23}
         />

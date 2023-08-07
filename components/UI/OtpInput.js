@@ -112,7 +112,7 @@ const OtpInput = (props) => {
           height={18.88}
          onClick={closeOTPInputHandler}
         /></div>
-        <p className="text-xl md:text-[31px] font-medium">
+        <p className="text-lg md:text-[31px] font-medium">
           An OTP was sent to your email
         </p>
         <p className="text-xs text-ash2 md:text-[20px]">
@@ -197,7 +197,7 @@ const OtpInput = (props) => {
             <p>{errorMessage.trim()}</p>
           </div>
         )}
-        <div className="flex space-x-2 text-sm md:text-[13px]">
+        <div className="flex space-x-2 text-[10px] md:text-[13px]">
           <p>If you did't receive a code </p>
           <button
             onClick={validateOTPHandler}
