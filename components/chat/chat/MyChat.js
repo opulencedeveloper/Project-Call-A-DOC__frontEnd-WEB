@@ -14,6 +14,9 @@ import Pusher from "pusher-js";
 import AuthContext from "@/store/context-store/auth-context";
 import useHttp from "@/hooks/useHttp";
 import { useRouter } from "next/router";
+import MoreVertButtonDropDown from "./MoreVerButtonDropDown";
+import PrescribeDrugs from "./PrescribeDrugs";
+import ScheduleCheckup from "./ScheduleCheckup";
 
 const convertISOTo12HourFormat = (isoDate) => {
   const date = new Date(isoDate);
@@ -48,6 +51,8 @@ const MyChat = (props) => {
   const [inputValue, setInputValue] = useState("");
   const [replierData, setReplierData] = useState({});
   const router = useRouter();
+  const [moreVertButton, setMoreVertButton] = useState(false);
+  const [prescribeDrugs, setPrescribeDrugs] = useState(false);
   const { isLoading, error, sendRequest: sendChatRequest } = useHttp();
   const [chats, setChats] = useState([]);
   const authCtx = useContext(AuthContext);
@@ -125,19 +130,32 @@ const MyChat = (props) => {
   };
 
   const startVideoCallHandler = () => {
-    window.open("/video-call/" + props.appointmentId, '_blank');
+    window.open("/video-call/" + props.appointmentId, "_blank");
   };
 
   function isURL(str) {
-  const urlRegex = /^(https?|ftp):\/\/([^\s/$.?#].[^\s]*)$/i;
-  return urlRegex.test(str);
-}
+    const urlRegex = /^(https?|ftp):\/\/([^\s/$.?#].[^\s]*)$/i;
+    return urlRegex.test(str);
+  }
+
+  const moreVertButtonHandler = () => {
+    setMoreVertButton((prev) => !prev);
+  };
+
+  const prescribeDrugsHandler = (val) => {
+   // console.log(val)
+    setPrescribeDrugs(prev => !prev);
+  };
 
   return (
     <div className="relative h-[80%] flex flex-col justify-end w-full pb-5 bg-custom8 rounded-tl-2xl rounded-tr-2xl">
+     {prescribeDrugs && (
+                <PrescribeDrugs prescribeDrugsHandler={prescribeDrugsHandler} />
+              )}
+              <ScheduleCheckup />
       <div className="bg-custom8 absolute top-0 right-0 left-0 flex rounded-tl-2xl rounded-tr-2xl h-20 items-center justify-between border-b border-ash pb-3 pt-6 px-5 md:h-32">
         <div className="flex items-center space-x-4">
-          <div className="h-10 w-10 rounded-full bg-white overflow-hidden md:h-[82px] md:w-[82px]">
+          <div className="h-10 w-10 rounded-full flex-shrink-0 bg-white overflow-hidden md:h-[82px] md:w-[82px]">
             {Object.keys(replierData).length && (
               <Image
                 src={`${replierData.profilepicture}`}
@@ -156,27 +174,58 @@ const MyChat = (props) => {
             </div>
           )}
         </div>
-        <div className="flex space-x-2">
-          {props.userType === "doctor" && (
-            <button onClick={startVideoCallHandler}>
+        {props.userType === "doctor" && (
+          <div className="relative flex flex-wrap items-center justify-end space-x-5">
+            {/* add-checkup-calender-icon.svg */}
+
+            <button
+              onClick={prescribeDrugsHandler}
+              className="h-[20px] w-[220] rounded-full border border-custom space-x-1 p-1 flex items-center justify-center text-center mb-2 md:mb-0 md:p-0 md:space-x-4 md:h-[52px] md:w-[239px]"
+            >
+              
+              <div className=" h-[16px] w-[16px]">
+                <Image
+                  src="/images/icon/prescribe-drugs-icon.svg"
+                  alt="prescribe-drugs-icon"
+                  className="h-full w-full"
+                  width={24}
+                  height={24}
+                />
+              </div>
+              <p className="text-[8px] text-custom md:text-[16px]">
+                Prescribe Drug
+              </p>
+            </button>
+
+            <button
+              className="h-4 w-4 mb-2 md:mb-0 md:h-[40px] md:w-[40px]"
+              onClick={startVideoCallHandler}
+            >
               {" "}
               <Image
-                src="/images/icon/video-call-icon.png"
+                src="/images/icon/video-call-icon.svg"
                 alt="video call icon"
-                className="h-4 w-4 md:h-[24px] md:w-[24px]"
+                className="h-full w-full"
                 width={24}
                 height={24}
               />{" "}
             </button>
-          )}
-          <Image
-            src="/images/icon/three-dot-vert.svg"
-            alt="doctor"
-            className="h-4 w-4 md:h-[24px] md:w-[24px]"
-            width={24}
-            height={24}
-          />
-        </div>
+
+            <button
+              className="relative h-4 w-4 mb-2 md:mb-0 md:h-[24px] md:w-[24px]"
+              onClick={moreVertButtonHandler}
+            >
+              {moreVertButton && <MoreVertButtonDropDown />}
+              <Image
+                src="/images/icon/three-dot-vert.svg"
+                alt="doctor"
+                className="w-full h-full"
+                width={24}
+                height={24}
+              />
+            </button>
+          </div>
+        )}
       </div>
 
       <div
@@ -192,11 +241,18 @@ const MyChat = (props) => {
                 <div className="flex items-end">
                   <div className="space-y-2 flex flex-col items-end">
                     <div className="max-w-xl ml-20 bg-ash4 p-2 md:p-4 rounded-tl-xl rounded-bl-xl rounded-tr-xl text-xs md:text-base">
-                    {isURL(chat.message) ? (
-                      <a target="_blank" rel="noopener noreferrer" href={chat.message} className="text-blue-500 underline">{chat.message}</a>
-                    ) : (
-                      chat.message
-                    )}
+                      {isURL(chat.message) ? (
+                        <a
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          href={chat.message}
+                          className="text-blue-500 underline"
+                        >
+                          {chat.message}
+                        </a>
+                      ) : (
+                        chat.message
+                      )}
                     </div>
                     <div className="text-xs text-ash6">{chatTime}</div>
                     {/* chatTime */}
@@ -216,8 +272,15 @@ const MyChat = (props) => {
                 </div>
                 <div className="space-y-2">
                   <div className="mr-20 max-w-xl bg-ash4 p-2 rounded-tl-xl rounded-br-xl rounded-tr-xl text-xs md:p-4 md:text-base">
-                  {isURL(chat.message) ? (
-                      <a target="_blank" rel="noopener noreferrer" href={chat.message} className="text-blue-500 underline">{chat.message}</a>
+                    {isURL(chat.message) ? (
+                      <a
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        href={chat.message}
+                        className="text-blue-500 underline"
+                      >
+                        {chat.message}
+                      </a>
                     ) : (
                       chat.message
                     )}
@@ -246,7 +309,12 @@ const MyChat = (props) => {
                 <div className="space-y-2">
                   <div className="mr-20 max-w-xl bg-ash4 p-2 rounded-tl-xl rounded-br-xl rounded-tr-xl text-xs md:p-4 md:text-base">
                     {isURL(chat.message) ? (
-                      <a href={chat.message} className="text-blue-500 underline">{chat.message}</a>
+                      <a
+                        href={chat.message}
+                        className="text-blue-500 underline"
+                      >
+                        {chat.message}
+                      </a>
                     ) : (
                       chat.message
                     )}
@@ -259,11 +327,16 @@ const MyChat = (props) => {
                 <div className="flex space-x-1 items-end">
                   <div className="space-y-2 flex flex-col items-end">
                     <div className="max-w-xl ml-20 bg-ash4 p-2 md:p-4 rounded-tl-xl rounded-bl-xl rounded-tr-xl text-xs md:text-base">
-                    {isURL(chat.message) ? (
-                      <a href={chat.message} className="text-blue-500 underline">{chat.message}</a>
-                    ) : (
-                      chat.message
-                    )}
+                      {isURL(chat.message) ? (
+                        <a
+                          href={chat.message}
+                          className="text-blue-500 underline"
+                        >
+                          {chat.message}
+                        </a>
+                      ) : (
+                        chat.message
+                      )}
                     </div>
                     <div className="text-xs text-ash6">{chatTime}</div>
                   </div>

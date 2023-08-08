@@ -10,6 +10,8 @@ import LoadingSpinner from "@/components/UI/LoadingSpinner";
 
 import { userDataActions } from "../../store/redux-store/userData-slice";
 import { useRouter } from "next/router";
+import ChatFolder from "@/components/chat/chat/ChatFolder";
+import AddDetailsToFolder from "@/components/chat/chat/AddDetailsToFolderForm";
 const { addUserData } = userDataActions;
 
 let isOnline = false;
@@ -83,20 +85,16 @@ export default function Chat() {
 
   return (
     <ChatLayout>
+     
       <div className="flex flex-col justify-between h-full w-full 2xl:pr-16 lg:w-9/12">
       
-        <div className="px-5 h-max w-full pt-5"><Header title={`Welcome ${firstName}`} /></div>  {" "}
+        <div className="px-5 h-max w-full pt-5"><Header title={firstName} /></div>  {" "}
        
           {" "}
           <MyChat appointmentId={appointmentId} userType={userType}/>
         
       </div>
-     <UserProfile
-        name={`${firstName} ${lastName}`}
-        profilePicture={profilepicture}
-        online={isOnline}
-        styling="hidden lg:flex h-full mb-5  flex-col items-center jusify-start lg:ml-5 2xl:ml-auto mt-5 xl:w-1/4 xl:mt-auto"
-      /> 
+     <ChatFolder />
     </ChatLayout>
   );
 }

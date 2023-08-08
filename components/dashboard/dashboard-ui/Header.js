@@ -131,7 +131,7 @@ const Header = (props) => {
           </button>
           <div className="space-y-1 md:space-y-2.5">
             {" "}
-            <p className="font-semibold text-xl md:text-4xl">{title}</p>
+            <p className="font-semibold text-xl md:text-4xl">{`Welcome ${userType === "doctor" ? "Dr." : ""} ${title}`}</p>
             <p className="text-ash2 text-xs md:text-lg">{formattedDate}</p>
           </div>
         </div>

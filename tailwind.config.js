@@ -19,6 +19,8 @@ module.exports = {
       boxShadow: {
         "custom-shadow": "0px 0px 60px 0px rgba(0, 0, 0, 0.15)",
         "custom-shadow2": " 0px 10px 30px 0px rgba(0, 60, 104, 0.15)",
+        
+        
       },
       height: {
         48: "38px",
@@ -63,17 +65,17 @@ module.exports = {
         custom: "#007FDD",
         custom1: "#FFFFFF",
         ash: "#CBD2D9",
-        ash2: "#52606D",
+        ash2: "#52606D", 
         ash4: "#E4E7EB",
         ash5: "#7B8794",
         ash6: "#9AA5B1",
         "49207E": "#49207E",
         "57B7FF": "#57B7FF",
         "49207E": "#49207E",
-        custom3: "#323F4B",
+        custom3: "#323F4B", 
         custom4: "#3E4C59", 
         custom5: "#026BB9", 
-        custom6: "#0093FF",
+        custom6: "#0093FF",  
         custom7: "#CC3333",
         custom8: "#F5F7FA",
         custom9: "#1F2933",

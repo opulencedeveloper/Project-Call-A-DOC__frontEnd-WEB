@@ -6,6 +6,12 @@
     background-image: url('/images/icon/drop-down.svg');
 }
 
+.date-picker-icon {
+  background-image: url('/images/icon/month-picker-icon.svg');
+}
+
+
+
 /* HAMBURGER MENU */
 
 .hamburger {
@@ -121,11 +127,28 @@ input[type="date"]::-webkit-calendar-picker-indicator {
       transform: translateY(0);
     }
   }
+
+  @keyframes slide-down {
+    0% {
+      opacity: 0;
+      transform: translateY(-40px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
   
   .animateSlideUp {
     animation-name: slide-up;
     animation-duration: 0.5s;
     animation-timing-function: ease-out;
+  }
+
+  .animateSlideDown {
+    animation-name: slide-down;
+    animation-duration: 0.3s;
+    animation-timing-function: ease-in;
   }
 
   .shimmer {
