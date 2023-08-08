@@ -152,7 +152,7 @@ const MyChat = (props) => {
      {prescribeDrugs && (
                 <PrescribeDrugs prescribeDrugsHandler={prescribeDrugsHandler} />
               )}
-              <ScheduleCheckup />
+              {/* <ScheduleCheckup /> */}
       <div className="bg-custom8 absolute top-0 right-0 left-0 flex rounded-tl-2xl rounded-tr-2xl h-20 items-center justify-between border-b border-ash pb-3 pt-6 px-5 md:h-32">
         <div className="flex items-center space-x-4">
           <div className="h-10 w-10 rounded-full flex-shrink-0 bg-white overflow-hidden md:h-[82px] md:w-[82px]">
