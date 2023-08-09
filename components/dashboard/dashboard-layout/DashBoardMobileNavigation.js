@@ -10,7 +10,7 @@ const DashBoardMobileNavigation = (props) => {
   const [startAppointment, setStartAppointment] = useState(false);
   const router = useRouter();
   const activeLink = router.pathname;
-  const { type, toggleDrawer } = props;
+  const { type, toggleDrawer, toggleChatFolderMobileView } = props;
 
   useEffect(() => {
     const handleBeforeUnload = (e) => {
@@ -36,7 +36,12 @@ const DashBoardMobileNavigation = (props) => {
     setStartAppointment((prevVal) => !prevVal);
   };
 
-  const link = type === "Doctor" ? "/doctor-dashboard" : "/patient-dashboard";
+  const toggleChatFolderMobileViewHandler = () => {
+    toggleDrawer();
+    toggleChatFolderMobileView();
+  }
+
+  const link = type === "doctor" ? "/doctor-dashboard" : "/patient-dashboard";
 
   const navLinks = [
     {
@@ -71,7 +76,7 @@ const DashBoardMobileNavigation = (props) => {
     },
   ];
 
-  if(type === "Doctor") {
+  if(type === "doctor") {
 navLinks.splice(2, 1);
   }
 
@@ -126,7 +131,25 @@ navLinks.splice(2, 1);
           })}
         </div>
       </div>
-      <div
+      {activeLink.startsWith("/chat") && type === "doctor" && <button
+        onClick={toggleChatFolderMobileViewHandler}
+        className="cursor-pointer w-full text-custom1 rounded-md flex items-center justify-center space-x-7 bg-custom13 py-5 px-2 lg:hidden"
+      >
+        <p>
+          View Folder
+        </p>
+        <Image
+          src="/images/icon/plus-circle.svg"
+          alt="plus-circle-icon"
+          className="h-auto w-auto"
+          loading="eager"
+          priority
+          width={32}
+          height={32}
+        />
+      </button>}
+     
+     {type === "patient" && <button
         onClick={startAppointmentHandler}
         className="cursor-pointer w-full text-custom1 rounded-md flex items-center justify-center space-x-7 bg-custom13 py-5 px-2"
       >
@@ -144,7 +167,7 @@ navLinks.splice(2, 1);
           width={32}
           height={32}
         />
-      </div>{" "}
+      </button>}{" "}
     </div>
   );
 };

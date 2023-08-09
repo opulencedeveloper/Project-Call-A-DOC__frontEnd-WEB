@@ -64,7 +64,7 @@ export default function DashBoard() {
   }
 
   return (
-    <DashBoardLayout type="Doctor">
+    <DashBoardLayout type="doctor">
       <div className="flex-1 2xl:pr-16">
         <Header title={`Welcome Dr. ${doctorFirstName}`} type="Doctor" />
         <TogglButton />

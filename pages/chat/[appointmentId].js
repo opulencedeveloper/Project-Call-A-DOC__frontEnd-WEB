@@ -12,6 +12,7 @@ import { userDataActions } from "../../store/redux-store/userData-slice";
 import { useRouter } from "next/router";
 import ChatFolder from "@/components/chat/chat/ChatFolder";
 import AddDetailsToFolder from "@/components/chat/chat/AddDetailsToFolderForm";
+import BackDrop from "@/components/UI/BackDrop";
 const { addUserData } = userDataActions;
 
 let isOnline = false;
@@ -20,36 +21,29 @@ let userType;
 export default function Chat() {
   const dispatch = useDispatch();
   const userInfo = useSelector((state) => state.userData);
-
+const [chatFolderMobileView, setChatFolderMobileView] = useState(false);
   const [mounted, setMounted] = useState(false);
   const router = useRouter();
   const appointmentId = router.query.appointmentId;
 
-  
-
-  const {
-    firstname: firstName,
-    lastname: lastName,
-    profilepicture,
-  } = userInfo;
+  const { firstname: firstName, lastname: lastName, profilepicture } = userInfo;
   const { isLoading, error, sendRequest: fetchUserData } = useHttp();
   const authCtx = useContext(AuthContext);
   const { token } = authCtx;
 
   useEffect(() => {
-    const userType = localStorage.getItem("userType")
+    const userType = localStorage.getItem("userType");
     const myResponse = (res) => {
       const { status, message, doctor, chats, customer } = res;
       if (status === "success") {
         isOnline = true;
-      const user = userType === "doctor" ? doctor : customer;
-        dispatch(addUserData(user))
-        
+        const user = userType === "doctor" ? doctor : customer;
+        dispatch(addUserData(user));
       }
       if (status === "success" && message === "Fetch Successfully") {
         setChats(chats);
       }
-    }; 
+    };
     if (userType === "patient") {
       fetchUserData(
         {
@@ -76,25 +70,48 @@ export default function Chat() {
   }
 
   if (typeof window !== "undefined") {
-    userType = localStorage.getItem("userType")
- }
+    userType = localStorage.getItem("userType");
+  }
 
- if(appointmentId === undefined) {
-  return
-}
+  if (appointmentId === undefined) {
+    return;
+  }
+
+  const toggleChatFolderMobileView = () => {
+    setChatFolderMobileView(prev => !prev);
+  }
+
 
   return (
-    <ChatLayout>
-     
+    <ChatLayout toggleChatFolderMobileView={toggleChatFolderMobileView}>
+     {chatFolderMobileView && <BackDrop>
+        <ChatFolder
+          toggleChatFolderMobileView={toggleChatFolderMobileView}
+           style="animateSlideUp shadow-custom-shadow2 rounded-xl bg-white flex flex-col jusify-start w-[90%] h-[410px] pt-7 overflow-y-auto mb-5 px-5 "/>
+      </BackDrop>}
       <div className="flex flex-col justify-between h-full w-full 2xl:pr-16 lg:w-9/12">
-      
-        <div className="px-5 h-max w-full pt-5"><Header title={firstName} /></div>  {" "}
+       <span className="px-5">
+          <Header
+          type={userType}
+          toggleChatFolderMobileView={toggleChatFolderMobileView}
+            title={`Welcome ${userType === "Doctor" ? "Dr" : ""} ${firstName}`}
+          /> </span>
        
-          {" "}
-          <MyChat appointmentId={appointmentId} userType={userType}/>
-        
+        <MyChat appointmentId={appointmentId} userType={userType} />
       </div>
-     <ChatFolder />
+      {userType === "doctor" ? (
+        <ChatFolder />
+      ) : (
+        <span className="hidden md:flex">
+          {" "}
+          <UserProfile
+            name={`${firstName} ${lastName}`}
+            profilePicture={profilepicture}
+            styling="hidden lg:flex flex-col items-center jusify-start h-full mb-5 lg:overflow-y-auto lg:ml-5 2xl:ml-auto mt-5 xl:w-max xl:mt-auto"
+            online={isOnline}
+          />{" "}
+        </span>
+      )}
     </ChatLayout>
   );
 }

@@ -134,9 +134,9 @@ const Appointments = () => {
   }
 
   return (
-    <DashBoardLayout type="Patient">
+    <DashBoardLayout type="patient">
       <div className="flex-1 2xl:pr-16">
-        <Header title="Appointments" type="Patient" />
+        <Header title="Appointments" />
         <Board pageContent={boardContent} />
         <div className="mt-10 mb-3">Appoinments</div>
         <ActivityLineGraph productData={chartData} />

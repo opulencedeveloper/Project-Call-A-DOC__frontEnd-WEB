@@ -134,7 +134,7 @@ const boardContent = [
     return <LoadingSpinner errorMessage={error} />;
   }
   return (
-    <DashBoardLayout type="Doctor">
+    <DashBoardLayout type="doctor">
         <div className="flex-1 2xl:pr-16">
           <Header title={"Appointments"} type ={"Doctor"}/>
           <Board pageContent={boardContent}/>

@@ -90,7 +90,7 @@ const SettingsLayout = (props) => {
   }
 
   return (
-    <div className="flex flex-col h-[80%] w-full bg-white md:flex-row ">
+    <div className="flex flex-col mt-10 h-[80%] w-full bg-white md:flex-row ">
       {profileUpdateSuccess && (
         <ProfileUpdateSuccess
           profileUpdateMessage={profileUpdateMessage}

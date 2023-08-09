@@ -15,10 +15,6 @@ const MainNavigation = (props) => {
 
   const activeLink = router.pathname;
 
-  useEffect(() => {
-    console.log("in the effect")
-    localStorage.setItem("isHomeScreenVisited", "no");
-  }, []);
 
   const toggleDrawer = () => {
     if (isOpen) {

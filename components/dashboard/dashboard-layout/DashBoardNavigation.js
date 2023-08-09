@@ -36,7 +36,7 @@ const DashBoardNavigation = (props) => {
     setStartAppointment((prevVal) => !prevVal);
   };
 
-  const link = type === "Doctor" ? "/doctor-dashboard" : "/patient-dashboard";
+  const link = type === "doctor" ? "/doctor-dashboard" : "/patient-dashboard";
 
   const navLinks = [
     {
@@ -66,13 +66,13 @@ const DashBoardNavigation = (props) => {
     {
       icon1: "help",
       icon2: "help",
-      link: "dashboard",
+      link: "/dashboard/help",
       title: "Help",
     },
   ];
 
-  if(type === "Doctor") {
-navLinks.splice(2, 1);
+  if (type === "doctor") {
+    navLinks.splice(2, 1);
   }
   return (
     <div className="flex flex-col h-full pb-2 justify-between items-start w-60 hidden 2xl:flex">
@@ -118,7 +118,7 @@ navLinks.splice(2, 1);
                   }
                   alt={content.title}
                   className="h-auto w-auto"
-                  loading='eager'
+                  loading="eager"
                   priority
                   width={13.5}
                   height={13.87}
@@ -130,7 +130,9 @@ navLinks.splice(2, 1);
         </div>
       </div>
       <div
-        onClick={startAppointmentHandler}
+        onClick={
+           startAppointmentHandler
+        }
         className="cursor-pointer w-full text-custom1 rounded-md flex items-center justify-center space-x-7 bg-custom13 py-5 px-2"
       >
         <p>

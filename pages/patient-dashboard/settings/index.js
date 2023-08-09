@@ -6,9 +6,9 @@ let isOnline = false;
 
 const Settings = () => {
   return (
-    <DashBoardLayout type="Patient">
+    <DashBoardLayout type="patient">
       <div className="h-full w-full bg-custom-8">
-        <Header title="Account settings" type="Patient" />
+        <Header title="Account settings" />
         <SettingsLayout type="Patient"/>
       </div>
     </DashBoardLayout>

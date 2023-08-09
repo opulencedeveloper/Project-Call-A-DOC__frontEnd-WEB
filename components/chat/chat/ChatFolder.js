@@ -1,5 +1,4 @@
 import Image from "next/image";
-import { useRouter } from "next/router";
 import ChatFolderInfo from "./ChatFolderInfo";
 import AddDetailsToFolderForm from "./AddDetailsToFolderForm";
 import { useState } from "react";
@@ -34,17 +33,39 @@ const chatFolderData = [
   },
 ];
 
-const ChatFolder = () => {
-  const [addFolderDetails, setAddFolderDetails] = useState(false);
+const ChatFolder = (props) => {
+  const [addFolderDetails, setAddFolderDetails] =
+    useState(false);
   const addFolderHandler = () => {
     setAddFolderDetails((prev) => !prev);
   };
+  const { style, toggleChatFolderMobileView } = props;
+
+  const styling =
+    style ||
+    "hidden lg:flex flex-col jusify-start h-[410px] pt-7 overflow-y-auto mb-5 px-5 md:h-full md:pr-8 lg:ml-5 2xl:ml-auto xl:w-1/4";
 
   return (
-    <div className="h-[410px] overflow-y-auto mb-5 flex flex-col jusify-start px-5 md:h-full md:pr-8 lg:ml-5 2xl:ml-auto mt-5 xl:w-1/4 xl:mt-auto">
+    <div className={styling}>
       {addFolderDetails && (
         <AddDetailsToFolderForm addFolderHandler={addFolderHandler} />
       )}
+      <div className="flex justify-end mb-2 lg:hidden">
+        <button
+          onClick={toggleChatFolderMobileView}
+          className="w-[18px] w-[18px]"
+        >
+          <Image
+            src="/images/icon/close.svg"
+            alt="close-icon"
+            className="w-full h-full"
+            priority
+            loading="eager"
+            width={18.88}
+            height={18.88}
+          />
+        </button>
+      </div>
       <div className="flex items-center space-x-3 md:space-x-5">
         <div className="w-[33px] h-[25px] md:h-[30px] md:w-[37px]">
           <Image
@@ -56,7 +77,9 @@ const ChatFolder = () => {
             width={37}
           />
         </div>
-        <p className="text-base font-medium md:text-[20px]">Kelvin Willis Folder</p>
+        <p className="text-base font-medium md:text-[20px]">
+          Kelvin Willis Folder
+        </p>
       </div>
       <div className="flex justify-between items-center mt-11 mb-9">
         <p className="text-base font-medium md:text-[20px]">Description</p>

@@ -17,6 +17,7 @@ import { useRouter } from "next/router";
 import MoreVertButtonDropDown from "./MoreVerButtonDropDown";
 import PrescribeDrugs from "./PrescribeDrugs";
 import ScheduleCheckup from "./ScheduleCheckup";
+import EndAppointmentJourney from "./EndAppointmentJourney";
 
 const convertISOTo12HourFormat = (isoDate) => {
   const date = new Date(isoDate);
@@ -50,11 +51,13 @@ const MyChat = (props) => {
   const inputRef = useRef();
   const [inputValue, setInputValue] = useState("");
   const [replierData, setReplierData] = useState({});
-  const router = useRouter();
   const [moreVertButton, setMoreVertButton] = useState(false);
   const [prescribeDrugs, setPrescribeDrugs] = useState(false);
-  const { isLoading, error, sendRequest: sendChatRequest } = useHttp();
+  const [isScheduleCheckup, setIsisScheduleCheckup] = useState(false);
+  const [endAppointment, setEndAppointment] = useState(false);
   const [chats, setChats] = useState([]);
+  const { isLoading, error, sendRequest: sendChatRequest } = useHttp();
+  const router = useRouter();
   const authCtx = useContext(AuthContext);
   const { token } = authCtx;
   console.log("MyChat AppId is", props.appointmentId);
@@ -142,17 +145,27 @@ const MyChat = (props) => {
     setMoreVertButton((prev) => !prev);
   };
 
-  const prescribeDrugsHandler = (val) => {
-   // console.log(val)
-    setPrescribeDrugs(prev => !prev);
+  const prescribeDrugsHandler = () => {
+    setPrescribeDrugs((prev) => !prev);
+  };
+
+  const scheduleCheckupHandler = () => {
+    setIsisScheduleCheckup((prev) => !prev);
+  };
+
+  const endAppointmentHandler = () => {
+    setEndAppointment((prev) => !prev);
   };
 
   return (
-    <div className="relative h-[80%] flex flex-col justify-end w-full pb-5 bg-custom8 rounded-tl-2xl rounded-tr-2xl">
-     {prescribeDrugs && (
-                <PrescribeDrugs prescribeDrugsHandler={prescribeDrugsHandler} />
-              )}
-              {/* <ScheduleCheckup /> */}
+    <div className="relative h-[80%] flex flex-col justify-end w-full bg-custom8 rounded-tl-2xl rounded-tr-2xl">
+      {prescribeDrugs && (
+        <PrescribeDrugs prescribeDrugsHandler={prescribeDrugsHandler} />
+      )}
+      {isScheduleCheckup && (
+        <ScheduleCheckup scheduleCheckupHandler={scheduleCheckupHandler} />
+      )}
+      {endAppointment && <EndAppointmentJourney endAppointmentHandler={endAppointmentHandler}/>}
       <div className="bg-custom8 absolute top-0 right-0 left-0 flex rounded-tl-2xl rounded-tr-2xl h-20 items-center justify-between border-b border-ash pb-3 pt-6 px-5 md:h-32">
         <div className="flex items-center space-x-4">
           <div className="h-10 w-10 rounded-full flex-shrink-0 bg-white overflow-hidden md:h-[82px] md:w-[82px]">
@@ -167,7 +180,7 @@ const MyChat = (props) => {
             )}
           </div>
           {Object.keys(replierData).length && (
-            <div className="text-sm md:text-lg">
+            <div className="text-sm font-medium md:text-[25px]">
               {props.userType === "patient"
                 ? `Dr. ${replierData.firstname} ${replierData.lastname}`
                 : `${replierData.firstname} ${replierData.lastname}`}
@@ -182,7 +195,6 @@ const MyChat = (props) => {
               onClick={prescribeDrugsHandler}
               className="h-[20px] w-[220] rounded-full border border-custom space-x-1 p-1 flex items-center justify-center text-center mb-2 md:mb-0 md:p-0 md:space-x-4 md:h-[52px] md:w-[239px]"
             >
-              
               <div className=" h-[16px] w-[16px]">
                 <Image
                   src="/images/icon/prescribe-drugs-icon.svg"
@@ -215,12 +227,17 @@ const MyChat = (props) => {
               className="relative h-4 w-4 mb-2 md:mb-0 md:h-[24px] md:w-[24px]"
               onClick={moreVertButtonHandler}
             >
-              {moreVertButton && <MoreVertButtonDropDown />}
+              {moreVertButton && (
+                <MoreVertButtonDropDown
+                  scheduleCheckupHandler={scheduleCheckupHandler}
+                  endAppointmentHandler={endAppointmentHandler}
+                />
+              )}
               <Image
-                src="/images/icon/three-dot-vert.svg"
+                src={`/images/icon/${moreVertButton ? "close.svg" : "three-dot-vert.svg"}`}
                 alt="doctor"
                 className="w-full h-full"
-                width={24}
+                width={24}  
                 height={24}
               />
             </button>

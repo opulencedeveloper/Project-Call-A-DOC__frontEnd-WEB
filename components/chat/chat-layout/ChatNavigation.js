@@ -10,7 +10,7 @@ const ChatNavigation = (props) => {
   const [startAppointment, setStartAppointment] = useState(false);
   const router = useRouter();
   const activeLink = router.pathname;
-  const {type} = props;
+  const {type, toggleChatFolderMobileView} = props;
 
   const startAppointmentHandler = () => {
     setStartAppointment(prevVal => !prevVal);

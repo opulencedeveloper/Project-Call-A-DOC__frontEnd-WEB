@@ -73,7 +73,7 @@ const PrescribeDrugs = (props) => {
         </button>
         <hr className="border-1 border-ash6 mt-5" />
 
-        <div className="flex justify-center space-x-4 h-[32px] mt-8 text-sm md:h-[52px] md:text-16">
+        <div className="flex justify-center space-x-4 h-[45px] mt-8 text-sm md:h-[52px] md:text-16">
           <button
             type="button"
             onClick={prescribeDrugsHandler}

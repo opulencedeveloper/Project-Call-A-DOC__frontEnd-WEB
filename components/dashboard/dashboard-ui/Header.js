@@ -27,7 +27,7 @@ if (typeof window !== "undefined") {
 let navAnimationClass = "";
 
 const Header = (props) => {
-  const { title, type } = props;
+  const { title, type, toggleChatFolderMobileView } = props;
   const [open, setOpen] = useState(false);
   const [showNotification, setShowNotifications] = useState(false);
   const [notifications, setNotifications] = useState([]);
@@ -99,11 +99,13 @@ const Header = (props) => {
     setShowNotifications((prev) => !prev);
   };
 
+ const headerTitle = title === "Help Center" ? title : userType === "doctor" ? `Welcome Dr. ${title}` : `Welcome ${title}`;
+
   return (
     <>
       {" "}
       <div
-        className={`flex flex-col relative z-10 h-max justify-between items-start pb-8 md:flex-row md:items-center`}
+        className={"flex relative z-10 h-max justify-between items-start md:items-center"}
       >
         {/* className={`${value} block hamburger mt-7 lg:hidden focus:outline-none`} */}
         <Portal>
@@ -114,8 +116,9 @@ const Header = (props) => {
             } transition-transform duration-300 ease-in-out`}
           >
             <DashBoardMobileNavigation
+            toggleChatFolderMobileView={toggleChatFolderMobileView}
               toggleDrawer={toggleDrawer}
-              type={type}
+              type={userType}
             />{" "}
           </div>
         </Portal>
@@ -131,13 +134,13 @@ const Header = (props) => {
           </button>
           <div className="space-y-1 md:space-y-2.5">
             {" "}
-            <p className="font-semibold text-xl md:text-4xl">{`Welcome ${userType === "doctor" ? "Dr." : ""} ${title}`}</p>
+            <p className="font-semibold text-xl md:text-4xl">{title}</p>
             <p className="text-ash2 text-xs md:text-lg">{formattedDate}</p>
           </div>
         </div>
 
-        <div className="flex w-full md:w-max">
-          <div className="bg-ash4 pl-2 w-full flex-1 flex rounded-full mr-2 mt-2 h-10 z-20 md:h-12 md:mt-auto md:pl-0 md:w-max">
+        {/* <div className="flex w-full md:w-max"> */}
+          {/* <div className="bg-ash4 pl-2 w-full flex-1 flex rounded-full mr-2 mt-2 h-10 z-20 md:h-12 md:mt-auto md:pl-0 md:w-max">
             <Image
               src="/images/icon/search.svg"
               alt="search-icon"
@@ -152,7 +155,7 @@ const Header = (props) => {
               className="py-4 mr-1 w-full rounded-full bg-ash4 placeholder-ash2 text-sm font-light focus:outline-none md:text-base"
               placeholder="Search"
             />{" "}
-          </div>
+          </div> */}
           <button
             onClick={toggleNotifications}
             className="h-12 w-12 z-20 relative cursor-pointer md:w-14 md:h-14"
@@ -172,7 +175,7 @@ const Header = (props) => {
             />{" "}
           </button>
         </div>
-      </div>
+      {/* </div> */}
       {showNotification && (
        <BackDrop> <div className="animateSlideUp px-5 h-96 animate relative rounded-xl bg-white z-40 px-7 shadow-xl w-[90%] md:w-[50rem]">
           <div className="absolute left-5 right-5 top-5 overflow-hidden flex justify-between bg-white mb-5">
@@ -180,11 +183,11 @@ const Header = (props) => {
               Notifications
             </div>
 
-            <button onClick={toggleNotifications}>
+            <button className="w-[18px] w-[18px]" onClick={toggleNotifications}>
               <Image
                 src="/images/icon/close.svg"
                 alt="close-icon"
-                className=" w-auto h-auto"
+                className="w-full h-full"
                 priority
                 loading="eager"
                 width={18.88}

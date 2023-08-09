@@ -87,9 +87,9 @@ const MyFolder = () => {
     return <LoadingSpinner errorMessage={error} />;
   }
   return (
-    <DashBoardLayout type="Patient">
+    <DashBoardLayout type="patient">
       <div className="flex-1 2xl:pr-16">
-        <Header title={"My Folder"} type={"Patient"} />
+        <Header title={"My Folder"} />
         <Table
           tableData={checkUps}
           tableHeaderData2="ID"
