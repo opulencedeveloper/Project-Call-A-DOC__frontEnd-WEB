@@ -18,6 +18,8 @@ import MoreVertButtonDropDown from "./MoreVerButtonDropDown";
 import PrescribeDrugs from "./PrescribeDrugs";
 import ScheduleCheckup from "./ScheduleCheckup";
 import EndAppointmentJourney from "./EndAppointmentJourney";
+import DoctorEndAppointmentPatientApproval from "./DoctorEndAppointmentPatientApproval";
+import LoadingSpinner from "@/components/UI/LoadingSpinner";
 
 const convertISOTo12HourFormat = (isoDate) => {
   const date = new Date(isoDate);
@@ -55,11 +57,16 @@ const MyChat = (props) => {
   const [prescribeDrugs, setPrescribeDrugs] = useState(false);
   const [isScheduleCheckup, setIsisScheduleCheckup] = useState(false);
   const [endAppointment, setEndAppointment] = useState(false);
+  const [
+    doctorEndAppointmentPatientApproval,
+    setDoctorEndAppointmentPatientApproval,
+  ] = useState(false);
   const [chats, setChats] = useState([]);
   const { isLoading, error, sendRequest: sendChatRequest } = useHttp();
   const router = useRouter();
   const authCtx = useContext(AuthContext);
   const { token } = authCtx;
+  const { patientData } = props;
   console.log("MyChat AppId is", props.appointmentId);
 
   useLayoutEffect(() => {
@@ -83,6 +90,9 @@ const MyChat = (props) => {
         props.userType === "patient"
           ? setReplierData(doctor)
           : setReplierData(patient);
+        if (patient) {
+          patientData(patient);
+        }
         setChats(chats);
       }
     };
@@ -104,7 +114,8 @@ const MyChat = (props) => {
     return () => {
       window.Echo.leaveChannel(`${props.appointmentId}`);
     };
-  }, []);
+  }, [token]);
+
   const sendChat = (event) => {
     event.preventDefault();
     if (inputValue === "") return;
@@ -157,6 +168,10 @@ const MyChat = (props) => {
     setEndAppointment((prev) => !prev);
   };
 
+  const doctorEndAppointmentPatientApprovalHandler = () => {
+    setDoctorEndAppointmentPatientApproval((prev) => !prev);
+  };
+
   return (
     <div className="relative h-[80%] flex flex-col justify-end w-full bg-custom8 rounded-tl-2xl rounded-tr-2xl">
       {prescribeDrugs && (
@@ -165,9 +180,18 @@ const MyChat = (props) => {
       {isScheduleCheckup && (
         <ScheduleCheckup scheduleCheckupHandler={scheduleCheckupHandler} />
       )}
-      {endAppointment && <EndAppointmentJourney endAppointmentHandler={endAppointmentHandler}/>}
-      <div className="bg-custom8 absolute top-0 right-0 left-0 flex rounded-tl-2xl rounded-tr-2xl h-20 items-center justify-between border-b border-ash pb-3 pt-6 px-5 md:h-32">
-        <div className="flex items-center space-x-4">
+      {endAppointment && (
+        <EndAppointmentJourney endAppointmentHandler={endAppointmentHandler} />
+      )}
+      {doctorEndAppointmentPatientApproval && (
+        <DoctorEndAppointmentPatientApproval
+          doctorEndAppointmentPatientApprovalHandler={
+            doctorEndAppointmentPatientApprovalHandler
+          }
+        />
+      )}
+      <div className="border bg-custom8 absolute top-0 right-0 left-0 flex rounded-tl-2xl rounded-tr-2xl h-20 items-center justify-between border-b border-ash pb-3 pt-6 px-3 md:h-32">
+        <div className="flex items-center border space-x-4">
           <div className="h-10 w-10 rounded-full flex-shrink-0 bg-white overflow-hidden md:h-[82px] md:w-[82px]">
             {Object.keys(replierData).length && (
               <Image
@@ -188,12 +212,12 @@ const MyChat = (props) => {
           )}
         </div>
         {props.userType === "doctor" && (
-          <div className="relative flex flex-wrap items-center justify-end space-x-5">
+          <div className="border relative flex flex-wrap items-center justify-end my-2 space-x-5">
             {/* add-checkup-calender-icon.svg */}
 
             <button
               onClick={prescribeDrugsHandler}
-              className="h-[20px] w-[220] rounded-full border border-custom space-x-1 p-1 flex items-center justify-center text-center mb-2 md:mb-0 md:p-0 md:space-x-4 md:h-[52px] md:w-[239px]"
+              className="h-[24px] w-[220] rounded-full border border-custom space-x-1 p-1 flex items-center justify-center text-center sm:mb-0 lg:p-0 lg:space-x-4 lg:h-[40px] lg:w-[200px] xl:h-[52px] xl:w-[239px]"
             >
               <div className=" h-[16px] w-[16px]">
                 <Image
@@ -234,10 +258,12 @@ const MyChat = (props) => {
                 />
               )}
               <Image
-                src={`/images/icon/${moreVertButton ? "close.svg" : "three-dot-vert.svg"}`}
+                src={`/images/icon/${
+                  moreVertButton ? "close.svg" : "three-dot-vert.svg"
+                }`}
                 alt="doctor"
                 className="w-full h-full"
-                width={24}  
+                width={24}
                 height={24}
               />
             </button>
@@ -250,7 +276,11 @@ const MyChat = (props) => {
         className="overflow-y-auto h-min w-full pb-20 space-y-5 px-3 md:px-8"
       >
         {/* Chats here */}
-        {props.userType === "doctor" &&
+
+        {isLoading ? (
+          <LoadingSpinner />
+        ) : (
+          props.userType === "doctor" &&
           chats.map((chat, index) => {
             const chatTime = convertISOTo12HourFormat(chat.created_at);
             return chat.type === "2" ? (
@@ -306,7 +336,8 @@ const MyChat = (props) => {
                 </div>
               </div>
             );
-          })}
+          })
+        )}
 
         {props.userType === "patient" &&
           chats.map((chat, index) => {

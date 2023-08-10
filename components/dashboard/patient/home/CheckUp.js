@@ -4,7 +4,7 @@ const pills = ["Panadol", "Flagyl", "Aspirin"];
 
 const CheckUp = () => {
   return (
-    <div className=" flex mb-8 space-x-auto flex-col xl:space-x-10 xl:flex-row 2xl:space-x-20">
+    <div className=" flex mb-8 mt-12 space-x-auto flex-col xl:space-x-10 xl:flex-row 2xl:space-x-20">
       <div className="w-full xl:w-1/2">
         <div className="flex justify-between pb-7">
           <p className="text-xl">Checkups</p>

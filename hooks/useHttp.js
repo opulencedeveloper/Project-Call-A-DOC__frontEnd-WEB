@@ -17,7 +17,7 @@ console.log("Use Http called")
           , {
             method: requestConfig.method ? requestConfig.method : 'GET',
             headers: {
-                "Content-Type": "application/json",
+                "Content-Type": requestConfig.contentType ? requestConfig.contentType : "application/json",
                 "Authorization": requestConfig.token ? `Bearer ${requestConfig.token}` : "",
               },
             body: JSON.stringify(requestConfig.body)

@@ -78,7 +78,7 @@ module.exports = {
         custom6: "#0093FF",  
         custom7: "#CC3333",
         custom8: "#F5F7FA",
-        custom9: "#1F2933",
+        custom9: "#1F2933", 
         custom10: "#3EBD93",
         custom11: "#EF4E4E",
         custom12: "#000000",

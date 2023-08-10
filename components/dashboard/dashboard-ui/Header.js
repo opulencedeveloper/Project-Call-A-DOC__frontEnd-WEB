@@ -105,7 +105,7 @@ const Header = (props) => {
     <>
       {" "}
       <div
-        className={"flex relative z-10 h-max justify-between items-start md:items-center"}
+        className={"flex relative z-10 h-max justify-between items-center md:items-center"}
       >
         {/* className={`${value} block hamburger mt-7 lg:hidden focus:outline-none`} */}
         <Portal>
@@ -122,9 +122,9 @@ const Header = (props) => {
             />{" "}
           </div>
         </Portal>
-        <div className="flex">
+        <div className="flex items-center">
           <button
-            className={`${navAnimationClass} block hamburger mt-7 mr-5 2xl:hidden focus:outline-none`}
+            className={`${navAnimationClass} block hamburger mr-5 2xl:hidden focus:outline-none`}
             type="button"
             onClick={toggleDrawer}
           >
@@ -134,7 +134,7 @@ const Header = (props) => {
           </button>
           <div className="space-y-1 md:space-y-2.5">
             {" "}
-            <p className="font-semibold text-xl md:text-4xl">{title}</p>
+            <p className="font-semibold text-md md:text-4xl">{title}</p>
             <p className="text-ash2 text-xs md:text-lg">{formattedDate}</p>
           </div>
         </div>
@@ -158,10 +158,10 @@ const Header = (props) => {
           </div> */}
           <button
             onClick={toggleNotifications}
-            className="h-12 w-12 z-20 relative cursor-pointer md:w-14 md:h-14"
+            className="h-10 w-10 z-20 relative cursor-pointer md:w-14 md:h-14"
           >
             {" "}
-            <div className="absolute top-2 right-2 w-5 h-5 bg-red-500 text-white text-center rounded-full flex items-center justify-center">
+            <div className="absolute top-2 right-1 w-4 h-4 bg-red-500 text-white text-center rounded-full flex items-center justify-center text-sm md:w-5 md:h-5 md:right-2 md:text-base">
               {notificationsIndicator}
             </div>
             <Image

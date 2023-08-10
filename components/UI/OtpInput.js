@@ -35,7 +35,7 @@ const OtpInput = (props) => {
   const [inputValues, setInputValues] = useState([""]);
   const {closeOTPInputHandler} = props;
   const inputStyle =
-    "w-10 h-9 bg-custom8 rounded-md text-center font-bold outline-none focus:border focus:border-custom md:w-[64px] md:h-[60px]";
+    "w-10 h-9 bg-ash rounded-md text-center font-bold outline-none focus:border focus:border-custom md:w-[64px] md:h-[60px]";
 
   const handlePaste = (e) => {
     const pastedText = e.clipboardData.getData("text");

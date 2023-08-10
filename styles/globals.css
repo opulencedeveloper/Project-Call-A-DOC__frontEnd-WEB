@@ -195,6 +195,12 @@ input[type="date"]::-webkit-calendar-picker-indicator {
   animation: openBookingAppointment 0.4s ease-out forwards;
 }
 
+/* INPUT TYPE RANGE */
+.slider{
+   accent-color:#007FDD;
+   }
+   
+
 @keyframes openBookingAppointment {
   0% {
     opacity: 0;

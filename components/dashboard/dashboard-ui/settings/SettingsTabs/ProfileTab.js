@@ -49,6 +49,7 @@ const ProfileTab = (props) => {
     <div className="px-0 w-full h-full space-y-6 overflow-y-auto w-full bg-white md:px-7">
       <ProfileData
         type={type}
+        token={token}
         firstName={userData.firstname}
         lastName={userData.lastname}
         userId={type === "Patient" ? userData.patientid : userData.doctorid}

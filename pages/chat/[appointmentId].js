@@ -21,8 +21,9 @@ let userType;
 export default function Chat() {
   const dispatch = useDispatch();
   const userInfo = useSelector((state) => state.userData);
-const [chatFolderMobileView, setChatFolderMobileView] = useState(false);
+  const [chatFolderMobileView, setChatFolderMobileView] = useState(false);
   const [mounted, setMounted] = useState(false);
+  const [patientData, setPatientData] = useState();
   const router = useRouter();
   const appointmentId = router.query.appointmentId;
 
@@ -78,29 +79,45 @@ const [chatFolderMobileView, setChatFolderMobileView] = useState(false);
   }
 
   const toggleChatFolderMobileView = () => {
-    setChatFolderMobileView(prev => !prev);
-  }
+    setChatFolderMobileView((prev) => !prev);
+  };
 
+  const patientDataHandler = (patientData) => {
+    setPatientData(patientData);
+  };
 
   return (
     <ChatLayout toggleChatFolderMobileView={toggleChatFolderMobileView}>
-     {chatFolderMobileView && <BackDrop>
-        <ChatFolder
-          toggleChatFolderMobileView={toggleChatFolderMobileView}
-           style="animateSlideUp shadow-custom-shadow2 rounded-xl bg-white flex flex-col jusify-start w-[90%] h-[410px] pt-7 overflow-y-auto mb-5 px-5 "/>
-      </BackDrop>}
+      {chatFolderMobileView && (
+        <BackDrop>
+          <ChatFolder
+            token={token}
+            patientData={patientData}
+            appointmentId={appointmentId} 
+            toggleChatFolderMobileView={toggleChatFolderMobileView}
+            style="animateSlideUp shadow-custom-shadow2 rounded-xl bg-white flex flex-col jusify-start w-[90%] h-[410px] pt-7 overflow-y-auto mb-5 px-5 "
+          />
+        </BackDrop>
+      )}
       <div className="flex flex-col justify-between h-full w-full 2xl:pr-16 lg:w-9/12">
-       <span className="px-5">
+        <span className="px-5">
           <Header
-          type={userType}
-          toggleChatFolderMobileView={toggleChatFolderMobileView}
-            title={`Welcome ${userType === "Doctor" ? "Dr" : ""} ${firstName}`}
-          /> </span>
-       
-        <MyChat appointmentId={appointmentId} userType={userType} />
+            type={userType}
+            toggleChatFolderMobileView={toggleChatFolderMobileView}
+            title={`Welcome ${userType === "doctor" ? "Dr." : ""} ${firstName}`}
+          />{" "}
+        </span>
+
+        <MyChat
+          patientData={patientDataHandler}
+          appointmentId={appointmentId}
+          userType={userType}
+        />
       </div>
       {userType === "doctor" ? (
-        <ChatFolder />
+        patientData && (
+          <ChatFolder appointmentId={appointmentId} token={token} patientData={patientData} />
+        )
       ) : (
         <span className="hidden md:flex">
           {" "}

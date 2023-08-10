@@ -3,6 +3,7 @@ import ChatFolderInfo from "./ChatFolderInfo";
 import AddDetailsToFolderForm from "./AddDetailsToFolderForm";
 import { useState } from "react";
 
+
 const chatFolderData = [
   {
     complaint:
@@ -39,7 +40,8 @@ const ChatFolder = (props) => {
   const addFolderHandler = () => {
     setAddFolderDetails((prev) => !prev);
   };
-  const { style, toggleChatFolderMobileView } = props;
+
+  const { style, toggleChatFolderMobileView, patientData, token, appointmentId } = props;
 
   const styling =
     style ||
@@ -48,7 +50,7 @@ const ChatFolder = (props) => {
   return (
     <div className={styling}>
       {addFolderDetails && (
-        <AddDetailsToFolderForm addFolderHandler={addFolderHandler} />
+        <AddDetailsToFolderForm appointmentId={appointmentId} token={token} addFolderHandler={addFolderHandler} />
       )}
       <div className="flex justify-end mb-2 lg:hidden">
         <button
@@ -78,7 +80,7 @@ const ChatFolder = (props) => {
           />
         </div>
         <p className="text-base font-medium md:text-[20px]">
-          Kelvin Willis Folder
+        {`${patientData.firstname } ${patientData.lastname} Folder`}
         </p>
       </div>
       <div className="flex justify-between items-center mt-11 mb-9">
@@ -91,7 +93,7 @@ const ChatFolder = (props) => {
         </button>
       </div>
 
-      <ChatFolderInfo chatFolderData={chatFolderData} />
+      <ChatFolderInfo chatFolderData={chatFolderData} token={token} patientData={patientData}/>
     </div>
   );
 };
