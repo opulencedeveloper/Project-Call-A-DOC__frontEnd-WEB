@@ -143,6 +143,7 @@ const Appointments = () => {
         <Table tableData={checkUps} />
       </div>
       <UserProfile
+      userType="patient"
         name={`${patientFirstName} ${patientLastName}`}
         profilePicture={profilepicture}
         online={isOnline}

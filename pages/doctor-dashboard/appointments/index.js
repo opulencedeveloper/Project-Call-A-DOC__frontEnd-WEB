@@ -143,6 +143,7 @@ const boardContent = [
           />
        </div>
        <UserProfile
+       userType="doctor"
         name={`${patientFirstName} ${patientLastName}`}
         profilePicture={profilepicture}
         online={isOnline}

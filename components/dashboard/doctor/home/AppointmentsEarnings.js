@@ -20,7 +20,7 @@ const AppointmentsEarnings = (props) => {
           startWithdrawalRequestHandler={startWithdrawalRequestHandler}
         />
       )}
-      <div className="">
+      <div className="mb-12 xl:mb-0">
         {/* //DATA STATE  */}
         <div className="flex items-center space-x-4 rounded-xl bg-custom14 px-4 py-5 md:px-8">
           <div className="h-16 w-16 flex-shrink-0 flex items-center justify-center text-3xl font-medium text-custom14 rounded-full bg-custom1 md:text-4xl md:h-24 md:w-24">
@@ -75,7 +75,7 @@ const AppointmentsEarnings = (props) => {
         </div>
       </div>
       {/* SECOND DIV */}
-      <div className="rounded-2xl shadow-2xl flex flex-col justify-center px-5 md:px-9 pt-8 pb-14 ">
+      <div className="rounded-2xl shadow-custom-shadow2 flex flex-col justify-center px-5 md:px-9 pt-8 pb-14 ">
         <div className="flex justify-between pb-6 text-ash2">
           <p className="text-lg md:text-xl">Earnings</p>
           <select className="-ml-1 text-sm outline-none">

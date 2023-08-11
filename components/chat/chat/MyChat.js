@@ -48,6 +48,8 @@ if (typeof window !== "undefined") {
   });
 }
 
+let onlineStatus = "offline";
+
 const MyChat = (props) => {
   const chatContainerRef = useRef();
   const inputRef = useRef();
@@ -86,6 +88,7 @@ const MyChat = (props) => {
       const { status, message, patient, chats, doctor } = res;
 
       if (status === "success" && message === "Fetch Successfully") {
+        onlineStatus = "online";
         console.log("patient is patient", patient);
         props.userType === "patient"
           ? setReplierData(doctor)
@@ -194,10 +197,21 @@ const MyChat = (props) => {
           }
         />
       )}
-      <div className="border bg-custom8 absolute top-0 right-0 left-0 flex rounded-tl-2xl rounded-tr-2xl h-20 items-center justify-between border-b border-ash pb-3 pt-6 px-3 md:h-32">
-        <div className="flex items-center space-x-2 truncate mr-1 md:space-x-4">
-          <div className="h-10 w-10 rounded-full flex-shrink-0 bg-white overflow-hidden md:h-[82px] md:w-[82px]">
-            {Object.keys(replierData).length && (
+      <div className="border-b bg-custom8 absolute top-0 right-0 left-0 flex rounded-tl-2xl rounded-tr-2xl h-20 items-center justify-between border-b border-ash pb-3 pt-6 mx-3 md:h-32">
+        <div className="flex items-center space-x-2 mr-1 md:space-x-4">
+          <div className="relative h-10 w-10 rounded-full flex-shrink-0 bg-white md:h-[82px] md:w-[82px]">
+          <div className="absolute bottom-0.5 -right-1 h-[14px] w-[14px] md:bottom-2 md:h-[20px] md:w-[20px] md:right-1">
+          <Image
+            src={`/images/icon/${onlineStatus}.svg`}
+            alt="online-icon"
+            priority
+            loading="eager"
+            className="w-full h-full"
+            width={20}
+            height={20}
+          />
+        </div>
+          <div  className="h-full w-full rounded-full overflow-hidden">  {Object.keys(replierData).length && (
               <Image
                 src={`${replierData.profilepicture}`}
                 alt="chat-profile-picture"
@@ -205,14 +219,14 @@ const MyChat = (props) => {
                 width={82}
                 height={82}
               />
-            )}
+            )} </div>
           </div>
           {Object.keys(replierData).length && (
-            <div className="text-sm font-medium md:text-[25px]">
+            <p className="text-sm font-medium line-clamp-1 text-ellipsis md:text-[25px]">
               {props.userType === "patient"
                 ? `Dr. ${replierData.firstname} ${replierData.lastname}`
                 : `${replierData.firstname} ${replierData.lastname}`}
-            </div>
+            </p>
           )}
         </div>
         {props.userType === "doctor" && (

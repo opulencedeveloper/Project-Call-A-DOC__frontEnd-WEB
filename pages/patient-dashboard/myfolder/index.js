@@ -101,6 +101,7 @@ const MyFolder = () => {
         />
       </div>
       <UserProfile
+      userType="patient"
         name={`${patientFirstName} ${patientLastName}`}
         profilePicture={profilepicture}
         online={isOnline}

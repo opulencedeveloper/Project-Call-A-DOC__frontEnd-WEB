@@ -12,8 +12,8 @@ const Withdrawal = (props) => {
 
   useEffect(() => {
     const myResponse = (res) => {
-        console.log("Withdrwal response", res)
-     // setBanks(res);
+      console.log("Withdrwal response", res);
+      // setBanks(res);
     };
 
     fetchBankAccounts(
@@ -42,7 +42,10 @@ const Withdrawal = (props) => {
             </button>
           </div>
         ) : isLoading ? (
-          <LoadingSpinner pageHeight="h-max" />
+          <div className="flex flex-col items-center justify-center h-full w-full">
+            {" "}
+            <LoadingSpinner />{" "}
+          </div>
         ) : (
           <>
             {" "}
@@ -78,7 +81,7 @@ const Withdrawal = (props) => {
                     Amount
                   </label>
                   <div className="flex items-center h-[62px] border border-ash6 rounded-xl px-5">
-                    <p className="text-ash text-[16px]">N</p>
+                    <p className="text-ash text-[16px]">₦</p>
                     <input
                       name="amount"
                       type="text"

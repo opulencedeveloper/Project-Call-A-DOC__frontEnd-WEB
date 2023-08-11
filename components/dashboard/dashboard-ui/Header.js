@@ -120,9 +120,9 @@ const Header = (props) => {
             />{" "}
           </div>
         </Portal>
-        <div className="flex items-center">
+        <div className="flex items-center space-x-3">
           <button
-            className={`${navAnimationClass} block hamburger mr-5 2xl:hidden focus:outline-none`}
+            className={`${navAnimationClass} block hamburger 2xl:hidden focus:outline-none`}
             type="button"
             onClick={toggleDrawer}
           >
@@ -132,7 +132,7 @@ const Header = (props) => {
           </button>
           <div className="space-y-1 md:space-y-2.5">
             {" "}
-            <p className="font-semibold text-base truncate lg:text-4xl">{title}</p>
+            <p className="font-semibold text-base line-clamp-1 text-ellipsis lg:text-4xl">{title}</p>
             <p className="text-ash2 text-xs lg:text-lg">{formattedDate}</p>
           </div>
         </div>

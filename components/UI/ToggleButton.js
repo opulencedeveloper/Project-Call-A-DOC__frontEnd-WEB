@@ -10,7 +10,7 @@ const TogglButton = () => {
   };
   return (
     <div className="flex justify-end items-center mt-5">
-      <div className="mr-3 text-2xl font-medium">Go live</div>
+      <div className="mr-3 text-lg font-medium md:text-2xl">Go live</div>
       <label
         onClick={null}
         htmlFor="toggle-button"
@@ -24,9 +24,9 @@ const TogglButton = () => {
             checked={buttonState}
             onChange={toggleButton}
           />
-          <div className={`${buttonColor} w-14 h-8 rounded-full`}></div>
+          <div className={`${buttonColor} w-10 h-6 rounded-full md:w-14 md:h-8`}></div>
           <div
-            className={`absolute left-1 top-1 bg-custom1 w-6 h-6 rounded-full transition ${
+            className={`absolute left-1 top-1 bg-custom1 w-4 h-4 rounded-full md:w-6 md:h-6 transition ${
               !buttonState ? "translate-x-full" : "translate-x-0"
             }`}
           ></div>

@@ -63,6 +63,7 @@ const Dashboard = () => {
         <YourActivities />
       </div>
       <UserProfile
+      userType="patient"
         name={`${patientFirstName} ${patientLastName}`}
         profilePicture={profilepicture}
         online={isOnline}

@@ -4,7 +4,7 @@ import { useRouter } from "next/router";
 
 const UserProfile = (props) => {
   const router = useRouter();
-  const { name, profilePicture, online, styling } = props;
+  const { name, profilePicture, online, styling, userType } = props;
   const onlineStatus = online ? "online" : "offline";
   const onlineStatusText = online ? "Online" : "Offline";
   const onlineStatusTextColor = online ? "text-custom-g" : "text-custom11";
@@ -13,7 +13,9 @@ const UserProfile = (props) => {
     "h-full mb-5 flex flex-col items-center jusify-start lg:ml-5 2xl:ml-auto mt-5 xl:w-1/4 xl:mt-auto";
 
   const editButtonHandler = () => {
-    router.replace("settings");
+    const url =
+      userType === "doctor" ? "doctor-dashboard" : "patient-dashboard";
+    router.replace(`${url}/settings`);
   };
   return (
     <div className={style}>
@@ -35,17 +37,17 @@ const UserProfile = (props) => {
         />
       </div> */}
       <div className="relative pt-10">
-        <div className="rounded-full overflow-hidden">
+        <div className="rounded-full md:w-[190px] md:h-[190px] overflow-hidden md:w-[222px] md:h-[222px]">
           <Image
             src={profilePicture || "/images/profile-picture-placeholder.jpg"}
             alt="profile-picture"
             loading="eager"
-            className="w-[222px] h-[222px]"
+            className="w-full h-full"
             width={222}
             height={222}
           />
         </div>
-        <div className="absolute bottom-6 right-4">
+        <div className="absolute bottom-6 right-2 lg:right-4">
           <Image
             src={`/images/icon/${onlineStatus}.svg`}
             alt="online-icon"
