@@ -37,9 +37,15 @@ const chatFolderData = [
 const ChatFolder = (props) => {
   const [addFolderDetails, setAddFolderDetails] =
     useState(false);
+
+    const [chatInfoReloader, setChatInfoReloader] = useState(false);
   const addFolderHandler = () => {
     setAddFolderDetails((prev) => !prev);
   };
+
+  const reloadChatFolderInfoHandler = () => {
+    setChatInfoReloader(prev => !prev);
+  }
 
   const { style, toggleChatFolderMobileView, patientData, token, appointmentId } = props;
 
@@ -50,7 +56,9 @@ const ChatFolder = (props) => {
   return (
     <div className={styling}>
       {addFolderDetails && (
-        <AddDetailsToFolderForm appointmentId={appointmentId} token={token} addFolderHandler={addFolderHandler} />
+        <AddDetailsToFolderForm
+        reloadChatFolderInfo = {reloadChatFolderInfoHandler}
+         appointmentId={appointmentId} token={token} addFolderHandler={addFolderHandler} />
       )}
       <div className="flex justify-end mb-2 lg:hidden">
         <button
@@ -73,6 +81,7 @@ const ChatFolder = (props) => {
           <Image
             src="/images/icon/chat-folder-icon.svg"
             className="h-full w-full"
+            alt="chat-folder-icon"
             loading="eager"
             priority
             height={30}
@@ -93,7 +102,9 @@ const ChatFolder = (props) => {
         </button>
       </div>
 
-      <ChatFolderInfo chatFolderData={chatFolderData} token={token} patientData={patientData}/>
+      <ChatFolderInfo
+      chatInfoReloader={chatInfoReloader}
+       chatFolderData={chatFolderData} token={token} patientData={patientData}/>
     </div>
   );
 };

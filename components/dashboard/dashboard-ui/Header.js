@@ -99,8 +99,6 @@ const Header = (props) => {
     setShowNotifications((prev) => !prev);
   };
 
- const headerTitle = title === "Help Center" ? title : userType === "doctor" ? `Welcome Dr. ${title}` : `Welcome ${title}`;
-
   return (
     <>
       {" "}
@@ -134,8 +132,8 @@ const Header = (props) => {
           </button>
           <div className="space-y-1 md:space-y-2.5">
             {" "}
-            <p className="font-semibold text-md md:text-4xl">{title}</p>
-            <p className="text-ash2 text-xs md:text-lg">{formattedDate}</p>
+            <p className="font-semibold text-base truncate lg:text-4xl">{title}</p>
+            <p className="text-ash2 text-xs lg:text-lg">{formattedDate}</p>
           </div>
         </div>
 

@@ -32,10 +32,12 @@ const fags = [
   },
 ];
 
-const HelpCenterInfo = () => {
+const HelpCenterInfo = (props) => {
   const [activeIndex, setActiveIndex] = useState(0);
   const [contactSupport, setContactSupport] = useState(false);
   const nodeRef = useRef(null);
+
+  const {userType, token} = props;
 
   const handleToggle = (index) => {
     setActiveIndex(index === activeIndex ? null : index);
@@ -46,12 +48,15 @@ const HelpCenterInfo = () => {
   }
 
   return (
-    <div className="pt-8 md:pt-14">
-        {contactSupport && <ContactSupportJourney  contactSupportHandler={ contactSupportHandler} />}
+    <div className="pt-14">
+        {contactSupport && <ContactSupportJourney
+        userType={userType}
+        token={token}
+        contactSupportHandler={ contactSupportHandler} />}
       <p className="text-center font-montserrat font-medium text-[20px] text-custom9 mb-4 md:text-[31px]">
         We are here to help
       </p>
-      <p className="text-ash2 text-[18px] font-medium text-center mb-4 md:text-[25px]">
+      <p className="text-ash2 text-base font-medium text-center mb-4 md:text-[25px]">
         Got any complaint? Please reach out to out support team
       </p>
       <button 
@@ -84,7 +89,7 @@ const HelpCenterInfo = () => {
               <span className="text-[18px] text-start font-medium text-gray-1 md:text-[24px]">
                 {fag.title}
               </span>
-              <div className="relative h-[28px] w-[28px] md:h-[32px] md:w-[32px] flex-shrink-0 border-[3px] border-ash5  rounded-full">
+              <div className="relative flex-shrink-0 h-[28px] w-[28px] md:h-[32px] md:w-[32px] border-[3px] border-ash5  rounded-full">
                 <div
                   className={`absolute w-[70%] rounded-full h-[3px] bg-ash5 inset-1/2 transform -translate-x-1/2 -translate-y-1/2 transform ${
                     activeIndex === index ? "rotate-90" : ""

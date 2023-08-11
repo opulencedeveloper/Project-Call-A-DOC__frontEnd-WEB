@@ -13,6 +13,7 @@ import { useRouter } from "next/router";
 import ChatFolder from "@/components/chat/chat/ChatFolder";
 import AddDetailsToFolder from "@/components/chat/chat/AddDetailsToFolderForm";
 import BackDrop from "@/components/UI/BackDrop";
+import Image from "next/image";
 const { addUserData } = userDataActions;
 
 let isOnline = false;
@@ -87,13 +88,13 @@ export default function Chat() {
   };
 
   return (
-    <ChatLayout toggleChatFolderMobileView={toggleChatFolderMobileView}>
+    <ChatLayout>
       {chatFolderMobileView && (
         <BackDrop>
           <ChatFolder
             token={token}
             patientData={patientData}
-            appointmentId={appointmentId} 
+            appointmentId={appointmentId}
             toggleChatFolderMobileView={toggleChatFolderMobileView}
             style="animateSlideUp shadow-custom-shadow2 rounded-xl bg-white flex flex-col jusify-start w-[90%] h-[410px] pt-7 overflow-y-auto mb-5 px-5 "
           />
@@ -107,7 +108,38 @@ export default function Chat() {
             title={`Welcome ${userType === "doctor" ? "Dr." : ""} ${firstName}`}
           />{" "}
         </span>
+        <div className="flex items-center justify-between space-x-3 px-5 lg:hidden">
+          <div className="flex items-center space-x-3">
+            <div className="w-[33px] h-[25px] md:h-[30px] md:w-[37px]">
+              <Image
+                src="/images/icon/chat-folder-icon.svg"
+                alt="chat-folder-icon"
+                className="h-full w-full"
+                loading="eager"
+                priority
+                height={30}
+                width={37}
+              />
+            </div>
+            {patientData && <p className="text-sm font-medium truncate">
+              {`${patientData.firstname} ${patientData.lastname} Folder`}
+            </p>}
+          </div>
 
+          <button
+            onClick={toggleChatFolderMobileView}
+            className="w-[12px] h-[12px]"
+          >
+            {" "}
+            <Image
+              src="/images/icon/drop-down.svg"
+              alt="email-icon"
+              className="w-full h-full"
+              width={12}
+              height={12}
+            />{" "}
+          </button>
+        </div>
         <MyChat
           patientData={patientDataHandler}
           appointmentId={appointmentId}
@@ -116,7 +148,11 @@ export default function Chat() {
       </div>
       {userType === "doctor" ? (
         patientData && (
-          <ChatFolder appointmentId={appointmentId} token={token} patientData={patientData} />
+          <ChatFolder
+            appointmentId={appointmentId}
+            token={token}
+            patientData={patientData}
+          />
         )
       ) : (
         <span className="hidden md:flex">

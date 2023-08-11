@@ -11,7 +11,7 @@ const ChatFolderInfo = (props) => {
     sendRequest: fetchPatientFolderDetails,
   } = useHttp();
 
-  const { chatFolderData, token, patientData } = props;
+  const { chatFolderData, token, patientData, chatInfoReloader } = props;
 
   useEffect(() => {
     const myResponse = (res) => {
@@ -27,7 +27,7 @@ const ChatFolderInfo = (props) => {
       },
       myResponse
     );
-  }, [token]);
+  }, [token, chatInfoReloader]);
 
   console.log("patientFolderData", patientFolderData);
   return (

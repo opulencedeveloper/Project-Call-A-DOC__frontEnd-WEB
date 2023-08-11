@@ -58,7 +58,7 @@ const ProfileData = (props) => {
           <input
             type="file"
             onChange={handleImageChange}
-            accept=".jpg, .png, .pdf"
+            accept=".jpg, .png, .jpeg"
             id="fileInput"
             className="hidden"
           />

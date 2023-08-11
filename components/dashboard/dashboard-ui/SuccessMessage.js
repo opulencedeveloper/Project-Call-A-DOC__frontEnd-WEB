@@ -1,12 +1,22 @@
 import Image from "next/image";
+import { useEffect } from "react";
 
-const ContactSupportSuccess = (props) => {
-  const {contactSupportHandler} = props;
+const SuccessMessage = (props) => {
+  const { successMessageHandler, successMessage } = props; 
+  useEffect(() => {
+    const interval = setInterval(() => {
+      successMessageHandler()
+    }, 1900);
+
+    return () => {
+      clearInterval(interval);
+    };
+  }, []);
   return (
     <div className="animateSlideUp flex flex-col justify-center space-y-8 h-[400px] w-[85%] z-50 pt-5 px-5 shadow-custom-shadow2 rounded-2xl bg-white md:h-[559px] md:px-11 md:w-[479px]">
-      <div className="w-[100px] h-[100px] mx-auto md:w-[199px] md:h-[199px]"> 
+      <div className="w-[100px] h-[100px] mx-auto md:w-[199px] md:h-[199px]">
         <Image
-          src="/images/contact-support-checkmark-green-image.svg"
+          src="/images/animation_ll6f9sq6_small.gif"
           loading="eager"
           priority
           alt=" end-appointment-image"
@@ -16,14 +26,10 @@ const ContactSupportSuccess = (props) => {
         />
       </div>
       <p className="text-custom9 text-[20px] mt-3 leading-snug font-medium text-center md:text-[31px]">
-      Message sent successfully
+        {successMessage || 'Message sent successfully'}
       </p>
-
-      <button 
-      onClick={contactSupportHandler}
-       className=" border border-ash4 rounded-full px-12 py-3 text-black text-base md:py-4 md:text-xl">Ok</button>
     </div>
   );
 };
 
-export default ContactSupportSuccess;
+export default SuccessMessage;

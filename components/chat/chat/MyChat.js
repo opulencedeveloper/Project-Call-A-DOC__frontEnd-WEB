@@ -66,8 +66,8 @@ const MyChat = (props) => {
   const router = useRouter();
   const authCtx = useContext(AuthContext);
   const { token } = authCtx;
-  const { patientData } = props;
-  console.log("MyChat AppId is", props.appointmentId);
+  const { patientData, appointmentId } = props;
+  console.log("MyChat AppId is", appointmentId);
 
   useLayoutEffect(() => {
     const scrollToBottom = () => {
@@ -99,7 +99,7 @@ const MyChat = (props) => {
 
     sendChatRequest(
       {
-        url: `appointment/fetchappointmentchats?appointmentid=${props.appointmentId}`,
+        url: `appointment/fetchappointmentchats?appointmentid=${appointmentId}`,
         token: token,
       },
       myResponse
@@ -107,12 +107,12 @@ const MyChat = (props) => {
     const chatListener = (e) => {
       setChats((prevArray) => [...prevArray, e.chat]);
     };
-    window.Echo.channel(`${props.appointmentId}`).listen(
+    window.Echo.channel(`${appointmentId}`).listen(
       "ChatMessenger",
       chatListener
     );
     return () => {
-      window.Echo.leaveChannel(`${props.appointmentId}`);
+      window.Echo.leaveChannel(`${appointmentId}`);
     };
   }, [token]);
 
@@ -132,7 +132,7 @@ const MyChat = (props) => {
       {
         url: "appointment/sendchat",
         method: "POST",
-        body: { appointmentid: `${props.appointmentId}`, message: inputValue },
+        body: { appointmentid: `${appointmentId}`, message: inputValue },
         token: token,
       },
       myResponse
@@ -144,7 +144,7 @@ const MyChat = (props) => {
   };
 
   const startVideoCallHandler = () => {
-    window.open("/video-call/" + props.appointmentId, "_blank");
+    window.open("/video-call/" + appointmentId, "_blank");
   };
 
   function isURL(str) {
@@ -173,9 +173,13 @@ const MyChat = (props) => {
   };
 
   return (
-    <div className="relative h-[80%] flex flex-col justify-end w-full bg-custom8 rounded-tl-2xl rounded-tr-2xl">
+    <div className="relative h-[83%] flex flex-col justify-end w-full bg-custom8 rounded-tl-2xl rounded-tr-2xl">
       {prescribeDrugs && (
-        <PrescribeDrugs prescribeDrugsHandler={prescribeDrugsHandler} />
+        <PrescribeDrugs
+          token={token}
+          appointmentId={appointmentId}
+          prescribeDrugsHandler={prescribeDrugsHandler}
+        />
       )}
       {isScheduleCheckup && (
         <ScheduleCheckup scheduleCheckupHandler={scheduleCheckupHandler} />
@@ -191,7 +195,7 @@ const MyChat = (props) => {
         />
       )}
       <div className="border bg-custom8 absolute top-0 right-0 left-0 flex rounded-tl-2xl rounded-tr-2xl h-20 items-center justify-between border-b border-ash pb-3 pt-6 px-3 md:h-32">
-        <div className="flex items-center border space-x-4">
+        <div className="flex items-center space-x-2 truncate mr-1 md:space-x-4">
           <div className="h-10 w-10 rounded-full flex-shrink-0 bg-white overflow-hidden md:h-[82px] md:w-[82px]">
             {Object.keys(replierData).length && (
               <Image
@@ -212,12 +216,12 @@ const MyChat = (props) => {
           )}
         </div>
         {props.userType === "doctor" && (
-          <div className="border relative flex flex-wrap items-center justify-end my-2 space-x-5">
+          <div className="relative flex flex-wrap items-center justify-end my-2 space-x-5">
             {/* add-checkup-calender-icon.svg */}
 
             <button
               onClick={prescribeDrugsHandler}
-              className="h-[24px] w-[220] rounded-full border border-custom space-x-1 p-1 flex items-center justify-center text-center sm:mb-0 lg:p-0 lg:space-x-4 lg:h-[40px] lg:w-[200px] xl:h-[52px] xl:w-[239px]"
+              className="flex items-center justify-center text-center h-[28px] w-[220] rounded-full border border-custom space-x-1 px-1 my-1 md:my-0 lg:p-0 lg:space-x-4 md:h-[40px] md:w-[200px] xl:h-[52px] xl:w-[239px]"
             >
               <div className=" h-[16px] w-[16px]">
                 <Image
@@ -234,7 +238,7 @@ const MyChat = (props) => {
             </button>
 
             <button
-              className="h-4 w-4 mb-2 md:mb-0 md:h-[40px] md:w-[40px]"
+              className="h-4 w-4 my-1 md:my-0 md:mb-0 md:h-[40px] md:w-[40px]"
               onClick={startVideoCallHandler}
             >
               {" "}
@@ -248,7 +252,7 @@ const MyChat = (props) => {
             </button>
 
             <button
-              className="relative h-4 w-4 mb-2 md:mb-0 md:h-[24px] md:w-[24px]"
+              className="relative h-4 w-4 my-1 md:my-0 md:h-[24px] md:w-[24px]"
               onClick={moreVertButtonHandler}
             >
               {moreVertButton && (

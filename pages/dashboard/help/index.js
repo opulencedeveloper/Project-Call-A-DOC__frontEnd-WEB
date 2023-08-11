@@ -20,9 +20,6 @@ const { addUserData } = userDataActions;
 let isOnline = false;
 
 let userType;
-if (typeof window !== "undefined") {
-  userType = localStorage.getItem("userType");
-}
 
 const Help = () => {
   const router = useRouter();
@@ -39,6 +36,7 @@ const Help = () => {
   const { token } = authCtx;
 
   useEffect(() => {
+    userType = localStorage.getItem("userType");
     const myResponse = (res) => {
       const { status, doctor } = res;
       if (status === "success") {
@@ -70,7 +68,7 @@ console.log(url)
     <DashBoardLayout type={userType}> 
       <div className="flex-1 2xl:pr-16">
         <Header title={"Help Center"} type={userType} />
-        <HelpCenterInfo />
+        <HelpCenterInfo userType ={userType} token ={token}/>
       </div>
       <UserProfile
         name={`${patientFirstName} ${patientLastName}`}

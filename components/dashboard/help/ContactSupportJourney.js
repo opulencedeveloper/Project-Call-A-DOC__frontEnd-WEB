@@ -2,12 +2,12 @@ import BackDrop from "@/components/UI/BackDrop";
 import Image from "next/image";
 import ContactSupportDetails from "./ContactSupport/ContactSupportDetails";
 import { useState } from "react";
-import ContactSupportSuccess from "./ContactSupport/ContactSupportSuccess";
+import SuccessMessage from "../dashboard-ui/SuccessMessage";
 
 const ContactSupportJourney = (props) => {
   const [contactSupportJourneySteps, setContactSupportJourneySteps] =
     useState("1");
-  const { contactSupportHandler } = props;
+  const { contactSupportHandler, userType, token } = props;
 
   const contactSupportJourneyStepsHandler = () => {
     setContactSupportJourneySteps("2");
@@ -16,12 +16,14 @@ const ContactSupportJourney = (props) => {
     <BackDrop>
       {contactSupportJourneySteps === "1" && (
         <ContactSupportDetails
-          contactSupportHandler={contactSupportHandler}
+        userType={userType}
+        token={token}
+          contactSupport={contactSupportHandler}
           contactSupportJourneyStepsHandler={contactSupportJourneyStepsHandler}
         />
       )}
       {contactSupportJourneySteps === "2" && (
-        <ContactSupportSuccess contactSupportHandler={contactSupportHandler} />
+        <SuccessMessage successMessageHandler={contactSupportHandler} />
       )}
     </BackDrop>
   );
