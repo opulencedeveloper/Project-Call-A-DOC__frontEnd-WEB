@@ -20,10 +20,9 @@ const ProfilePictureUploadPreview = (props) => {
 
   const handleImageChange = (event) => {
     const selectedFile = event.target.files[0];
-
     if (selectedFile !== selectedImageData) {
-      const imageUrl = URL.createObjectURL(selectedFile);
-      setSelectedImage(imageUrl);
+      console.log("Helooooooooooooooooooooo")
+      setSelectedImage(selectedFile);
     }
   };
 
@@ -38,14 +37,17 @@ const ProfilePictureUploadPreview = (props) => {
 
   const uploadPictureHandler = () => {
     const formData = new FormData();
-    formData.append("profilepicture", selectedImage);
-    console.log(formData);
+    
+    formData.append('profilepicture', selectedImage);
+    console.log(JSON.stringify([...formData]));
+console.log(formData);
+return;
     uploadProfilePictureRequest(
       {
-        url: `customer/changeprofilepicture`,
+        url: `doctor/changeprofilepicture`,
         method: "POST",
         contentType: "multipart/form-data",
-        body: { profilepicture: selectedImage },
+        body:  formData,
         token: token,
       },
       myResponse
@@ -76,7 +78,7 @@ const ProfilePictureUploadPreview = (props) => {
           <div className="flex justify-center items-center h-[200px] w-[200px] rounded-full overflow-hidden border border-custom9 md:h-[320px] md:w-[320px]">
             {selectedImage && (
               <Image
-                src={selectedImage}
+                src={URL.createObjectURL(selectedImage)}
                 alt="profile-picture-change"
                 style={{ width: `${pictureSize}px`, height: `${pictureSize}px` }}
                 width={24}
@@ -106,6 +108,7 @@ const ProfilePictureUploadPreview = (props) => {
               type="file"
               accept=".jpg, .png, .jpeg"
               id="fileInput"
+              name="fileInput"
               onChange={handleImageChange}
               className="hidden"
             />

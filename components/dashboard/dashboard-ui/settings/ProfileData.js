@@ -16,8 +16,7 @@ const ProfileData = (props) => {
     const selectedFile = event.target.files[0];
     console.log("clicked")
     if (selectedFile) {
-      const imageUrl = URL.createObjectURL(selectedFile);
-      setSelectedImage(imageUrl);
+      setSelectedImage(selectedFile);
       console.log("clicked")
       profilePictureUploadPreviewHandler();
     }
@@ -53,7 +52,7 @@ const ProfileData = (props) => {
             </p>
           </div>
         </div>
-        ..
+        
         <div className="rounded-full space-x-1 border border-ash-4 w-[100px] h-[35px] md:w-[107px] md:h-[54px]">
           <input
             type="file"

@@ -59,11 +59,11 @@ const Dashboard = () => {
     <DashBoardLayout type="patient">
       <div className="flex-1 2xl:pr-16">
         <Header title={`Welcome ${patientFirstName}`} />
-        <CheckUp />
+        <CheckUp token={token} />
         <YourActivities />
       </div>
       <UserProfile
-      userType="patient"
+        userType="patient"
         name={`${patientFirstName} ${patientLastName}`}
         profilePicture={profilepicture}
         online={isOnline}
