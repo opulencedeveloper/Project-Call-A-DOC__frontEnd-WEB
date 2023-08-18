@@ -3,7 +3,7 @@ import { useRouter } from "next/router";
 import { useDispatch, useSelector } from "react-redux";
 import Header from "@/components/dashboard/dashboard-ui/Header";
 import UserProfile from "@/components/dashboard/dashboard-ui/UserProfile";
-import CheckUp from "@/components/dashboard/patient/home/CheckUp";
+import CheckUpandDosageLayout from "@/components/dashboard/patient/home/CheckUpandDosageLayout";
 import YourActivities from "@/components/dashboard/patient/home/YourActivities";
 import DashBoardLayout from "@/components/dashboard/dashboard-layout/DashBoardLayout";
 import AuthContext from "@/store/context-store/auth-context";
@@ -21,6 +21,7 @@ const Dashboard = () => {
   const {
     firstname: patientFirstName,
     lastname: patientLastName,
+    patientid: patientId,
     profilepicture,
   } = userInfo;
   const { isLoading, error, sendRequest: fetchUserData } = useHttp();
@@ -59,8 +60,8 @@ const Dashboard = () => {
     <DashBoardLayout type="patient">
       <div className="flex-1 2xl:pr-16">
         <Header title={`Welcome ${patientFirstName}`} />
-        <CheckUp token={token} />
-        <YourActivities />
+        <CheckUpandDosageLayout patientId={patientId} token={token} />
+        <YourActivities token={token}/>
       </div>
       <UserProfile
         userType="patient"

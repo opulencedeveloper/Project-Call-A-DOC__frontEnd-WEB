@@ -17,6 +17,8 @@ const UserProfile = (props) => {
       userType === "doctor" ? "doctor-dashboard" : "patient-dashboard";
     router.replace(`${url}/settings`);
   };
+
+  console.log("profile picture is", profilePicture)
   return (
     <div className={style}>
       {/* <div className=" flex justify-between w-full mb-12">

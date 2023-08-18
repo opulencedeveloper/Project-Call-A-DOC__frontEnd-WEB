@@ -26,6 +26,7 @@ const SignUpAuth = () => {
             alt="call-a-doc-logo-two"
             className="w-auto h-auto"
             loading="eager"
+            priority
             width={64}
             height={61}
           />

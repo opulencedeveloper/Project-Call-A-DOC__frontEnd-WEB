@@ -17,7 +17,7 @@ export default function App({ Component, pageProps }) {
   return (
     <AuthContextProvider>
       <Provider store={store}>
-        <main className={`${montserrat.variable} font-montserrat`}>
+        <main className={`${montserrat.variable} font-montserrat  max-w-[120rem] mx-auto`}>
           <Component {...pageProps} />
         </main>
       </Provider>

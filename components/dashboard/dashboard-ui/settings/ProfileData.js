@@ -2,6 +2,7 @@ import Image from "next/image";
 import ProfilePictureUploadPreview from "./ProfilePictureUploadPreview";
 import { useState } from "react";
 
+
 const ProfileData = (props) => {
   const [selectedImage, setSelectedImage] = useState(null);
   const [profilePictureUploadPreview, setProfilePictureUploadPreview] =
@@ -12,14 +13,14 @@ const ProfileData = (props) => {
     setProfilePictureUploadPreview((prev) => !prev);
   };
 
-  const handleImageChange = (event) => {
+  const handleImageChange = async (event) => {
     const selectedFile = event.target.files[0];
-    console.log("clicked")
     if (selectedFile) {
       setSelectedImage(selectedFile);
       console.log("clicked")
       profilePictureUploadPreviewHandler();
     }
+    
   };
 
   return (

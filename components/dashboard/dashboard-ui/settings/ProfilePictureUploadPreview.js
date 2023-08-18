@@ -5,11 +5,6 @@ import { useState } from "react";
 
 const ProfilePictureUploadPreview = (props) => {
   const [pictureSize, setPictureSize] = useState(320);
-  const {
-    isLoading,
-    error,
-    sendRequest: uploadProfilePictureRequest,
-  } = useHttp();
   const { selectedImageData, profilePictureUploadPreviewHandler, token } =
     props;
   const [selectedImage, setSelectedImage] = useState(selectedImageData);
@@ -21,38 +16,37 @@ const ProfilePictureUploadPreview = (props) => {
   const handleImageChange = (event) => {
     const selectedFile = event.target.files[0];
     if (selectedFile !== selectedImageData) {
-      console.log("Helooooooooooooooooooooo")
       setSelectedImage(selectedFile);
     }
   };
 
-  const myResponse = (res) => {
-    const { status, doctor, customer } = res;
-    const data = doctor || customer;
-    if (status === "success") {
-      console.log("profile data", data);
-      //  setUserData(data);
+  const uploadPictureHandler = async () => {
+    const formData = new FormData();
+    formData.append("profilepicture", selectedImage);
+
+    try {
+      const response = await fetch(
+        "https://call-a-doctor-api.herokuapp.com/api/v1/customer/changeprofilepicture",
+        {
+          method: "POST",
+          body: formData,
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+      let responseData = await response.json();
+      console.log("http response", responseData);
+      console.log("Image uploaded successfully");
+      if (response.ok) {
+      } else {
+        console.error("Image upload failed");
+      }
+    } catch (error) {
+      console.error("Error uploading image", error);
     }
   };
 
-  const uploadPictureHandler = () => {
-    const formData = new FormData();
-    
-    formData.append('profilepicture', selectedImage);
-    console.log(JSON.stringify([...formData]));
-console.log(formData);
-return;
-    uploadProfilePictureRequest(
-      {
-        url: `doctor/changeprofilepicture`,
-        method: "POST",
-        contentType: "multipart/form-data",
-        body:  formData,
-        token: token,
-      },
-      myResponse
-    );
-  };
   return (
     <BackDrop>
       {" "}
@@ -80,7 +74,10 @@ return;
               <Image
                 src={URL.createObjectURL(selectedImage)}
                 alt="profile-picture-change"
-                style={{ width: `${pictureSize}px`, height: `${pictureSize}px` }}
+                style={{
+                  width: `${pictureSize}px`,
+                  height: `${pictureSize}px`,
+                }}
                 width={24}
                 height={24}
               />

@@ -1,16 +1,9 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   images: {
-    remotePatterns: [
-      {
-        protocol: 'https',
-        hostname: 'res.cloudinary.com',
-        port: '',
-       // pathname: '/account123/**',
-      },
-    ],
+    domains: ['res.cloudinary.com', 'call-a-doctor-api.herokuapp.com'],
   },
-  reactStrictMode: false,
-}
+  reactStrictMode: true,
+};
 
-module.exports = nextConfig
+module.exports = nextConfig;
