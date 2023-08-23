@@ -1,10 +1,11 @@
 import Image from "next/image";
 
 const LoadingSpinner = (props) => {
-  const { errorMessage, pageHeight } = props;
+  const { errorMessage, pageHeight, loadWidth } = props;
   const loadedBgHeight = pageHeight || "h-screen";
+  const loaderWidth = loadWidth || "w-full";
   return (
-    <div className={`flex justify-center items-center ${loadedBgHeight} w-full`}>
+    <div className={`flex justify-center items-center ${loadedBgHeight} ${loaderWidth}`}>
       {errorMessage ? (
       <div className="bg-custom11 mx-10 rounded-md text-custom1 font-semibold text-sm py-3 px-5 md:px-10">
       <p className="text-center">{errorMessage}</p>

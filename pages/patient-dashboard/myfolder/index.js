@@ -22,6 +22,7 @@ const MyFolder = () => {
   const {
     firstname: patientFirstName,
     lastname: patientLastName,
+    patientid: patientId,
     profilepicture,
   } = userInfo;
   const { isLoading, error, sendRequest: fetchUserData } = useHttp();
@@ -59,7 +60,7 @@ const MyFolder = () => {
     <DashBoardLayout type="patient">
       <div className="flex-1 2xl:pr-16">
         <Header title={"My Folder"} />
-        <AppointmentTable token={token} />
+        <AppointmentTable token={token} patientId={patientId} />
       </div>
       <UserProfile
         userType="patient"

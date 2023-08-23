@@ -15,82 +15,29 @@ import UserProfile from "@/components/dashboard/dashboard-ui/UserProfile";
 import DashBoardLayout from "@/components/dashboard/dashboard-layout/DashBoardLayout";
 import ActivityLineGraph from "@/components/dashboard/dashboard-ui/ActivityChart";
 import useHttp from "@/hooks/useHttp";
+import ActivityChartData from "@/components/dashboard/patient/home/ActivityChartData";
 
 
 let isOnline = false;
 
-const checkUps = [
+const boardLabels = [
   {
-    tableData1: "Jenny Wilson",
-    tableData2: "15/08/2017",
-    tableData3: "7:30 am",
-    tableData4: "Ongoing",
-    tableData5: "15/08/2017",
-  },
-  {
-    tableData1: "Jenny Wilson",
-    tableData2: "15/08/2017",
-    tableData3: "7:30 am",
-    tableData4: "Completed",
-    tableData5: "15/08/2017",
-  },
-  {
-    tableData1: "Jenny Wilson",
-    tableData2: "15/08/2017",
-    tableData3: "7:30 am",
-    tableData4: "Ongoing",
-    tableData5: "15/08/2017",
-  },
-  {
-    tableData1: "Jenny Wilson",
-    tableData2: "15/08/2017",
-    tableData3: "7:30 am",
-    tableData4: "Completed",
-    tableData5: "15/08/2017",
-  },
-];
-
-const boardContent = [
-  {
-    appointmentNumber: "0",
     title: "Total",
     subTitle: "Appointments",
-    // Data state color => bg-custom14
-    color: "bg-ash6",
+    color: "bg-custom14",
   },
   {
-    appointmentNumber: "0",
     title: "Successful",
     subTitle: "Checkups",
-    //Data state color => bg-custom-g3
-    color: "bg-ash6",
+    color: "bg-custom-g3",
   },
   {
-    appointmentNumber: "0",
     title: "Missed",
     subTitle: "Checkups",
-    //Data state color => bg-custom-r-shade1
-    color: "bg-ash6",
+    color: "bg-custom-r-shade1",
   },
 ];
 
-const chartData = [
-  {
-    name: "Data 1",
-    data: [5, 15, 10, 17, 12, 8, 25, 14, 24, 20, 21, 18],
-    color: "#65D6AD",
-  },
-  {
-    name: "Data 2",
-    data: [12, 15, 17, 17, 15, 16, 7, 13, 14, 19, 17, 12],
-    color: "#1992D4",
-  },
-  {
-    name: "Data 2",
-    data: [12, 14, 17, 19, 14, 16, 18, 21, 15, 16, 16, 12],
-    color: "#F86A6A",
-  },
-];
 
 const Appointments = () => {
   const router = useRouter();
@@ -137,10 +84,9 @@ const Appointments = () => {
     <DashBoardLayout type="patient">
       <div className="flex-1 2xl:pr-16">
         <Header title="Appointments" />
-        <Board pageContent={boardContent} />
-        <div className="mt-10 mb-3">Appoinments</div>
-        <ActivityLineGraph productData={chartData} />
-        <Table tableData={checkUps} />
+        <Board boardLabels={boardLabels} token={token}/>
+        <div className="h-10"></div> 
+       <ActivityChartData token={token}/> 
       </div>
       <UserProfile
       userType="patient"

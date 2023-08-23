@@ -1,65 +1,66 @@
 import useHttp from "@/hooks/useHttp";
 import Table from "../../dashboard-ui/Table";
 import { useEffect } from "react";
-const checkUps = [
-  {
-    tableData1: "Jenny Wilson",
-    tableData2: "15/08/2017",
-    tableData3: "7:30 am",
-    tableData4: "Patient was having headache and mild one sided migraines",
-    tableData5: "15/08/2017",
-  },
-  {
-    tableData1: "Jenny Wilson",
-    tableData2: "15/08/2017",
-    tableData3: "7:30 am",
-    tableData4: "Patient was having headache and mild one sided migraines",
-    tableData5: "15/08/2017",
-  },
-  {
-    tableData1: "Jenny Wilson",
-    tableData2: "15/08/2017",
-    tableData3: "7:30 am",
-    tableData4: "Patient was having headache and mild one sided migraines",
-    tableData5: "15/08/2017",
-  },
-  {
-    tableData1: "Jenny Wilson",
-    tableData2: "15/08/2017",
-    tableData3: "7:30 am",
-    tableData4: "Patient was having headache and mild one sided migraines",
-    tableData5: "15/08/2017",
-  },
-];
+import { useState } from "react";
+import LoadingSpinner from "@/components/UI/LoadingSpinner";
+
 
 const AppointmentTable = (props) => {
+  const [appointments, setAppointments] = useState();
   const { isLoading, error, sendRequest: fetchAppointments } = useHttp();
-  const {token} = props;
+  const { token, patientId } = props;
+
   useEffect(() => {
     const fetchAppointmentsResponse = (res) => {
       const { data } = res;
-     // setCheckUp(data);
-      console.log("Appointment Dataaaaaaaaaaa", data);
+
+      const modifiedAppointmentInfo = data.map((appointmentData) => {
+        const { doctor, folderid, prescription, ddate, appointmentid, title } = appointmentData;
+
+        return {
+          tableProfileUrl: doctor.profilepicture,
+          tableData1: `${doctor.firstname} ${doctor.lastname}`,
+          tableData2: folderid,
+          tableData3: ddate,
+          tableData4: title,
+          tableData5: prescription,
+          appointmentId: appointmentid,
+        };
+      });
+
+      setAppointments(modifiedAppointmentInfo);
     };
 
     fetchAppointments(
       {
-        url: "customer/fetchappointments?perpage=2",
+        url: `customer/folder/fetchdescriptions?patientid=${patientId}`,
         token: token,
       },
       fetchAppointmentsResponse
     );
-
   }, [fetchAppointments, token]);
-  return (
+
+  if (isLoading) {
+    return <LoadingSpinner />;
+  }
+
+  const appointmentTableOnclickHandler = (appointmentId) => {
+    window.open("/chat/" + appointmentId, '_blank');
+  }
+  return error ? (
+    <div className="bg-custom11 mx-10 rounded-md text-custom1 font-semibold text-sm py-3 px-5 md:px-10">
+      <p className="text-center">{error}</p>
+    </div>
+  ) : (
     <Table
-      tableData={checkUps}
+      tableData={appointments}
       tableHeaderData2="ID"
       tableHeaderData3="AppointmentDate"
       tableHeaderData4="Diagnosis"
       tableHeaderData5="Prescription"
       inputSearchHeader="Folder Entries"
       tableEmptyStateText="No data Yet"
+      tableOnclickHandler={appointmentTableOnclickHandler}
     />
   );
 };

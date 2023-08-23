@@ -7,7 +7,7 @@ const ProfileData = (props) => {
   const [selectedImage, setSelectedImage] = useState(null);
   const [profilePictureUploadPreview, setProfilePictureUploadPreview] =
     useState(false);
-  const { type, firstName, lastName, userId, token } = props;
+  const { type, firstName, lastName, userId, token, setProfileUpdateHandler, profileImageUrl, setReloadComponent } = props;
 
   const profilePictureUploadPreviewHandler = () => {
     setProfilePictureUploadPreview((prev) => !prev);
@@ -27,6 +27,9 @@ const ProfileData = (props) => {
     <div className="w-full">
       {profilePictureUploadPreview && (
         <ProfilePictureUploadPreview
+        setReloadComponent={setReloadComponent}
+        type={type}
+        setProfileUpdateHandler={setProfileUpdateHandler}
         token={token}
          selectedImageData={selectedImage} 
         profilePictureUploadPreviewHandler={profilePictureUploadPreviewHandler}
@@ -35,9 +38,9 @@ const ProfileData = (props) => {
       <p className="text-lg font-medium md:text-[25px] mb-8">My Profile</p>
       <div className="flex items-center justify-between px-3 py-6 border border-ash4 rounded-xl w-full md:px-6">
         <div className="flex items-center space-x-3">
-          <div className="h-14 w-14 md:h-[120px] md:w-[120px]">
+          <div className="ng-primary flex-shrink-0 rounded-full overflow-hidden h-14 w-14 md:h-[120px] md:w-[120px]">
             <Image
-              src="/images/doctor-joseph.svg"
+              src={profileImageUrl}
               alt="doctor"
               className="h-full w-full"
               width={82}

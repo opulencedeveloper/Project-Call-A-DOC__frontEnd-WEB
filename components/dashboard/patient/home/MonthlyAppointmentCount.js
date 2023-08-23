@@ -11,27 +11,29 @@ const MonthlyAppoimentCount = (props) => {
   } = useHttp();
   const { token } = props;
   {
-    /* Data state class => bg-custom14 */
+   
   }
 
   useEffect(() => {
     const totalMonthAppoitntmentResponse = (res) => {
-      const { totalrecords } = res;
-      setCurrentMonthAppointment(totalrecords);
+      const { numberofappointmentremaining } = res;
+      setCurrentMonthAppointment(numberofappointmentremaining);
     };
 
     fetchTotalNumberOfAppointmetFortheMonth(
       {
-        url: "customer/fetchunreadappointments",
+        url: "customer/howmanyappointment",
         token: token,
       },
       totalMonthAppoitntmentResponse
     );
   }, [fetchTotalNumberOfAppointmetFortheMonth, token]);
+
+
   return (
     <div
       className={`w-72 py-10 rounded-lg px-14 mt-10 lg:mt-auto ${
-        currentMonthAppointment === 0 ? "bg-ash6" : "bg-custom14"
+        currentMonthAppointment === '0' ? "bg-ash6" : "bg-custom14"
       }`}
     >
       <div className="flex flex-col items-center justify-center space-y-3 h-full">
@@ -39,10 +41,10 @@ const MonthlyAppoimentCount = (props) => {
         <div className="rounded-full flex items-center justify-center bg-custom1">
           <CircularProgress
             labelValue={currentMonthAppointment}
-            textColor={currentMonthAppointment === 0 ? "#9AA5B1" : "#1F2933"}
+            textColor={currentMonthAppointment === "0" ? "#9AA5B1" : "#1F2933"}
             labelState={true}
             barColor={
-              currentMonthAppointment === 0
+              currentMonthAppointment === "0"
                 ? "stroke-[#9AA5B1]"
                 : "stroke-[#9E77D1]"
             }

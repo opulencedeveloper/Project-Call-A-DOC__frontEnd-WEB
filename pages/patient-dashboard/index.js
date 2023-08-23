@@ -1,6 +1,9 @@
-import { useEffect, useContext, memo } from "react";
+import { useEffect, useContext } from "react";
+
 import { useRouter } from "next/router";
+
 import { useDispatch, useSelector } from "react-redux";
+
 import Header from "@/components/dashboard/dashboard-ui/Header";
 import UserProfile from "@/components/dashboard/dashboard-ui/UserProfile";
 import CheckUpandDosageLayout from "@/components/dashboard/patient/home/CheckUpandDosageLayout";

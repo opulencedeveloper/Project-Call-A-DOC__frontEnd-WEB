@@ -39,7 +39,7 @@ const ProfileTab = (props) => {
     if (error === "Unauthenticated" || error === "Not Authorized") {
       router.replace("signin");
     }
-  }, [error, router]);
+  }, [error, router ]);
 
   if (isLoading || error) {
     return <LoadingSpinner errorMessage={error} pageHeight="h-full" />;
@@ -50,7 +50,10 @@ const ProfileTab = (props) => {
       <ProfileData
         type={type}
         token={token}
+        profileImageUrl={userData.profilepicture}
         firstName={userData.firstname}
+        setProfileUpdateHandler={props.setProfileUpdateHandler}
+        setReloadComponent={setReloadComponent}
         lastName={userData.lastname}
         userId={type === "Patient" ? userData.patientid : userData.doctorid}
       />

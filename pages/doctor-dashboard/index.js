@@ -70,7 +70,6 @@ export default function DashBoard() {
         <TogglButton />
         <AppointmentsEarnings token={token} />
         <YourActivities />
-        {/*  <YourActivities /> */}
       </div>
       <UserProfile
       userType="doctor"

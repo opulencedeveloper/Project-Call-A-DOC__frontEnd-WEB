@@ -27,7 +27,6 @@ const AppointmentDecison = (props) => {
   };
 
   const acceptAppointmentHandler = (appointmentId) => {
-   // props.toggleNotifications();
     
     myAppointmentId = appointmentId;
     const url = props.userType === "doctor" ? "doctor/appointment/acceptappointment" : "customer/appointment/joinappointment";

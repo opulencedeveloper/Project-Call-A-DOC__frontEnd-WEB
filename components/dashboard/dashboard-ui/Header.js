@@ -4,7 +4,6 @@ import { useContext, useEffect, useState } from "react";
 import DashBoardMobileNavigation from "../dashboard-layout/DashBoardMobileNavigation";
 import BackDrop from "../../UI/BackDrop";
 import Portal from "@/components/UI/Portal";
-import { useSelector } from "react-redux";
 import useHttp from "@/hooks/useHttp";
 import AuthContext from "@/store/context-store/auth-context";
 import AppointmentDecison from "./AppointmentDecison";

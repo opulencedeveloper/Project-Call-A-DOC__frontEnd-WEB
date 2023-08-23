@@ -13,6 +13,7 @@ const Table = (props) => {
     tableHeaderData5,
     inputSearchHeader,
     tableEmptyStateText,
+    tableOnclickHandler,
   } = props;
   const tableHeader2 = tableHeaderData2 || "Date";
   const tableHeader3 = tableHeaderData3 || "Time";
@@ -30,7 +31,6 @@ const Table = (props) => {
           src="/images/icon/search-gray-shade.svg"
           alt="search-icon"
           className="w-auto h-auto p-3.5"
-          
           width={16}
           height={16}
         />
@@ -57,50 +57,65 @@ const Table = (props) => {
           </thead>
           <tbody className="mt-20 py-10">
             {/* DATA STATE */}
-            {/* {tableData.map((checkUpData, index) => {
-              const oddNumber = index % 2 !== 0;
-              const color = !oddNumber ? "bg-ash3" : ""; //TODO => refactoring with Calculus
-              return (
-                <tr key={index} className={color}>
-                  <td >
-                 <div className="flex items-center h-full py-2 pl-5 space-x-7">
-                 <Image
-                      src="/images/doctor11.svg"
-                      alt="doctor11"
-                      className="w-10 h-10"
-                       ""
-                      width={48}
-                      height={48}
-                    />
-                    <p className="text-sm">{checkUpData.tableData1}</p>  </div>   
-                  </td>
-                  <td className="text-sm">{checkUpData.tableData2}</td>
-                  <td className="text-sm">{checkUpData.tableData3}</td>
-                  <td className={`text-sm ${width} py-4 pr-1`}>{checkUpData.tableData4}</td>
-                  <td className="text-sm">{checkUpData.tableData5}</td>
-                  <td>
-                    <Image
-                      src="/images/icon/three-dot-vert.svg"
-                      alt="three-dot-icon"
-                      className="w-auto h-auto"
-                       ""
-                      width={20}
-                      height={20}
-                    />
-                  </td>
-                </tr>
-              );
-            })} */}
+            {tableData &&
+              tableData.map((checkUpData, index) => {
+                const oddNumber = index % 2 !== 0;
+                const color = !oddNumber ? "bg-ash3" : ""; //TODO => refactoring with Calculus
+                return (
+                  <tr
+                    onClick={() =>
+                      checkUpData.appointmentId &&
+                      tableOnclickHandler(checkUpData.appointmentId)
+                    }
+                    key={index}
+                    className={`cursor-pointer ${color}`}
+                  >
+                    <td>
+                      <div className="flex items-center h-full py-2 pl-5 space-x-7">
+                        <Image
+                          src={checkUpData.tableProfileUrl}
+                          alt="doctor11"
+                          className="w-10 h-10"
+                          loading="eager"
+                          priority
+                          width={48}
+                          height={48}
+                        />
+                        <p className="text-sm">{checkUpData.tableData1}</p>{" "}
+                      </div>
+                    </td>
+                    <td className="text-sm">{checkUpData.tableData2}</td>
+                    <td className="text-sm">{checkUpData.tableData3}</td>
+                    <td className={`text-sm ${width} py-4 pr-1`}>
+                      {checkUpData.tableData4}
+                    </td>
+                    <td className="text-sm">{checkUpData.tableData5}</td>
+                    <td>
+                      <Image
+                        src="/images/icon/three-dot-vert.svg"
+                        alt="three-dot-icon"
+                        className="w-auto h-auto"
+                        loading="eager"
+                        priority
+                        width={20}
+                        height={20}
+                      />
+                    </td>
+                  </tr>
+                );
+              })}
           </tbody>
         </table>
 
         {/* NO-DATA-STATE */}
-        <div className="w-full text-center space-y-5 py-20">
-          <div className="text-ash6">{tableEmptyStateTitle}</div>
-          <button className="bg-custom text-thin py-3 px-10 rounded-full text-sm text-custom1">
-            Book appointment
-          </button>
-        </div>
+        {!tableData && (
+          <div className="w-full text-center space-y-5 py-20">
+            <div className="text-ash6">{tableEmptyStateTitle}</div>
+            <button className="bg-custom text-thin py-3 px-10 rounded-full text-sm text-custom1">
+              Book appointment
+            </button>
+          </div>
+        )}
       </div>
     </div>
   );
