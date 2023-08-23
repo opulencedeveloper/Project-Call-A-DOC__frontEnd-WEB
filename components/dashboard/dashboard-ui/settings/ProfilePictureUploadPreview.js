@@ -26,7 +26,7 @@ const ProfilePictureUploadPreview = (props) => {
 
     try {
       const response = await fetch(
-        "https://call-a-doctor-api.herokuapp.com/api/v1/customer/changeprofilepicture",
+        "https://api.calladoc247.net/api/v1/customer/changeprofilepicture",
         {
           method: "POST",
           body: formData,
