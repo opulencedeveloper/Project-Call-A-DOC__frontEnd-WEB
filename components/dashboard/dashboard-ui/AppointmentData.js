@@ -3,8 +3,9 @@ import dynamic from "next/dynamic";
 
 const Chart = dynamic(() => import("react-apexcharts"), { ssr: false });
 
-const AppointmenData = () => {
+const AppointmenData = (props) => {
   const [isClient, setIsClient] = useState(false);
+  const {chartData} = props;
 
   useEffect(() => {
     setIsClient(true);
@@ -18,12 +19,7 @@ const AppointmenData = () => {
           <Chart
             type="bar"
             series={[
-              {
-                name: "Data",
-                data: [
-                  240, 340, 110, 260, 40, 280, 320, 180, 320, 80, 280, 380,
-                ],
-              },
+              chartData
             ]}
             options={{
               chart: {

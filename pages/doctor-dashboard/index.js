@@ -29,6 +29,7 @@ export default function DashBoard() {
   const {
     firstname: patientFirstName,
     lastname: patientLastName,
+    doctorid: doctorId,
     profilepicture,
   } = userInfo;
   const { isLoading, error, sendRequest: fetchUserData } = useHttp();
@@ -68,8 +69,8 @@ export default function DashBoard() {
       <div className="flex-1 2xl:pr-16">
         <Header title={`Welcome Dr. ${doctorFirstName}`} type="Doctor" />
         <TogglButton />
-        <AppointmentsEarnings token={token} />
-        <YourActivities />
+        <AppointmentsEarnings token={token} doctorId={doctorId}/>
+        <YourActivities token={token} doctorId={doctorId}/>
       </div>
       <UserProfile
       userType="doctor"

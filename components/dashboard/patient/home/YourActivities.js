@@ -9,24 +9,6 @@ const YourActivities = ({token}) => {
       <p className="text-xl font-medium pb-6">Your activties</p>
      
       <ActivityChartData token={token}/>
-      {/* NO DATA */}
-      {/* <Image
-        src="/images/appointment-line-chart-no-data.svg"
-        alt="appointment-line-chart-data"
-        className="w-auto h-auto"
-         ""
-        width={762}
-        height={268}
-      /> */}
-      {/* DATA STATE */}
-      {/* <Image
-        src="/images/appointment-line-chart-data.svg"
-        alt="appointment-line-chart-data"
-        className="w-auto h-auto"
-        width={762}
-        height={268}
-         ""
-      /> */}
     </div>
     <MonthlyAppoimentCount token={token} />
   </div>

@@ -2,12 +2,14 @@ import Image from "next/image";
 import CircularProgress from "../../dashboard-ui/CircularProgress";
 import { useState } from "react";
 import Withdrawal from "./Withdrawal";
+import TotalAppointments from "./TotalAppointments";
+import UpcomingChecksups from "./UpcomingCheckups";
 
 const pills = ["Panadol", "Flagyl", "Aspirin"];
 
 const AppointmentsEarnings = (props) => {
   const [beginWithdrwal, setBeginWithdrwal] = useState(false);
-  const { token } = props;
+  const { token, doctorId } = props;
 
   const startWithdrawalRequestHandler = () => {
     setBeginWithdrwal((prev) => !prev);
@@ -22,57 +24,8 @@ const AppointmentsEarnings = (props) => {
       )}
       <div className="mb-12 xl:mb-0">
         {/* //DATA STATE  */}
-        <div className="flex items-center space-x-4 rounded-xl bg-custom14 px-4 py-5 md:px-8">
-          <div className="h-16 w-16 flex-shrink-0 flex items-center justify-center text-3xl font-medium text-custom14 rounded-full bg-custom1 md:text-4xl md:h-24 md:w-24">
-            15
-          </div>
-          <div className="space-y-1 text-custom1">
-            <p className="font-medium text-base md:text-xl">
-              Total Appointments
-            </p>
-            <select className={`bg-custom14 -ml-1 text-sm`}>
-              <option>This month</option>
-            </select>
-          </div>
-        </div>
-        <div className="mt-10 ml-0 space-y-4 md:ml-8">
-          <div className="text-ash2">Upcoming checkup</div>
-          <div className="flex justify-between items-center pb-3 border-b border-ash">
-            <div className="flex justify-between items-center space-x-4">
-              {" "}
-              <div>
-                <Image
-                  src="/images/user1.svg"
-                  alt="doctor11"
-                  className="w-[68px] h-[68px]"
-                  width={68}
-                  height={68}
-                />
-              </div>
-              <div className="space-y-1">
-                <p className="font-semibold">Ubong John</p>
-                <p className="text-ash2 font-medium text-xs">
-                  11:00pm - 11:30pm
-                </p>
-              </div>
-            </div>
-            <button className="text-xs bg-ash4 py-4 px-5 rounded-full text-ash5">
-              Last checkup 1 week ago
-            </button>
-          </div>
-          <div className="flex space-x-6 text-sm">
-            <div className="font-semibold">Last Checkup</div>
-            <div>Dr Kim on the 29th June, 2021</div>
-          </div>
-          <div className="flex space-x-8 text-sm">
-            <div className="font-semibold">Observation:</div>
-            <div>
-              High BP and blood sugar levels which requires constant monitoring
-              and medication
-            </div>
-          </div>
-          <button className="text-custom text-sm">View history</button>
-        </div>
+        <TotalAppointments token={token} doctorId={doctorId}/>
+        <UpcomingChecksups token={token} doctorId={doctorId}/>
       </div>
       {/* SECOND DIV */}
       <div className="rounded-2xl shadow-custom-shadow2 flex flex-col justify-center px-5 md:px-9 pt-8 pb-14 ">

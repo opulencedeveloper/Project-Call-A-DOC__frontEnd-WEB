@@ -1,36 +1,31 @@
-import { useEffect, useState } from "react";
-import Linechart from "../../dashboard-ui/ActivityChart";
-import useHttp from "@/hooks/useHttp";
-import LoadingSpinner from "@/components/UI/LoadingSpinner";
 import generateYearOptions from "@/helpers/generateYearOptions";
+import ActivityLineGraph from "../../dashboard-ui/ActivityChart";
+import { useEffect, useState } from "react";
+import useHttp from "@/hooks/useHttp";
+
 const currentYear = new Date().getFullYear();
+const yearOptions = generateYearOptions();
+
+const chartData = [
+  {
+    name: "Data",
+    data: [12, 15, 17, 17, 15, 16, 7, 13, 14, 19, 17],
+    color: "#1992D4",
+  },
+];
 
 const labelMapping = [
   {
-    name: "Totalappointments",
-    color: "#1992D4",
-  },
-  {
     name: "Successfulappointments",
-    color: "#00FF00",
+    color: "#1992D4",
   },
   {
     name: "Unsuccessfulappointments",
     color: "#FF0000",
   },
-  {
-    name: "Successfulcheckups",
-    color: "#2E8B57",
-  },
-  {
-    name: "Unsuccessfulcheckups",
-    color: "#DC143C",
-  },
 ];
 
-
-
-const ActivityChartData = (props) => {
+const AppointmentsChart = (props) => {
   const [selectedYear, setSelectedYear] = useState(currentYear);
   const [appointmentChartData, setAppointmentChartData] = useState([
     {
@@ -39,7 +34,6 @@ const ActivityChartData = (props) => {
       color: "#FFFFFF",
     },
   ]);
-
   const {
     isLoading,
     error,
@@ -51,51 +45,36 @@ const ActivityChartData = (props) => {
   useEffect(() => {
     const fetchAppointmentsChartDataResponse = (res) => {
       const { data } = res;
+      console.log("response", data);
       const modifiedAppointmentChartInfo = data[+selectedYear].map(
         (appointmentChartData, index) => {
           const {
-            totalappointments,
-            successfulappointments,
-            unsuccessfulappointments,
-            successfulcheckups,
-            unsuccessfulcheckups,
+            "successful appointments": successfulAppointments,
+            "unsuccessful appointments": unSuccessfulAppointments,
           } = appointmentChartData;
 
           return {
             name: labelMapping[index].name,
 
             data:
-              index === 0
-                ? totalappointments
-                : index === 1
-                ? successfulappointments
-                : index === 2
-                ? unsuccessfulappointments
-                : index === 3
-                ? successfulcheckups
-                : unsuccessfulcheckups,
+              index === 0 ? successfulAppointments : unSuccessfulAppointments,
+
             color: labelMapping[index].color,
           };
         }
       );
-
+      console.log("modified is", modifiedAppointmentChartInfo);
       setAppointmentChartData(modifiedAppointmentChartInfo);
     };
 
     fetchAppointmentsChartData(
       {
-        url: `customer/dashboardchart?year=${selectedYear}`,
+        url: `doctor/dashboard/dashboardchart?year=${selectedYear}`,
         token: token,
       },
       fetchAppointmentsChartDataResponse
     );
   }, [fetchAppointmentsChartData, token, selectedYear]);
-
-  if (isLoading) {
-    return <LoadingSpinner loadWidth="w-full lg:w-max" pageHeight="h-20"/>;
-  }
-
-  const yearOptions = generateYearOptions();
 
   const selectedYearHandler = (event) => {
     console.log(event.target.value);
@@ -103,13 +82,14 @@ const ActivityChartData = (props) => {
   };
 
   return (
-    <>
-      <div className="flex text-ash2 text-sm justify-between pb-5">
-        <p className="text-base">Appointments</p>
+    <div className="w-full xl:w-1/2">
+      <div className="flex justify-between mb-4">
+        <p className="text-base font-medium text-ash2 md:text-[20px]">
+          Appointments
+        </p>
         <select
           onChange={selectedYearHandler}
-          id="yearSelect"
-          className="outline-none"
+          className={"bg-custom1 -ml-1 text-sm outline-none md:text-[13px]"}
           value={selectedYear}
         >
           {yearOptions.map((year) => (
@@ -119,9 +99,13 @@ const ActivityChartData = (props) => {
           ))}
         </select>
       </div>
-      <Linechart productData={appointmentChartData} />
-    </>
+      {isLoading || error ? (
+        <p className="text-center mt-10 h-24 text-ash2">{error || 'Loading...'}</p>
+      ) : (
+        <ActivityLineGraph productData={appointmentChartData} />
+      )}
+    </div>
   );
 };
 
-export default ActivityChartData;
+export default AppointmentsChart;

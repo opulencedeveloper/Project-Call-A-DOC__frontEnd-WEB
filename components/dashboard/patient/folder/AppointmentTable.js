@@ -4,7 +4,6 @@ import { useEffect } from "react";
 import { useState } from "react";
 import LoadingSpinner from "@/components/UI/LoadingSpinner";
 
-
 const AppointmentTable = (props) => {
   const [appointments, setAppointments] = useState();
   const { isLoading, error, sendRequest: fetchAppointments } = useHttp();
@@ -15,7 +14,8 @@ const AppointmentTable = (props) => {
       const { data } = res;
 
       const modifiedAppointmentInfo = data.map((appointmentData) => {
-        const { doctor, folderid, prescription, ddate, appointmentid, title } = appointmentData;
+        const { doctor, folderid, prescription, ddate, appointmentid, title } =
+          appointmentData;
 
         return {
           tableProfileUrl: doctor.profilepicture,
@@ -45,8 +45,8 @@ const AppointmentTable = (props) => {
   }
 
   const appointmentTableOnclickHandler = (appointmentId) => {
-    window.open("/chat/" + appointmentId, '_blank');
-  }
+    window.open("/chat/" + appointmentId, "_blank");
+  };
   return error ? (
     <div className="bg-custom11 mx-10 rounded-md text-custom1 font-semibold text-sm py-3 px-5 md:px-10">
       <p className="text-center">{error}</p>

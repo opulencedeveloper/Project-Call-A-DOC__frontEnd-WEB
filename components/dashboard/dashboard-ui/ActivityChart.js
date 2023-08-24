@@ -10,8 +10,6 @@ const Chart = dynamic(() => import("react-apexcharts"), { ssr: false });
 
 const ActivityLineGraph = (props) => {
   const { productData } = props;
-  const [product, setProduct] = useState(productData);
-
   const [options, setOptions] = useState({
     chart: {
       toolbar: {
@@ -68,12 +66,12 @@ const ActivityLineGraph = (props) => {
     // }
   });
 
-  const series = product.map((item) => ({
+  const series = productData.map((item) => ({
     name: item.name,
     data: item.data,
   }));
 
-  const colors = product.map((item) => item.color);
+  const colors = productData.map((item) => item.color);
 
 
   const chartOptions = {
