@@ -108,7 +108,7 @@ export default function Chat() {
             title={`Welcome ${userType === "doctor" ? "Dr." : ""} ${firstName}`}
           />{" "}
         </span>
-        <div className="flex items-center justify-between space-x-3 px-5 lg:hidden">
+        {userType === "doctor" && <div className="flex items-center justify-between space-x-3 px-5 lg:hidden">
           <div className="flex items-center space-x-3">
             <div className="w-[33px] h-[25px] md:h-[30px] md:w-[37px]">
               <Image
@@ -139,7 +139,7 @@ export default function Chat() {
               height={12}
             />{" "}
           </button>
-        </div>
+        </div>}
         <MyChat
           patientData={patientDataHandler}
           appointmentId={appointmentId}
@@ -149,7 +149,7 @@ export default function Chat() {
       {userType === "doctor" ? (
         patientData && (
           <ChatFolder
-            appointmentId={appointmentId}
+          appointmentId={appointmentId}
             token={token}
             patientData={patientData}
           />

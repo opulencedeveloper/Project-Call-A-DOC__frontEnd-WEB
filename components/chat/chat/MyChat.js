@@ -68,7 +68,7 @@ const MyChat = (props) => {
   const router = useRouter();
   const authCtx = useContext(AuthContext);
   const { token } = authCtx;
-  const { patientData, appointmentId } = props;
+  const { patientData, appointmentId, userType } = props;
   console.log("MyChat AppId is", appointmentId);
 
   useLayoutEffect(() => {
@@ -176,7 +176,7 @@ const MyChat = (props) => {
   };
 
   return (
-    <div className="relative h-[83%] flex flex-col justify-end w-full bg-custom8 rounded-tl-2xl rounded-tr-2xl">
+    <div className={`relative flex flex-col justify-end w-full bg-custom8 rounded-tl-2xl rounded-tr-2xl ${userType === "doctor" ? "h-[83%]" : "h-[90%]"}`}>
       {prescribeDrugs && (
         <PrescribeDrugs
           token={token}
