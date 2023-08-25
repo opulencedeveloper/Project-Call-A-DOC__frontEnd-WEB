@@ -6,14 +6,6 @@ import useHttp from "@/hooks/useHttp";
 const currentYear = new Date().getFullYear();
 const yearOptions = generateYearOptions();
 
-const chartData = [
-  {
-    name: "Data",
-    data: [12, 15, 17, 17, 15, 16, 7, 13, 14, 19, 17],
-    color: "#1992D4",
-  },
-];
-
 const labelMapping = [
   {
     name: "Successfulappointments",

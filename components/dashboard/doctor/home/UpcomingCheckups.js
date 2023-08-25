@@ -1,9 +1,12 @@
 import useHttp from "@/hooks/useHttp";
 import Image from "next/image";
+import { useRouter } from "next/router";
 import { useEffect } from "react";
 
 const UpcomingChecksups = (props) => {
   const { isLoading, error, sendRequest: fetchUpcomingCheckup } = useHttp();
+   const router = useRouter(); 
+  const activeLink = router.pathname;
 
   const { token, doctorId } = props;
 
@@ -21,6 +24,11 @@ const UpcomingChecksups = (props) => {
       fetchUpcomingCheckupResponse
     );
   }, [fetchUpcomingCheckup, token]);
+
+  const viewHistoryHandler = () => {
+    router.push("/doctor-dashboard/appointments")
+  }
+
   return (
     <div className="mt-10 ml-0 space-y-4 md:ml-8">
       <div className="text-ash2">Upcoming checkup</div>
@@ -56,7 +64,7 @@ const UpcomingChecksups = (props) => {
           medication
         </div>
       </div>
-      <button className="text-custom text-sm">View history</button>
+      <button onClick={viewHistoryHandler} className="text-custom text-sm">View history</button>
     </div>
   );
 };
