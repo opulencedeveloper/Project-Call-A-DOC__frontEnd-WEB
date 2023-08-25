@@ -58,8 +58,6 @@ const ScheduleCheckup = (props) => {
   const submitScheduleCheckupHandler = (event) => {
     event.preventDefault();
     const checkupTime = `${checkupHour} : ${checkupMinute} ${checkupMeridiem}`;
-console.log(checkupDate, checkupTime, checkupDescription, checkupReminder);
-    return
     const details = inputValues.map((input) => ({
       title: input.title,
       dosage: input.dosage,
