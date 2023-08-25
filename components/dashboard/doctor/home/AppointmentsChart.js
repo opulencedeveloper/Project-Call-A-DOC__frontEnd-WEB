@@ -32,7 +32,7 @@ const AppointmentsChart = (props) => {
     sendRequest: fetchAppointmentsChartData,
   } = useHttp();
 
-  const { token } = props;
+  const { token, appointmentStyle } = props;
 
   useEffect(() => {
     const fetchAppointmentsChartDataResponse = (res) => {
@@ -74,7 +74,7 @@ const AppointmentsChart = (props) => {
   };
 
   return (
-    <div className="w-full xl:w-1/2">
+    <div className={appointmentStyle}>
       <div className="flex justify-between mb-4">
         <p className="text-base font-medium text-ash2 md:text-[20px]">
           Appointments

@@ -15,7 +15,7 @@ const UserProfile = (props) => {
   const editButtonHandler = () => {
     const url =
       userType === "doctor" ? "doctor-dashboard" : "patient-dashboard";
-    router.replace(`${url}/settings`);
+    router.replace(`/${url}/settings`);
   };
 
   console.log("profile picture is", profilePicture)

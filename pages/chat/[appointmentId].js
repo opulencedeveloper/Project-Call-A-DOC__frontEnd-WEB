@@ -88,7 +88,7 @@ export default function Chat() {
   };
 
   return (
-    <ChatLayout>
+    <ChatLayout type={userType}>
       {chatFolderMobileView && (
         <BackDrop>
           <ChatFolder

@@ -53,7 +53,7 @@ const Withdrawal = (props) => {
               Withdrawal request
             </p>{" "}
             <p className="text-custom9 text-[16px]">Available Balance</p>
-            <p className="text-[39px] mb-7">N203,000</p>{" "}
+            <p className="text-[39px] mb-7">₦203,000</p>{" "}
             <form className="space-y-8">
               <div className="border-b border-ash4 space-y-2 pb-6">
                 <p className="text-[16px]">Withdraw to</p>

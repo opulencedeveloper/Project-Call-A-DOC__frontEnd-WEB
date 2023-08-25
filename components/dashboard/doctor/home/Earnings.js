@@ -7,9 +7,9 @@ const waiter = <p className="text-sm text-center text-ash2">Please wait...</p>;
 
 const Earnings = (props) => {
   const [selection, setSelection] = useState("month");
-  const [credit, setCredit] = useState(0);
-  const [debit, setDebit] = useState(0);
-  const [totalEarnings, setTotalEarnings] = useState(0);
+  const [credit, setCredit] = useState("");
+  const [debit, setDebit] = useState("");
+  const [totalEarnings, setTotalEarnings] = useState("");
  
 
   const { isLoading, error, sendRequest: fetchTotalAppoitnments } = useHttp();

@@ -1,6 +1,5 @@
 import BackDrop from "@/components/UI/BackDrop";
 import LoadingSpinner from "@/components/UI/LoadingSpinner";
-import useHttp from "@/hooks/useHttp";
 import Image from "next/image";
 import { useState } from "react";
 
@@ -112,6 +111,7 @@ const ProfilePictureUploadPreview = (props) => {
                   <Image
                     src={URL.createObjectURL(selectedImage)}
                     alt="profile-picture-change"
+                
                     style={{
                       width: `${pictureSize}px`,
                       height: `${pictureSize}px`,

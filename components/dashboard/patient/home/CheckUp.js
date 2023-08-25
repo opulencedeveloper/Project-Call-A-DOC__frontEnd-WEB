@@ -30,6 +30,10 @@ const CheckUp = (props) => {
     const info = data === transformedTodaysDate ? "" : transformedTodaysDate;
     setTodayDate(info);
   };
+
+  const joinCheckupHandler = (appointmentId) => {
+    window.open("/chat/" + appointmentId, "_blank");
+  };
   return (
     <div className="w-full xl:w-1/2">
       <div className="flex justify-between pb-7">
@@ -83,7 +87,10 @@ const CheckUp = (props) => {
                 </div>
               </div>
               <div className="my-auto">
-                <button className="bg-custom rounded-full py-2.5 px-8 text-xs text-custom1">
+                <button
+                  onClick={() => joinCheckupHandler(checkUp.appointmentid)}
+                  className="bg-custom rounded-full py-2.5 px-8 text-xs text-custom1"
+                >
                   Join
                 </button>
               </div>

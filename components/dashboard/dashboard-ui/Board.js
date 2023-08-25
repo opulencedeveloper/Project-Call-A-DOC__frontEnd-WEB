@@ -10,7 +10,7 @@ const Board = (props) => {
   } = useHttp();
   const [boardData, setBoardData] = useState();
 
-  const { boardLabels, token } = props;
+  const { boardLabels, token, type } = props;
 
   useEffect(() => {
     const fetchTotalNumberOfAppointmentsResponse = (res) => {
@@ -19,7 +19,7 @@ const Board = (props) => {
         successfulappointments,
         unsuccessfulappointments,
       } = res;
-      
+
       const data = [
         totalappointments,
         successfulappointments,
@@ -27,11 +27,15 @@ const Board = (props) => {
       ];
       setBoardData(data);
     };
+    const url =
+      type === "doctor"
+        ? "doctor/dashboard/appointmentvalues"
+        : "customer/dashboardvalues";
 
     fetchTotalNumberOfAppointments(
       {
-        url: "customer/dashboardvalues",
-        token: token,
+        url,
+        token,
       },
       fetchTotalNumberOfAppointmentsResponse
     );
@@ -47,10 +51,10 @@ const Board = (props) => {
               data === 0 ? "bg-ash6" : boardLabels[index].color
             } pt-8 pb-6 px-6 rounded-lg space-y-3`}
           >
-            <div className="text-5xl font-light md:text-5xl">{data}</div>
+            <div className="text-5xl font-light md:text-5xl">{isLoading ? <p className="text-sm">Please wait</p> : data}</div>
             <div className="flex justify-between space-x-24">
               <div>
-                <p className="font-semibold">{boardLabels[index].title}</p>
+                <p className="font-semibold">{ boardLabels[index].title}</p>
                 <p className="font-semibold ">Appointments</p>
 
                 {/* <select

@@ -84,7 +84,7 @@ const Appointments = () => {
     <DashBoardLayout type="patient">
       <div className="flex-1 2xl:pr-16">
         <Header title="Appointments" />
-        <Board boardLabels={boardLabels} token={token}/>
+        <Board boardLabels={boardLabels} token={token} type="patient"/>
         <div className="h-10"></div> 
        <ActivityChartData token={token}/> 
       </div>

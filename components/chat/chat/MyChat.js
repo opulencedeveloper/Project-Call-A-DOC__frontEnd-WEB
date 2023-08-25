@@ -291,13 +291,11 @@ const MyChat = (props) => {
 
       <div
         ref={chatContainerRef}
-        className="overflow-y-auto h-min w-full pb-20 space-y-5 px-3 md:px-8"
+        className="overflow-y-auto h-min w-full pb-20 space-y-5 px-3 mt-20 md:mt-28 md:px-8"
       >
         {/* Chats here */}
 
-        {isLoading ? (
-          <LoadingSpinner />
-        ) : (
+        {
           props.userType === "doctor" &&
           chats.map((chat, index) => {
             const chatTime = convertISOTo12HourFormat(chat.created_at);
@@ -354,7 +352,7 @@ const MyChat = (props) => {
                 </div>
               </div>
             );
-          })
+          }
         )}
 
         {props.userType === "patient" &&

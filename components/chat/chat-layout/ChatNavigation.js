@@ -10,45 +10,47 @@ const ChatNavigation = (props) => {
   const [startAppointment, setStartAppointment] = useState(false);
   const router = useRouter();
   const activeLink = router.pathname;
-  const {type, toggleChatFolderMobileView} = props;
+  const {type, toggleChatFolderMobileView,} = props;
+
+
+  const link = type === "doctor" ? "/doctor-dashboard" : "/patient-dashboard";
+
+  const navLinks = [
+    {
+      icon1: "home-icon1",
+      icon2: "home-icon2",
+      link: link,
+    },
+    {
+      icon1: "appointment-icon1",
+      icon2: "appointment-icon2",
+      link: `${link}/appointments`,
+    },
+    {
+      icon1: "folder-icon-white",
+      icon2: "folder-icon-gray",
+      link: `${link}/myfolder`,
+    },
+    {
+      icon1: "settings-icon-white",
+      icon2: "settings-icon-gray",
+      link: `${link}/settings`,
+    },
+    {
+      icon1: "help",
+      icon2: "help",
+      link: "/dashboard/help",
+    },
+  ];
+
+  if (type === "doctor") {
+    navLinks.splice(2, 1);
+  }
 
   const startAppointmentHandler = () => {
     setStartAppointment(prevVal => !prevVal);
   }
 
-
-  const pageContent = [
-    {
-      icon1: "home-icon1",
-      icon2: "home-icon2",
-      link: "/chat",
-      title: "Home",
-    },
-    {
-      icon1: "appointment-icon1",
-      icon2: "appointment-icon2",
-      link: `/appointments`,
-      title: "Appointments",
-    },
-    {
-      icon1: "folder-icon-white",
-      icon2: "folder-icon-gray",
-      link: `/my-folder`,
-      title: "My Folder",
-    },
-    {
-      icon1: "settings-icon-white",
-      icon2: "settings-icon-gray",
-      link: "dashboard",
-      title: "Settings",
-    },
-    {
-      icon1: "help",
-      icon2: "help",
-      link: "dashboard",
-      title: "Help",
-    },
-  ];
   return (
     <div className="flex flex-col h-full items-center pb-5 justify-between w-28 items-start hidden 2xl:flex">
       {/* {startAppointment && <BackDrop><AppointmentJourney endAppointmentHandler={startAppointmentHandler} /></BackDrop>} */}
@@ -64,7 +66,7 @@ const ChatNavigation = (props) => {
           />
         </div>
         <div className="flex flex-col items-center space-y-5">
-          {pageContent.map((content, index) => {
+          {navLinks.map((content, index) => {
             const bgColor = activeLink === content.link ? "bg-custom" : "bg-custom2";
             return  <Link
               href={content.link}

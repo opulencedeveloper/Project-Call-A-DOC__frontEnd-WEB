@@ -10,7 +10,7 @@ const YourActivities = (props) => {
       </div>
 
       <div className="flex flex-col space-y-5 space-x-0 xl:flex-row xl:space-x-5 xl:space-y-0">
-        <AppointmentsChart token={token} />
+        <AppointmentsChart token={token} appointmentStyle="w-full xl:w-1/2"/>
         <EarningsChart token={token} doctorId={doctorId} />
       </div>
     </div>
