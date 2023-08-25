@@ -185,7 +185,7 @@ const MyChat = (props) => {
         />
       )}
       {isScheduleCheckup && (
-        <ScheduleCheckup scheduleCheckupHandler={scheduleCheckupHandler} />
+        <ScheduleCheckup token={token} appointmentId={appointmentId} scheduleCheckupHandler={scheduleCheckupHandler} />
       )}
       {endAppointment && (
         <EndAppointmentJourney endAppointmentHandler={endAppointmentHandler} />

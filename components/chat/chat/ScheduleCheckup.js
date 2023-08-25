@@ -1,4 +1,6 @@
 import BackDrop from "@/components/UI/BackDrop";
+import LoadingSpinner from "@/components/UI/LoadingSpinner";
+import SuccessMessage from "@/components/dashboard/dashboard-ui/SuccessMessage";
 import useHttp from "@/hooks/useHttp";
 import { useState } from "react";
 
@@ -13,7 +15,7 @@ const ScheduleCheckup = (props) => {
   const [checkupDescription, setCheckupDescription] = useState("");
   const [checkupReminder, setCheckupReminder] = useState(true);
   const { isLoading, error, sendRequest: scheduleCheckUp } = useHttp();
-  const { scheduleCheckupHandler } = props;
+  const { scheduleCheckupHandler, appointmentId, token } = props;
 
   const hours = Array.from({ length: 13 }, (_, i) =>
     i.toString().padStart(2, "0")
@@ -58,15 +60,10 @@ const ScheduleCheckup = (props) => {
   const submitScheduleCheckupHandler = (event) => {
     event.preventDefault();
     const checkupTime = `${checkupHour} : ${checkupMinute} ${checkupMeridiem}`;
-    const details = inputValues.map((input) => ({
-      title: input.title,
-      dosage: input.dosage,
-    }));
+    
 
     if (
-      details.length === 0 ||
-      details[0].title === "" ||
-      details[0].dosage === ""
+      !appointmentId || !checkupDate || !checkupDescription
     )
       return;
 
@@ -75,9 +72,11 @@ const ScheduleCheckup = (props) => {
         url: "doctor/checkups/createcheckup",
         method: "POST",
         body: {
-          appointmentid: "AP1688233712",
-          checkupdate: "2023-07-03",
-          checkuptime: "09:35:11",
+          appointmentid: appointmentId,
+          "checkupdate": checkupDate,
+          "checkuptime": checkupTime,
+          "description": checkupDescription,
+          "setreminder": checkupReminder ? "1" : "0"
         },
         token: token,
       },
@@ -87,7 +86,7 @@ const ScheduleCheckup = (props) => {
 
   return (
     <BackDrop>
-      {isSuccess ? (
+      {isSuccess ? ( 
         <SuccessMessage
           successMessageHandler={scheduleCheckupHandler}
           successMessage={successHttpResponseMessage}
@@ -105,7 +104,7 @@ const ScheduleCheckup = (props) => {
           {isLoading ? (
             <div className="flex flex-col items-center justify-center h-full w-full">
               {" "}
-              <LoadingSpinner />
+              <LoadingSpinner /> 
             </div>
           ) : (
             <>
