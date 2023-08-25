@@ -81,6 +81,11 @@ const SecuritySetup = (props) => {
       const userData = role === "1" ? patient : doctor;
       dispatch(userDataActions.addUserData(userData));
       dispatch(signupActions.resetState());
+      if (role === "1") {
+        localStorage.setItem("userType", "patient");
+      } else {
+        localStorage.setItem("userType", "doctor");
+      }
       router.replace(targetRoute);
     }
   };
