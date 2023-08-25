@@ -12,8 +12,6 @@ const DashBoardMobileNavigation = (props) => {
   const activeLink = router.pathname;
   const { type, toggleDrawer, toggleChatFolderMobileView } = props;
 
-  console.log(type)
-
   useEffect(() => {
     const handleBeforeUnload = (e) => {
       e.preventDefault();
