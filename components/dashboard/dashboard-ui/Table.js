@@ -58,7 +58,7 @@ const Table = (props) => {
         />{" "}
       </div>
 
-      <div className="overflow-x-auto h-96 w-full pb-1">
+      <div className="overflow-x-auto h-96 w-full mt-5 pb-1">
         <table className={`w-boxw2 ${table_spacing} md:w-full`}>
           <thead>
             <tr className="text-ash2">

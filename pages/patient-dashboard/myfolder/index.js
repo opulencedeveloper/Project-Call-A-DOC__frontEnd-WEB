@@ -11,7 +11,7 @@ const { addUserData } = userDataActions;
 import Header from "@/components/dashboard/dashboard-ui/Header";;
 import UserProfile from "@/components/dashboard/dashboard-ui/UserProfile";
 import DashBoardLayout from "@/components/dashboard/dashboard-layout/DashBoardLayout";
-import HistoryTable from "@/components/dashboard/dashboard-ui/myfolder/HistoryTable";
+import HistoryTable from "@/components/dashboard/patient/myfolder/HistoryTable";
 
 let isOnline = false;
 

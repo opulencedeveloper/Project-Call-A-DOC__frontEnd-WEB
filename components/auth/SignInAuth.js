@@ -56,13 +56,21 @@ const SignInAuth = () => {
 
   const closeOTPInputHandler = () => {
     setShowOTPInput(false);
-  }
+  };
 
   const emailClasses =
     emailHasError || (emailValue === "" && emailSubmit) ? "block" : "hidden";
   return (
     <section className="flex h-screen">
-      {showOTPInput && <OtpInput isChecked={isChecked} closeOTPInputHandler={closeOTPInputHandler}/>}
+      {showOTPInput && (
+        <OtpInput
+          isChecked={isChecked}
+          verifyEmailHandler={verifyEmailHandler}
+          resendOtperror={error}
+          resendOtpisLoading={isLoading}
+          closeOTPInputHandler={closeOTPInputHandler}
+        />
+      )}
       {/* SECTION-1 */}
       <div className="w-full overflow-y-auto h-full px-5 py-10 space-y-20 md:w-1/2 md:px-10 ">
         <div>
@@ -107,7 +115,6 @@ const SignInAuth = () => {
                 />
                 <p className="mt-0.5">Remember me?</p>
               </div>
-              <button className="text-custom">Forgot password?</button>
             </div>
             <button
               type="button"
@@ -126,7 +133,7 @@ const SignInAuth = () => {
                 alt="google-icon"
                 className="w-6 h-6"
                 loading="eager"
-            priority
+                priority
                 height={48}
                 width={48}
               />
@@ -147,7 +154,7 @@ const SignInAuth = () => {
           src="/images/login-image.svg"
           alt="drugs"
           loading="eager"
-            priority
+          priority
           className="w-auto h-auto"
           width={960}
           height={1080}

@@ -10,6 +10,7 @@ import { signupActions } from "../../store/redux-store/signup-slice";
 import { useRouter } from "next/router";
 import AuthContext from "@/store/context-store/auth-context";
 import { userDataActions } from "@/store/redux-store/userData-slice";
+import LoadingSpinner from "./LoadingSpinner";
 const { addUserData } = userDataActions;
 
 function removeHtmlTags(data) {
@@ -23,7 +24,7 @@ const OtpInput = (props) => {
   const router = useRouter();
   const emailObject = useSelector((state) => state.signUp);
   const authCtx = useContext(AuthContext);
-  const { isChecked } = props;
+  const { isChecked, verifyEmailHandler, resendOtpisLoading, resendOtperror } = props;
   const inputRefs = [
     useRef(null),
     useRef(null),
@@ -102,7 +103,14 @@ const OtpInput = (props) => {
   return (
     <BackDrop>
       <div className="relative flex flex-col animateSlideUp h-[350px] w-[93%] overflow-x-auto items-center justify-center bg-custom1 space-y-4 p-5 py-7 rounded-2xl shadow-custom-shadow md:h-[535px] md:w-[680px] md:p-14 md:py-auto  md:space-y-8">
-       <div className="absolute right-7 top-7 h-[18px] w-[18px]"><Image
+      {resendOtperror || error ? (
+            <div className="bg-custom11 rounded-md text-custom1 font-semibold text-sm py-3 px-10">
+              <p className="text-center">{error || resendOtperror}</p>
+            </div>
+          ) : null}
+
+
+      {resendOtpisLoading ? <LoadingSpinner /> : <> <div className="absolute right-7 top-7 h-[18px] w-[18px]"><Image
           src="/images/icon/close.svg"
           alt="close-icon"
           className="w-full h-full"
@@ -192,15 +200,11 @@ const OtpInput = (props) => {
             className={inputStyle}
           />
         </form>
-        {errorMessage && (
-          <div className="bg-custom11 rounded-md text-custom1 font-semibold text-sm py-3 px-5 md:px-10">
-            <p>{errorMessage.trim()}</p>
-          </div>
-        )}
+        
         <div className="flex space-x-2 text-[10px] md:text-[13px]">
-          <p>If you did't receive a code </p>
+         <p>If you did't receive a code </p>
           <button
-            onClick={validateOTPHandler}
+            onClick={verifyEmailHandler}
             className="flex items-center space-x-2 text-custom"
           >
             <p>Resend code</p>{" "}
@@ -211,7 +215,7 @@ const OtpInput = (props) => {
               width={12}
               height={12}
             />
-          </button>
+          </button> 
         </div>
         <button
           type="button"
@@ -220,8 +224,8 @@ const OtpInput = (props) => {
           className="py-2 px-8 text-custom1 bg-custom10 rounded-full text-base md:text-[20px] md:py-4 md:px-12"
         >
           {isLoading ? "Please wait..." : "Submit"}
-        </button>
-      </div>
+        </button> </>}
+      </div> 
     </BackDrop>
   );
 };
