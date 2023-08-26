@@ -19,7 +19,7 @@ const Table = (props) => {
   } = props;
 
   const [tableResources, setTableResources] = useState(tableData);
-  const tableHeader1 = tableHeaderData1 || "Doctor";
+  const tableHeader1 = tableHeaderData1;
   const tableHeader2 = tableHeaderData2 || "Date";
   const tableHeader3 = tableHeaderData3 || "Time";
   const tableHeader4 = tableHeaderData4 || "Status";
@@ -58,22 +58,22 @@ const Table = (props) => {
         />{" "}
       </div>
 
-      <div className="overflow-x-auto w-full pb-1">
+      <div className="overflow-x-auto h-96 w-full pb-1">
         <table className={`w-boxw2 ${table_spacing} md:w-full`}>
           <thead>
             <tr className="text-ash2">
               <th className="text-start font-normal text-sm text-ash2 pl-5">
                 {tableHeader1}
               </th>
-              <th className="text-start font-normal text-sm">{tableHeader2}</th>
-              <th className="text-start font-normal text-sm">{tableHeader3}</th>
-              <th className="text-start font-normal text-sm">{tableHeader4}</th>
+              <th className="text-start font-normal text-sm pl-5">{tableHeader2}</th>
+              <th className="text-start font-normal text-sm pl-5">{tableHeader3}</th>
+              <th className="text-start font-normal text-sm pl-5">{tableHeader4}</th>
               {tableHeader5 && (
-                <th className="text-start font-normal text-sm">
+                <th className="text-start font-normal text-sm pl-5">
                   {tableHeader5}
                 </th>
               )}
-              <th className="text-start font-normal text-sm">Action</th>
+              <th className="text-start font-normal text-sm pl-5">Action</th>
             </tr>
           </thead>
           <tbody className="mt-20 py-10">
@@ -93,7 +93,7 @@ const Table = (props) => {
                   >
                     <td>
                       <div className="flex items-center h-full py-2 pl-5 space-x-7">
-                        <div className="w-10 h-10 rounded-full overflow-hidden">
+                        <div className="w-10 h-10 flex-shrink-0 rounded-full overflow-hidden">
                           <Image
                             src={checkUpData.tableProfileUrl}
                             alt="doctor11"
@@ -107,15 +107,15 @@ const Table = (props) => {
                         <p className="text-sm">{checkUpData.tableData1}</p>{" "}
                       </div>
                     </td>
-                    <td className="text-sm">{checkUpData.tableData2}</td>
-                    <td className="text-sm">{checkUpData.tableData3}</td>
-                    <td className={`text-sm ${width} py-4 pr-1`}>
+                    <td className="text-sm pl-5">{checkUpData.tableData2}</td>
+                    <td className="text-sm pl-5">{checkUpData.tableData3}</td>
+                    <td className={`text-sm pl-5 ${width} py-4 pr-1`}>
                       {checkUpData.tableData4}
                     </td>
                     {checkUpData.tableData5 && (
-                      <td className="text-sm">{checkUpData.tableData5}</td>
+                      <td className="text-sm  pl-5">{checkUpData.tableData5}</td>
                     )}
-                    <td>
+                    <td className="pl-5">
                       <Image
                         src="/images/icon/three-dot-vert.svg"
                         alt="three-dot-icon"

@@ -11,7 +11,7 @@ const { addUserData } = userDataActions;
 import Header from "@/components/dashboard/dashboard-ui/Header";;
 import UserProfile from "@/components/dashboard/dashboard-ui/UserProfile";
 import DashBoardLayout from "@/components/dashboard/dashboard-layout/DashBoardLayout";
-import AppointmentTable from "@/components/dashboard/patient/folder/AppointmentTable";
+import HistoryTable from "@/components/dashboard/dashboard-ui/myfolder/HistoryTable";
 
 let isOnline = false;
 
@@ -60,7 +60,7 @@ const MyFolder = () => {
     <DashBoardLayout type="patient">
       <div className="flex-1 2xl:pr-16">
         <Header title={"My Folder"} />
-        <AppointmentTable token={token} patientId={patientId} />
+      <HistoryTable token={token} patientId={patientId} userType="patient"/>
       </div>
       <UserProfile
         userType="patient"

@@ -1,47 +1,22 @@
-import { useContext, useEffect } from "react";
-
+import useHttp from "@/hooks/useHttp";
 import { useRouter } from "next/router";
-
 import { useDispatch, useSelector } from "react-redux";
 
-import useHttp from "@/hooks/useHttp";
+import { userDataActions } from "../../../store/redux-store/userData-slice";
+import LoadingSpinner from "@/components/UI/LoadingSpinner";
+import { useContext, useEffect } from "react";
+import AuthContext from "@/store/context-store/auth-context";
+const { addUserData } = userDataActions;
 
-import Board from "@/components/dashboard/dashboard-ui/Board";
-import Header from "@/components/dashboard/dashboard-ui/Header";
+import Header from "@/components/dashboard/dashboard-ui/Header";;
 import UserProfile from "@/components/dashboard/dashboard-ui/UserProfile";
 import DashBoardLayout from "@/components/dashboard/dashboard-layout/DashBoardLayout";
-import LoadingSpinner from "@/components/UI/LoadingSpinner";
-import AuthContext from "@/store/context-store/auth-context";
-import { userDataActions } from "../../../store/redux-store/userData-slice";
-import AppointmentsChart from "@/components/dashboard/doctor/home/AppointmentsChart";
-import AppointmentTable from "@/components/dashboard/dashboard-ui/appointments/AppointmentTable";
-import CheckUpTable from "@/components/dashboard/dashboard-ui/appointments/CheckUpTable";
-
-const { addUserData } = userDataActions;
+import HistoryTable from "@/components/dashboard/dashboard-ui/myfolder/HistoryTable";
 
 let isOnline = false;
 
-const boardLabels = [
-  {
-    title: "Total",
-    subTitle: "Appointments",
-    color: "bg-custom14",
-  },
-  {
-    title: "Successful",
-    subTitle: "Checkups",
-    color: "bg-custom-g3",
-  },
-  {
-    title: "Missed",
-    subTitle: "Checkups",
-    color: "bg-custom-r-shade1",
-  },
-];
-
-const Appointments = () => {
+const MyFolder = () => {
   const router = useRouter();
-  useEffect;
   const dispatch = useDispatch();
   const userInfo = useSelector((state) => state.userData);
   const {
@@ -84,11 +59,8 @@ const Appointments = () => {
   return (
     <DashBoardLayout type="doctor">
       <div className="flex-1 2xl:pr-16">
-        <Header title={"Appointments"} type={"Doctor"} />
-        <Board boardLabels={boardLabels} token={token} type="doctor" />
-        <AppointmentTable token={token} doctorId={doctorId} userType="doctor" />
-        <CheckUpTable token={token} userType="doctor" doctorId={doctorId} />
-        <AppointmentsChart token={token} appointmentStyle="w-full mt-14" />
+        <Header title={"My Folder"} />
+        <HistoryTable token={token} doctorId={doctorId} userType="doctor"/>
       </div>
       <UserProfile
         userType="doctor"
@@ -100,4 +72,4 @@ const Appointments = () => {
   );
 };
 
-export default Appointments;
+export default MyFolder;

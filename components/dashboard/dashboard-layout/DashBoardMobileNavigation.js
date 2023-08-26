@@ -76,9 +76,9 @@ const DashBoardMobileNavigation = (props) => {
     },
   ];
 
-  if(type === "doctor") {
-navLinks.splice(2, 1);
-  }
+//   if(type === "doctor") {
+// navLinks.splice(2, 1);
+//   }
 
   return (
     <div className="flex flex-col justify-between overflow-y-auto pt-14 pb-2 h-screen">

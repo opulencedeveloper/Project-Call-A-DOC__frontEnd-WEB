@@ -4,10 +4,10 @@ import { useEffect } from "react";
 import { useState } from "react";
 import LoadingSpinner from "@/components/UI/LoadingSpinner";
 
-const AppointmentTable = (props) => {
+const HistoryTable = (props) => {
   const [appointments, setAppointments] = useState();
   const { isLoading, error, sendRequest: fetchAppointments } = useHttp();
-  const { token, patientId } = props;
+  const { token, patientId, doctorId, userType } = props;
 
   useEffect(() => {
     const fetchAppointmentsResponse = (res) => {
@@ -31,10 +31,15 @@ const AppointmentTable = (props) => {
       setAppointments(modifiedAppointmentInfo);
     };
 
+    const url =
+      userType === "doctor"
+        ? "doctor"
+        : "customer";
+
     fetchAppointments(
       {
-        url: `customer/folder/fetchdescriptions?patientid=${patientId}`,
-        token: token,
+        url : `${url}/folder/fetchdescriptions?patientid=${patientId}`,
+        token,
       },
       fetchAppointmentsResponse
     );
@@ -54,6 +59,7 @@ const AppointmentTable = (props) => {
   ) : (
     <Table
       tableData={appointments}
+      tableHeaderData1={userType === "doctor" ? "Patient" : "Doctor"}
       tableHeaderData2="ID"
       tableHeaderData3="AppointmentDate"
       tableHeaderData4="Diagnosis"
@@ -65,4 +71,4 @@ const AppointmentTable = (props) => {
   );
 };
 
-export default AppointmentTable;
+export default HistoryTable;

@@ -1,5 +1,5 @@
 import useHttp from "@/hooks/useHttp";
-import Table from "../../dashboard-ui/Table";
+import Table from "../Table";
 import { useEffect } from "react";
 import { useState } from "react";
 import LoadingSpinner from "@/components/UI/LoadingSpinner";
@@ -50,26 +50,31 @@ const timeConverter = (inputTime) => {
 const CheckUpTable = (props) => {
   const [checkUps, setCheckups] = useState();
   const { isLoading, error, sendRequest: fetchCheckups } = useHttp();
-  const { token, patientId } = props;
+  const { token, userDataId, patientId, userType } = props;
 
   useEffect(() => {
     const fetchCheckupsResponse = (res) => {
       const { data } = res;
 
       console.log("checkup is", data);
+
+      return;
       const modifiedCheckupsInfo = data.map((appointmentData) => {
         const {
           patient,
           checkupdate,
           checkuptime,
           ddate,
+          doctor,
           appointmentid,
           status,
         } = appointmentData;
 
+        const userData = userType === "doctor" ? doctor : patient;
+
         return {
-          tableProfileUrl: patient.profilepicture,
-          tableData1: `${patient.firstname} ${patient.lastname}`,
+          tableProfileUrl: userData.profilepicture,
+          tableData1: `${userData.firstname} ${userData.lastname}`,
           tableData2: checkupdate.replace(/-/g, "/"),
           tableData3: timeConverter(checkuptime),
           tableData4: status === "1" ? "Ongoing" : "Completed",
@@ -81,9 +86,11 @@ const CheckUpTable = (props) => {
       setCheckups(modifiedCheckupsInfo);
     };
 
+    const url = userType === "doctor" ? "doctor" : `customer/fetchongoingcheckups?patientid=${patientId}`;
+
     fetchCheckups(
       {
-        url: "doctor/fetchcheckups",
+        url,
         token: token,
       },
       fetchCheckupsResponse
@@ -103,7 +110,7 @@ const CheckUpTable = (props) => {
     </div>
   ) : (
     <Table
-      tableHeaderData1="Patient"
+    tableHeaderData1={userType === "doctor" ? "Patient" : "Doctor"}
       tableData={checkUps}
       tableOnclickHandler={checkUpTableOnclickHandler}
     />

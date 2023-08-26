@@ -16,6 +16,8 @@ import DashBoardLayout from "@/components/dashboard/dashboard-layout/DashBoardLa
 import ActivityLineGraph from "@/components/dashboard/dashboard-ui/ActivityChart";
 import useHttp from "@/hooks/useHttp";
 import ActivityChartData from "@/components/dashboard/patient/home/ActivityChartData";
+import AppointmentTable from "@/components/dashboard/dashboard-ui/appointments/AppointmentTable";
+import CheckUpTable from "@/components/dashboard/dashboard-ui/appointments/CheckUpTable";
 
 
 let isOnline = false;
@@ -46,6 +48,7 @@ const Appointments = () => {
   const {
     firstname: patientFirstName,
     lastname: patientLastName,
+    patientid: patientId,
     profilepicture,
   } = userInfo;
   const { isLoading, error, sendRequest: fetchUserData } = useHttp();
@@ -80,13 +83,16 @@ const Appointments = () => {
     return <LoadingSpinner errorMessage={error} />;
   }
 
-  return (
+  return ( 
     <DashBoardLayout type="patient">
       <div className="flex-1 2xl:pr-16">
         <Header title="Appointments" />
         <Board boardLabels={boardLabels} token={token} type="patient"/>
         <div className="h-10"></div> 
-       <ActivityChartData token={token}/> 
+      
+       <AppointmentTable token={token} patientId={patientId} userType="patient"/>
+        <CheckUpTable token={token} userType="patient" patientId={patientId} /> 
+         <ActivityChartData token={token}/> 
       </div>
       <UserProfile
       userType="patient"
