@@ -9,9 +9,9 @@ let successHttpResponseMessage;
 const ScheduleCheckup = (props) => {
   const [isSuccess, setIsSuccess] = useState(false);
   const [checkupDate, setCheckupDate] = useState("");
-  const [checkupHour, setCheckupHour] = useState("");
-  const [checkupMinute, setCheckupMinute] = useState("");
-  const [checkupMeridiem, setCheckupMeridiem] = useState("");
+  const [checkupHour, setCheckupHour] = useState("00");
+  const [checkupMinute, setCheckupMinute] = useState("00");
+  const [checkupMeridiem, setCheckupMeridiem] = useState("AM");
   const [checkupDescription, setCheckupDescription] = useState("");
   const [checkupReminder, setCheckupReminder] = useState(true);
   const { isLoading, error, sendRequest: scheduleCheckUp } = useHttp();
@@ -131,6 +131,7 @@ const ScheduleCheckup = (props) => {
                   <select
                     onChange={inputChangeHandler}
                     id="checkupHour"
+                    value={checkupHour}
                     className="outline-none h-full w-11 rounded-xl appearance-none bg-transparent bg-no-repeat bg-right select-button-icon"
                   >
                     {hours.map((hour, index) => (
@@ -142,6 +143,7 @@ const ScheduleCheckup = (props) => {
                   <select
                     onChange={inputChangeHandler}
                     id="checkupMinute"
+                    value={checkupMinute}
                     className="outline-none h-full w-11 rounded-xl appearance-none bg-transparent bg-no-repeat bg-right select-button-icon"
                   >
                     {minutes.map((minute, index) => (
@@ -153,6 +155,7 @@ const ScheduleCheckup = (props) => {
                   <select
                     id="checkupMeridiem"
                     onChange={inputChangeHandler}
+                    value={checkupMeridiem}
                     className="outline-none h-full w-12 rounded-xl appearance-none bg-transparent bg-no-repeat bg-right select-button-icon"
                   >
                     <option value="AM">AM</option>
@@ -166,6 +169,7 @@ const ScheduleCheckup = (props) => {
                 <textarea
                 id="checkupDescription"
                   onChange={inputChangeHandler}
+                  value={checkupDescription}
                   type="text"
                   className="border border-ash6 rounded-xl w-full h-[120px] p-3 resize-none outline-none"
                 />{" "}
