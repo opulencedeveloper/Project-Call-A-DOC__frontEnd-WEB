@@ -4,6 +4,25 @@ import useHttp from "@/hooks/useHttp";
 
 import Image from "next/image";
 
+const formatDate = (dateString) => {
+  const date = new Date(dateString);
+  const currentDate = new Date();
+  const day = date.getDate();
+  const isToday = date.toDateString() === currentDate.toDateString();
+  const suffix =
+    day >= 11 && day <= 13
+      ? "th"
+      : ["st", "nd", "rd", "th"][Math.min((day - 1) % 10, 3)];
+  const formatDateResult = `${day}${suffix} ${date.toLocaleString("default", {
+    month: "long",
+  })} ${date.getFullYear()}`;
+
+  return {
+    formatedDate: formatDateResult,
+    isTodayDate: isToday,
+  };
+};
+
 const CheckUp = (props) => {
   const [checkUp, setCheckUp] = useState([]);
   const { isLoading, error, sendRequest: fetchCheckupData } = useHttp();
@@ -12,7 +31,8 @@ const CheckUp = (props) => {
   useEffect(() => {
     const checkUpResponse = (res) => {
       const { data } = res;
-      setCheckUp(data);
+      const filteredCheckUps = data.filter((item) => item.accepted !== "0");
+      setCheckUp(filteredCheckUps);
       console.log("CheckUpsssssssssssssssssssssssssss", data);
     };
 
@@ -48,7 +68,7 @@ const CheckUp = (props) => {
       </p>
 
       {/* EMPTY STATE */}
-      <div className="h-[320px] overflow-y-auto overflow-x-hidden">
+      <div className="h-[320px] overflow-y-auto">
         {" "}
         {isLoading ? (
           <p className="text-center py-32 text-ash6">Loading...</p>
@@ -62,7 +82,7 @@ const CheckUp = (props) => {
           checkUp.map((checkUp, index) => (
             <div
               key={index}
-              className="flex justify-between rounded-xl shadow-2xl px-3 py-7 mb-5 md:px-8"
+              className="flex justify-between rounded-xl shadow-custom-shadow2 px-3 py-7 mb-5 md:px-8"
             >
               <div className="flex items-center space-x-4 ">
                 <div className="flex-shrink-0 rounded-full overflow-hidden w-[50px] h-[50px] md:h-[90px] md:w-[90px]">
@@ -80,19 +100,21 @@ const CheckUp = (props) => {
                   <p className="text-base font-medium md:text-xl">
                     {`Dr. ${checkUp.doctor.firstname} ${checkUp.doctor.lastname}`}
                   </p>
-                  <p className="text-ash2 text-sm">{checkUp.doctor.ctime}</p>
+                  <p className="text-ash2 text-sm">{checkUp.checkuptime}</p>
                   <p className="text-xs text-ash2">
-                    Specialist clinic, Port Harcourt
+                    {formatDate(checkUp.checkupdate).formatedDate}
                   </p>
                 </div>
               </div>
               <div className="my-auto">
-                <button
-                  onClick={() => joinCheckupHandler(checkUp.appointmentid)}
-                  className="bg-custom rounded-full py-2.5 px-8 text-xs text-custom1"
-                >
-                  Join
-                </button>
+                {formatDate(checkUp.checkupdate).isTodayDate && (
+                  <button
+                    onClick={() => joinCheckupHandler(checkUp.appointmentid)}
+                    className="bg-custom rounded-full py-2.5 px-8 text-xs text-custom1"
+                  >
+                    Join
+                  </button>
+                )}
               </div>
             </div>
           ))

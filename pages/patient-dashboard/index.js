@@ -62,7 +62,7 @@ const Dashboard = () => {
   return (
     <DashBoardLayout type="patient">
       <div className="flex-1 2xl:pr-16">
-        <Header title={`Welcome ${patientFirstName}`} />
+        <Header patientId={patientId} title={`Welcome ${patientFirstName}`} />
         <CheckUpandDosageLayout patientId={patientId} token={token} />
         <YourActivities token={token}/>
       </div>

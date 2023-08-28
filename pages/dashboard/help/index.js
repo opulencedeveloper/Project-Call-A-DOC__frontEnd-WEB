@@ -27,8 +27,9 @@ const Help = () => {
   const dispatch = useDispatch();
   const userInfo = useSelector((state) => state.userData);
   const {
-    firstname: patientFirstName,
-    lastname: patientLastName,
+    firstname: userFirstName,
+    lastname: userLastName,
+    patientid: patientId,
     profilepicture,
   } = userInfo;
   const { isLoading, error, sendRequest: fetchUserData } = useHttp();
@@ -64,14 +65,15 @@ console.log(url)
   if (isLoading || error) {
     return <LoadingSpinner errorMessage={error} />;
   } 
+ 
   return (
     <DashBoardLayout type={userType}> 
       <div className="flex-1 2xl:pr-16">
-        <Header title={"Help Center"} type={userType} />
+        <Header title={"Help Center"} type={userType} patientId={patientId}/>
         <HelpCenterInfo userType ={userType} token ={token}/>
       </div>
       <UserProfile
-        name={`${patientFirstName} ${patientLastName}`}
+        name={`${userFirstName} ${userLastName}`}
         profilePicture={profilepicture}
         online={isOnline}
       />

@@ -59,7 +59,7 @@ const MyFolder = () => {
   return (
     <DashBoardLayout type="patient">
       <div className="flex-1 2xl:pr-16">
-        <Header title={"My Folder"} />
+        <Header title={"My Folder"} patientId={patientId}/>
       <HistoryTable token={token} patientId={patientId} userType="patient"/>
       </div>
       <UserProfile

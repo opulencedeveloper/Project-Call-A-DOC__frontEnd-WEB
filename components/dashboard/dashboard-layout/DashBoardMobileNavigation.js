@@ -42,6 +42,7 @@ const DashBoardMobileNavigation = (props) => {
   }
 
   const link = type === "doctor" ? "/doctor-dashboard" : "/patient-dashboard";
+  
 
   const navLinks = [
     {
@@ -132,7 +133,7 @@ navLinks.splice(2, 1);
           })}
         </div>
       </div>
-      {activeLink.startsWith("/chat") && type === "doctor" && <button
+      {/* {activeLink.startsWith("/chat") && type === "doctor" && <button
         onClick={toggleChatFolderMobileViewHandler}
         className="cursor-pointer w-full text-custom1 rounded-md flex items-center justify-center space-x-7 bg-custom13 py-5 px-2 lg:hidden"
       >
@@ -148,7 +149,7 @@ navLinks.splice(2, 1);
           width={32}
           height={32}
         />
-      </button>}
+      </button>} */}
      
      {type === "patient" && <button
         onClick={startAppointmentHandler}

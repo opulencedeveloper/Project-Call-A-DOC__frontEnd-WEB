@@ -13,6 +13,8 @@ const DashBoardNavigation = (props) => {
   const activeLink = router.pathname;
   const { type } = props;
 
+  console.log(type)
+
   useEffect(() => {
     const handleBeforeUnload = (e) => {
       e.preventDefault();
@@ -130,7 +132,7 @@ const DashBoardNavigation = (props) => {
           })}
         </div>
       </div>
-      <div
+      {type === "patient" && <button
         onClick={
            startAppointmentHandler
         }
@@ -150,7 +152,7 @@ const DashBoardNavigation = (props) => {
           width={32}
           height={32}
         />
-      </div>
+      </button>}
     </div>
   );
 };

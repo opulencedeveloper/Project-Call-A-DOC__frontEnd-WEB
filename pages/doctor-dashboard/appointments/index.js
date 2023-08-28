@@ -15,7 +15,6 @@ import AuthContext from "@/store/context-store/auth-context";
 import { userDataActions } from "../../../store/redux-store/userData-slice";
 import AppointmentsChart from "@/components/dashboard/doctor/home/AppointmentsChart";
 import AppointmentTable from "@/components/dashboard/dashboard-ui/appointments/AppointmentTable";
-import CheckUpTable from "@/components/dashboard/dashboard-ui/appointments/CheckUpTable";
 
 const { addUserData } = userDataActions;
 
@@ -87,7 +86,6 @@ const Appointments = () => {
         <Header title={"Appointments"} type={"Doctor"} />
         <Board boardLabels={boardLabels} token={token} type="doctor" />
         <AppointmentTable token={token} doctorId={doctorId} userType="doctor" />
-        <CheckUpTable token={token} userType="doctor" doctorId={doctorId} />
         <AppointmentsChart token={token} appointmentStyle="w-full mt-14" />
       </div>
       <UserProfile
