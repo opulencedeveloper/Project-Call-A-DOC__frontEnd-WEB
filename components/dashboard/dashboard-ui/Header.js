@@ -12,6 +12,7 @@ import UnReadCheckupsNotification from "./UnReadCheckupsNotification";
 import SuccessMessage from "./SuccessMessage";
 import BackDrop from "@/components/UI/BackDrop";
 import LoadingSpinner from "@/components/UI/LoadingSpinner";
+import { useRouter } from "next/router";
 
 const currentDate = new Date();
 
@@ -44,9 +45,15 @@ const Header = (props) => {
     []
   );
   const [isOpen, setIsOpen] = useState(false);
+  const router = useRouter();
   const authCtx = useContext(AuthContext);
   const { token } = authCtx;
   const { error, sendRequest: fetchNotifications } = useHttp();
+
+  if (error === "Unauthenticated" || error === "Not Authorized") {
+    router.replace("/signin");
+  }
+
   
 
   useEffect(() => {

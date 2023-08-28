@@ -54,11 +54,9 @@ export default function DashBoard() {
     );
   }, [fetchUserData, token, dispatch]);
 
-  useEffect(() => {
     if (error === "Unauthenticated" || error === "Not Authorized") {
       router.replace("signin");
     }
-  }, [error, router]);
 
   if (isLoading || error) {
     return <LoadingSpinner errorMessage={error} />;

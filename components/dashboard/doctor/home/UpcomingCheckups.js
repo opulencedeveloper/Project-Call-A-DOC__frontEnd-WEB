@@ -10,6 +10,8 @@ const UpcomingChecksups = (props) => {
 
   const { token, doctorId } = props;
 
+  console.log("doctorIdddddddddddddd", doctorId)
+
   useEffect(() => {
     const fetchUpcomingCheckupResponse = (res) => {
       const { data } = res;

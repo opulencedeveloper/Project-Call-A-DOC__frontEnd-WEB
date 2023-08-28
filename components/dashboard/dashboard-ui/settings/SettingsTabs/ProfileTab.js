@@ -35,11 +35,9 @@ const ProfileTab = (props) => {
     );
   }, [fetchUserData, token, reloadComponent]);
 
-  useEffect(() => {
     if (error === "Unauthenticated" || error === "Not Authorized") {
-      router.replace("signin");
+      router.replace("/signin");
     }
-  }, [error, router ]);
 
   if (isLoading || error) {
     return <LoadingSpinner errorMessage={error} pageHeight="h-full" />;
