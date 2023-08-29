@@ -133,7 +133,7 @@ export default function Chat() {
             {" "}
             <Image
               src="/images/icon/drop-down.svg"
-              alt="email-icon"
+              alt="drop-down-icon"
               className="w-full h-full"
               width={12}
               height={12}

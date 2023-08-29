@@ -11,7 +11,7 @@ const ScheduleCheckup = (props) => {
   const [checkupDate, setCheckupDate] = useState("");
   const [checkupHour, setCheckupHour] = useState("00");
   const [checkupMinute, setCheckupMinute] = useState("00");
-  const [checkupMeridiem, setCheckupMeridiem] = useState("AM");
+  const [checkupMeridiem, setCheckupMeridiem] = useState("am");
   const [checkupDescription, setCheckupDescription] = useState("");
   const [checkupReminder, setCheckupReminder] = useState(true);
   const { isLoading, error, sendRequest: scheduleCheckUp } = useHttp();
@@ -59,7 +59,8 @@ const ScheduleCheckup = (props) => {
 
   const submitScheduleCheckupHandler = (event) => {
     event.preventDefault();
-    const checkupTime = `${checkupHour} : ${checkupMinute} ${checkupMeridiem}`;
+    const checkupTime = `${checkupHour}:${checkupMinute} ${checkupMeridiem}`;
+    console.log(checkupTime);
     
 
     if (
@@ -158,8 +159,8 @@ const ScheduleCheckup = (props) => {
                     value={checkupMeridiem}
                     className="outline-none h-full w-12 rounded-xl appearance-none bg-transparent bg-no-repeat bg-right select-button-icon"
                   >
-                    <option value="AM">AM</option>
-                    <option value="PM">PM</option>
+                    <option value="am">AM</option>
+                    <option value="pm">PM</option>
                   </select>
                 </div>{" "}
               </div>

@@ -192,7 +192,7 @@ const Header = (props) => {
           </div>
           <Image
             src="/images/icon/notification-icon.svg"
-            alt="doctor"
+            alt="notification-icon"
             className="h-full w-full"
             priority
             loading="eager"

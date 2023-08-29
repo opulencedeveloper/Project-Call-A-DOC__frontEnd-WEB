@@ -7,7 +7,7 @@ const Notifications = (props) => {
     <BackDrop>
       {" "}
       <div className="animateSlideUp px-5 h-96 animate relative rounded-xl bg-white z-40 px-7 shadow-xl w-[90%] md:w-[50rem]">
-        <div className="absolute left-5 right-5 top-5 overflow-hidden flex justify-between bg-white mb-5">
+        <div className="absolute left-0 right-0 top-0 p-5 border-b rounded-tl-xl rounded-tr-xl overflow-hidden flex justify-between bg-white mb-5">
           <div className="text-xl font-semibold md:text-2xl">Notifications</div>
 
           <button className="w-[18px] w-[18px]" onClick={toggleNotifications}>

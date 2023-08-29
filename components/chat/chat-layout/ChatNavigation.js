@@ -47,9 +47,9 @@ const ChatNavigation = (props) => {
     navLinks.splice(2, 1);
   }
 
-  const startAppointmentHandler = () => {
-    setStartAppointment(prevVal => !prevVal);
-  }
+  // const startAppointmentHandler = () => {
+  //   setStartAppointment(prevVal => !prevVal);
+  // }
 
   return (
     <div className="flex flex-col h-full items-center pb-5 justify-between w-28 items-start hidden 2xl:flex">
@@ -75,9 +75,8 @@ const ChatNavigation = (props) => {
             >
               <Image
                 src={activeLink === content.link ? `/images/icon/${content.icon1}.svg` : `/images/icon/${content.icon2}.svg`}
-                alt={content.title}
+                alt={content.icon1}
                 className="h-auto w-auto"
-                
                 width={13.5}
                 height={13.87}
               />{" "}
@@ -85,7 +84,7 @@ const ChatNavigation = (props) => {
 })}
         </div>
       </div>
-      <div 
+      {/* <div 
       onClick={startAppointmentHandler}
       className="cursor-pointer w-max px-4 py-3 text-custom1 rounded-md flex items-center justify-center space-x-7 bg-custom13">
         
@@ -93,11 +92,10 @@ const ChatNavigation = (props) => {
           src="/images/icon/add.svg"
           alt="add-icon"
           className="h-auto w-auto"
-          
           width={32}
           height={32}
         />
-      </div>
+      </div> */}
     </div>
   );
 };

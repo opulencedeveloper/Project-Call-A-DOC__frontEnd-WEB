@@ -60,7 +60,23 @@ const ChatFolder = (props) => {
         reloadChatFolderInfo = {reloadChatFolderInfoHandler}
          appointmentId={appointmentId} token={token} addFolderHandler={addFolderHandler} />
       )}
-      <div className="flex justify-end mb-2 lg:hidden">
+      
+      <div className="flex items-center justify-between space-x-3 md:space-x-5">
+       <div className="flex items-center space-x-2"> <div className="w-[33px] h-[25px] md:h-[30px] md:w-[37px]">
+          <Image
+            src="/images/icon/chat-folder-icon.svg"
+            className="h-full w-full"
+            alt="chat-folder-icon"
+            loading="eager"
+            priority
+            height={30}
+            width={37}
+          />
+        </div>
+        <p className="text-base font-medium md:text-[20px]">
+        {`${patientData.firstname } ${patientData.lastname} Folder`}
+        </p> </div>
+
         <button
           onClick={toggleChatFolderMobileView}
           className="w-[18px] w-[18px]"
@@ -76,27 +92,11 @@ const ChatFolder = (props) => {
           />
         </button>
       </div>
-      <div className="flex items-center space-x-3 md:space-x-5">
-        <div className="w-[33px] h-[25px] md:h-[30px] md:w-[37px]">
-          <Image
-            src="/images/icon/chat-folder-icon.svg"
-            className="h-full w-full"
-            alt="chat-folder-icon"
-            loading="eager"
-            priority
-            height={30}
-            width={37}
-          />
-        </div>
-        <p className="text-base font-medium md:text-[20px]">
-        {`${patientData.firstname } ${patientData.lastname} Folder`}
-        </p>
-      </div>
       <div className="flex justify-between items-center mt-11 mb-9">
         <p className="text-base font-medium md:text-[20px]">Description</p>
         <button
           onClick={addFolderHandler}
-          className="flex justify-center items-center text-white rounded-full h-[42px] w-[120px] bg-custom text-base md:h-[52px] md:w-[160px] md:text-[20px]"
+          className="flex justify-center items-center text-white rounded-full h-[40px] w-[100px] bg-custom text-sm md:h-[52px] md:w-[160px] md:text-[20px]"
         >
           Add details
         </button>

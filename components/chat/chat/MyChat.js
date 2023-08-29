@@ -197,9 +197,9 @@ const MyChat = (props) => {
           }
         />
       )}
-      <div className="border-b bg-custom8 absolute top-0 right-0 left-0 flex rounded-tl-2xl rounded-tr-2xl h-20 items-center justify-between border-b border-ash pb-3 pt-6 mx-3 md:h-32">
+      <div className="border-b absolute top-0 right-0 left-0 flex rounded-tl-2xl rounded-tr-2xl h-20 items-center justify-between border-b border-ash pb-3 pt-6 mx-3 md:h-32">
         <div className="flex items-center space-x-2 mr-1 md:space-x-4">
-          <div className="relative h-10 w-10 rounded-full flex-shrink-0 bg-white md:h-[82px] md:w-[82px]">
+          <div className="relative h-10 w-10 rounded-full flex-shrink-0 bg-custom md:h-[82px] md:w-[82px]">
           <div className="absolute bottom-0.5 -right-1 h-[14px] w-[14px] md:bottom-2 md:h-[20px] md:w-[20px] md:right-1">
           <Image
             src={`/images/icon/${onlineStatus}.svg`}
@@ -211,17 +211,19 @@ const MyChat = (props) => {
             height={20}
           />
         </div>
-          <div  className="h-full w-full rounded-full overflow-hidden">  {Object.keys(replierData).length && (
+          <div  className="h-full w-full bg-primary rounded-full overflow-hidden"> 
+           {Object.keys(replierData).length !== 0 && (
               <Image
                 src={`${replierData.profilepicture}`}
-                alt="chat-profile-picture"
+               // alt="chat-profile-picture"
                 className="h-full w-full"
                 width={82}
                 height={82}
               />
-            )} </div>
+            )} 
+            </div>
           </div>
-          {Object.keys(replierData).length && (
+          {Object.keys(replierData).length !== 0 && (
             <p className="text-sm font-medium line-clamp-1 text-ellipsis md:text-[25px]">
               {props.userType === "patient"
                 ? `Dr. ${replierData.firstname} ${replierData.lastname}`
@@ -265,26 +267,28 @@ const MyChat = (props) => {
               />{" "}
             </button>
 
-            <button
-              className="relative h-4 w-4 my-1 md:my-0 md:h-[24px] md:w-[24px]"
-              onClick={moreVertButtonHandler}
-            >
-              {moreVertButton && (
+          <div className="relative">  
+          {moreVertButton && (
                 <MoreVertButtonDropDown
                   scheduleCheckupHandler={scheduleCheckupHandler}
                   endAppointmentHandler={endAppointmentHandler}
                 />
               )}
+          <button
+              className= "h-4 w-4 my-1 md:my-0 md:h-[24px] md:w-[24px]"
+              onClick={moreVertButtonHandler}
+            >
+              
               <Image
                 src={`/images/icon/${
                   moreVertButton ? "close.svg" : "three-dot-vert.svg"
                 }`}
-                alt="doctor"
+                alt="icon"
                 className="w-full h-full"
                 width={24}
                 height={24}
               />
-            </button>
+            </button> </div>
           </div>
         )}
       </div>
@@ -425,7 +429,7 @@ const MyChat = (props) => {
         <button className="bg-custom9 w-14 flex items-center justify-center rounded-br-xl rounded-tr-xl lg:w-[71px]">
           <Image
             src="/images/icon/send.svg"
-            alt="doctor"
+            alt="send-chat-icon"
             className="h-3 w-3 lg:h-auto lg:w-auto"
             width={29}
             height={28}

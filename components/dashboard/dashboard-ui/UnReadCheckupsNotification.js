@@ -28,10 +28,7 @@ const UnReadCheckupsNotification = (props) => {
 
   const acceptCheckupHandler = (checkupId) => {
     setLoadingStateHandler(true);
-    const url =
-      userType === "doctor"
-        ? "doctor/appointment/acceptappointment"
-        : "customer/checkups/acceptcheckup";
+    
     fectCheckupRequest(
       {
         url: "customer/checkups/acceptcheckup",

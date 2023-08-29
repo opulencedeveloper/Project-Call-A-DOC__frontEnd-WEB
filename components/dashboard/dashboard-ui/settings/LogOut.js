@@ -18,6 +18,8 @@ const LogOut = (props) => {
           <Image
             src="/images/icon/log-out-icon.svg"
             alt="log-out-icon"
+            loading="eager"
+            priority
             className="w-full h-full"
             width={68}
             height={68}
@@ -27,7 +29,7 @@ const LogOut = (props) => {
           Already Leaving?
         </p>
         <p className="text-ash5 text-[14px] text-center md:text-[16px]">
-          We would be sending you updates because your health is out utmost
+          We would be sending you updates because your health is our
           priority.
         </p>
         <button

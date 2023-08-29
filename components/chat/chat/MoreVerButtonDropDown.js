@@ -12,7 +12,7 @@ const MoreVertButtonDropDown = (props) => {
           src="/images/icon/add-checkup-calender-icon.svg"
           priority
           loading="eager"
-          alt="prescribe-drugs-icon"
+          alt="add-checkup-calender-icon"
           className="h-full w-full"
           width={24}
           height={24}
@@ -30,7 +30,7 @@ const MoreVertButtonDropDown = (props) => {
           src="/images/icon/end-appointment-icon.svg"
           priority
           loading="eager"
-          alt="prescribe-drugs-icon"
+          alt="end-appointment-icon"
           className="h-full w-full"
           width={24}
           height={24}
