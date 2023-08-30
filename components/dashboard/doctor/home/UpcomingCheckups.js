@@ -16,8 +16,8 @@ const UpcomingChecksups = (props) => {
   useEffect(() => {
     const fetchUpcomingCheckupResponse = (res) => {
       const { data } = res;
-      console.log("check up", data);
-      setUpcomingCheckups(data);
+      console.log("check up", res);
+    //  setUpcomingCheckups(data);
     };
 
     fetchUpcomingCheckup(
@@ -36,7 +36,7 @@ const UpcomingChecksups = (props) => {
   return (
     <div className="mt-10 ml-0 space-y-4 md:ml-8">
       <div className="text-ash2">Upcoming checkup</div>
-      {upcomingCheckups.map((checkupData, index) => ( <div key={index} className="border border-black">
+        <div className="">
             {" "}
             <div className="flex justify-between items-center mb-3 pb-3 border-b border-ash">
               <div className="flex justify-between items-center space-x-4">
@@ -73,7 +73,7 @@ const UpcomingChecksups = (props) => {
               </div>
             </div>
           </div>
-        ))}
+        
       <button onClick={viewHistoryHandler} className="text-custom text-sm">
         View history
       </button>

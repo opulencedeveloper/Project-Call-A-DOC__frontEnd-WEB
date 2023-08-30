@@ -270,6 +270,7 @@ const MyChat = (props) => {
           <div className="relative">  
           {moreVertButton && (
                 <MoreVertButtonDropDown
+                moreVertButtonHandler={moreVertButtonHandler}
                   scheduleCheckupHandler={scheduleCheckupHandler}
                   endAppointmentHandler={endAppointmentHandler}
                 />
