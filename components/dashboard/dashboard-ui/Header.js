@@ -54,7 +54,11 @@ const Header = (props) => {
     router.replace("/signin");
   }
 
-  
+  if (typeof window !== "undefined") {
+    userType = localStorage.getItem("userType");
+  }
+
+  console.log(userType);
 
   useEffect(() => {
     console.log("Header effect called");
