@@ -13,7 +13,7 @@ console.log("Use Http called")
       console.log("requestConfig.body", requestConfig)
       try { 
         const response = await fetch(
-            `https://api.calladoc247.net/api/v1/${requestConfig.url}`
+            `https://api.calladoc247.com/api/v1/${requestConfig.url}`
           , {
             method: requestConfig.method ? requestConfig.method : 'GET',
             headers: {
