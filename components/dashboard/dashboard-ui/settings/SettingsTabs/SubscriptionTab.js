@@ -31,10 +31,10 @@ const SubscriptionTab = (props) => {
   const {token} = props;
 
   return (
-    <div className="px-0 w-full h-full overflow-y-auto w-full bg-white md:px-7">
+    <div className="px-0 h-full overflow-y-auto w-full bg-white md:px-7">
       <p className="text-lg font-medium md:text-[25px] mb-8">Subscriptions</p>
       <div className="border-t space-y-7 border-ash-4 w-full pt-7">
-        <SubscriptionPlans /> 
+        <SubscriptionPlans token={token} /> 
         <div className={`flex justify-between w-full`}>
           {" "}
           <div className="space-y-1">
@@ -48,7 +48,7 @@ const SubscriptionTab = (props) => {
           </div>
           <ToggleButton /> 
         </div>
-        <PaymentMethod />
+        {/* <PaymentMethod /> */}
         <TrasactionHistoryTable token={token} type="Patient" tableData={billingHistoryData}  tableTitle="Billing history"/>
       </div>
     </div>
